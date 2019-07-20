@@ -1,13 +1,14 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Prefabs/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/industrial.v2.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/PlayerStateMachine.gd" type="Script" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 4.09283
 height = 5.15142
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "Run"
 length = 0.8
 loop = true
@@ -24,8 +25,7 @@ tracks/0/keys = {
 "values": [ 8, 9, 10, 11, 12, 13, 14, 15 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "idle"
+[sub_resource type="Animation" id=3]
 length = 1.4
 loop = true
 tracks/0/type = "value"
@@ -41,10 +41,10 @@ tracks/0/keys = {
 "values": [ 2, 1 ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=5]
+[sub_resource type="AnimationNodeAnimation" id=4]
 animation = "idle"
 
-[sub_resource type="AnimationNodeAnimation" id=4]
+[sub_resource type="AnimationNodeAnimation" id=5]
 animation = "Run"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=6]
@@ -52,9 +52,9 @@ animation = "Run"
 [sub_resource type="AnimationNodeStateMachineTransition" id=7]
 
 [sub_resource type="AnimationNodeStateMachine" id=8]
-states/idle/node = SubResource( 5 )
+states/idle/node = SubResource( 4 )
 states/idle/position = Vector2( 180, 90 )
-states/run/node = SubResource( 4 )
+states/run/node = SubResource( 5 )
 states/run/position = Vector2( 425, 90 )
 transitions = [ "idle", "run", SubResource( 6 ), "run", "idle", SubResource( 7 ) ]
 start_node = "idle"
@@ -70,7 +70,7 @@ friction = 2.0
 texture = ExtResource( 2 )
 vframes = 2
 hframes = 8
-frame = 8
+frame = 1
 region_enabled = true
 region_rect = Rect2( 0, 256, 128, 32 )
 
@@ -79,11 +79,14 @@ position = Vector2( 0, 1 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Run = SubResource( 3 )
-anims/idle = SubResource( 2 )
+anims/Run = SubResource( 2 )
+anims/idle = SubResource( 3 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 8 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 9 )
+
+[node name="PlayerStateMachine" type="Node" parent="."]
+script = ExtResource( 3 )
