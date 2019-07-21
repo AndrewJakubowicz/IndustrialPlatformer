@@ -7,6 +7,7 @@ enum STATE {
 	IDLE
 	RUN
 	JUMP
+	FALLING
 }
 
 func _ready():
@@ -28,7 +29,7 @@ func _state_logic(delta):
 # Automatically is checked for whether we can transition into another state.
 #  @returns {STATE | null}
 func _get_transition(delta):
-	# TODO: Clean up input handling. Should happen seperately.
+	# TODO: Clean up input handling. Should happen seperate ly.
 	var pressing = Input.is_action_pressed("left") or Input.is_action_pressed("right")
 	if [STATE.IDLE].has(state) and pressing:
 		return STATE.RUN
@@ -36,6 +37,10 @@ func _get_transition(delta):
 		return STATE.IDLE
 	elif [STATE.RUN, STATE.IDLE].has(state) and player.could_jump():
 		return STATE.JUMP
+	elif [STATE.JUMP, STATE.FALLING].has(state) and player.is_on_floor():
+		return STATE.IDLE
+	elif [STATE.RUN, STATE.IDLE].has(state) and not player.is_on_floor():
+		return STATE.FALLING
 	return null
 
 # Great place to start tweens/timers and animations =D
@@ -45,6 +50,8 @@ func _enter_state(new_state, old_state):
 			anim_state.start("idle")
 		STATE.RUN:
 			anim_state.start("run")
+		STATE.JUMP:
+			player.jump_impulse()
 
 func _exit_state(old_state, new_state):
 	print_debug("	leaving state ", old_state, " from ", new_state)
