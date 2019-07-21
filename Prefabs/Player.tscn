@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Prefabs/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/industrial.v2.png" type="Texture" id=2]
@@ -23,6 +23,23 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 8, 9, 10, 11, 12, 13, 14, 15 ]
+}
+
+[sub_resource type="Animation" id=19]
+resource_name = "attack"
+length = 0.3
+step = 0.06
+tracks/0/type = "value"
+tracks/0/path = NodePath("character_sprites:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.06, 0.12, 0.18 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 24, 25, 26, 27 ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -75,6 +92,12 @@ tracks/0/keys = {
 "values": [ 4, 5, 6 ]
 }
 
+[sub_resource type="AnimationNodeAnimation" id=21]
+animation = "attack"
+
+[sub_resource type="AnimationNodeAnimation" id=22]
+animation = "attack"
+
 [sub_resource type="AnimationNodeAnimation" id=4]
 animation = "idle"
 
@@ -103,7 +126,27 @@ switch_mode = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id=18]
 switch_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+
+[sub_resource type="GDScript" id=27]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+switch_mode = 2
+script = SubResource( 27 )
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=28]
+switch_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id=8]
+states/attack/node = SubResource( 21 )
+states/attack/position = Vector2( 616, -58 )
+states/attack_ground/node = SubResource( 22 )
+states/attack_ground/position = Vector2( 415, 243 )
 states/idle/node = SubResource( 4 )
 states/idle/position = Vector2( 180, 90 )
 states/jump/node = SubResource( 11 )
@@ -111,12 +154,29 @@ states/jump/position = Vector2( 415, -58 )
 states/land/node = SubResource( 15 )
 states/land/position = Vector2( 180, -58 )
 states/run/node = SubResource( 5 )
-states/run/position = Vector2( 425, 90 )
-transitions = [ "idle", "run", SubResource( 6 ), "run", "idle", SubResource( 7 ), "idle", "jump", SubResource( 12 ), "run", "jump", SubResource( 13 ), "jump", "land", SubResource( 16 ), "land", "run", SubResource( 17 ), "land", "idle", SubResource( 18 ) ]
+states/run/position = Vector2( 422, 96 )
+transitions = [ "idle", "run", SubResource( 6 ), "run", "idle", SubResource( 7 ), "idle", "jump", SubResource( 12 ), "run", "jump", SubResource( 13 ), "jump", "land", SubResource( 16 ), "land", "run", SubResource( 17 ), "land", "idle", SubResource( 18 ), "run", "attack_ground", SubResource( 23 ), "attack_ground", "run", SubResource( 24 ), "jump", "attack", SubResource( 25 ), "attack", "jump", SubResource( 26 ), "attack_ground", "idle", SubResource( 28 ) ]
 start_node = "idle"
-graph_offset = Vector2( -222, -108 )
+graph_offset = Vector2( -55, 69 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=9]
+
+[sub_resource type="Animation" id=20]
+resource_name = "attack_swish"
+length = 0.3
+step = 0.08
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 8.68103e-005, 0.00190983, 0.08, 0.16, 0.24, 0.298237 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 0, 1, 2, 3, 4 ]
+}
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -126,7 +186,7 @@ friction = 2.0
 texture = ExtResource( 2 )
 vframes = 4
 hframes = 8
-frame = 9
+frame = 15
 region_enabled = true
 region_rect = Rect2( 0, 256, 128, 64 )
 
@@ -136,6 +196,7 @@ shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Run = SubResource( 2 )
+anims/attack = SubResource( 19 )
 anims/idle = SubResource( 3 )
 anims/jump = SubResource( 10 )
 anims/land = SubResource( 14 )
@@ -148,3 +209,17 @@ parameters/playback = SubResource( 9 )
 
 [node name="PlayerStateMachine" type="Node" parent="."]
 script = ExtResource( 3 )
+
+[node name="AttackParticle" type="Sprite" parent="."]
+position = Vector2( 0, -7.62939e-006 )
+texture = ExtResource( 2 )
+offset = Vector2( 16, 0 )
+hframes = 5
+frame = 4
+region_enabled = true
+region_rect = Rect2( 64, 288, 160, 16 )
+
+[node name="AttackAnimPlayer" type="AnimationPlayer" parent="AttackParticle"]
+anims/attack_swish = SubResource( 20 )
+[connection signal="animation_changed" from="AnimationPlayer" to="PlayerStateMachine" method="_on_AnimationPlayer_animation_changed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="PlayerStateMachine" method="_on_AnimationPlayer_animation_finished"]
