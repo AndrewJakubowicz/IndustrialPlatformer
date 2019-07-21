@@ -35,7 +35,7 @@ func _get_transition(delta):
 		return STATE.RUN
 	elif [STATE.RUN].has(state) and not pressing:
 		return STATE.IDLE
-	elif [STATE.RUN, STATE.IDLE].has(state) and player.could_jump():
+	elif [STATE.RUN, STATE.IDLE, STATE.FALLING].has(state) and player.could_jump():
 		return STATE.JUMP
 	elif [STATE.JUMP, STATE.FALLING].has(state) and player.is_on_floor():
 		return STATE.IDLE
@@ -47,10 +47,11 @@ func _get_transition(delta):
 func _enter_state(new_state, old_state):
 	match new_state:
 		STATE.IDLE:
-			anim_state.start("idle")
+			anim_state.travel("idle")
 		STATE.RUN:
-			anim_state.start("run")
+			anim_state.travel("run")
 		STATE.JUMP:
+			anim_state.travel("jump")
 			player.jump_impulse()
 
 func _exit_state(old_state, new_state):

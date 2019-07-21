@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Prefabs/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/industrial.v2.png" type="Texture" id=2]
@@ -35,14 +35,54 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.7 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 2, 1 ]
+"values": [ 2, 0, 1 ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "jump"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("character_sprites:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 9 ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "land"
+length = 0.12
+step = 0.04
+tracks/0/type = "value"
+tracks/0/path = NodePath("character_sprites:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6 ]
 }
 
 [sub_resource type="AnimationNodeAnimation" id=4]
 animation = "idle"
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "jump"
+
+[sub_resource type="AnimationNodeAnimation" id=15]
+animation = "land"
 
 [sub_resource type="AnimationNodeAnimation" id=5]
 animation = "Run"
@@ -51,14 +91,30 @@ animation = "Run"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=7]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+switch_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id=8]
 states/idle/node = SubResource( 4 )
 states/idle/position = Vector2( 180, 90 )
+states/jump/node = SubResource( 11 )
+states/jump/position = Vector2( 415, -58 )
+states/land/node = SubResource( 15 )
+states/land/position = Vector2( 180, -58 )
 states/run/node = SubResource( 5 )
 states/run/position = Vector2( 425, 90 )
-transitions = [ "idle", "run", SubResource( 6 ), "run", "idle", SubResource( 7 ) ]
+transitions = [ "idle", "run", SubResource( 6 ), "run", "idle", SubResource( 7 ), "idle", "jump", SubResource( 12 ), "run", "jump", SubResource( 13 ), "jump", "land", SubResource( 16 ), "land", "run", SubResource( 17 ), "land", "idle", SubResource( 18 ) ]
 start_node = "idle"
-graph_offset = Vector2( -188, -44 )
+graph_offset = Vector2( -222, -108 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=9]
 
@@ -68,11 +124,11 @@ friction = 2.0
 
 [node name="character_sprites" type="Sprite" parent="."]
 texture = ExtResource( 2 )
-vframes = 2
+vframes = 4
 hframes = 8
-frame = 2
+frame = 9
 region_enabled = true
-region_rect = Rect2( 0, 256, 128, 32 )
+region_rect = Rect2( 0, 256, 128, 64 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 1 )
@@ -81,6 +137,8 @@ shape = SubResource( 1 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Run = SubResource( 2 )
 anims/idle = SubResource( 3 )
+anims/jump = SubResource( 10 )
+anims/land = SubResource( 14 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 8 )
