@@ -52,6 +52,16 @@ attack={
  ]
 }
 
+[layer_names]
+
+2d_render/layer_1="hero"
+2d_physics/layer_1="hero"
+2d_render/layer_2="enemy"
+2d_physics/layer_2="enemy"
+2d_render/layer_3="interactives"
+2d_physics/layer_3="interactive"
+2d_physics/layer_4="ground"
+
 [rendering]
 
 environment/default_clear_color=Color( 0.113725, 0.129412, 0.176471, 1 )
