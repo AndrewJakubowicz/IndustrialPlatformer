@@ -6,12 +6,17 @@ export (float) var WALK_SPEED = 350
 export (float) var VERTICAL_SPEED = 1200
 
 export (float) var JUMP_IMPULSE = 200
+export (float) var HURT_BUMP = 60
+
+export (float) var MAX_HEALTH = 3
 
 onready var animation_sprite = $character_sprites
+onready var damage_state_machine = $TakeDamageStateMachine
 
 const GRAVITY = 600
 const jump_buffer_amount = 0.13
 
+export (int) var health = 1
 
 var acc = Vector2()
 var velocity = Vector2()
@@ -34,8 +39,13 @@ class InputBuffer:
 
 var inputs = InputBuffer.new()
 
+func _ready():
+	damage_state_machine.set_max_health(MAX_HEALTH)
+
 func idle_physics(delta):
-	velocity = velocity.linear_interpolate(Vector2(0,0), friction * delta)
+	if is_on_floor():
+		velocity = velocity.linear_interpolate(Vector2(0,0), friction * delta)
+
 
 func run_physics(delta):
 	if Input.is_action_pressed("right"):
@@ -64,6 +74,10 @@ func jump_physics(delta, time_in_jump):
 func jump_impulse():
 	velocity.y = -JUMP_IMPULSE
 
+func dead_impulse():
+	velocity.y = -JUMP_IMPULSE
+	velocity.x = JUMP_IMPULSE if facing_left else -JUMP_IMPULSE
+
 func could_jump():
 	return (is_on_floor() or air_time < jump_buffer_amount) and inputs.is_action_jump_pressed()
 
@@ -87,7 +101,13 @@ func _physics_process(delta):
 		velocity.y = 0
 	if is_on_wall():
 		velocity.x = 0
-	
 
 func _process(delta):
 	inputs.update(delta)
+
+func hurt_bump():
+	velocity.y = -HURT_BUMP
+	velocity.x = HURT_BUMP * 1.4 if facing_left else -HURT_BUMP * 1.4
+
+func player_hit(damage):
+	damage_state_machine.hit(damage)

@@ -4,8 +4,7 @@ onready var player = parent
 onready var anim_state = player.get_node("AnimationTree").get("parameters/playback")
 onready var attack_swish = player.get_node("AttackParticle")
 onready var attack_swish_player = attack_swish.get_node("AttackAnimPlayer")
-
-var time_in_state = 0
+onready var damage_state = $"../TakeDamageStateMachine"
 
 enum STATE {
 	IDLE
@@ -13,6 +12,7 @@ enum STATE {
 	JUMP
 	FALLING
 	ATTACK_GROUND
+	DEAD
 }
 
 func _ready():
@@ -22,7 +22,6 @@ func _ready():
 	call_deferred('set_state', states[STATE.IDLE])
 
 func _state_logic(delta):
-	time_in_state += delta
 	match state:
 		STATE.IDLE:
 			player.idle_physics(delta)
@@ -32,6 +31,10 @@ func _state_logic(delta):
 			player.jump_physics(delta, time_in_state)
 		STATE.ATTACK_GROUND:
 			player.idle_physics(delta)
+		STATE.DEAD:
+			player.idle_physics(delta)
+			if time_in_state > 2:
+				get_tree().reload_current_scene()
 
 # Automatically is checked for whether we can transition into another state.
 #  @returns {STATE | null}
@@ -52,12 +55,12 @@ func _get_transition(delta):
 		return STATE.ATTACK_GROUND
 	elif [STATE.ATTACK_GROUND].has(state) and not attack_swish_player.is_playing():
 		return STATE.IDLE
+	elif not [STATE.DEAD].has(state) and damage_state.curr_health <= 0:
+		return STATE.DEAD
 	return null
 
 # Great place to start tweens/timers and animations =D
 func _enter_state(new_state, old_state):
-	if new_state != old_state:
-		time_in_state = 0
 	match new_state:
 		STATE.IDLE:
 			anim_state.travel("idle")
@@ -73,6 +76,10 @@ func _enter_state(new_state, old_state):
 				attack_swish.scale.x = 1
 			anim_state.travel("attack_ground")
 			attack_swish_player.play("attack_swish")
+		STATE.DEAD:
+			player.dead_impulse()
+			anim_state.start("dead")
 
 func _exit_state(old_state, new_state):
-	print_debug("%s  -->  %s" % [old_state, new_state])
+	pass
+	#print_debug("%s  -->  %s" % [old_state, new_state])

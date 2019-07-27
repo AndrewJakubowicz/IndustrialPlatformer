@@ -4,9 +4,9 @@ class_name StateMachine
 var state = null
 var previous_state = null
 var states = {}
+var time_in_state = 0
 
 onready var parent = get_parent()
-
 
 func _state_logic(delta):
 	pass
@@ -24,6 +24,7 @@ func _exit_state(old_state, new_state):
 	pass
 
 func _physics_process(delta):
+	time_in_state += delta
 	if state != null:
 		_state_logic(delta)
 		var transition = _get_transition(delta)
@@ -37,6 +38,8 @@ func set_state(new_state):
 	if previous_state != null:
 		_exit_state(previous_state, new_state)
 	if new_state != null:
+		if new_state != previous_state:
+			time_in_state = 0
 		_enter_state(new_state, previous_state)
 
 # String name as param

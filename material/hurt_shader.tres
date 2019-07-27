@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://material/hurt.shader" type="Shader" id=1]
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/time_factor = 18.0
+shader_param/time_running = 0.0
+shader_param/on = false
+shader_param/flash_color = Plane( 0.2, 0.1, 0.2, 1 )
+shader_param/scale_up = Vector2( 0.2, 0.1 )
