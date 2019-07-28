@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 export (float) var friction = 20
-export (float) var maxSpeed = 125
+export (float) var _maxSpeed = 125
 export (float) var WALK_SPEED = 350
 export (float) var VERTICAL_SPEED = 1200
 
@@ -12,8 +12,9 @@ export (float) var MAX_HEALTH = 3
 
 onready var animation_sprite = $character_sprites
 onready var damage_state_machine = $TakeDamageStateMachine
+onready var maxSpeed = _maxSpeed
 
-const GRAVITY = 600
+var GRAVITY = global.GRAVITY
 const jump_buffer_amount = 0.13
 
 export (int) var health = 1
@@ -111,3 +112,6 @@ func hurt_bump():
 
 func player_hit(damage):
 	damage_state_machine.hit(damage)
+
+func _on_TakeDamageStateMachine_got_hit():
+	hurt_bump()

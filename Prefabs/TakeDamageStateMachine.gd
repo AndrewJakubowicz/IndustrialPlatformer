@@ -2,6 +2,7 @@ extends "res://Scripts/StateMachine.gd"
 
 signal got_hit
 signal recovered_hit
+signal died
 
 export (float) var time_of_no_damage = 0.2
 
@@ -32,13 +33,12 @@ func _get_transition(delta):
 		return STATE.CAN_TAKE_DAMAGE
 	
 func _enter_state(new_state, old_state):
-	# Start tweens in timers.
-	# Start animations.
 	match new_state:
 		STATE.NO_TAKE_DAMAGE:
 			emit_signal("got_hit")
-			parent.hurt_bump()
 			curr_health -= 1
+			if curr_health <= 0:
+				emit_signal("died")
 		STATE.CAN_TAKE_DAMAGE:
 			emit_signal("recovered_hit")
 

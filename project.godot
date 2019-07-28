@@ -24,6 +24,10 @@ config/name="Industrial Platformer"
 run/main_scene="res://Scene/World.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+global="*res://Scripts/global/global.gd"
+
 [input]
 
 right={
@@ -61,6 +65,7 @@ attack={
 2d_render/layer_3="interactives"
 2d_physics/layer_3="interactive"
 2d_physics/layer_4="ground"
+2d_physics/layer_5="enemy_hitbox"
 
 [rendering]
 

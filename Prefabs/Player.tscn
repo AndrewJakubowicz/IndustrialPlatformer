@@ -1,11 +1,19 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://Prefabs/Player.gd" type="Script" id=1]
-[ext_resource path="res://material/hurt_shader.tres" type="Material" id=2]
+[ext_resource path="res://material/hurt.shader" type="Shader" id=2]
 [ext_resource path="res://assets/industrial.v2.png" type="Texture" id=3]
 [ext_resource path="res://Prefabs/character_sprites.gd" type="Script" id=4]
 [ext_resource path="res://Scripts/PlayerStateMachine.gd" type="Script" id=5]
 [ext_resource path="res://Prefabs/TakeDamageStateMachine.gd" type="Script" id=6]
+
+[sub_resource type="ShaderMaterial" id=32]
+shader = ExtResource( 2 )
+shader_param/time_factor = 18.0
+shader_param/time_running = 0.0
+shader_param/on = false
+shader_param/flash_color = Plane( 0.4, 0.1, 0.2, 0 )
+shader_param/scale_up = Vector2( 0.3, 0.1 )
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 4.09283
@@ -279,11 +287,10 @@ script = ExtResource( 1 )
 friction = 2.0
 
 [node name="character_sprites" type="Sprite" parent="."]
-material = ExtResource( 2 )
+material = SubResource( 32 )
 texture = ExtResource( 3 )
 vframes = 4
 hframes = 8
-frame = 2
 region_enabled = true
 region_rect = Rect2( 0, 256, 128, 64 )
 script = ExtResource( 4 )
@@ -328,12 +335,13 @@ anims/attack_swish = SubResource( 30 )
 priority = 2.0
 monitoring = false
 monitorable = false
-collision_mask = 9
+collision_mask = 24
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackParticle/Area2D"]
 position = Vector2( 13.1043, 0.677803 )
 shape = SubResource( 31 )
 [connection signal="animation_changed" from="AnimationPlayer" to="PlayerStateMachine" method="_on_AnimationPlayer_animation_changed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="PlayerStateMachine" method="_on_AnimationPlayer_animation_finished"]
+[connection signal="got_hit" from="TakeDamageStateMachine" to="." method="_on_TakeDamageStateMachine_got_hit"]
 [connection signal="got_hit" from="TakeDamageStateMachine" to="character_sprites" method="_on_TakeDamageStateMachine_got_hit"]
 [connection signal="recovered_hit" from="TakeDamageStateMachine" to="character_sprites" method="_on_TakeDamageStateMachine_recovered_hit"]

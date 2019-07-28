@@ -6,6 +6,9 @@ onready var attack_swish = player.get_node("AttackParticle")
 onready var attack_swish_player = attack_swish.get_node("AttackAnimPlayer")
 onready var damage_state = $"../TakeDamageStateMachine"
 
+var max_speed_increase = 30;
+var bunny_hops = 0;
+
 enum STATE {
 	IDLE
 	RUN
@@ -22,6 +25,8 @@ func _ready():
 	call_deferred('set_state', states[STATE.IDLE])
 
 func _state_logic(delta):
+	if bunny_hops > 0 and state != STATE.JUMP and time_in_state > 0.18:
+		bunny_hops = 0
 	match state:
 		STATE.IDLE:
 			player.idle_physics(delta)
@@ -67,6 +72,8 @@ func _enter_state(new_state, old_state):
 		STATE.RUN:
 			anim_state.travel("run")
 		STATE.JUMP:
+			bunny_hops += 1
+			player.maxSpeed = player._maxSpeed + (bunny_hops * max_speed_increase)
 			anim_state.travel("jump")
 			player.jump_impulse()
 		STATE.ATTACK_GROUND:
