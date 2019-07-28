@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Industrial Platformer"
-run/main_scene="res://Scene/World.tscn"
+run/main_scene="res://Game.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -66,6 +66,7 @@ attack={
 2d_physics/layer_3="interactive"
 2d_physics/layer_4="ground"
 2d_physics/layer_5="enemy_hitbox"
+2d_physics/layer_6="point_circle"
 
 [rendering]
 

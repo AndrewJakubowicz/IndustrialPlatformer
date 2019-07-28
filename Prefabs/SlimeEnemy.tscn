@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Prefabs/SlimeEnemy.gd" type="Script" id=1]
 [ext_resource path="res://material/hurt.shader" type="Shader" id=2]
@@ -23,6 +23,23 @@ height = 7.56635
 radius = 4.60114
 height = 4.13293
 
+[sub_resource type="Animation" id=4]
+resource_name = "slime"
+length = 0.7
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6 ]
+}
+
 [node name="Enemy1" type="KinematicBody2D"]
 position = Vector2( 288, 464 )
 collision_layer = 16
@@ -34,7 +51,6 @@ material = SubResource( 1 )
 position = Vector2( 7.97205, -8 )
 texture = ExtResource( 3 )
 hframes = 7
-frame = 6
 region_enabled = true
 region_rect = Rect2( 0, 416, 112, 16 )
 script = ExtResource( 4 )
@@ -57,6 +73,9 @@ time_of_no_damage = 0.1
 
 [node name="EnemyState" type="Node" parent="."]
 script = ExtResource( 6 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/slime = SubResource( 4 )
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="died" from="TakeDamageState" to="." method="_on_TakeDamageState_died"]

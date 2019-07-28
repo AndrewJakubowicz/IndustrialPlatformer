@@ -27,6 +27,7 @@ func _ready():
 func _state_logic(delta):
 	if bunny_hops > 0 and state != STATE.JUMP and time_in_state > 0.18:
 		bunny_hops = 0
+	bunny_hops = min(bunny_hops, 20)
 	match state:
 		STATE.IDLE:
 			player.idle_physics(delta)

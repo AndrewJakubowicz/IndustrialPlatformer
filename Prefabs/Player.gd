@@ -110,6 +110,7 @@ func hurt_bump():
 	velocity.y = -HURT_BUMP
 	velocity.x = HURT_BUMP * 1.4 if facing_left else -HURT_BUMP * 1.4
 
+# This is how you hurt the player
 func player_hit(damage):
 	damage_state_machine.hit(damage)
 

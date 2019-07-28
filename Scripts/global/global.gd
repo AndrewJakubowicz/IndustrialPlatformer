@@ -4,3 +4,5 @@ extends Node
 # Access with global.GRAVITY for example.
 
 const GRAVITY = 600
+
+var points = 0

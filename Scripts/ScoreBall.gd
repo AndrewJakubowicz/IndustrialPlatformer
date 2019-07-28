@@ -1,0 +1,29 @@
+extends Node2D
+
+onready var p1 = $Particle1
+onready var p2 = $Particle2
+onready var light = $Light2D
+
+onready var sprite = $Sprite
+onready var collider = $Area2D
+
+func create_timer ():
+	var t = Timer.new()
+	t.set_wait_time(3)
+	t.set_one_shot(true)
+	self.add_child(t)
+	return t
+
+func _on_Area2D_body_entered(body):
+	p2.emitting = false
+	p1.emitting = false
+	sprite.queue_free()
+	collider.queue_free()
+	light.queue_free()
+	
+	global.points += 1
+
+	var t = create_timer()
+	t.start()
+	yield(t, "timeout")
+	queue_free()

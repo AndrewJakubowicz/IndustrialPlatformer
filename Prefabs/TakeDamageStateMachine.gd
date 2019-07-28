@@ -31,7 +31,7 @@ func _state_logic(delta):
 func _get_transition(delta):
 	if [STATE.NO_TAKE_DAMAGE].has(state) and time_in_state > time_of_no_damage:
 		return STATE.CAN_TAKE_DAMAGE
-	
+
 func _enter_state(new_state, old_state):
 	match new_state:
 		STATE.NO_TAKE_DAMAGE:
