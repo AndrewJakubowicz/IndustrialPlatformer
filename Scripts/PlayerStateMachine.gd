@@ -40,7 +40,7 @@ func _state_logic(delta):
 		STATE.DEAD:
 			player.idle_physics(delta)
 			if time_in_state > 2:
-				get_tree().reload_current_scene()
+				player.request_reload()
 
 # Automatically is checked for whether we can transition into another state.
 #  @returns {STATE | null}

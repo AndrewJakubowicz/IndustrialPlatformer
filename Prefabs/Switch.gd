@@ -13,7 +13,7 @@ func _ready():
 	update()
 
 func toggle():
-	print("toggled a switch")
+	print('toggled switch')
 	if one_switch:
 		if switched:
 			return

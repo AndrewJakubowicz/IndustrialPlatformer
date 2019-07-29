@@ -1,0 +1,18 @@
+[gd_scene format=2]
+
+[node name="Camera2D" type="Camera2D"]
+position = Vector2( 0, -3.8147e-006 )
+scale = Vector2( 1, 0.984399 )
+current = true
+zoom = Vector2( 0.3, 0.3 )
+limit_left = 0
+drag_margin_h_enabled = false
+drag_margin_v_enabled = false
+smoothing_enabled = true
+smoothing_speed = 10.0
+offset_v = 0.09
+drag_margin_left = 0.03
+drag_margin_top = 0.1
+drag_margin_right = 0.03
+drag_margin_bottom = 0.08
+editor_draw_drag_margin = true

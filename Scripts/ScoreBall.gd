@@ -1,5 +1,7 @@
 extends Node2D
 
+signal collected_checkpoint
+
 onready var p1 = $Particle1
 onready var p2 = $Particle2
 onready var light = $Light2D
@@ -21,7 +23,7 @@ func _on_Area2D_body_entered(body):
 	collider.queue_free()
 	light.queue_free()
 	
-	global.points += 1
+	emit_signal("collected_checkpoint", global_position)
 
 	var t = create_timer()
 	t.start()

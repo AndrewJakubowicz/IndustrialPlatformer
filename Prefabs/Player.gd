@@ -1,5 +1,8 @@
 extends KinematicBody2D
 
+signal reload_checkpoint
+signal set_checkpoint
+
 export (float) var friction = 20
 export (float) var _maxSpeed = 125
 export (float) var WALK_SPEED = 350
@@ -42,6 +45,10 @@ var inputs = InputBuffer.new()
 
 func _ready():
 	damage_state_machine.set_max_health(MAX_HEALTH)
+
+func request_reload() :
+	emit_signal("reload_checkpoint")
+	queue_free()
 
 func idle_physics(delta):
 	if is_on_floor():
@@ -113,6 +120,9 @@ func hurt_bump():
 # This is how you hurt the player
 func player_hit(damage):
 	damage_state_machine.hit(damage)
+
+func grab_health_checkpoint ():
+	emit_signal("set_checkpoint", global_position)
 
 func _on_TakeDamageStateMachine_got_hit():
 	hurt_bump()
