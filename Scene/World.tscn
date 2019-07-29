@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Prefabs/Switch.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Prefabs/PlatformFall.tscn" type="PackedScene" id=2]
@@ -9,9 +9,7 @@
 [ext_resource path="res://Prefabs/SlimeEnemy.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Prefabs/ScoreBall.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scripts/MonsterSpawner.gd" type="Script" id=9]
-[ext_resource path="res://Prefabs/Player.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Prefabs/CustomCamera2D.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Scripts/PlayerSpawner.gd" type="Script" id=12]
+[ext_resource path="res://Scripts/PlayerSpawner.gd" type="Script" id=10]
 
 [sub_resource type="OccluderPolygon2D" id=1]
 polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -155,21 +153,12 @@ scale = Vector2( 0.51251, 0.51251 )
 position = Vector2( 176, -464 )
 script = ExtResource( 9 )
 
-[node name="Player" parent="." instance=ExtResource( 10 )]
-editor/display_folded = false
-position = Vector2( 176, -72 )
-friction = 20.0
-
-[node name="Camera2D" parent="Player" instance=ExtResource( 11 )]
-position = Vector2( 0, 1 )
-
 [node name="PlayerSpawner" type="Position2D" parent="."]
-position = Vector2( 47.5918, -44.132 )
-script = ExtResource( 12 )
+position = Vector2( 40, -44.132 )
+script = ExtResource( 10 )
+[connection signal="toggled_switch" from="TileMaps/AirLock1/Switch" to="TileMaps/AirLock1/Platform3" method="toggle"]
 [connection signal="toggled_switch" from="TileMaps/AirLock1/Switch" to="MonsterSpawner" method="spawn_monster"]
 [connection signal="toggled_switch" from="TileMaps/AirLock1/Switch" to="TileMaps/AirLock1/Platform" method="toggle"]
-[connection signal="toggled_switch" from="TileMaps/AirLock1/Switch" to="TileMaps/AirLock1/Platform3" method="toggle"]
 [connection signal="toggled_switch" from="TileMaps/AirLock1/Switch" to="TileMaps/AirLock1/Platform2" method="toggle"]
 [connection signal="toggled_switch" from="TileMaps/StartSwitch/Switch" to="TileMaps/StartSwitch/Platform" method="toggle"]
 [connection signal="collected_checkpoint" from="TileMaps/Checkpoints/ScoreBall" to="PlayerSpawner" method="_on_ScoreBall_collected_checkpoint"]
-[connection signal="reload_checkpoint" from="Player" to="PlayerSpawner" method="spawn_player"]

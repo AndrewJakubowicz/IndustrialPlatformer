@@ -1,7 +1,6 @@
 extends KinematicBody2D
 
 signal reload_checkpoint
-signal set_checkpoint
 
 export (float) var friction = 20
 export (float) var _maxSpeed = 125
@@ -44,7 +43,8 @@ class InputBuffer:
 var inputs = InputBuffer.new()
 
 func _ready():
-	damage_state_machine.set_max_health(MAX_HEALTH)
+	print('spawing a player')
+	reset_state()
 
 func request_reload() :
 	emit_signal("reload_checkpoint")
@@ -121,8 +121,8 @@ func hurt_bump():
 func player_hit(damage):
 	damage_state_machine.hit(damage)
 
-func grab_health_checkpoint ():
-	emit_signal("set_checkpoint", global_position)
+func reset_state():
+	damage_state_machine.set_max_health(MAX_HEALTH)
 
 func _on_TakeDamageStateMachine_got_hit():
 	hurt_bump()
