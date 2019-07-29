@@ -162,15 +162,14 @@ friction = 20.0
 
 [node name="Camera2D" parent="Player" instance=ExtResource( 11 )]
 position = Vector2( 0, 1 )
-drag_margin_h_enabled = false
-drag_margin_v_enabled = false
 
 [node name="PlayerSpawner" type="Position2D" parent="."]
 position = Vector2( 47.5918, -44.132 )
 script = ExtResource( 12 )
+[connection signal="toggled_switch" from="TileMaps/AirLock1/Switch" to="MonsterSpawner" method="spawn_monster"]
+[connection signal="toggled_switch" from="TileMaps/AirLock1/Switch" to="TileMaps/AirLock1/Platform" method="toggle"]
 [connection signal="toggled_switch" from="TileMaps/AirLock1/Switch" to="TileMaps/AirLock1/Platform3" method="toggle"]
 [connection signal="toggled_switch" from="TileMaps/AirLock1/Switch" to="TileMaps/AirLock1/Platform2" method="toggle"]
-[connection signal="toggled_switch" from="TileMaps/AirLock1/Switch" to="TileMaps/AirLock1/Platform" method="toggle"]
-[connection signal="toggled_switch" from="TileMaps/AirLock1/Switch" to="MonsterSpawner" method="spawn_monster"]
 [connection signal="toggled_switch" from="TileMaps/StartSwitch/Switch" to="TileMaps/StartSwitch/Platform" method="toggle"]
+[connection signal="collected_checkpoint" from="TileMaps/Checkpoints/ScoreBall" to="PlayerSpawner" method="_on_ScoreBall_collected_checkpoint"]
 [connection signal="reload_checkpoint" from="Player" to="PlayerSpawner" method="spawn_player"]
