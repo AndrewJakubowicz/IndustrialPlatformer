@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://Prefabs/Player.gd" type="Script" id=1]
 [ext_resource path="res://material/hurt.shader" type="Shader" id=2]
@@ -279,8 +279,11 @@ tracks/2/keys = {
 [sub_resource type="RectangleShape2D" id=32]
 extents = Vector2( 8.04001, 5.7969 )
 
+[sub_resource type="CapsuleShape2D" id=33]
+radius = 3.85967
+height = 5.1609
+
 [node name="Player" type="KinematicBody2D"]
-editor/display_folded = true
 collision_mask = 11
 script = ExtResource( 1 )
 friction = 2.0
@@ -290,7 +293,7 @@ material = SubResource( 1 )
 texture = ExtResource( 3 )
 vframes = 4
 hframes = 8
-frame = 1
+frame = 2
 region_enabled = true
 region_rect = Rect2( 0, 256, 128, 64 )
 script = ExtResource( 4 )
@@ -343,8 +346,17 @@ shape = SubResource( 32 )
 
 [node name="LightOccluder" parent="." instance=ExtResource( 7 )]
 position = Vector2( 0, -7.62939e-006 )
+
+[node name="CrushDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CrushDetector"]
+position = Vector2( 0, 1 )
+shape = SubResource( 33 )
 [connection signal="animation_changed" from="AnimationPlayer" to="PlayerStateMachine" method="_on_AnimationPlayer_animation_changed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="PlayerStateMachine" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="got_hit" from="TakeDamageStateMachine" to="character_sprites" method="_on_TakeDamageStateMachine_got_hit"]
 [connection signal="got_hit" from="TakeDamageStateMachine" to="." method="_on_TakeDamageStateMachine_got_hit"]
 [connection signal="recovered_hit" from="TakeDamageStateMachine" to="character_sprites" method="_on_TakeDamageStateMachine_recovered_hit"]
+[connection signal="body_entered" from="CrushDetector" to="." method="_on_CrushDetector_body_entered"]

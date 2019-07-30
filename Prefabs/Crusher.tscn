@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/Crusher.gd" type="Script" id=1]
+[ext_resource path="res://assets/industrial.v2.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/CrushStateMachine.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16, 16 )
+
+[node name="Crusher" type="KinematicBody2D"]
+motion/sync_to_physics = true
+script = ExtResource( 1 )
+
+[node name="base" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 64, 192, 64, 64 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="glowSprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+vframes = 2
+hframes = 2
+region_enabled = true
+region_rect = Rect2( 128, 176, 64, 64 )
+
+[node name="CrushStateMachine" type="Node" parent="."]
+script = ExtResource( 3 )

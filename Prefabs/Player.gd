@@ -126,3 +126,7 @@ func reset_state():
 
 func _on_TakeDamageStateMachine_got_hit():
 	hurt_bump()
+
+
+func _on_CrushDetector_body_entered(body):
+	player_hit(MAX_HEALTH)
