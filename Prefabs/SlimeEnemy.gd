@@ -12,7 +12,6 @@ var GRAVITY = global.GRAVITY
 var maxSpeed = 100
 var VERTICAL_SPEED = 1200
 
-
 var acc = Vector2()
 var velocity = Vector2()
 
@@ -32,14 +31,14 @@ func move_right_logic(delta):
 
 # Expects damage_source to be a global position
 func damage_bump(damage_source):
-	velocity.y -= 50
+	velocity.y -= 95
 	if damage_source.x > global_position.x:
 		# damage source is to the right
 		velocity.x = min(velocity.x, 0)
-		velocity.x -= 60
+		velocity.x -= 75
 	else:
 		velocity.x = max(velocity.x, 0)
-		velocity.x += 60
+		velocity.x += 75
 
 func _physics_process(delta):
 	facing_left = velocity.x < 0
@@ -56,7 +55,8 @@ func _physics_process(delta):
 
 	if is_on_floor() or is_on_ceiling():
 		velocity.y = 0
-
+	if is_on_wall():
+		velocity.x = 0
 
 
 func _on_Area2D_body_entered(body):
@@ -70,8 +70,15 @@ func enemy_hit(damage):
 func _on_Area2D_area_entered(area):
 	# player damage can be a singleton data source.
 	damage_bump(area.global_position)
-	enemy_hit(1)
+	enemy_hit(0)
 
 
 func _on_TakeDamageState_died():
 	queue_free()
+
+
+func _on_SpikeArea2D_body_entered(body):
+	var isFloorSpike = body.rotation_degrees < 3 and body.rotation_degrees > -3
+	if (is_on_floor() or velocity.y <= 0) and isFloorSpike:
+		return
+	enemy_hit(MAX_HEALTH)

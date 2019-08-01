@@ -31,10 +31,8 @@ func _get_transition(delta):
 	if state == STATE.IDLE and parent.is_on_floor():
 		return [STATE.MOVE_RIGHT, STATE.MOVE_LEFT][floor(rand_range(0, 2))]
 	if state == STATE.MOVE_LEFT and parent.is_on_wall():
-		parent.velocity.x = 0
 		return STATE.MOVE_RIGHT
 	if state == STATE.MOVE_RIGHT and parent.is_on_wall():
-		parent.velocity.x = 0
 		return STATE.MOVE_LEFT
 	if not [STATE.STUNNED].has(state) and not parent.is_on_floor():
 		return STATE.IDLE

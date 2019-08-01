@@ -18,7 +18,7 @@ shader_param/scale_up = Vector2( 0.3, 0.1 )
 
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 4.09283
-height = 5.15142
+height = 2.12419
 
 [sub_resource type="Animation" id=3]
 length = 0.8
@@ -252,7 +252,7 @@ tracks/0/keys = {
 "values": [ 4, 0, 1, 2, 3, 4 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Area2D:monitoring")
+tracks/1/path = NodePath("AttackArea2D:monitoring")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -264,7 +264,7 @@ tracks/1/keys = {
 "values": [ true, false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Area2D:monitorable")
+tracks/2/path = NodePath("AttackArea2D:monitorable")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -281,7 +281,7 @@ extents = Vector2( 8.04001, 5.7969 )
 
 [sub_resource type="CapsuleShape2D" id=33]
 radius = 3.85967
-height = 5.1609
+height = 2.07057
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 11
@@ -293,13 +293,13 @@ material = SubResource( 1 )
 texture = ExtResource( 3 )
 vframes = 4
 hframes = 8
-frame = 2
+frame = 1
 region_enabled = true
 region_rect = Rect2( 0, 256, 128, 64 )
 script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 1 )
+position = Vector2( 0, 2.88067 )
 shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -334,13 +334,13 @@ region_rect = Rect2( 64, 288, 160, 16 )
 [node name="AttackAnimPlayer" type="AnimationPlayer" parent="AttackParticle"]
 anims/attack_swish = SubResource( 31 )
 
-[node name="Area2D" type="Area2D" parent="AttackParticle"]
+[node name="AttackArea2D" type="Area2D" parent="AttackParticle"]
 priority = 2.0
 monitoring = false
 monitorable = false
 collision_mask = 24
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackParticle/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackParticle/AttackArea2D"]
 position = Vector2( 13.1043, 0.677803 )
 shape = SubResource( 32 )
 
@@ -352,7 +352,15 @@ collision_layer = 0
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CrushDetector"]
-position = Vector2( 0, 1 )
+position = Vector2( 0, 2.88067 )
+shape = SubResource( 33 )
+
+[node name="SpikeDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeDetector"]
+position = Vector2( 0, 2.88067 )
 shape = SubResource( 33 )
 [connection signal="animation_changed" from="AnimationPlayer" to="PlayerStateMachine" method="_on_AnimationPlayer_animation_changed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="PlayerStateMachine" method="_on_AnimationPlayer_animation_finished"]
@@ -360,3 +368,4 @@ shape = SubResource( 33 )
 [connection signal="got_hit" from="TakeDamageStateMachine" to="." method="_on_TakeDamageStateMachine_got_hit"]
 [connection signal="recovered_hit" from="TakeDamageStateMachine" to="character_sprites" method="_on_TakeDamageStateMachine_recovered_hit"]
 [connection signal="body_entered" from="CrushDetector" to="." method="_on_CrushDetector_body_entered"]
+[connection signal="body_entered" from="SpikeDetector" to="." method="_on_SpikeDetector_body_entered"]

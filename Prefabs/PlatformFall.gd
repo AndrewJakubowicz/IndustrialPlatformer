@@ -8,6 +8,8 @@ onready var staticBody = $KinematicBody/CollisionShape2D
 
 func _ready():
 	position_up = not start_raised
+	set_process(false)
+	set_physics_process(false)
 	toggle()
 
 
@@ -31,5 +33,3 @@ func handleRaise():
 func dropped():
 	print('dropped')
 	staticBody.disabled = true
-
-

@@ -36,6 +36,7 @@ func _enter_state(new_state, old_state):
 	match new_state:
 		STATE.NO_TAKE_DAMAGE:
 			emit_signal("got_hit")
+			print_debug('health is at', curr_health)
 			if curr_health <= 0:
 				emit_signal("died")
 		STATE.CAN_TAKE_DAMAGE:
@@ -47,5 +48,5 @@ func _exit_state(old_state, new_state):
 
 func hit(damage):
 	if [STATE.CAN_TAKE_DAMAGE].has(state):
-		set_state(STATE.NO_TAKE_DAMAGE)
 		curr_health -= damage
+		set_state(STATE.NO_TAKE_DAMAGE)

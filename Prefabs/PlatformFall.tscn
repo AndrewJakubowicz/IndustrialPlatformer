@@ -20,7 +20,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 8, 8 )
+extents = Vector2( 10.0454, 1.55994 )
 
 [node name="Platform" type="Node2D"]
 script = ExtResource( 1 )
@@ -36,9 +36,9 @@ region_rect = Rect2( 0, 176, 64, 16 )
 anims/raise = SubResource( 1 )
 
 [node name="KinematicBody" type="KinematicBody2D" parent="."]
-collision_layer = 8
+collision_layer = 65
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody"]
-position = Vector2( 8, 8 )
+position = Vector2( 8, 1.53635 )
 shape = SubResource( 2 )
 one_way_collision = true

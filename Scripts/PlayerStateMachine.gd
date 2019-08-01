@@ -56,7 +56,7 @@ func _get_transition(delta):
 	elif [STATE.JUMP, STATE.FALLING].has(state) and player.is_on_floor():
 		return STATE.IDLE
 	elif [STATE.RUN, STATE.IDLE].has(state) and not player.is_on_floor():
-		return STATE.FALLING
+		return STATE.JUMP
 	elif [STATE.RUN, STATE.IDLE].has(state) and Input.is_action_just_pressed("attack"):
 		return STATE.ATTACK_GROUND
 	elif [STATE.ATTACK_GROUND].has(state) and not attack_swish_player.is_playing():
@@ -76,7 +76,6 @@ func _enter_state(new_state, old_state):
 			bunny_hops += 1
 			player.maxSpeed = player._maxSpeed + (bunny_hops * max_speed_increase)
 			anim_state.travel("jump")
-			player.jump_impulse()
 		STATE.ATTACK_GROUND:
 			if player.facing_left:
 				attack_swish.scale.x = -1
@@ -91,3 +90,6 @@ func _enter_state(new_state, old_state):
 func _exit_state(old_state, new_state):
 	pass
 	#print_debug("%s  -->  %s" % [old_state, new_state])
+
+func is_grounded_state ():
+	return [STATE.IDLE, STATE.RUN].has(state)
