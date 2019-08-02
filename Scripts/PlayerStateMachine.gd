@@ -89,7 +89,6 @@ func _enter_state(new_state, old_state):
 
 func _exit_state(old_state, new_state):
 	pass
-	#print_debug("%s  -->  %s" % [old_state, new_state])
 
 func is_grounded_state ():
 	return [STATE.IDLE, STATE.RUN].has(state)

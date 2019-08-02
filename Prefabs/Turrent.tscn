@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Prefabs/Turrent.gd" type="Script" id=1]
+[ext_resource path="res://assets/industrial.v2.png" type="Texture" id=2]
+
+[node name="Turrent" type="Node2D" groups=[
+"set_current_player",
+"unset_current_player",
+]]
+script = ExtResource( 1 )
+
+[node name="Target" type="Position2D" parent="."]
+position = Vector2( 24, -8 )
+
+[node name="base" type="Sprite" parent="."]
+position = Vector2( 0, -3.49556 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 4, 361, 8, 7 )
+
+[node name="gun_top" type="Sprite" parent="."]
+position = Vector2( 0, -8 )
+texture = ExtResource( 2 )
+offset = Vector2( 0, -2.33912 )
+hframes = 3
+region_enabled = true
+region_rect = Rect2( 0, 354, 48, 7 )
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

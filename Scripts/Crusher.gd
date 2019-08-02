@@ -40,7 +40,7 @@ export var waypoints_path = NodePath()
 
 var target_position = Vector2()
 
-const maxSpeed = 500
+export (float) var maxSpeed = 300
 var acc = Vector2()
 var velocity = Vector2()
 
