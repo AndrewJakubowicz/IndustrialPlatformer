@@ -6,7 +6,7 @@ onready var camera = preload("res://Prefabs/CustomCamera2D.tscn")
 var curr_player = null
 
 func _ready():
-	yield(get_tree().create_timer(0.5), "timeout")
+	yield(get_tree().create_timer(0.1), "timeout")
 	spawn_player()
 
 func spawn_player ():
@@ -22,7 +22,7 @@ func spawn_player ():
 	
 	get_tree().call_group('set_current_player', 'set_current_player', curr_player)
 
-
+# This moves the spawner on the checkpoint
 func _on_ScoreBall_collected_checkpoint(global_position):
 	position = global_position
 	curr_player.reset_state()

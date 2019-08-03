@@ -11,7 +11,7 @@
 [ext_resource path="res://Prefabs/Crusher.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scripts/CrusherWaypoints.gd" type="Script" id=10]
 [ext_resource path="res://Prefabs/spawners/MonsterSpawner.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Scripts/PlayerSpawner.gd" type="Script" id=12]
+[ext_resource path="res://Prefabs/spawners/PlayerSpawner.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Prefabs/Spring.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Prefabs/Turrent.tscn" type="PackedScene" id=14]
 
@@ -235,6 +235,10 @@ position = Vector2( 576, -352 )
 position = Vector2( 608, -208 )
 scale = Vector2( 0.51251, 0.51251 )
 
+[node name="ScoreBall3" parent="TileMaps/Checkpoints" instance=ExtResource( 8 )]
+position = Vector2( 296, -456 )
+scale = Vector2( 0.51251, 0.51251 )
+
 [node name="ScoreBall2" parent="TileMaps/Checkpoints" instance=ExtResource( 8 )]
 position = Vector2( 112, -192 )
 scale = Vector2( 0.51251, 0.51251 )
@@ -243,7 +247,7 @@ scale = Vector2( 0.51251, 0.51251 )
 position = Vector2( -48, -32 )
 
 [node name="Crusher" parent="TileMaps/CrushPair" instance=ExtResource( 9 )]
-position = Vector2( 0, -55 )
+position = Vector2( 0, -21 )
 collision_layer = 8
 waypoints_path = NodePath("../CrusherWaypoint")
 
@@ -276,9 +280,7 @@ position = Vector2( 240, -256 )
 [node name="MonsterSpawner2" parent="." instance=ExtResource( 11 )]
 position = Vector2( 480, -64 )
 
-[node name="PlayerSpawner" type="Position2D" parent="."]
-position = Vector2( 88, -48 )
-script = ExtResource( 12 )
+[node name="PlayerSpawner" parent="." instance=ExtResource( 12 )]
 
 [node name="pattern_platformer1" type="Node2D" parent="."]
 editor/display_folded = true
@@ -310,30 +312,28 @@ position = Vector2( 832, 144 )
 power = 350.0
 
 [node name="Spring2" parent="." instance=ExtResource( 13 )]
-position = Vector2( 864, 80 )
+position = Vector2( 672, -96 )
 rotation = -1.57079
 dir = 2
 power = 1200.0
 
 [node name="Spring3" parent="." instance=ExtResource( 13 )]
-position = Vector2( 768, 96 )
-power = 700.0
+position = Vector2( 496, -176 )
+power = 400.0
 
 [node name="turrent" parent="." instance=ExtResource( 14 )]
-position = Vector2( 152, -64 )
+position = Vector2( 544, -352 )
 
 [node name="turrent2" parent="." instance=ExtResource( 14 )]
-position = Vector2( 104, -88 )
+position = Vector2( 392, 80 )
 rotation = 3.14159
-[connection signal="toggled_switch" from="TileMaps/AirLock1/Switch" to="TileMaps/AirLock1/Platform" method="toggle"]
 [connection signal="toggled_switch" from="TileMaps/AirLock1/Switch" to="TileMaps/AirLock1/Platform3" method="toggle"]
+[connection signal="toggled_switch" from="TileMaps/AirLock1/Switch" to="TileMaps/AirLock1/Platform" method="toggle"]
 [connection signal="toggled_switch" from="TileMaps/AirLock1/Switch" to="MonsterSpawner" method="spawn_monster"]
 [connection signal="toggled_switch" from="TileMaps/StartSwitch/Switch" to="TileMaps/StartSwitch/Platform" method="toggle"]
 [connection signal="toggled_switch" from="TileMaps/StartSwitch/Switch" to="MonsterSpawner2" method="spawn_monster"]
-[connection signal="collected_checkpoint" from="TileMaps/Checkpoints/ScoreBall" to="PlayerSpawner" method="_on_ScoreBall_collected_checkpoint"]
-[connection signal="collected_checkpoint" from="TileMaps/Checkpoints/ScoreBall2" to="PlayerSpawner" method="_on_ScoreBall_collected_checkpoint"]
-[connection signal="timeout" from="pattern_platformer1/toggle_timer" to="pattern_platformer1/Platform4" method="toggle"]
-[connection signal="timeout" from="pattern_platformer1/toggle_timer" to="pattern_platformer1/Platform3" method="toggle"]
 [connection signal="timeout" from="pattern_platformer1/toggle_timer" to="pattern_platformer1/Platform5" method="toggle"]
 [connection signal="timeout" from="pattern_platformer1/toggle_timer" to="pattern_platformer1/Platform" method="toggle"]
 [connection signal="timeout" from="pattern_platformer1/toggle_timer" to="pattern_platformer1/Platform2" method="toggle"]
+[connection signal="timeout" from="pattern_platformer1/toggle_timer" to="pattern_platformer1/Platform3" method="toggle"]
+[connection signal="timeout" from="pattern_platformer1/toggle_timer" to="pattern_platformer1/Platform4" method="toggle"]

@@ -6,3 +6,4 @@ extends Node
 const GRAVITY = 600
 
 var points = 0
+
