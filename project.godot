@@ -69,6 +69,7 @@ attack={
 2d_physics/layer_6="point_circle"
 2d_physics/layer_7="enemy_ground"
 2d_physics/layer_8="spikes"
+2d_physics/layer_9="hero_camera_move"
 
 [rendering]
 

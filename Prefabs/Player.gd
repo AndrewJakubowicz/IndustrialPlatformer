@@ -2,13 +2,13 @@ extends KinematicBody2D
 
 signal reload_checkpoint
 
-export (float) var friction = 20
-export (float) var air_friction = 5
-export (float) var _maxSpeed = 125
-export (float) var WALK_SPEED = 350
-export (float) var VERTICAL_SPEED = 1200
+export (float) var friction = 23
+export (float) var air_friction = 12
+export (float) var _maxSpeed = 100
+export (float) var WALK_SPEED = 400
+export (float) var VERTICAL_SPEED = 400
 
-export (float) var JUMP_IMPULSE = 200
+export (float) var JUMP_IMPULSE = 190
 export (float) var HURT_BUMP = 60
 
 export (float) var MAX_HEALTH = 1
@@ -17,6 +17,7 @@ onready var animation_sprite = $character_sprites
 onready var damage_state_machine = $TakeDamageStateMachine
 onready var maxSpeed = _maxSpeed
 onready var state = $PlayerStateMachine
+onready var camera_collider = $CameraCollider
 
 var GRAVITY = global.GRAVITY
 const jump_buffer_amount = 0.13
@@ -98,6 +99,10 @@ func could_jump():
 
 func _physics_process(delta):
 	animation_sprite.flip_h = facing_left
+	if facing_left:
+		camera_collider.scale.x = -1
+	else:
+		camera_collider.scale.x = 1
 	# Air time calculation.
 	if not is_on_floor():
 		air_time += delta
@@ -142,6 +147,19 @@ func impulse(impulse: float, dir: Vector2):
 # player is walking on the ground.
 func is_grounded_state ():
 	return state.is_grounded_state()
+
+# GROUPS
+
+func freeze():
+	set_process(false)
+	set_physics_process(false)
+	
+func unfreeze():
+	set_process(true)
+	set_physics_process(true)
+
+# SIGNALS
+
 
 func _on_TakeDamageStateMachine_got_hit():
 	hurt_bump()
