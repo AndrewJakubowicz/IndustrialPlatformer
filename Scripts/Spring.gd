@@ -32,6 +32,8 @@ func _on_Spring_body_entered(body):
 	if cooldown:
 		return
 	if body.has_method('impulse'):
+		timer.start(0.06)
+		yield(timer, "timeout")
 		match dir:
 			Direction.UP:
 				body.impulse(power, Vector2.UP)

@@ -9,7 +9,7 @@
 [sub_resource type="CanvasItemMaterial" id=1]
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 6.23681
+radius = 4.70285
 
 [node name="ScoreBall" type="Node2D"]
 modulate = Color( 0.908136, 1, 0.273438, 1 )
@@ -27,6 +27,7 @@ process_material = ExtResource( 2 )
 texture = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.68, 0.68 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 208, 256, 16, 16 )

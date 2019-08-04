@@ -6,7 +6,7 @@ onready var attack_swish = player.get_node("AttackParticle")
 onready var attack_swish_player = attack_swish.get_node("AttackAnimPlayer")
 onready var damage_state = $"../TakeDamageStateMachine"
 
-var max_speed_increase = 30;
+var max_speed_increase = 10;
 var bunny_hops = 0;
 
 enum STATE {
@@ -25,9 +25,9 @@ func _ready():
 	call_deferred('set_state', states[STATE.IDLE])
 
 func _state_logic(delta):
-	if bunny_hops > 0 and state != STATE.JUMP and time_in_state > 0.18:
-		bunny_hops = 0
-	bunny_hops = min(bunny_hops, 20)
+#	if bunny_hops > 0 and state != STATE.JUMP and time_in_state > 0.18:
+#		bunny_hops = 0
+#	bunny_hops = min(bunny_hops, 20)
 	match state:
 		STATE.IDLE:
 			player.idle_physics(delta)
@@ -35,11 +35,13 @@ func _state_logic(delta):
 			player.run_physics(delta)
 		STATE.JUMP:
 			player.jump_physics(delta, time_in_state)
+		STATE.FALLING:
+			player.jump_physics(delta, time_in_state)
 		STATE.ATTACK_GROUND:
 			player.idle_physics(delta)
 		STATE.DEAD:
 			player.idle_physics(delta)
-			if time_in_state > 2:
+			if time_in_state > 1.4:
 				player.request_reload()
 
 # Automatically is checked for whether we can transition into another state.
@@ -56,7 +58,7 @@ func _get_transition(delta):
 	elif [STATE.JUMP, STATE.FALLING].has(state) and player.is_on_floor():
 		return STATE.IDLE
 	elif [STATE.RUN, STATE.IDLE].has(state) and not player.is_on_floor():
-		return STATE.JUMP
+		return STATE.FALLING
 	elif [STATE.RUN, STATE.IDLE].has(state) and Input.is_action_just_pressed("attack"):
 		return STATE.ATTACK_GROUND
 	elif [STATE.ATTACK_GROUND].has(state) and not attack_swish_player.is_playing():
@@ -73,8 +75,8 @@ func _enter_state(new_state, old_state):
 		STATE.RUN:
 			anim_state.travel("run")
 		STATE.JUMP:
-			bunny_hops += 1
-			player.maxSpeed = player._maxSpeed + (bunny_hops * max_speed_increase)
+#			bunny_hops += 1
+#			player.maxSpeed = player._maxSpeed + (bunny_hops * max_speed_increase)
 			anim_state.travel("jump")
 		STATE.ATTACK_GROUND:
 			if player.facing_left:

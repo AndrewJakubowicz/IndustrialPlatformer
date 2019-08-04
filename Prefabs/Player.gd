@@ -6,8 +6,8 @@ export (float) var friction = 23
 export (float) var air_friction = 12
 export (float) var _maxSpeed = 100
 export (float) var WALK_SPEED = 400
-export (float) var VERTICAL_SPEED = 400
-
+export (float) var VERTICAL_SPEED = 1200
+export (float) var FALLING_VERTICAL_SPEED = -400/1.5
 export (float) var JUMP_IMPULSE = 190
 export (float) var HURT_BUMP = 60
 
@@ -46,7 +46,7 @@ class InputBuffer:
 var inputs = InputBuffer.new()
 
 func _ready():
-	reset_state()
+	pass
 
 func request_reload() :
 	emit_signal("reload_checkpoint")
@@ -103,6 +103,10 @@ func _physics_process(delta):
 		camera_collider.scale.x = -1
 	else:
 		camera_collider.scale.x = 1
+	if velocity.y > 0:
+		camera_collider.scale.y = -1
+	else:
+		camera_collider.scale.y = 1
 	# Air time calculation.
 	if not is_on_floor():
 		air_time += delta
@@ -113,8 +117,10 @@ func _physics_process(delta):
 	acc = acc * delta
 	velocity += acc
 	velocity.x = clamp(velocity.x, -maxSpeed, maxSpeed)
-	velocity.y = clamp(velocity.y, -VERTICAL_SPEED, VERTICAL_SPEED)
-	move_and_slide(velocity, Vector2(0, -1))
+	var clamped_velocity = velocity
+	velocity.y = clamp(velocity.y, FALLING_VERTICAL_SPEED, VERTICAL_SPEED*8)
+	clamped_velocity.y = clamp(velocity.y, FALLING_VERTICAL_SPEED, VERTICAL_SPEED)
+	move_and_slide(clamped_velocity, Vector2(0, -1))
 	acc = Vector2(0,0)
 	
 	if is_on_floor() or is_on_ceiling():
@@ -133,15 +139,12 @@ func hurt_bump():
 func player_hit(damage):
 	damage_state_machine.hit(damage)
 
-func reset_state():
-	damage_state_machine.set_max_health(MAX_HEALTH)
-
 # This applies a force to a player in one of 4 directions.
 func impulse(impulse: float, dir: Vector2):
 	if dir.y == -1 or dir.y == 1:
-		velocity.y = (dir * impulse).y
+		velocity.y += (dir * impulse).y
 	if dir.x == 1 or dir.x == -1:
-		velocity.x = (dir * impulse).x
+		velocity.x += (dir * impulse).x
 
 # Terribly named function for checking that the
 # player is walking on the ground.

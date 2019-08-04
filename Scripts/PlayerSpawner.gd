@@ -4,8 +4,14 @@ onready var player = preload("res://Prefabs/Player.tscn")
 onready var camera = preload("res://Prefabs/CustomCamera2D.tscn")
 
 var curr_player = null
+var checkpoints
 
 func _ready():
+	checkpoints = $"../Checkpoints"
+	assert(checkpoints != null)
+	for checkpoint in checkpoints.get_children():
+		checkpoint.connect('collected_checkpoint', self, '_on_ScoreBall_collected_checkpoint')
+	
 	yield(get_tree().create_timer(0.1), "timeout")
 	spawn_player()
 
@@ -25,4 +31,3 @@ func spawn_player ():
 # This moves the spawner on the checkpoint
 func _on_ScoreBall_collected_checkpoint(global_position):
 	position = global_position
-	curr_player.reset_state()

@@ -26,10 +26,8 @@ func toggle():
 		call_deferred('dropped')
 
 func handleRaise():
-	print('raised')
 	staticBody.disabled = false
 
 
 func dropped():
-	print('dropped')
 	staticBody.disabled = true

@@ -16,17 +16,16 @@ curve = SubResource( 3 )
 
 [resource]
 emission_shape = 1
-emission_sphere_radius = 6.0
+emission_sphere_radius = 5.0
 flag_disable_z = true
 gravity = Vector3( 10, 0, 0 )
-initial_velocity = 10.0
-initial_velocity_random = 0.5
-angular_velocity = 12.0
+initial_velocity = 6.0
+initial_velocity_random = 0.2
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 damping = 0.5
-scale = 0.2
-scale_random = 0.5
+scale = 0.1
+scale_random = 0.3
 scale_curve = SubResource( 4 )
 color_ramp = SubResource( 2 )
 hue_variation = -0.03
