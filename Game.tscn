@@ -212,6 +212,7 @@ wait_time = 5.0
 autostart = true
 
 [node name="Level7" type="Node2D" parent="GameContent"]
+editor/display_folded = true
 
 [node name="CameraDetector" parent="GameContent/Level7" instance=ExtResource( 2 )]
 modulate = Color( 0.866667, 0.866667, 0.866667, 0.32549 )
@@ -476,7 +477,6 @@ scale = Vector2( 27.2362, 3.41875 )
 [node name="Player" type="Node2D" parent="GameContent"]
 
 [node name="Checkpoints" type="Node2D" parent="GameContent/Player"]
-editor/display_folded = true
 
 [node name="ScoreBall" parent="GameContent/Player/Checkpoints" instance=ExtResource( 11 )]
 position = Vector2( 104, -184 )
@@ -499,15 +499,15 @@ position = Vector2( 176, -24 )
 [connection signal="toggled_switch" from="GameContent/Level3/Prefabs/Switch" to="GameContent/Level3/Prefabs/Platform" method="toggle"]
 [connection signal="toggled_switch" from="GameContent/Level3/Prefabs/Switch" to="GameContent/Level3/Prefabs/Platform2" method="toggle"]
 [connection signal="timeout" from="GameContent/Level3/Prefabs/Timer" to="GameContent/Level3/Prefabs/MonsterSpawner" method="spawn_monster"]
-[connection signal="timeout" from="GameContent/Level7/Prefabs/Switcher" to="GameContent/Level7/Prefabs/Platforms1/Platform2" method="toggle"]
-[connection signal="timeout" from="GameContent/Level7/Prefabs/Switcher" to="GameContent/Level7/Prefabs/Platforms1/Platform3" method="toggle"]
-[connection signal="timeout" from="GameContent/Level7/Prefabs/Switcher" to="GameContent/Level7/Prefabs/Platforms2/Platform4" method="toggle"]
 [connection signal="timeout" from="GameContent/Level7/Prefabs/Switcher" to="GameContent/Level7/Prefabs/Platforms2/Platform5" method="toggle"]
+[connection signal="timeout" from="GameContent/Level7/Prefabs/Switcher" to="GameContent/Level7/Prefabs/Platforms1/Platform3" method="toggle"]
+[connection signal="timeout" from="GameContent/Level7/Prefabs/Switcher" to="GameContent/Level7/Prefabs/Platforms1/Platform2" method="toggle"]
+[connection signal="timeout" from="GameContent/Level7/Prefabs/Switcher" to="GameContent/Level7/Prefabs/Platforms2/Platform4" method="toggle"]
 [connection signal="area_entered" from="GameContent/Level4/CameraDetector" to="GameContent/Level4/CameraDetector" method="_on_CameraDetector_area_entered"]
 [connection signal="body_entered" from="GameContent/Level4/CameraDetector" to="GameContent/Level4/CameraDetector" method="_on_CameraDetector_body_entered"]
 [connection signal="timeout" from="GameContent/Level4/Prefabs/Timer" to="GameContent/Level4/Prefabs/MonsterSpawner" method="spawn_monster"]
-[connection signal="timeout" from="GameContent/Level5/Prefabs/Timer" to="GameContent/Level5/Prefabs/Platform2" method="toggle"]
 [connection signal="timeout" from="GameContent/Level5/Prefabs/Timer" to="GameContent/Level5/Prefabs/Platform" method="toggle"]
+[connection signal="timeout" from="GameContent/Level5/Prefabs/Timer" to="GameContent/Level5/Prefabs/Platform2" method="toggle"]
 [connection signal="area_entered" from="GameContent/Level6/CameraDetector" to="GameContent/Level6/CameraDetector" method="_on_CameraDetector_area_entered"]
 [connection signal="body_entered" from="GameContent/Level6/CameraDetector" to="GameContent/Level6/CameraDetector" method="_on_CameraDetector_body_entered"]
 

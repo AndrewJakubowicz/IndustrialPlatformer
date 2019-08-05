@@ -1,12 +1,14 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://Prefabs/Player.gd" type="Script" id=1]
 [ext_resource path="res://material/hurt.shader" type="Shader" id=2]
 [ext_resource path="res://assets/industrial.v2.png" type="Texture" id=3]
 [ext_resource path="res://Prefabs/character_sprites.gd" type="Script" id=4]
-[ext_resource path="res://Scripts/PlayerStateMachine.gd" type="Script" id=5]
-[ext_resource path="res://Prefabs/TakeDamageStateMachine.gd" type="Script" id=6]
-[ext_resource path="res://Prefabs/LightOccluder.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/sound/step1.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/sound/step2.wav" type="AudioStream" id=6]
+[ext_resource path="res://Scripts/PlayerStateMachine.gd" type="Script" id=7]
+[ext_resource path="res://Prefabs/TakeDamageStateMachine.gd" type="Script" id=8]
+[ext_resource path="res://Prefabs/LightOccluder.tscn" type="PackedScene" id=9]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
@@ -34,6 +36,38 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 8, 9, 10, 11, 12, 13, 14, 15 ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("WalkingStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 5 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 6 )
+} ],
+"times": PoolRealArray( 0.199858, 0.600144 )
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.695027 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "change_walk_pitch"
+} ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -298,7 +332,7 @@ material = SubResource( 1 )
 texture = ExtResource( 3 )
 vframes = 4
 hframes = 8
-frame = 1
+frame = 2
 region_enabled = true
 region_rect = Rect2( 0, 256, 128, 64 )
 script = ExtResource( 4 )
@@ -322,10 +356,10 @@ active = true
 parameters/playback = SubResource( 30 )
 
 [node name="PlayerStateMachine" type="Node" parent="."]
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [node name="TakeDamageStateMachine" type="Node" parent="."]
-script = ExtResource( 6 )
+script = ExtResource( 8 )
 
 [node name="AttackParticle" type="Sprite" parent="."]
 position = Vector2( 0, -7.62939e-006 )
@@ -349,7 +383,7 @@ collision_mask = 24
 position = Vector2( 13.1043, 0.677803 )
 shape = SubResource( 32 )
 
-[node name="LightOccluder" parent="." instance=ExtResource( 7 )]
+[node name="LightOccluder" parent="." instance=ExtResource( 9 )]
 position = Vector2( 0, -7.62939e-006 )
 
 [node name="CrushDetector" type="Area2D" parent="."]
@@ -376,10 +410,14 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraCollider"]
 position = Vector2( -2.94742, 1.4992 )
 shape = SubResource( 34 )
+
+[node name="WalkingStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+bus = "Player"
 [connection signal="animation_changed" from="AnimationPlayer" to="PlayerStateMachine" method="_on_AnimationPlayer_animation_changed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="PlayerStateMachine" method="_on_AnimationPlayer_animation_finished"]
-[connection signal="got_hit" from="TakeDamageStateMachine" to="character_sprites" method="_on_TakeDamageStateMachine_got_hit"]
 [connection signal="got_hit" from="TakeDamageStateMachine" to="." method="_on_TakeDamageStateMachine_got_hit"]
+[connection signal="got_hit" from="TakeDamageStateMachine" to="character_sprites" method="_on_TakeDamageStateMachine_got_hit"]
 [connection signal="recovered_hit" from="TakeDamageStateMachine" to="character_sprites" method="_on_TakeDamageStateMachine_recovered_hit"]
 [connection signal="body_entered" from="CrushDetector" to="." method="_on_CrushDetector_body_entered"]
 [connection signal="body_entered" from="SpikeDetector" to="." method="_on_SpikeDetector_body_entered"]

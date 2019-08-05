@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Rumble1.wav-b650ecf01a099566ad58d33055121d18.sample"
+
+[deps]
+
+source_file="res://assets/sound/Rumble1.wav"
+dest_files=[ "res://.import/Rumble1.wav-b650ecf01a099566ad58d33055121d18.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

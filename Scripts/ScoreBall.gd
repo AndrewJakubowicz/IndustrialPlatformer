@@ -2,11 +2,11 @@ extends Node2D
 
 signal collected_checkpoint
 
-onready var p1 = $Particle1
-onready var p2 = $Particle2
-onready var light = $Light2D
+onready var p1 = $VisibilityEnabler2D/Particle1
+onready var p2 = $VisibilityEnabler2D/Particle2
+onready var light = $VisibilityEnabler2D/Light2D
 
-onready var sprite = $Sprite
+onready var sprite = $VisibilityEnabler2D/Sprite
 onready var collider = $Area2D
 
 func create_timer ():

@@ -26,4 +26,10 @@ region_rect = Rect2( 0, 354, 48, 7 )
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
+position = Vector2( -4.76837e-007, -8 )
+scale = Vector2( 0.8, 0.8 )
+process_parent = true
+physics_process_parent = true
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
