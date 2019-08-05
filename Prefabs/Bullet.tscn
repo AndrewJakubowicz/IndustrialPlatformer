@@ -16,7 +16,7 @@ collision_layer = 128
 collision_mask = 8
 mass = 0.306122
 gravity_scale = 0.0
-continuous_cd = 1
+continuous_cd = 2
 can_sleep = false
 script = ExtResource( 1 )
 
