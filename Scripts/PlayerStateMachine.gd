@@ -15,6 +15,8 @@ enum STATE {
 	JUMP
 	FALLING
 	ATTACK_GROUND
+	ATTACK_AIR
+	AIR_ATTACK_COOLDOWN
 	DEAD
 }
 
@@ -33,9 +35,7 @@ func _state_logic(delta):
 			player.idle_physics(delta)
 		STATE.RUN:
 			player.run_physics(delta)
-		STATE.JUMP:
-			player.jump_physics(delta, time_in_state)
-		STATE.FALLING:
+		STATE.JUMP,STATE.ATTACK_AIR,STATE.FALLING:
 			player.jump_physics(delta, time_in_state)
 		STATE.ATTACK_GROUND:
 			player.idle_physics(delta)
@@ -47,7 +47,6 @@ func _state_logic(delta):
 # Automatically is checked for whether we can transition into another state.
 #  @returns {STATE | null}
 func _get_transition(delta):
-	# TODO: Clean up input handling. Should happen seperate ly.
 	var pressing = Input.is_action_pressed("left") or Input.is_action_pressed("right")
 	if [STATE.IDLE].has(state) and pressing:
 		return STATE.RUN
@@ -59,8 +58,16 @@ func _get_transition(delta):
 		return STATE.IDLE
 	elif [STATE.RUN, STATE.IDLE].has(state) and not player.is_on_floor():
 		return STATE.FALLING
-	elif [STATE.RUN, STATE.IDLE].has(state) and Input.is_action_just_pressed("attack"):
+	elif [STATE.RUN, STATE.IDLE].has(state) and Input.is_action_just_pressed("attack") and not attack_swish_player.is_playing():
 		return STATE.ATTACK_GROUND
+	elif [STATE.JUMP, STATE.FALLING].has(state) and Input.is_action_just_pressed("attack") and not attack_swish_player.is_playing():
+		return STATE.ATTACK_AIR
+	elif [STATE.ATTACK_AIR].has(state) and not attack_swish_player.is_playing():
+		return STATE.FALLING
+	elif [STATE.ATTACK_AIR].has(state) and player.could_air_jump():
+		return STATE.JUMP
+	elif [STATE.ATTACK_AIR].has(state) and player.is_on_floor():
+		return STATE.IDLE
 	elif [STATE.ATTACK_GROUND].has(state) and not attack_swish_player.is_playing():
 		return STATE.IDLE
 	elif not [STATE.DEAD].has(state) and damage_state.curr_health <= 0:
@@ -78,11 +85,23 @@ func _enter_state(new_state, old_state):
 #			bunny_hops += 1
 #			player.maxSpeed = player._maxSpeed + (bunny_hops * max_speed_increase)
 			anim_state.travel("jump")
-		STATE.ATTACK_GROUND:
+		STATE.ATTACK_AIR:
+			continue
+		STATE.ATTACK_GROUND,STATE.ATTACK_AIR:
 			if player.facing_left:
 				attack_swish.scale.x = -1
 			else:
 				attack_swish.scale.x = 1
+
+			if Input.is_action_pressed("down"):
+				attack_swish.rotation_degrees = 90 * attack_swish.scale.x
+			elif Input.is_action_pressed("up"):
+				attack_swish.rotation_degrees = -90 * attack_swish.scale.x
+			else:
+				attack_swish.rotation = 0
+
+
+
 			anim_state.travel("attack_ground")
 			attack_swish_player.play("attack_swish")
 		STATE.DEAD:

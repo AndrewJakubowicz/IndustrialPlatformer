@@ -29,6 +29,7 @@ var acc = Vector2()
 var velocity = Vector2()
 var air_time = 0
 var facing_left = false
+var frozen = false
 
 # Provide 6 frames of buffer to time the perfect jump.
 class InputBuffer:
@@ -93,8 +94,15 @@ func dead_impulse():
 	velocity.x = JUMP_IMPULSE if facing_left else -JUMP_IMPULSE
 
 func could_jump():
-	var can_jump = (is_on_floor() or air_time < jump_buffer_amount) and inputs.is_action_jump_pressed()
+	var can_jump = (is_on_floor() or air_time < jump_buffer_amount * 1.5) and inputs.is_action_jump_pressed()
 	if can_jump:
+		jump_impulse()
+	return can_jump
+
+func could_air_jump():
+	var can_jump = (air_time < jump_buffer_amount and frozen and inputs.is_action_jump_pressed())
+	if can_jump:
+		unfreeze()
 		jump_impulse()
 	return can_jump
 
@@ -158,12 +166,16 @@ func change_walk_pitch():
 # GROUPS
 
 func freeze():
-	set_process(false)
+	frozen = true
 	set_physics_process(false)
 	
+	
 func unfreeze():
-	set_process(true)
+	frozen = false
 	set_physics_process(true)
+
+func reset_jump():
+	air_time = -0.5
 
 # SIGNALS
 

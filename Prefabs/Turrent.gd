@@ -17,6 +17,7 @@ enum FireMode {
 export (float) var fire_rate_sec = 1.5
 export (float) var random_scatter_fire_rate = 0
 export (float) var initial_delay = 0
+export (float) var bullet_speed = 80
 export (FireMode) var mode = FireMode.STRAIGHT
 
 export (NodePath) var override_target_path
@@ -72,5 +73,5 @@ func _on_Timer_timeout():
 	b.position = position + (Vector2(cos(global_rotation-PI/2), sin(global_rotation-PI/2)).normalized() * 10) + (direction.normalized() * gun_end_offset)
 	# TODO figure out bullet velocities
 	get_parent().add_child(b)
-	b.apply_impulse(Vector2(), direction.normalized() * 200 * (-1 if _rotated_state else 1))
+	b.apply_impulse(Vector2(), direction.normalized() * bullet_speed * (-1 if _rotated_state else 1))
 	start_shot_timer()

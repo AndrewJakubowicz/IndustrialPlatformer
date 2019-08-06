@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/industrial.v2.png" type="Texture" id=1]
+
+[sub_resource type="Animation" id=31]
+length = 0.3
+step = 0.08
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 8.68103e-005, 0.00190983, 0.08, 0.16, 0.24, 0.298237 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 0, 1, 2, 3, 4 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../AttackArea2D:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.0019203, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../AttackArea2D:monitorable")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.0019203, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[node name="AttackParticle" type="Sprite"]
+position = Vector2( 0, 1.63374 )
+texture = ExtResource( 1 )
+offset = Vector2( 16, 0 )
+hframes = 5
+frame = 1
+region_enabled = true
+region_rect = Rect2( 64, 288, 160, 16 )
+
+[node name="AttackAnimPlayer" type="AnimationPlayer" parent="."]
+anims/attack_swish = SubResource( 31 )

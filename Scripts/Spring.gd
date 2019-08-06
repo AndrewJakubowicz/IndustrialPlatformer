@@ -31,6 +31,7 @@ func cooldown():
 func _on_Spring_body_entered(body):
 	if cooldown:
 		return
+	# FIXME: Attempt to call function impluse in base freed instance on a null instance spring line 45
 	if body.has_method('impulse'):
 		timer.start(0.06)
 		yield(timer, "timeout")

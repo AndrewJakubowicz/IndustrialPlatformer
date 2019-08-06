@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Prefabs/SlimeEnemy.gd" type="Script" id=1]
 [ext_resource path="res://assets/industrial.v2.png" type="Texture" id=2]
 [ext_resource path="res://Prefabs/Sprite.gd" type="Script" id=3]
 [ext_resource path="res://Prefabs/TakeDamageStateMachine.gd" type="Script" id=4]
 [ext_resource path="res://Scripts/SlimeEnemyState.gd" type="Script" id=5]
+[ext_resource path="res://Prefabs/JumpRegain.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -66,6 +67,9 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6 ]
 }
 
+[sub_resource type="CircleShape2D" id=6]
+radius = 5.39418
+
 [node name="Enemy1" type="KinematicBody2D"]
 position = Vector2( 288, 464 )
 collision_layer = 16
@@ -110,10 +114,18 @@ collision_mask = 128
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="SpikeArea2D"]
 position = Vector2( 8.00638, -6.60928 )
 shape = SubResource( 4 )
+
+[node name="BounceHit" parent="." instance=ExtResource( 6 )]
+position = Vector2( 7.97205, -6.60928 )
+
+[node name="CollisionShape2D" parent="BounceHit" index="0"]
+shape = SubResource( 6 )
 [connection signal="area_entered" from="Hit " to="." method="_on_Area2D_area_entered"]
 [connection signal="body_entered" from="Hit " to="." method="_on_Area2D_body_entered"]
 [connection signal="died" from="TakeDamageState" to="." method="_on_TakeDamageState_died"]
-[connection signal="got_hit" from="TakeDamageState" to="Sprite" method="_on_TakeDamageState_got_hit"]
 [connection signal="got_hit" from="TakeDamageState" to="EnemyState" method="_on_TakeDamageState_got_hit"]
+[connection signal="got_hit" from="TakeDamageState" to="Sprite" method="_on_TakeDamageState_got_hit"]
 [connection signal="recovered_hit" from="TakeDamageState" to="Sprite" method="_on_TakeDamageState_recovered_hit"]
 [connection signal="body_entered" from="SpikeArea2D" to="." method="_on_SpikeArea2D_body_entered"]
+
+[editable path="BounceHit"]
