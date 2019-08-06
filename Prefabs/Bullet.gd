@@ -3,6 +3,7 @@ extends RigidBody2D
 onready var g = weakref($"Ground detector/CollisionShape2D")
 onready var t = $DestructionTimer
 onready var bullet_collider = weakref($Bullet_shape)
+onready var bounce_collider = weakref($BounceHit/CollisionShape2D)
 onready var sprite = $Sprite
 
 
@@ -14,6 +15,8 @@ func _on_BounceHit_bounced_player():
 		g.get_ref().queue_free()
 	if bullet_collider.get_ref():
 		bullet_collider.get_ref().queue_free()
+	if not bounce_collider.is_queued_for_deletion():
+		bounce_collider.get_ref().queue_free()
 	sprite.visible = false
 	t.start(2)
 	yield(t, "timeout")

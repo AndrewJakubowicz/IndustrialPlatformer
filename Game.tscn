@@ -498,11 +498,33 @@ position = Vector2( 256, 480 )
 
 [node name="BounceHit" parent="GameContent/Level8_test_flying/Prefabs" instance=ExtResource( 11 )]
 
+[node name="BounceHit4" parent="GameContent/Level8_test_flying/Prefabs" instance=ExtResource( 11 )]
+position = Vector2( 152, 448 )
+
 [node name="BounceHit2" parent="GameContent/Level8_test_flying/Prefabs" instance=ExtResource( 11 )]
 position = Vector2( 216, 352 )
 
 [node name="BounceHit3" parent="GameContent/Level8_test_flying/Prefabs" instance=ExtResource( 11 )]
 position = Vector2( 216, 280 )
+
+[node name="Turrent5" parent="GameContent/Level8_test_flying/Prefabs" instance=ExtResource( 10 )]
+editor/display_folded = true
+position = Vector2( 24, 480 )
+fire_rate_sec = 1.0
+override_target_path = NodePath("../../../Level8_test_flying/Prefabs/Turrent5/Position2D")
+
+[node name="Position2D" type="Position2D" parent="GameContent/Level8_test_flying/Prefabs/Turrent5"]
+position = Vector2( 0, -184 )
+
+[node name="Turrent6" parent="GameContent/Level8_test_flying/Prefabs" instance=ExtResource( 10 )]
+editor/display_folded = true
+position = Vector2( 80, 480 )
+fire_rate_sec = 1.0
+initial_delay = 0.5
+override_target_path = NodePath("../../../Level8_test_flying/Prefabs/Turrent5/Position2D")
+
+[node name="Position2D" type="Position2D" parent="GameContent/Level8_test_flying/Prefabs/Turrent6"]
+position = Vector2( 0, -184 )
 
 [node name="Player" type="Node2D" parent="GameContent"]
 
@@ -523,11 +545,11 @@ position = Vector2( 1344, -408 )
 [node name="PlayerSpawner" parent="GameContent/Player" groups=[
 "player_spawner",
 ] instance=ExtResource( 13 )]
-position = Vector2( 984, -408 )
+position = Vector2( 120, 464 )
 [connection signal="area_entered" from="GameContent/Level2/CameraDetector" to="GameContent/Level2/CameraDetector" method="_on_CameraDetector_area_entered"]
 [connection signal="body_entered" from="GameContent/Level2/CameraDetector" to="GameContent/Level2/CameraDetector" method="_on_CameraDetector_body_entered"]
-[connection signal="toggled_switch" from="GameContent/Level3/Prefabs/Switch" to="GameContent/Level3/Prefabs/Platform2" method="toggle"]
 [connection signal="toggled_switch" from="GameContent/Level3/Prefabs/Switch" to="GameContent/Level3/Prefabs/Platform" method="toggle"]
+[connection signal="toggled_switch" from="GameContent/Level3/Prefabs/Switch" to="GameContent/Level3/Prefabs/Platform2" method="toggle"]
 [connection signal="timeout" from="GameContent/Level3/Prefabs/Timer" to="GameContent/Level3/Prefabs/MonsterSpawner" method="spawn_monster"]
 [connection signal="timeout" from="GameContent/Level7/Prefabs/Switcher" to="GameContent/Level7/Prefabs/Platforms1/Platform2" method="toggle"]
 [connection signal="timeout" from="GameContent/Level7/Prefabs/Switcher" to="GameContent/Level7/Prefabs/Platforms1/Platform3" method="toggle"]
@@ -536,8 +558,8 @@ position = Vector2( 984, -408 )
 [connection signal="area_entered" from="GameContent/Level4/CameraDetector" to="GameContent/Level4/CameraDetector" method="_on_CameraDetector_area_entered"]
 [connection signal="body_entered" from="GameContent/Level4/CameraDetector" to="GameContent/Level4/CameraDetector" method="_on_CameraDetector_body_entered"]
 [connection signal="timeout" from="GameContent/Level4/Prefabs/Timer" to="GameContent/Level4/Prefabs/MonsterSpawner" method="spawn_monster"]
-[connection signal="timeout" from="GameContent/Level5/Prefabs/Timer" to="GameContent/Level5/Prefabs/Platform2" method="toggle"]
 [connection signal="timeout" from="GameContent/Level5/Prefabs/Timer" to="GameContent/Level5/Prefabs/Platform" method="toggle"]
+[connection signal="timeout" from="GameContent/Level5/Prefabs/Timer" to="GameContent/Level5/Prefabs/Platform2" method="toggle"]
 [connection signal="area_entered" from="GameContent/Level6/CameraDetector" to="GameContent/Level6/CameraDetector" method="_on_CameraDetector_area_entered"]
 [connection signal="body_entered" from="GameContent/Level6/CameraDetector" to="GameContent/Level6/CameraDetector" method="_on_CameraDetector_body_entered"]
 [connection signal="area_entered" from="GameContent/Level8_test_flying/CameraDetector" to="GameContent/Level8_test_flying/CameraDetector" method="_on_CameraDetector_area_entered"]

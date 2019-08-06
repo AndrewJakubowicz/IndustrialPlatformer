@@ -4,8 +4,8 @@
 [ext_resource path="res://assets/industrial.v2.png" type="Texture" id=2]
 
 [node name="Turrent" type="Node2D" groups=[
-"set_current_player",
 "unset_current_player",
+"set_current_player",
 ]]
 script = ExtResource( 1 )
 

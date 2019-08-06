@@ -100,9 +100,10 @@ func could_jump():
 	return can_jump
 
 func could_air_jump():
-	var can_jump = (air_time < jump_buffer_amount and frozen and inputs.is_action_jump_pressed())
+	var can_jump = (not is_on_floor() and air_time < jump_buffer_amount and frozen and inputs.is_action_jump_pressed())
 	if can_jump:
 		unfreeze()
+		velocity = Vector2()
 		jump_impulse()
 	return can_jump
 
@@ -175,7 +176,7 @@ func unfreeze():
 	set_physics_process(true)
 
 func reset_jump():
-	air_time = -0.5
+	air_time = 0
 
 # SIGNALS
 
