@@ -6,6 +6,7 @@ export (float) var friction = 23
 export (float) var air_friction = 12
 export (float) var _maxSpeed = 100
 export (float) var WALK_SPEED = 400
+export (float) var AIR_HORIZONTAL_SPEED = 180
 export (float) var VERTICAL_SPEED = 1200
 export (float) var FALLING_VERTICAL_SPEED = -400/1.5
 export (float) var JUMP_IMPULSE = 190
@@ -74,20 +75,35 @@ func run_physics(delta):
 
 func jump_physics(delta, time_in_jump):
 	if Input.is_action_pressed("right"):
-		acc.x = WALK_SPEED/1.4
+		acc.x = WALK_SPEED/1.8
 		facing_left = false
 		if velocity.x < 0:
 			velocity.x = velocity.linear_interpolate(Vector2(0,0), air_friction * delta).x
+		else:
+			velocity.x = velocity.linear_interpolate(Vector2(0,0), 0.1 * delta).x
 	elif Input.is_action_pressed("left"):
-		acc.x = -WALK_SPEED/1.4
+		acc.x = -WALK_SPEED/1.8
 		facing_left = true
 		if velocity.x > 0:
 			velocity.x = velocity.linear_interpolate(Vector2(0,0), air_friction * delta).x
+		else:
+			velocity.x = velocity.linear_interpolate(Vector2(0,0), 0.1 * delta).x
 	if Input.is_action_pressed("jump") and velocity.y < 0:
 		acc.y -= max(0, GRAVITY/2 - (GRAVITY/2 * (time_in_jump * time_in_jump) ))
 
-func jump_impulse():
-	velocity.y = -JUMP_IMPULSE
+func jump_impulse(override=0):
+	if override != 0:
+		if Input.is_action_pressed("right") and not Input.is_action_pressed("left"):
+			velocity.x -= override * 2
+			velocity.y = min(velocity.y, 0) + override * 0.8
+		elif Input.is_action_pressed("left") and not Input.is_action_pressed("right"):
+			velocity.x += override * 2
+			velocity.y = min(velocity.y, 0) + override * 0.8
+		else:
+			velocity.y = min(velocity.y, 0) + override
+			velocity.x = 0
+	else:
+		velocity.y = -JUMP_IMPULSE
 
 func dead_impulse():
 	velocity.y = -JUMP_IMPULSE
@@ -100,11 +116,10 @@ func could_jump():
 	return can_jump
 
 func could_air_jump():
-	var can_jump = (not is_on_floor() and air_time < jump_buffer_amount and frozen and inputs.is_action_jump_pressed())
+	var can_jump = inputs.is_action_jump_pressed()
 	if can_jump:
 		unfreeze()
-		velocity = Vector2()
-		jump_impulse()
+		jump_impulse(-JUMP_IMPULSE*1.22)
 	return can_jump
 
 func _physics_process(delta):
@@ -126,7 +141,15 @@ func _physics_process(delta):
 	acc.y += GRAVITY
 	acc = acc * delta
 	velocity += acc
-	velocity.x = clamp(velocity.x, -maxSpeed, maxSpeed)
+
+	if state.in_air_hit_air:
+		velocity.x = clamp(velocity.x, -AIR_HORIZONTAL_SPEED, AIR_HORIZONTAL_SPEED)
+	else:
+		if velocity.x < -maxSpeed * 1.1 or velocity.x > maxSpeed * 1.1:
+			velocity.x = velocity.linear_interpolate(Vector2(sign(maxSpeed) * maxSpeed,0), friction * delta).x
+		else:
+			velocity.x = clamp(velocity.x, -maxSpeed, maxSpeed)
+
 	var clamped_velocity = velocity
 	velocity.y = clamp(velocity.y, FALLING_VERTICAL_SPEED, VERTICAL_SPEED*8)
 	clamped_velocity.y = clamp(velocity.y, FALLING_VERTICAL_SPEED, VERTICAL_SPEED)
@@ -137,6 +160,7 @@ func _physics_process(delta):
 		velocity.y = 0
 	if is_on_wall():
 		velocity.x = 0
+	print(velocity.x)
 
 func _process(delta):
 	inputs.update(delta)
@@ -164,6 +188,12 @@ func is_grounded_state ():
 func change_walk_pitch():
 	walking_stream_player.pitch_scale = 0.5 + rand_range(0, 1.5)
 
+func turn_on_aesthetics_air_jump():
+	animation_sprite.modulate = Color("#ddda30")
+
+func turn_off_aesthetics_air_jump():
+	animation_sprite.modulate = Color.white
+
 # GROUPS
 
 func freeze():
@@ -175,8 +205,9 @@ func unfreeze():
 	frozen = false
 	set_physics_process(true)
 
+# This is used to set air jump
 func reset_jump():
-	air_time = 0
+	state.set_air_jump_state()
 
 # SIGNALS
 

@@ -6,8 +6,7 @@ onready var attack_swish = player.get_node("AttackParticle")
 onready var attack_swish_player = attack_swish.get_node("AttackAnimPlayer")
 onready var damage_state = $"../TakeDamageStateMachine"
 
-var max_speed_increase = 10;
-var bunny_hops = 0;
+var in_air_hit_air = false
 
 enum STATE {
 	IDLE
@@ -16,7 +15,7 @@ enum STATE {
 	FALLING
 	ATTACK_GROUND
 	ATTACK_AIR
-	AIR_ATTACK_COOLDOWN
+	FALLING_CAN_AIR_JUMP
 	DEAD
 }
 
@@ -35,7 +34,7 @@ func _state_logic(delta):
 			player.idle_physics(delta)
 		STATE.RUN:
 			player.run_physics(delta)
-		STATE.JUMP,STATE.ATTACK_AIR,STATE.FALLING:
+		STATE.JUMP,STATE.ATTACK_AIR,STATE.FALLING,STATE.FALLING_CAN_AIR_JUMP:
 			player.jump_physics(delta, time_in_state)
 		STATE.ATTACK_GROUND:
 			player.idle_physics(delta)
@@ -54,20 +53,18 @@ func _get_transition(delta):
 		return STATE.IDLE
 	elif [STATE.RUN, STATE.IDLE, STATE.FALLING].has(state) and player.could_jump():
 		return STATE.JUMP
-	elif [STATE.JUMP, STATE.FALLING].has(state) and player.is_on_floor():
+	elif [STATE.FALLING_CAN_AIR_JUMP].has(state) and player.could_air_jump():
+		return STATE.JUMP
+	elif [STATE.JUMP, STATE.FALLING, STATE.FALLING_CAN_AIR_JUMP, STATE.ATTACK_AIR].has(state) and player.is_on_floor():
 		return STATE.IDLE
 	elif [STATE.RUN, STATE.IDLE].has(state) and not player.is_on_floor():
 		return STATE.FALLING
 	elif [STATE.RUN, STATE.IDLE].has(state) and Input.is_action_just_pressed("attack") and not attack_swish_player.is_playing():
 		return STATE.ATTACK_GROUND
-	elif [STATE.JUMP, STATE.FALLING].has(state) and Input.is_action_just_pressed("attack") and not attack_swish_player.is_playing():
+	elif [STATE.JUMP, STATE.FALLING, STATE.FALLING_CAN_AIR_JUMP].has(state) and Input.is_action_just_pressed("attack") and not attack_swish_player.is_playing():
 		return STATE.ATTACK_AIR
 	elif [STATE.ATTACK_AIR].has(state) and not attack_swish_player.is_playing():
 		return STATE.FALLING
-	elif [STATE.ATTACK_AIR].has(state) and player.could_air_jump():
-		return STATE.JUMP
-	elif [STATE.ATTACK_AIR].has(state) and player.is_on_floor():
-		return STATE.IDLE
 	elif [STATE.ATTACK_GROUND].has(state) and not attack_swish_player.is_playing():
 		return STATE.IDLE
 	elif not [STATE.DEAD].has(state) and damage_state.curr_health <= 0:
@@ -78,6 +75,7 @@ func _get_transition(delta):
 func _enter_state(new_state, old_state):
 	match new_state:
 		STATE.IDLE:
+			in_air_hit_air = false
 			anim_state.travel("idle")
 		STATE.RUN:
 			anim_state.travel("run")
@@ -100,16 +98,25 @@ func _enter_state(new_state, old_state):
 			else:
 				attack_swish.rotation = 0
 
-
-
 			anim_state.travel("attack_ground")
 			attack_swish_player.play("attack_swish")
+		STATE.FALLING_CAN_AIR_JUMP:
+			in_air_hit_air = true
+			player.turn_on_aesthetics_air_jump()
 		STATE.DEAD:
 			player.dead_impulse()
 			anim_state.start("dead")
 
 func _exit_state(old_state, new_state):
-	pass
+	match old_state:
+		STATE.FALLING_CAN_AIR_JUMP:
+			player.turn_off_aesthetics_air_jump()
 
 func is_grounded_state ():
 	return [STATE.IDLE, STATE.RUN].has(state)
+
+func set_air_jump_state():
+	print("SETTING AIR FALLING STATE JUMP")
+	if player.is_on_floor():
+		return
+	set_state(STATE.FALLING_CAN_AIR_JUMP)

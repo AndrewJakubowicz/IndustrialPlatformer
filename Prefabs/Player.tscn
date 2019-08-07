@@ -292,7 +292,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3 ),
+"times": PoolRealArray( 0, 0.08 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
@@ -304,7 +304,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.3 ),
+"times": PoolRealArray( 0, 0.08 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
@@ -321,8 +321,8 @@ height = 2.07057
 extents = Vector2( 0.678841, 0.794046 )
 
 [node name="Player" type="KinematicBody2D" groups=[
-"freeze",
 "reset_jump",
+"freeze",
 ]]
 collision_mask = 11
 script = ExtResource( 1 )
