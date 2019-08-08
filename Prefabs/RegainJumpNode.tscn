@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Prefabs/RegainJumpNode.gd" type="Script" id=1]
+[ext_resource path="res://Prefabs/JumpRegain.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/industrial.v2.png" type="Texture" id=3]
+
+[node name="RegainJumpNode" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="BounceHit" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, 0 )
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0, 1, 1, 1 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 208, 256, 16, 16 )
+
+[node name="Cooldown" type="Timer" parent="."]
+wait_time = 0.3
+[connection signal="bounced_player" from="BounceHit" to="." method="_on_BounceHit_bounced_player"]
