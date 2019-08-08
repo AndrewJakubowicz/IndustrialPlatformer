@@ -353,10 +353,24 @@ position = Vector2( -496, -208 )
 [node name="ScoreBall" parent="GameContent/Player/Checkpoints" instance=ExtResource( 10 )]
 position = Vector2( 32, -224 )
 
+[node name="ScoreBall2" parent="GameContent/Player/Checkpoints" instance=ExtResource( 10 )]
+position = Vector2( -392, -360 )
+
 [node name="PlayerSpawner" parent="GameContent/Player" groups=[
 "player_spawner",
 ] instance=ExtResource( 11 )]
 position = Vector2( 56, -32 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GameContent"]
+margin_left = -240.0
+margin_top = -768.0
+margin_right = -144.0
+margin_bottom = -480.0
+text = "Put a super hard ascent here. The easier levels will surround it.
+
+Use nicks levels
+
+Hard bullet jumps and tiny spike ledges."
 [connection signal="area_entered" from="GameContent/Level2/CameraDetector" to="GameContent/Level2/CameraDetector" method="_on_CameraDetector_area_entered"]
 [connection signal="body_entered" from="GameContent/Level2/CameraDetector" to="GameContent/Level2/CameraDetector" method="_on_CameraDetector_body_entered"]
 [connection signal="area_entered" from="GameContent/Level4/CameraDetector" to="GameContent/Level4/CameraDetector" method="_on_CameraDetector_area_entered"]
