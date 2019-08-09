@@ -1008,7 +1008,7 @@ editor/display_folded = true
 position = Vector2( -48, -32 )
 
 [node name="Crusher" parent="TileMaps/CrushPair" instance=ExtResource( 9 )]
-position = Vector2( 928, -400 )
+position = Vector2( 1359, -400 )
 collision_layer = 8
 waypoints_path = NodePath("../CrusherWaypoint")
 
@@ -1156,11 +1156,11 @@ position = Vector2( 3552, -1206 )
 
 [node name="MonsterSpawner4" parent="Group" instance=ExtResource( 12 )]
 position = Vector2( 3712, -1206 )
-[connection signal="toggled_switch" from="TileMaps/AirLock1/Switch" to="TileMaps/AirLock1/Platform3" method="toggle"]
-[connection signal="toggled_switch" from="TileMaps/AirLock1/Switch" to="TileMaps/AirLock1/Platform" method="toggle"]
 [connection signal="toggled_switch" from="TileMaps/AirLock1/Switch" to="MonsterSpawner" method="spawn_monster"]
-[connection signal="toggled_switch" from="TileMaps/StartSwitch/Switch" to="TileMaps/StartSwitch/Platform" method="toggle"]
+[connection signal="toggled_switch" from="TileMaps/AirLock1/Switch" to="TileMaps/AirLock1/Platform" method="toggle"]
+[connection signal="toggled_switch" from="TileMaps/AirLock1/Switch" to="TileMaps/AirLock1/Platform3" method="toggle"]
 [connection signal="toggled_switch" from="TileMaps/StartSwitch/Switch" to="MonsterSpawner2" method="spawn_monster"]
+[connection signal="toggled_switch" from="TileMaps/StartSwitch/Switch" to="TileMaps/StartSwitch/Platform" method="toggle"]
 [connection signal="collected_checkpoint" from="TileMaps/Checkpoints/ScoreBall" to="PlayerSpawner" method="_on_ScoreBall_collected_checkpoint"]
 [connection signal="collected_checkpoint" from="TileMaps/Checkpoints/ScoreBall3" to="PlayerSpawner" method="_on_ScoreBall_collected_checkpoint"]
 [connection signal="collected_checkpoint" from="TileMaps/Checkpoints/ScoreBall4" to="PlayerSpawner" method="_on_ScoreBall_collected_checkpoint"]
@@ -1170,14 +1170,14 @@ position = Vector2( 3712, -1206 )
 [connection signal="collected_checkpoint" from="TileMaps/Checkpoints/ScoreBall5" to="PlayerSpawner" method="_on_ScoreBall_collected_checkpoint"]
 [connection signal="collected_checkpoint" from="TileMaps/Checkpoints/ScoreBall9" to="PlayerSpawner" method="_on_ScoreBall_collected_checkpoint"]
 [connection signal="collected_checkpoint" from="TileMaps/Checkpoints/ScoreBall2" to="PlayerSpawner" method="_on_ScoreBall_collected_checkpoint"]
-[connection signal="timeout" from="pattern_platformer1/toggle_timer" to="pattern_platformer1/Platform" method="toggle"]
 [connection signal="timeout" from="pattern_platformer1/toggle_timer" to="pattern_platformer1/Platform2" method="toggle"]
 [connection signal="timeout" from="pattern_platformer1/toggle_timer" to="pattern_platformer1/Platform3" method="toggle"]
+[connection signal="timeout" from="pattern_platformer1/toggle_timer" to="pattern_platformer1/Platform" method="toggle"]
 [connection signal="timeout" from="pattern_platformer1/toggle_timer" to="pattern_platformer1/Platform4" method="toggle"]
 [connection signal="timeout" from="pattern_platformer1/toggle_timer" to="pattern_platformer1/Platform5" method="toggle"]
+[connection signal="timeout" from="Group/MosterRainTimer" to="Group/MonsterSpawner4" method="spawn_monster"]
+[connection signal="timeout" from="Group/MosterRainTimer" to="Group/MonsterSpawner" method="spawn_monster"]
 [connection signal="timeout" from="Group/MosterRainTimer" to="Group/MonsterSpawner2" method="spawn_monster"]
 [connection signal="timeout" from="Group/MosterRainTimer" to="Group/MonsterSpawner3" method="spawn_monster"]
-[connection signal="timeout" from="Group/MosterRainTimer" to="Group/MonsterSpawner" method="spawn_monster"]
-[connection signal="timeout" from="Group/MosterRainTimer" to="Group/MonsterSpawner4" method="spawn_monster"]
 [connection signal="timeout" from="Group/TimerRush" to="Group/MonsterSpawnRush" method="spawn_monster"]
 [connection signal="timeout" from="Group/TimerStairRush2" to="Group/MonsterSpawnRush2" method="spawn_monster"]
