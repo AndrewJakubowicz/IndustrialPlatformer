@@ -89,11 +89,11 @@ script = ExtResource( 3 )
 position = Vector2( 7.97205, -5.53479 )
 shape = SubResource( 3 )
 
-[node name="Hit " type="Area2D" parent="."]
+[node name="Hit" type="Area2D" parent="."]
 collision_layer = 18
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hit "]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hit"]
 position = Vector2( 8.00638, -6.60928 )
 shape = SubResource( 4 )
 
@@ -120,11 +120,14 @@ position = Vector2( 7.97205, -6.60928 )
 
 [node name="CollisionShape2D" parent="BounceHit" index="0"]
 shape = SubResource( 6 )
-[connection signal="area_entered" from="Hit " to="." method="_on_Area2D_area_entered"]
-[connection signal="body_entered" from="Hit " to="." method="_on_Area2D_body_entered"]
+
+[node name="DeathTimeout" type="Timer" parent="."]
+one_shot = true
+[connection signal="area_entered" from="Hit" to="." method="_on_Area2D_area_entered"]
+[connection signal="body_entered" from="Hit" to="." method="_on_Area2D_body_entered"]
 [connection signal="died" from="TakeDamageState" to="." method="_on_TakeDamageState_died"]
-[connection signal="got_hit" from="TakeDamageState" to="EnemyState" method="_on_TakeDamageState_got_hit"]
 [connection signal="got_hit" from="TakeDamageState" to="Sprite" method="_on_TakeDamageState_got_hit"]
+[connection signal="got_hit" from="TakeDamageState" to="EnemyState" method="_on_TakeDamageState_got_hit"]
 [connection signal="recovered_hit" from="TakeDamageState" to="Sprite" method="_on_TakeDamageState_recovered_hit"]
 [connection signal="body_entered" from="SpikeArea2D" to="." method="_on_SpikeArea2D_body_entered"]
 
