@@ -1,4 +1,4 @@
-[gd_resource type="AudioBusLayout" load_steps=7 format=2]
+[gd_resource type="AudioBusLayout" load_steps=9 format=2]
 
 [sub_resource type="AudioEffectHighPassFilter" id=1]
 resource_name = "HighPassFilter"
@@ -7,9 +7,6 @@ cutoff_hz = 1000.0
 [sub_resource type="AudioEffectLowPassFilter" id=2]
 resource_name = "LowPassFilter"
 resonance = 1.0
-
-[sub_resource type="AudioEffectChorus" id=3]
-resource_name = "Chorus"
 
 [sub_resource type="AudioEffectEQ10" id=4]
 resource_name = "EQ10"
@@ -38,12 +35,24 @@ wet = 0.07
 resource_name = "EQ"
 band_db/32_hz = 4.6
 
+[sub_resource type="AudioEffectHighPassFilter" id=8]
+resource_name = "HighPassFilter"
+cutoff_hz = 1000.0
+
+[sub_resource type="AudioEffectChorus" id=9]
+resource_name = "Chorus"
+wet = 0.2
+
+[sub_resource type="AudioEffectPitchShift" id=10]
+resource_name = "PitchShift"
+pitch_scale = 1.5
+
 [resource]
 bus/1/name = "Player"
 bus/1/solo = false
 bus/1/mute = false
 bus/1/bypass_fx = false
-bus/1/volume_db = -19.7
+bus/1/volume_db = -13.2
 bus/1/send = "Master"
 bus/1/effect/0/effect = SubResource( 1 )
 bus/1/effect/0/enabled = true
@@ -51,7 +60,7 @@ bus/2/name = "platform"
 bus/2/solo = false
 bus/2/mute = false
 bus/2/bypass_fx = false
-bus/2/volume_db = -10.3
+bus/2/volume_db = -2.9
 bus/2/send = "Master"
 bus/2/effect/0/effect = SubResource( 2 )
 bus/2/effect/0/enabled = true
@@ -59,13 +68,29 @@ bus/3/name = "shot"
 bus/3/solo = false
 bus/3/mute = false
 bus/3/bypass_fx = false
-bus/3/volume_db = -7.5
+bus/3/volume_db = -3.9
 bus/3/send = "Master"
-bus/3/effect/0/effect = SubResource( 3 )
-bus/3/effect/0/enabled = false
-bus/3/effect/1/effect = SubResource( 4 )
+bus/3/effect/0/effect = SubResource( 4 )
+bus/3/effect/0/enabled = true
+bus/3/effect/1/effect = SubResource( 5 )
 bus/3/effect/1/enabled = true
-bus/3/effect/2/effect = SubResource( 5 )
+bus/3/effect/2/effect = SubResource( 6 )
 bus/3/effect/2/enabled = true
-bus/3/effect/3/effect = SubResource( 6 )
-bus/3/effect/3/enabled = true
+bus/4/name = "checkpoint"
+bus/4/solo = false
+bus/4/mute = false
+bus/4/bypass_fx = false
+bus/4/volume_db = -2.0
+bus/4/send = "Master"
+bus/4/effect/0/effect = SubResource( 8 )
+bus/4/effect/0/enabled = true
+bus/4/effect/1/effect = SubResource( 9 )
+bus/4/effect/1/enabled = true
+bus/4/effect/2/effect = SubResource( 10 )
+bus/4/effect/2/enabled = true
+bus/5/name = "death"
+bus/5/solo = false
+bus/5/mute = false
+bus/5/bypass_fx = false
+bus/5/volume_db = -10.4
+bus/5/send = "Master"

@@ -13,6 +13,29 @@ $Footstep9,
 $Footstep10
 ]
 
+onready var die = [
+$Die1,
+$Die2,
+$Die3,
+$Die4
+]
+
+onready var bump = [
+$Bump1,
+$Bump2,
+$Bump3,
+$Bump4,
+$Bump5
+]
+
+
+onready var jump_air = [
+$jump_air1,
+$jump_air2,
+$jump_air3,
+$jump_air4
+]
+
 onready var jump = $Jump
 
 func play_footstep():
@@ -21,3 +44,13 @@ func play_footstep():
 	
 func play_jump():
 	play_footstep()
+	
+func play_die():
+	var death_sound = die[floor(rand_range(0, die.size()))]
+	var bump_sound = bump[floor(rand_range(0, bump.size()))]
+	bump_sound.play()
+	death_sound.play()
+
+func play_jump_air():
+	var sound = jump_air[floor(rand_range(0, jump_air.size()))]
+	sound.play()

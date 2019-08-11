@@ -8,6 +8,7 @@ onready var light = $VisibilityEnabler2D/Light2D
 
 onready var sprite = $VisibilityEnabler2D/Sprite
 onready var collider = $Area2D
+onready var sound = $Sound
 
 func create_timer ():
 	var t = Timer.new()
@@ -17,6 +18,7 @@ func create_timer ():
 	return t
 
 func _on_Area2D_body_entered(body):
+	sound.play_sound()
 	p2.emitting = false
 	p1.emitting = false
 	sprite.queue_free()

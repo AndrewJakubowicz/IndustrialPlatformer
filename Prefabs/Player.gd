@@ -124,6 +124,7 @@ func could_air_jump():
 	var can_jump = inputs.is_action_jump_pressed()
 	if can_jump:
 		unfreeze()
+		audio_player.play_jump_air()
 		jump_impulse(-JUMP_IMPULSE*1.22)
 	return can_jump
 
@@ -151,15 +152,13 @@ func _physics_process(delta):
 
 	if state.in_air_hit_air:
 		velocity.x = clamp(velocity.x, -AIR_HORIZONTAL_SPEED, AIR_HORIZONTAL_SPEED)
-		if abs(velocity.x) == AIR_HORIZONTAL_SPEED:
-			speed_trail.emitting = true
 	else:
-		speed_trail.emitting = false
 		if velocity.x < -maxSpeed * 1.1 or velocity.x > maxSpeed * 1.1:
 			velocity.x = velocity.linear_interpolate(Vector2(sign(maxSpeed) * maxSpeed,0), friction * delta).x
 		else:
 			velocity.x = clamp(velocity.x, -maxSpeed, maxSpeed)
-
+	speed_trail.emitting = velocity.length() >= AIR_HORIZONTAL_SPEED
+		
 	var clamped_velocity = velocity
 	velocity.y = clamp(velocity.y, FALLING_VERTICAL_SPEED, VERTICAL_SPEED*8)
 	clamped_velocity.y = clamp(velocity.y, FALLING_VERTICAL_SPEED, VERTICAL_SPEED)
@@ -177,6 +176,7 @@ func _process(delta):
 func hurt_bump():
 	velocity.y = -HURT_BUMP
 	velocity.x = HURT_BUMP * 1.4 if facing_left else -HURT_BUMP * 1.4
+	audio_player.play_die()
 
 # This is how you hurt the player
 func player_hit(damage):
