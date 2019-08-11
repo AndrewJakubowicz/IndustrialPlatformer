@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/hydraulic_3.wav-99217ae0d880f669f388d70a05bcde3b.sample"
+
+[deps]
+
+source_file="res://assets/sound/Raw Foley/hydraulic_3.wav"
+dest_files=[ "res://.import/hydraulic_3.wav-99217ae0d880f669f388d70a05bcde3b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

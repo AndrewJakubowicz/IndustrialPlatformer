@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/metalscreech_3.wav-1407f041bc092f593d9eb102d5aa6540.sample"
+
+[deps]
+
+source_file="res://assets/sound/Raw Foley/metalscreech_3.wav"
+dest_files=[ "res://.import/metalscreech_3.wav-1407f041bc092f593d9eb102d5aa6540.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

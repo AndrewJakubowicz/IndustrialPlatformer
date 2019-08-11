@@ -286,9 +286,10 @@ anchor_bottom = 1.0
 margin_left = 24.0
 margin_top = -392.0
 margin_right = 336.0
-margin_bottom = -376.0
+margin_bottom = -360.0
 custom_fonts/normal_font = ExtResource( 5 )
-text = "Jump orbs regain your jump in the air after you hit them!"
+text = "Jump orbs regain your jump in the air after you hit them!
+You can attack in 4 directions by holding a direction key..."
 scroll_active = false
 
 [node name="Level4" type="Node2D" parent="GameContent"]

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/crackleice_1.wav-a9e873b94d0e5ea13d1e59794dc699a4.sample"
+
+[deps]
+
+source_file="res://assets/sound/Raw Foley/crackleice_1.wav"
+dest_files=[ "res://.import/crackleice_1.wav-a9e873b94d0e5ea13d1e59794dc699a4.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

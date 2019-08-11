@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/yellingmetal_6.wav-c274eeca8d46182a7fd9ce46f37f67de.sample"
+
+[deps]
+
+source_file="res://assets/sound/Raw Foley/yellingmetal_6.wav"
+dest_files=[ "res://.import/yellingmetal_6.wav-c274eeca8d46182a7fd9ce46f37f67de.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

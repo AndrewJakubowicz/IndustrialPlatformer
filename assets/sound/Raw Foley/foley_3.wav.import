@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/foley_3.wav-46409f44dc72b6aa428537b1000971e2.sample"
+
+[deps]
+
+source_file="res://assets/sound/Raw Foley/foley_3.wav"
+dest_files=[ "res://.import/foley_3.wav-46409f44dc72b6aa428537b1000971e2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

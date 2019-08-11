@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/icebang_2.wav-f96c112d1aded099a2def4d88808dc1e.sample"
+
+[deps]
+
+source_file="res://assets/sound/Raw Foley/icebang_2.wav"
+dest_files=[ "res://.import/icebang_2.wav-f96c112d1aded099a2def4d88808dc1e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

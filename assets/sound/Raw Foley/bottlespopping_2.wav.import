@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/bottlespopping_2.wav-fff460538c8831a0c5a75aadfefa1709.sample"
+
+[deps]
+
+source_file="res://assets/sound/Raw Foley/bottlespopping_2.wav"
+dest_files=[ "res://.import/bottlespopping_2.wav-fff460538c8831a0c5a75aadfefa1709.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

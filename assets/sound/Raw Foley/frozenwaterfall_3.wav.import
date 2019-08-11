@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/frozenwaterfall_3.wav-2164bd3d4ddf367d9a4e273d430b3cb8.sample"
+
+[deps]
+
+source_file="res://assets/sound/Raw Foley/frozenwaterfall_3.wav"
+dest_files=[ "res://.import/frozenwaterfall_3.wav-2164bd3d4ddf367d9a4e273d430b3cb8.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

@@ -6,6 +6,8 @@ onready var attack_swish = player.get_node("AttackParticle")
 onready var attack_swish_player = attack_swish.get_node("AttackAnimPlayer")
 onready var damage_state = $"../TakeDamageStateMachine"
 
+onready var audio_player = $"../Sounds"
+
 var in_air_hit_air = false
 
 enum STATE {
@@ -111,12 +113,18 @@ func _exit_state(old_state, new_state):
 	match old_state:
 		STATE.FALLING_CAN_AIR_JUMP:
 			player.turn_off_aesthetics_air_jump()
+	match [old_state, new_state]:
+		[STATE.JUMP, STATE.IDLE]:
+			audio_player.play_footstep()
+		[STATE.IDLE, STATE.JUMP]:
+			audio_player.play_jump()
+		[STATE.RUN, STATE.JUMP]:
+			audio_player.play_jump()
 
 func is_grounded_state ():
 	return [STATE.IDLE, STATE.RUN].has(state)
 
 func set_air_jump_state():
-	print("SETTING AIR FALLING STATE JUMP")
 	if player.is_on_floor():
 		return
 	set_state(STATE.FALLING_CAN_AIR_JUMP)

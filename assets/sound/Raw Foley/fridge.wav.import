@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/fridge.wav-182e9f757f373a8770253cda619d4e28.sample"
+
+[deps]
+
+source_file="res://assets/sound/Raw Foley/fridge.wav"
+dest_files=[ "res://.import/fridge.wav-182e9f757f373a8770253cda619d4e28.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

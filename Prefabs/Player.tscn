@@ -1,14 +1,24 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://Prefabs/Player.gd" type="Script" id=1]
 [ext_resource path="res://material/hurt.shader" type="Shader" id=2]
 [ext_resource path="res://assets/industrial.v2.png" type="Texture" id=3]
 [ext_resource path="res://Prefabs/character_sprites.gd" type="Script" id=4]
-[ext_resource path="res://assets/sound/step1.wav" type="AudioStream" id=5]
-[ext_resource path="res://assets/sound/step2.wav" type="AudioStream" id=6]
-[ext_resource path="res://Scripts/PlayerStateMachine.gd" type="Script" id=7]
-[ext_resource path="res://Prefabs/TakeDamageStateMachine.gd" type="Script" id=8]
-[ext_resource path="res://Prefabs/LightOccluder.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scripts/PlayerStateMachine.gd" type="Script" id=5]
+[ext_resource path="res://Prefabs/TakeDamageStateMachine.gd" type="Script" id=6]
+[ext_resource path="res://Prefabs/LightOccluder.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Prefabs/Sounds.gd" type="Script" id=8]
+[ext_resource path="res://assets/sound/RPG Sounds/OGG/footstep00.ogg" type="AudioStream" id=9]
+[ext_resource path="res://assets/sound/RPG Sounds/OGG/footstep01.ogg" type="AudioStream" id=10]
+[ext_resource path="res://assets/sound/RPG Sounds/OGG/footstep02.ogg" type="AudioStream" id=11]
+[ext_resource path="res://assets/sound/RPG Sounds/OGG/footstep03.ogg" type="AudioStream" id=12]
+[ext_resource path="res://assets/sound/RPG Sounds/OGG/footstep04.ogg" type="AudioStream" id=13]
+[ext_resource path="res://assets/sound/RPG Sounds/OGG/footstep05.ogg" type="AudioStream" id=14]
+[ext_resource path="res://assets/sound/RPG Sounds/OGG/footstep06.ogg" type="AudioStream" id=15]
+[ext_resource path="res://assets/sound/RPG Sounds/OGG/footstep07.ogg" type="AudioStream" id=16]
+[ext_resource path="res://assets/sound/RPG Sounds/OGG/footstep08.ogg" type="AudioStream" id=17]
+[ext_resource path="res://assets/sound/RPG Sounds/OGG/footstep09.ogg" type="AudioStream" id=18]
+[ext_resource path="res://assets/sound/Raw Foley/yogurt.wav" type="AudioStream" id=19]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
@@ -25,6 +35,7 @@ height = 2.12419
 [sub_resource type="Animation" id=3]
 length = 0.8
 loop = true
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("character_sprites:frame")
 tracks/0/interp = 1
@@ -37,36 +48,21 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 8, 9, 10, 11, 12, 13, 14, 15 ]
 }
-tracks/1/type = "audio"
-tracks/1/path = NodePath("WalkingStreamPlayer")
+tracks/1/type = "method"
+tracks/1/path = NodePath("Sounds")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"clips": [ {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource( 5 )
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource( 6 )
-} ],
-"times": PoolRealArray( 0.199858, 0.600144 )
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.695027 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0.15, 0.55 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
-"method": "change_walk_pitch"
+"method": "play_footstep"
+}, {
+"args": [  ],
+"method": "play_footstep"
 } ]
 }
 
@@ -333,6 +329,7 @@ material = SubResource( 1 )
 texture = ExtResource( 3 )
 vframes = 4
 hframes = 8
+frame = 1
 region_enabled = true
 region_rect = Rect2( 0, 256, 128, 64 )
 script = ExtResource( 4 )
@@ -356,10 +353,10 @@ active = true
 parameters/playback = SubResource( 30 )
 
 [node name="PlayerStateMachine" type="Node" parent="."]
-script = ExtResource( 7 )
+script = ExtResource( 5 )
 
 [node name="TakeDamageStateMachine" type="Node" parent="."]
-script = ExtResource( 8 )
+script = ExtResource( 6 )
 
 [node name="AttackParticle" type="Sprite" parent="."]
 position = Vector2( 0, 1.63374 )
@@ -384,7 +381,7 @@ collision_mask = 536
 position = Vector2( 14.2666, 0.677803 )
 shape = SubResource( 32 )
 
-[node name="LightOccluder" parent="." instance=ExtResource( 9 )]
+[node name="LightOccluder" parent="." instance=ExtResource( 7 )]
 position = Vector2( -0.237827, -7.62939e-006 )
 
 [node name="CrushDetector" type="Area2D" parent="."]
@@ -412,9 +409,62 @@ collision_mask = 0
 position = Vector2( -1.68657, 1.20824 )
 shape = SubResource( 34 )
 
-[node name="WalkingStreamPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 5 )
+[node name="Sounds" type="Node2D" parent="."]
+script = ExtResource( 8 )
+
+[node name="Footstep1" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 9 )
+mix_target = 2
 bus = "Player"
+
+[node name="Footstep2" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 10 )
+mix_target = 2
+bus = "Player"
+
+[node name="Footstep3" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 11 )
+mix_target = 2
+bus = "Player"
+
+[node name="Footstep4" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 12 )
+mix_target = 2
+bus = "Player"
+
+[node name="Footstep5" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 13 )
+mix_target = 2
+bus = "Player"
+
+[node name="Footstep6" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 14 )
+mix_target = 2
+bus = "Player"
+
+[node name="Footstep7" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 15 )
+mix_target = 2
+bus = "Player"
+
+[node name="Footstep8" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 16 )
+mix_target = 2
+bus = "Player"
+
+[node name="Footstep9" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 17 )
+mix_target = 2
+bus = "Player"
+
+[node name="Footstep10" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 18 )
+mix_target = 2
+bus = "Player"
+
+[node name="Jump" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 19 )
+volume_db = -25.0
 [connection signal="animation_changed" from="AnimationPlayer" to="PlayerStateMachine" method="_on_AnimationPlayer_animation_changed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="PlayerStateMachine" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="got_hit" from="TakeDamageStateMachine" to="." method="_on_TakeDamageStateMachine_got_hit"]

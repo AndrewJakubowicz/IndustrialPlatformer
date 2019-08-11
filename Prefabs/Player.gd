@@ -20,6 +20,7 @@ onready var maxSpeed = _maxSpeed
 onready var state = $PlayerStateMachine
 onready var camera_collider = $CameraCollider
 onready var walking_stream_player = $WalkingStreamPlayer
+onready var audio_player = $Sounds
 
 var GRAVITY = global.GRAVITY
 const jump_buffer_amount = 0.13
@@ -184,9 +185,6 @@ func impulse(impulse: float, dir: Vector2):
 # player is walking on the ground.
 func is_grounded_state ():
 	return state.is_grounded_state()
-
-func change_walk_pitch():
-	walking_stream_player.pitch_scale = 0.5 + rand_range(0, 1.5)
 
 func turn_on_aesthetics_air_jump():
 	animation_sprite.modulate = Color("#ddda30")

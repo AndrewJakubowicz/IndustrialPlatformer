@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sodacan_2.wav-bb756d0b25197b3a9707de61e6ca805a.sample"
+
+[deps]
+
+source_file="res://assets/sound/Raw Foley/sodacan_2.wav"
+dest_files=[ "res://.import/sodacan_2.wav-bb756d0b25197b3a9707de61e6ca805a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

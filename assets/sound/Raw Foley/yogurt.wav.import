@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/yogurt.wav-b9af47f9df7b872ec4a19760a19952b7.sample"
+
+[deps]
+
+source_file="res://assets/sound/Raw Foley/yogurt.wav"
+dest_files=[ "res://.import/yogurt.wav-b9af47f9df7b872ec4a19760a19952b7.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
