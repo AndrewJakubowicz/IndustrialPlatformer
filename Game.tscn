@@ -32,12 +32,12 @@ extents = Vector2( 408, 176 )
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 176, 96 )
 
-[sub_resource type="Curve2D" id=7]
+[sub_resource type="Curve2D" id=6]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 71.9997, -128, 0, 0, 0, 0, -72.0003, -128, 0, 0, 0, 0, 71.9997, -128 )
 }
 
-[sub_resource type="Curve2D" id=6]
+[sub_resource type="Curve2D" id=7]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 96.0002, -128, 0, 0, 0, 0, -112, -128, 0, 0, 0, 0, 96.0002, -128 )
 }
@@ -807,7 +807,7 @@ override_target_path = NodePath("../Path2D2/PathFollow2D")
 [node name="Path2D2" type="Path2D" parent="GameContent/Level8/Prefabs"]
 position = Vector2( -488, -1008 )
 rotation = -3.14159
-curve = SubResource( 7 )
+curve = SubResource( 6 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="GameContent/Level8/Prefabs/Path2D2"]
 position = Vector2( 71.9997, -128 )
@@ -817,7 +817,7 @@ script = ExtResource( 13 )
 [node name="Path2D" type="Path2D" parent="GameContent/Level8/Prefabs"]
 position = Vector2( -496, -640 )
 rotation = -1.90735e-006
-curve = SubResource( 6 )
+curve = SubResource( 7 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="GameContent/Level8/Prefabs/Path2D"]
 position = Vector2( 96.0002, -128 )
@@ -877,12 +877,12 @@ tile_data = PoolIntArray( -4325401, 0, 0, -4325391, 0, 0, -4259878, 0, 0, -42598
 [connection signal="body_entered" from="GameContent/CameraZones/CameraDetector_1screen7" to="GameContent/CameraZones/CameraDetector_1screen7" method="_on_CameraDetector_body_entered"]
 [connection signal="area_entered" from="GameContent/CameraZones/CameraDetector_1screen8" to="GameContent/CameraZones/CameraDetector_1screen8" method="_on_CameraDetector_area_entered"]
 [connection signal="body_entered" from="GameContent/CameraZones/CameraDetector_1screen8" to="GameContent/CameraZones/CameraDetector_1screen8" method="_on_CameraDetector_body_entered"]
+[connection signal="timeout" from="GameContent/Level5/Prefabs/Timer" to="GameContent/Level5/Prefabs/Platform3" method="toggle"]
+[connection signal="timeout" from="GameContent/Level5/Prefabs/Timer" to="GameContent/Level5/Prefabs/Platform4" method="toggle"]
 [connection signal="timeout" from="GameContent/Level5/Prefabs/Timer" to="GameContent/Level5/Prefabs/Platform" method="toggle"]
 [connection signal="timeout" from="GameContent/Level5/Prefabs/Timer" to="GameContent/Level5/Prefabs/Platform2" method="toggle"]
-[connection signal="timeout" from="GameContent/Level5/Prefabs/Timer" to="GameContent/Level5/Prefabs/Platform4" method="toggle"]
-[connection signal="timeout" from="GameContent/Level5/Prefabs/Timer" to="GameContent/Level5/Prefabs/Platform3" method="toggle"]
-[connection signal="timeout" from="GameContent/Level6/Prefabs/Timer" to="GameContent/Level6/Prefabs/Platform2" method="toggle"]
 [connection signal="timeout" from="GameContent/Level6/Prefabs/Timer" to="GameContent/Level6/Prefabs/Platform" method="toggle"]
+[connection signal="timeout" from="GameContent/Level6/Prefabs/Timer" to="GameContent/Level6/Prefabs/Platform2" method="toggle"]
 [connection signal="timeout" from="GameContent/Level8/Prefabs/Timer" to="GameContent/Level8/Prefabs/MonsterSpawner" method="spawn_monster"]
 
 [editable path="GameContent/Level1/CameraDetector"]

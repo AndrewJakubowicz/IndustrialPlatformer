@@ -21,6 +21,7 @@ onready var state = $PlayerStateMachine
 onready var camera_collider = $CameraCollider
 onready var walking_stream_player = $WalkingStreamPlayer
 onready var audio_player = $Sounds
+onready var walk_dust = $Particles/walk_dust
 
 var GRAVITY = global.GRAVITY
 const jump_buffer_amount = 0.13
@@ -137,8 +138,10 @@ func _physics_process(delta):
 	# Air time calculation.
 	if not is_on_floor():
 		air_time += delta
+		walk_dust.emitting = false
 	else:
 		air_time = 0
+		walk_dust.emitting = abs(velocity.x) > maxSpeed / 2
 	
 	acc.y += GRAVITY
 	acc = acc * delta
