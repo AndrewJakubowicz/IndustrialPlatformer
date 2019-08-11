@@ -44,7 +44,7 @@ class InputBuffer:
 		jump_buffer = jump_buffer_amount
 
 	func is_action_jump_pressed():
-		return jump_buffer > 0 || Input.is_action_just_pressed("jump")
+		return (jump_buffer > 0 || Input.is_action_just_pressed("jump")) and Input.is_action_pressed("jump")
 
 var inputs = InputBuffer.new()
 
