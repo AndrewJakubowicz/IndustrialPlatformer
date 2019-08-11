@@ -5,10 +5,10 @@ onready var t = $DestructionTimer
 onready var bullet_collider = weakref($Bullet_shape)
 onready var bounce_collider = weakref($BounceHit/CollisionShape2D)
 onready var sprite = $Sprite
-
+onready var particles = $Particles2D
 
 func _on_Ground_detector_body_entered(body):
-	queue_free()
+	_on_BounceHit_bounced_player()
 
 func _on_BounceHit_bounced_player():
 	if g.get_ref():
@@ -18,6 +18,7 @@ func _on_BounceHit_bounced_player():
 	if not bounce_collider.is_queued_for_deletion():
 		bounce_collider.get_ref().queue_free()
 	sprite.visible = false
+	particles.emitting = false
 	t.start(2)
 	yield(t, "timeout")
 	queue_free()

@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Prefabs/RegainJumpNode.gd" type="Script" id=1]
 [ext_resource path="res://Prefabs/JumpRegain.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/industrial.v2.png" type="Texture" id=3]
+[ext_resource path="res://material/breatheShader.shader" type="Shader" id=3]
+[ext_resource path="res://assets/industrial.v2.png" type="Texture" id=4]
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 3 )
+shader_param/scale_up = Vector2( 0.2, 0.2 )
 
 [node name="RegainJumpNode" type="Node2D"]
 script = ExtResource( 1 )
@@ -12,7 +17,8 @@ position = Vector2( 0, 0 )
 
 [node name="Sprite" type="Sprite" parent="."]
 modulate = Color( 0, 1, 1, 1 )
-texture = ExtResource( 3 )
+material = SubResource( 2 )
+texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 208, 256, 16, 16 )
 

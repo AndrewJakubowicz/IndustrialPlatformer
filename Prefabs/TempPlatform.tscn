@@ -13,6 +13,7 @@ position = Vector2( 176, -904 )
 script = ExtResource( 1 )
 
 [node name="Platform" parent="." instance=ExtResource( 2 )]
+modulate = Color( 0.580392, 0.160784, 1, 1 )
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2( 0, -2.77997 )

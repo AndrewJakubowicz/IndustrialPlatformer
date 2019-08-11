@@ -366,6 +366,7 @@ material = SubResource( 1 )
 texture = ExtResource( 3 )
 vframes = 4
 hframes = 8
+frame = 1
 region_enabled = true
 region_rect = Rect2( 0, 256, 128, 64 )
 script = ExtResource( 4 )
@@ -517,8 +518,8 @@ process_material = SubResource( 41 )
 texture = ExtResource( 20 )
 [connection signal="animation_changed" from="AnimationPlayer" to="PlayerStateMachine" method="_on_AnimationPlayer_animation_changed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="PlayerStateMachine" method="_on_AnimationPlayer_animation_finished"]
-[connection signal="got_hit" from="TakeDamageStateMachine" to="." method="_on_TakeDamageStateMachine_got_hit"]
 [connection signal="got_hit" from="TakeDamageStateMachine" to="character_sprites" method="_on_TakeDamageStateMachine_got_hit"]
+[connection signal="got_hit" from="TakeDamageStateMachine" to="." method="_on_TakeDamageStateMachine_got_hit"]
 [connection signal="recovered_hit" from="TakeDamageStateMachine" to="character_sprites" method="_on_TakeDamageStateMachine_recovered_hit"]
 [connection signal="body_entered" from="CrushDetector" to="." method="_on_CrushDetector_body_entered"]
 [connection signal="body_entered" from="SpikeDetector" to="." method="_on_SpikeDetector_body_entered"]
