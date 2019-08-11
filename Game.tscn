@@ -370,7 +370,7 @@ position = Vector2( 96, -208 )
 scale = Vector2( 1, 1.5 )
 
 [node name="RegainJumpNode" parent="GameContent/Level3/Prefabs" instance=ExtResource( 8 )]
-position = Vector2( 312, -248 )
+position = Vector2( 320, -256 )
 
 [node name="RegainJumpNode2" parent="GameContent/Level3/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 232, -296 )
@@ -391,10 +391,9 @@ scroll_active = false
 [node name="Level4" type="Node2D" parent="GameContent"]
 
 [node name="Prefabs" type="Node2D" parent="GameContent/Level4"]
-editor/display_folded = true
 
 [node name="RegainJumpNode" parent="GameContent/Level4/Prefabs" instance=ExtResource( 8 )]
-position = Vector2( -80, -176 )
+position = Vector2( -80, -192 )
 
 [node name="Spike" parent="GameContent/Level4/Prefabs" instance=ExtResource( 4 )]
 position = Vector2( -48, -48 )
@@ -558,7 +557,6 @@ position = Vector2( -488, -224 )
 [node name="Level6" type="Node2D" parent="GameContent"]
 
 [node name="Prefabs" type="Node2D" parent="GameContent/Level6"]
-editor/display_folded = true
 
 [node name="Spike" parent="GameContent/Level6/Prefabs" instance=ExtResource( 4 )]
 position = Vector2( -352, -416 )
@@ -658,12 +656,6 @@ autostart = true
 [node name="Level7" type="Node2D" parent="GameContent"]
 
 [node name="Prefabs" type="Node2D" parent="GameContent/Level7"]
-
-[node name="RegainJumpNode" parent="GameContent/Level7/Prefabs" instance=ExtResource( 8 )]
-position = Vector2( 312, -632 )
-
-[node name="RegainJumpNode2" parent="GameContent/Level7/Prefabs" instance=ExtResource( 8 )]
-position = Vector2( 72, -752 )
 
 [node name="RegainJumpNode3" parent="GameContent/Level7/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 248, -856 )
@@ -837,7 +829,6 @@ scale = Vector2( 1, 3 )
 modulate = Color( 0.870588, 0.47451, 1, 1 )
 position = Vector2( -48, -736 )
 will_reset = false
-about_to_drop_time = 1.0
 
 [node name="Spike" parent="GameContent/Level8/Prefabs" instance=ExtResource( 4 )]
 position = Vector2( 0, -848 )
@@ -896,7 +887,8 @@ position = Vector2( -608, -688 )
 [node name="Turrent2" parent="GameContent/Level8/Prefabs" instance=ExtResource( 6 )]
 position = Vector2( -488, -1032 )
 rotation = -3.14159
-fire_rate_sec = 0.4
+fire_rate_sec = 0.6
+initial_delay = 0.1
 bullet_speed = 100.0
 override_target_path = NodePath("../Path2D2/PathFollow2D")
 
@@ -922,7 +914,7 @@ script = ExtResource( 13 )
 speed = 60.0
 
 [node name="Turrent" parent="GameContent/Level8/Prefabs" instance=ExtResource( 6 )]
-position = Vector2( -487.996, -704.001 )
+position = Vector2( -488, -704 )
 rotation = -1.90735e-006
 fire_rate_sec = 0.6
 bullet_speed = 90.0
@@ -933,13 +925,13 @@ override_target_path = NodePath("../Path2D/PathFollow2D")
 [node name="Checkpoints" type="Node2D" parent="GameContent/Player"]
 
 [node name="ScoreBall" parent="GameContent/Player/Checkpoints" instance=ExtResource( 14 )]
-position = Vector2( -32, -224 )
+position = Vector2( -32, -216 )
 
 [node name="ScoreBall4" parent="GameContent/Player/Checkpoints" instance=ExtResource( 14 )]
 position = Vector2( 544, -168 )
 
 [node name="ScoreBall2" parent="GameContent/Player/Checkpoints" instance=ExtResource( 14 )]
-position = Vector2( -352, -368 )
+position = Vector2( -344, -360 )
 
 [node name="ScoreBall3" parent="GameContent/Player/Checkpoints" instance=ExtResource( 14 )]
 position = Vector2( 32, -520 )
@@ -953,7 +945,7 @@ position = Vector2( -712, -720 )
 [node name="PlayerSpawner" parent="GameContent/Player" groups=[
 "player_spawner",
 ] instance=ExtResource( 15 )]
-position = Vector2( -424, -240 )
+position = Vector2( 248, -232 )
 
 [node name="LightOccluder" parent="GameContent" instance=ExtResource( 16 )]
 tile_data = PoolIntArray( -4325401, 0, 0, -4325391, 0, 0, -4259878, 0, 0, -4259865, 0, 0, -4259855, 0, 0, -4259845, 0, 0, -4194342, 0, 0, -4194329, 0, 0, -4194319, 0, 0, -4194309, 0, 0, -4128806, 0, 0, -4128793, 0, 0, -4128783, 0, 0, -4128773, 0, 0, -4063270, 0, 0, -4063257, 0, 0, -4063247, 0, 0, -4063237, 0, 0, -3997739, 0, 0, -3997734, 0, 0, -3997721, 0, 0, -3997711, 0, 0, -3997701, 0, 0, -3932203, 0, 0, -3932198, 0, 0, -3932185, 0, 0, -3932175, 0, 0, -3932165, 0, 0, -3866667, 0, 0, -3866649, 0, 0, -3866639, 0, 0, -3866629, 0, 0, -3801131, 0, 0, -3801113, 0, 0, -3801103, 0, 0, -3801093, 0, 0, -3735595, 0, 0, -3735577, 0, 0, -3735567, 0, 0, -3735557, 0, 0, -3670059, 0, 0, -3670058, 0, 0, -3670057, 0, 0, -3670056, 0, 0, -3670055, 0, 0, -3670054, 0, 0, -3670053, 0, 0, -3670041, 0, 0, -3670031, 0, 0, -3670021, 0, 0, -3604520, 0, 0, -3604519, 0, 0, -3604518, 0, 0, -3604517, 0, 0, -3604505, 0, 0, -3604495, 0, 0, -3604485, 0, 0, -3538984, 0, 0, -3538983, 0, 0, -3538982, 0, 0, -3538981, 0, 0, -3538969, 0, 0, -3538959, 0, 0, -3538949, 0, 0, -3473448, 0, 0, -3473447, 0, 0, -3473446, 0, 0, -3473445, 0, 0, -3473433, 0, 0, -3473423, 0, 0, -3473413, 0, 0, -3407912, 0, 0, -3407911, 0, 0, -3407910, 0, 0, -3407909, 0, 0, -3407897, 0, 0, -3407887, 0, 0, -3407877, 0, 0, -3342376, 0, 0, -3342375, 0, 0, -3342374, 0, 0, -3342373, 0, 0, -3342361, 0, 0, -3342351, 0, 0, -3342341, 0, 0, -3276840, 0, 0, -3276839, 0, 0, -3276838, 0, 0, -3276837, 0, 0, -3276825, 0, 0, -3276815, 0, 0, -3276805, 0, 0, -3211304, 0, 0, -3211303, 0, 0, -3211302, 0, 0, -3211301, 0, 0, -3211289, 0, 0, -3211279, 0, 0, -3211269, 0, 0, -3145768, 0, 0, -3145767, 0, 0, -3145766, 0, 0, -3145765, 0, 0, -3145753, 0, 0, -3145743, 0, 0, -3145733, 0, 0, -3080232, 0, 0, -3080231, 0, 0, -3080230, 0, 0, -3080229, 0, 0, -3080217, 0, 0, -3080207, 0, 0, -3080197, 0, 0, -3014696, 0, 0, -3014695, 0, 0, -3014694, 0, 0, -3014693, 0, 0, -3014681, 0, 0, -3014671, 0, 0, -2949160, 0, 0, -2883624, 0, 0, -2818088, 0, 0, -524246, 0, 0, -524245, 0, 0, -524244, 0, 0, -524243, 0, 0, -524242, 0, 0, -524241, 0, 0, -524240, 0, 0, -524239, 0, 0, -524238, 0, 0, -524237, 0, 0, -524236, 0, 0, -524235, 0, 0, -524234, 0, 0, -524233, 0, 0, -458710, 0, 0, -458709, 0, 0, -458708, 0, 0, -458707, 0, 0, -458706, 0, 0, -458705, 0, 0, -458704, 0, 0, -458703, 0, 0, -458702, 0, 0, -458701, 0, 0, -458700, 0, 0, -458699, 0, 0, -458698, 0, 0, -458697, 0, 0 )
@@ -975,10 +967,10 @@ tile_data = PoolIntArray( -4325401, 0, 0, -4325391, 0, 0, -4259878, 0, 0, -42598
 [connection signal="body_entered" from="GameContent/CameraZones/CameraDetector_1screen7" to="GameContent/CameraZones/CameraDetector_1screen7" method="_on_CameraDetector_body_entered"]
 [connection signal="area_entered" from="GameContent/CameraZones/CameraDetector_1screen8" to="GameContent/CameraZones/CameraDetector_1screen8" method="_on_CameraDetector_area_entered"]
 [connection signal="body_entered" from="GameContent/CameraZones/CameraDetector_1screen8" to="GameContent/CameraZones/CameraDetector_1screen8" method="_on_CameraDetector_body_entered"]
+[connection signal="timeout" from="GameContent/Level5/Prefabs/Timer" to="GameContent/Level5/Prefabs/Platform3" method="toggle"]
 [connection signal="timeout" from="GameContent/Level5/Prefabs/Timer" to="GameContent/Level5/Prefabs/Platform" method="toggle"]
 [connection signal="timeout" from="GameContent/Level5/Prefabs/Timer" to="GameContent/Level5/Prefabs/Platform2" method="toggle"]
 [connection signal="timeout" from="GameContent/Level5/Prefabs/Timer" to="GameContent/Level5/Prefabs/Platform4" method="toggle"]
-[connection signal="timeout" from="GameContent/Level5/Prefabs/Timer" to="GameContent/Level5/Prefabs/Platform3" method="toggle"]
 [connection signal="timeout" from="GameContent/Level6/Prefabs/Timer" to="GameContent/Level6/Prefabs/Platform" method="toggle"]
 [connection signal="timeout" from="GameContent/Level6/Prefabs/Timer" to="GameContent/Level6/Prefabs/Platform2" method="toggle"]
 [connection signal="timeout" from="GameContent/Level8/Prefabs/Timer" to="GameContent/Level8/Prefabs/MonsterSpawner" method="spawn_monster"]

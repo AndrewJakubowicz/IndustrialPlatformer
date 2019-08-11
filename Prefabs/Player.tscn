@@ -1,28 +1,99 @@
-[gd_scene load_steps=62 format=2]
+[gd_scene load_steps=69 format=2]
 
 [ext_resource path="res://Prefabs/Player.gd" type="Script" id=1]
-[ext_resource path="res://material/hurt.shader" type="Shader" id=2]
-[ext_resource path="res://assets/industrial.v2.png" type="Texture" id=3]
-[ext_resource path="res://Prefabs/character_sprites.gd" type="Script" id=4]
-[ext_resource path="res://Scripts/PlayerStateMachine.gd" type="Script" id=5]
-[ext_resource path="res://Prefabs/TakeDamageStateMachine.gd" type="Script" id=6]
-[ext_resource path="res://Prefabs/LightOccluder.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Prefabs/Sounds.gd" type="Script" id=8]
-[ext_resource path="res://assets/sound/RPG Sounds/OGG/footstep00.ogg" type="AudioStream" id=9]
-[ext_resource path="res://assets/sound/RPG Sounds/OGG/footstep01.ogg" type="AudioStream" id=10]
-[ext_resource path="res://assets/sound/RPG Sounds/OGG/footstep02.ogg" type="AudioStream" id=11]
-[ext_resource path="res://assets/sound/RPG Sounds/OGG/footstep03.ogg" type="AudioStream" id=12]
-[ext_resource path="res://assets/sound/RPG Sounds/OGG/footstep04.ogg" type="AudioStream" id=13]
-[ext_resource path="res://assets/sound/RPG Sounds/OGG/footstep05.ogg" type="AudioStream" id=14]
-[ext_resource path="res://assets/sound/RPG Sounds/OGG/footstep06.ogg" type="AudioStream" id=15]
-[ext_resource path="res://assets/sound/RPG Sounds/OGG/footstep07.ogg" type="AudioStream" id=16]
-[ext_resource path="res://assets/sound/RPG Sounds/OGG/footstep08.ogg" type="AudioStream" id=17]
-[ext_resource path="res://assets/sound/RPG Sounds/OGG/footstep09.ogg" type="AudioStream" id=18]
-[ext_resource path="res://assets/sound/Raw Foley/yogurt.wav" type="AudioStream" id=19]
-[ext_resource path="res://assets/light_01.png" type="Texture" id=20]
+[ext_resource path="res://assets/light_01.png" type="Texture" id=2]
+[ext_resource path="res://assets/particle_player.png" type="Texture" id=3]
+[ext_resource path="res://material/hurt.shader" type="Shader" id=4]
+[ext_resource path="res://assets/industrial.v2.png" type="Texture" id=5]
+[ext_resource path="res://Prefabs/character_sprites.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/PlayerStateMachine.gd" type="Script" id=7]
+[ext_resource path="res://Prefabs/TakeDamageStateMachine.gd" type="Script" id=8]
+[ext_resource path="res://Prefabs/LightOccluder.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Prefabs/Sounds.gd" type="Script" id=10]
+[ext_resource path="res://assets/sound/RPG Sounds/OGG/footstep00.ogg" type="AudioStream" id=11]
+[ext_resource path="res://assets/sound/RPG Sounds/OGG/footstep01.ogg" type="AudioStream" id=12]
+[ext_resource path="res://assets/sound/RPG Sounds/OGG/footstep02.ogg" type="AudioStream" id=13]
+[ext_resource path="res://assets/sound/RPG Sounds/OGG/footstep03.ogg" type="AudioStream" id=14]
+[ext_resource path="res://assets/sound/RPG Sounds/OGG/footstep04.ogg" type="AudioStream" id=15]
+[ext_resource path="res://assets/sound/RPG Sounds/OGG/footstep05.ogg" type="AudioStream" id=16]
+[ext_resource path="res://assets/sound/RPG Sounds/OGG/footstep06.ogg" type="AudioStream" id=17]
+[ext_resource path="res://assets/sound/RPG Sounds/OGG/footstep07.ogg" type="AudioStream" id=18]
+[ext_resource path="res://assets/sound/RPG Sounds/OGG/footstep08.ogg" type="AudioStream" id=19]
+[ext_resource path="res://assets/sound/RPG Sounds/OGG/footstep09.ogg" type="AudioStream" id=20]
+[ext_resource path="res://assets/sound/Raw Foley/yogurt.wav" type="AudioStream" id=21]
+
+[sub_resource type="Gradient" id=35]
+offsets = PoolRealArray( 0.0113379, 0.229025, 0.852608, 0.993197 )
+colors = PoolColorArray( 1, 1, 1, 0, 0.364706, 0.368627, 0.384314, 0.196078, 0.180392, 0.180392, 0.180392, 0.313726, 0.180392, 0.180392, 0.180392, 0 )
+
+[sub_resource type="GradientTexture" id=36]
+gradient = SubResource( 35 )
+
+[sub_resource type="Curve" id=37]
+max_value = 100.0
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 10.62 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=38]
+curve = SubResource( 37 )
+
+[sub_resource type="Curve" id=39]
+_data = [ Vector2( 0, 0.247 ), 0.0, 0.0, 0, 0, Vector2( 0.997638, 0.4615 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=40]
+curve = SubResource( 39 )
+
+[sub_resource type="ParticlesMaterial" id=41]
+flag_disable_z = true
+spread = 10.0
+gravity = Vector3( 0, -5, 0 )
+initial_velocity = 5.0
+angular_velocity = -30.0
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+radial_accel = 0.9
+damping = 5.0
+damping_curve = SubResource( 38 )
+scale = 0.02
+scale_curve = SubResource( 40 )
+color_ramp = SubResource( 36 )
+
+[sub_resource type="Gradient" id=45]
+offsets = PoolRealArray( 0, 0.00973236, 1 )
+colors = PoolColorArray( 1, 1, 1, 0.0745773, 1, 1, 1, 0.0196078, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=46]
+gradient = SubResource( 45 )
+
+[sub_resource type="Curve" id=47]
+_data = [ Vector2( 0, 0.9741 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=48]
+curve = SubResource( 47 )
+
+[sub_resource type="ParticlesMaterial" id=42]
+emission_shape = 2
+emission_box_extents = Vector3( 0.5, 0.5, 1 )
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale_curve = SubResource( 48 )
+color_ramp = SubResource( 46 )
+hue_variation = 1.0
+hue_variation_random = 1.0
+
+[sub_resource type="ParticlesMaterial" id=49]
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale_curve = SubResource( 48 )
+color_ramp = SubResource( 46 )
+hue_variation = -1.0
 
 [sub_resource type="ShaderMaterial" id=1]
-shader = ExtResource( 2 )
+shader = ExtResource( 4 )
 shader_param/time_factor = 18.0
 shader_param/time_running = 0.0
 shader_param/on = false
@@ -317,42 +388,6 @@ height = 2.07057
 [sub_resource type="RectangleShape2D" id=34]
 extents = Vector2( 0.678841, 3.86447 )
 
-[sub_resource type="Gradient" id=35]
-offsets = PoolRealArray( 0.0113379, 0.229025, 0.852608, 0.993197 )
-colors = PoolColorArray( 1, 1, 1, 0, 0.364706, 0.368627, 0.384314, 0.196078, 0.180392, 0.180392, 0.180392, 0.313726, 0.180392, 0.180392, 0.180392, 0 )
-
-[sub_resource type="GradientTexture" id=36]
-gradient = SubResource( 35 )
-
-[sub_resource type="Curve" id=37]
-max_value = 100.0
-_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 10.62 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=38]
-curve = SubResource( 37 )
-
-[sub_resource type="Curve" id=39]
-_data = [ Vector2( 0, 0.247 ), 0.0, 0.0, 0, 0, Vector2( 0.997638, 0.4615 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=40]
-curve = SubResource( 39 )
-
-[sub_resource type="ParticlesMaterial" id=41]
-flag_disable_z = true
-spread = 10.0
-gravity = Vector3( 0, -5, 0 )
-initial_velocity = 5.0
-angular_velocity = -30.0
-angular_velocity_random = 1.0
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-radial_accel = 0.9
-damping = 5.0
-damping_curve = SubResource( 38 )
-scale = 0.02
-scale_curve = SubResource( 40 )
-color_ramp = SubResource( 36 )
-
 [node name="Player" type="KinematicBody2D" groups=[
 "freeze",
 "reset_jump",
@@ -361,15 +396,50 @@ collision_mask = 11
 script = ExtResource( 1 )
 friction = 2.0
 
+[node name="Particles" type="Node2D" parent="."]
+
+[node name="walk_dust" type="Particles2D" parent="Particles"]
+position = Vector2( 0, 7.77407 )
+rotation = -1.43056
+amount = 20
+explosiveness = 0.13
+randomness = 1.0
+visibility_rect = Rect2( -50, -50, 100, 100 )
+local_coords = false
+process_material = SubResource( 41 )
+texture = ExtResource( 2 )
+
+[node name="power_trail" type="Particles2D" parent="Particles"]
+position = Vector2( 0, 2.09678 )
+emitting = false
+amount = 20
+lifetime = 0.1
+speed_scale = 0.1
+explosiveness = 0.38
+randomness = 1.0
+local_coords = false
+process_material = SubResource( 42 )
+texture = ExtResource( 3 )
+
+[node name="speed_trail" type="Particles2D" parent="Particles"]
+position = Vector2( 0, 2.09678 )
+amount = 20
+lifetime = 0.03
+speed_scale = 0.1
+randomness = 1.0
+local_coords = false
+process_material = SubResource( 49 )
+texture = ExtResource( 3 )
+
 [node name="character_sprites" type="Sprite" parent="."]
 material = SubResource( 1 )
-texture = ExtResource( 3 )
+texture = ExtResource( 5 )
 vframes = 4
 hframes = 8
-frame = 1
+frame = 2
 region_enabled = true
 region_rect = Rect2( 0, 256, 128, 64 )
-script = ExtResource( 4 )
+script = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 2.88067 )
@@ -390,14 +460,14 @@ active = true
 parameters/playback = SubResource( 30 )
 
 [node name="PlayerStateMachine" type="Node" parent="."]
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 
 [node name="TakeDamageStateMachine" type="Node" parent="."]
-script = ExtResource( 6 )
+script = ExtResource( 8 )
 
 [node name="AttackParticle" type="Sprite" parent="."]
 position = Vector2( 0, 1.63374 )
-texture = ExtResource( 3 )
+texture = ExtResource( 5 )
 offset = Vector2( 16, 0 )
 hframes = 5
 frame = 4
@@ -418,7 +488,7 @@ collision_mask = 536
 position = Vector2( 14.2666, 0.677803 )
 shape = SubResource( 32 )
 
-[node name="LightOccluder" parent="." instance=ExtResource( 7 )]
+[node name="LightOccluder" parent="." instance=ExtResource( 9 )]
 position = Vector2( -0.237827, -7.62939e-006 )
 
 [node name="CrushDetector" type="Area2D" parent="."]
@@ -448,74 +518,61 @@ shape = SubResource( 34 )
 
 [node name="Sounds" type="Node2D" parent="."]
 editor/display_folded = true
-script = ExtResource( 8 )
+script = ExtResource( 10 )
 
 [node name="Footstep1" type="AudioStreamPlayer" parent="Sounds"]
-stream = ExtResource( 9 )
-mix_target = 2
-bus = "Player"
-
-[node name="Footstep2" type="AudioStreamPlayer" parent="Sounds"]
-stream = ExtResource( 10 )
-mix_target = 2
-bus = "Player"
-
-[node name="Footstep3" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 11 )
 mix_target = 2
 bus = "Player"
 
-[node name="Footstep4" type="AudioStreamPlayer" parent="Sounds"]
+[node name="Footstep2" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 12 )
 mix_target = 2
 bus = "Player"
 
-[node name="Footstep5" type="AudioStreamPlayer" parent="Sounds"]
+[node name="Footstep3" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 13 )
 mix_target = 2
 bus = "Player"
 
-[node name="Footstep6" type="AudioStreamPlayer" parent="Sounds"]
+[node name="Footstep4" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 14 )
 mix_target = 2
 bus = "Player"
 
-[node name="Footstep7" type="AudioStreamPlayer" parent="Sounds"]
+[node name="Footstep5" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 15 )
 mix_target = 2
 bus = "Player"
 
-[node name="Footstep8" type="AudioStreamPlayer" parent="Sounds"]
+[node name="Footstep6" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 16 )
 mix_target = 2
 bus = "Player"
 
-[node name="Footstep9" type="AudioStreamPlayer" parent="Sounds"]
+[node name="Footstep7" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 17 )
 mix_target = 2
 bus = "Player"
 
-[node name="Footstep10" type="AudioStreamPlayer" parent="Sounds"]
+[node name="Footstep8" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 18 )
 mix_target = 2
 bus = "Player"
 
-[node name="Jump" type="AudioStreamPlayer" parent="Sounds"]
+[node name="Footstep9" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 19 )
+mix_target = 2
+bus = "Player"
+
+[node name="Footstep10" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 20 )
+mix_target = 2
+bus = "Player"
+
+[node name="Jump" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 21 )
 volume_db = -25.0
-
-[node name="Particles" type="Node2D" parent="."]
-
-[node name="walk_dust" type="Particles2D" parent="Particles"]
-position = Vector2( 0, 7.77407 )
-rotation = -1.43056
-amount = 20
-explosiveness = 0.13
-randomness = 1.0
-visibility_rect = Rect2( -50, -50, 100, 100 )
-local_coords = false
-process_material = SubResource( 41 )
-texture = ExtResource( 20 )
 [connection signal="animation_changed" from="AnimationPlayer" to="PlayerStateMachine" method="_on_AnimationPlayer_animation_changed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="PlayerStateMachine" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="got_hit" from="TakeDamageStateMachine" to="character_sprites" method="_on_TakeDamageStateMachine_got_hit"]

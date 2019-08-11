@@ -5,7 +5,6 @@ onready var anim_state = player.get_node("AnimationTree").get("parameters/playba
 onready var attack_swish = player.get_node("AttackParticle")
 onready var attack_swish_player = attack_swish.get_node("AttackAnimPlayer")
 onready var damage_state = $"../TakeDamageStateMachine"
-
 onready var audio_player = $"../Sounds"
 
 var in_air_hit_air = false

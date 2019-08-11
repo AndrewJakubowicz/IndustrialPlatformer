@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/dundah2.wav-4f957e3b4a8f666a9769eb8e346afefd.sample"
+
+[deps]
+
+source_file="res://assets/sound/death/dundah2.wav"
+dest_files=[ "res://.import/dundah2.wav-4f957e3b4a8f666a9769eb8e346afefd.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

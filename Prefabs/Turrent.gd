@@ -8,7 +8,7 @@ onready var Bullet = load("res://Prefabs/Bullet.tscn") as PackedScene
 onready var _rotated_state = 360 > abs(fmod(rotation_degrees, 360)) and abs(fmod(rotation_degrees, 360)) > 178
 onready var fire_rate_timer = $Timer
 onready var tween = $Tween
-
+onready var sound = $Sound
 enum FireMode {
 	STRAIGHT
 	GUESS_SHOT
@@ -73,4 +73,5 @@ func _on_Timer_timeout():
 	b.position = position + (Vector2(cos(global_rotation-PI/2), sin(global_rotation-PI/2)).normalized() * 10) + (direction.normalized() * gun_end_offset)
 	get_tree().get_root().add_child(b)
 	b.apply_impulse(Vector2(), direction.normalized() * bullet_speed * (-1 if _rotated_state else 1))
+	sound.play_shot()
 	start_shot_timer()

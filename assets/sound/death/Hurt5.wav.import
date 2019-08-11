@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Hurt5.wav-90489bfb24e4100dc53b91f49b289c3e.sample"
+
+[deps]
+
+source_file="res://assets/sound/death/Hurt5.wav"
+dest_files=[ "res://.import/Hurt5.wav-90489bfb24e4100dc53b91f49b289c3e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

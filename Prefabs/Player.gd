@@ -22,6 +22,8 @@ onready var camera_collider = $CameraCollider
 onready var walking_stream_player = $WalkingStreamPlayer
 onready var audio_player = $Sounds
 onready var walk_dust = $Particles/walk_dust
+onready var power_trail = $Particles/power_trail
+onready var speed_trail = $Particles/speed_trail
 
 var GRAVITY = global.GRAVITY
 const jump_buffer_amount = 0.13
@@ -149,7 +151,10 @@ func _physics_process(delta):
 
 	if state.in_air_hit_air:
 		velocity.x = clamp(velocity.x, -AIR_HORIZONTAL_SPEED, AIR_HORIZONTAL_SPEED)
+		if abs(velocity.x) == AIR_HORIZONTAL_SPEED:
+			speed_trail.emitting = true
 	else:
+		speed_trail.emitting = false
 		if velocity.x < -maxSpeed * 1.1 or velocity.x > maxSpeed * 1.1:
 			velocity.x = velocity.linear_interpolate(Vector2(sign(maxSpeed) * maxSpeed,0), friction * delta).x
 		else:
@@ -191,9 +196,11 @@ func is_grounded_state ():
 
 func turn_on_aesthetics_air_jump():
 	animation_sprite.modulate = Color("#ddda30")
+	power_trail.emitting = true
 
 func turn_off_aesthetics_air_jump():
 	animation_sprite.modulate = Color.white
+	power_trail.emitting = false
 
 # GROUPS
 
