@@ -8,10 +8,10 @@
 radius = 0.533082
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 3.43953
+radius = 4.3453
 
 [sub_resource type="CircleShape2D" id=3]
-radius = 3.42865
+radius = 5.20199
 
 [node name="Bullet" type="RigidBody2D"]
 position = Vector2( 16, -8 )
@@ -30,7 +30,7 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 rotation = 0.261799
-scale = Vector2( 0.489664, 0.489664 )
+scale = Vector2( 0.687654, 0.687654 )
 texture = ExtResource( 2 )
 
 [node name="Ground detector" type="Area2D" parent="."]

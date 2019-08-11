@@ -90,6 +90,10 @@ down={
 2d_physics/layer_9="hero_camera_move"
 2d_physics/layer_10="hero_jump_regain_hitbox"
 
+[physics]
+
+2d/default_linear_damp=0.0
+
 [rendering]
 
 environment/default_clear_color=Color( 0.113725, 0.129412, 0.176471, 1 )

@@ -51,7 +51,8 @@ var inputs = InputBuffer.new()
 func _ready():
 	pass
 
-func request_reload() :
+func request_reload():
+	get_tree().call_group("reset", "reset")
 	emit_signal("reload_checkpoint")
 	queue_free()
 
@@ -160,7 +161,6 @@ func _physics_process(delta):
 		velocity.y = 0
 	if is_on_wall():
 		velocity.x = 0
-	print(velocity.x)
 
 func _process(delta):
 	inputs.update(delta)
