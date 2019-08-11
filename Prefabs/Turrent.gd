@@ -71,7 +71,6 @@ func _on_Timer_timeout():
 	var direction = Vector2(cos(gun_top.rotation), sin(gun_top.rotation))
 	var gun_end_offset = -5 if _rotated_state else 5
 	b.position = position + (Vector2(cos(global_rotation-PI/2), sin(global_rotation-PI/2)).normalized() * 10) + (direction.normalized() * gun_end_offset)
-	# TODO figure out bullet velocities
-	get_parent().add_child(b)
+	get_tree().get_root().add_child(b)
 	b.apply_impulse(Vector2(), direction.normalized() * bullet_speed * (-1 if _rotated_state else 1))
 	start_shot_timer()
