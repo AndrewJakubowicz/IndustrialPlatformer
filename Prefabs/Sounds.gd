@@ -36,6 +36,17 @@ $jump_air3,
 $jump_air4
 ]
 
+onready var jump_recharge = [
+$jump_recharge1,
+$jump_recharge2,
+$jump_recharge3,
+$jump_recharge4
+]
+
+onready var attack = [
+$attack1,
+$attack2]
+
 onready var jump = $Jump
 
 func play_footstep():
@@ -53,4 +64,12 @@ func play_die():
 
 func play_jump_air():
 	var sound = jump_air[floor(rand_range(0, jump_air.size()))]
+	sound.play()
+
+func play_jump_recharge():
+	var sound = jump_recharge[floor(rand_range(0, jump_recharge.size()))]
+	sound.play()
+
+func play_attack():
+	var sound = attack[floor(rand_range(0, attack.size()))]
 	sound.play()

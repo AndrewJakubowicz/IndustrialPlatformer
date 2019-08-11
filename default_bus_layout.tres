@@ -1,4 +1,4 @@
-[gd_resource type="AudioBusLayout" load_steps=9 format=2]
+[gd_resource type="AudioBusLayout" load_steps=11 format=2]
 
 [sub_resource type="AudioEffectHighPassFilter" id=1]
 resource_name = "HighPassFilter"
@@ -47,6 +47,12 @@ wet = 0.2
 resource_name = "PitchShift"
 pitch_scale = 1.5
 
+[sub_resource type="AudioEffectLowPassFilter" id=11]
+resource_name = "LowPassFilter"
+
+[sub_resource type="AudioEffectPhaser" id=12]
+resource_name = "Phaser"
+
 [resource]
 bus/1/name = "Player"
 bus/1/solo = false
@@ -94,3 +100,13 @@ bus/5/mute = false
 bus/5/bypass_fx = false
 bus/5/volume_db = -10.4
 bus/5/send = "Master"
+bus/6/name = "attack"
+bus/6/solo = false
+bus/6/mute = false
+bus/6/bypass_fx = false
+bus/6/volume_db = -4.8
+bus/6/send = "Master"
+bus/6/effect/0/effect = SubResource( 11 )
+bus/6/effect/0/enabled = false
+bus/6/effect/1/effect = SubResource( 12 )
+bus/6/effect/1/enabled = true

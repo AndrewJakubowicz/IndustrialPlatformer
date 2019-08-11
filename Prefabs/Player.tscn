@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=2]
+[gd_scene load_steps=88 format=2]
 
 [ext_resource path="res://Prefabs/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/light_01.png" type="Texture" id=2]
@@ -30,10 +30,16 @@
 [ext_resource path="res://assets/sound/death/Hurt3.wav" type="AudioStream" id=28]
 [ext_resource path="res://assets/sound/death/Hurt4.wav" type="AudioStream" id=29]
 [ext_resource path="res://assets/sound/death/Hurt5.wav" type="AudioStream" id=30]
-[ext_resource path="res://assets/sound/jumprecharge/JumpPowerup1.wav" type="AudioStream" id=31]
-[ext_resource path="res://assets/sound/jumprecharge/JumpPowerup1_.wav" type="AudioStream" id=32]
-[ext_resource path="res://assets/sound/jumprecharge/JumpPowerup1__.wav" type="AudioStream" id=33]
-[ext_resource path="res://assets/sound/jumprecharge/JumpPowerup1___.wav" type="AudioStream" id=34]
+[ext_resource path="res://assets/sound/jump_air/Jump1.wav" type="AudioStream" id=31]
+[ext_resource path="res://assets/sound/jump_air/Jump2.wav" type="AudioStream" id=32]
+[ext_resource path="res://assets/sound/jump_air/Jump3.wav" type="AudioStream" id=33]
+[ext_resource path="res://assets/sound/jump_air/Jump4.wav" type="AudioStream" id=34]
+[ext_resource path="res://assets/sound/jumprecharge/JumpPowerup1.wav" type="AudioStream" id=35]
+[ext_resource path="res://assets/sound/jumprecharge/JumpPowerup1_.wav" type="AudioStream" id=36]
+[ext_resource path="res://assets/sound/jumprecharge/JumpPowerup1__.wav" type="AudioStream" id=37]
+[ext_resource path="res://assets/sound/jumprecharge/JumpPowerup1___.wav" type="AudioStream" id=38]
+[ext_resource path="res://assets/sound/RPG Sounds/trimmed/knife1.ogg" type="AudioStream" id=39]
+[ext_resource path="res://assets/sound/RPG Sounds/OGG/knifeSlice2.ogg" type="AudioStream" id=40]
 
 [sub_resource type="Gradient" id=35]
 offsets = PoolRealArray( 0.0113379, 0.229025, 0.852608, 0.993197 )
@@ -71,12 +77,12 @@ scale = 0.02
 scale_curve = SubResource( 40 )
 color_ramp = SubResource( 36 )
 
-[sub_resource type="Gradient" id=45]
-offsets = PoolRealArray( 0, 0.00973236, 1 )
-colors = PoolColorArray( 1, 1, 1, 0.0745773, 1, 1, 1, 0.0196078, 1, 1, 1, 0 )
+[sub_resource type="Gradient" id=50]
+offsets = PoolRealArray( 0.00486618, 0.0121655, 1 )
+colors = PoolColorArray( 1, 1, 1, 0.0196078, 1, 1, 1, 0.137255, 1, 1, 1, 0 )
 
 [sub_resource type="GradientTexture" id=46]
-gradient = SubResource( 45 )
+gradient = SubResource( 50 )
 
 [sub_resource type="Curve" id=47]
 _data = [ Vector2( 0, 0.9741 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
@@ -435,6 +441,7 @@ process_material = SubResource( 42 )
 texture = ExtResource( 3 )
 
 [node name="speed_trail" type="Particles2D" parent="Particles"]
+modulate = Color( 1, 1, 1, 0.215686 )
 position = Vector2( 0, 2.09678 )
 amount = 20
 lifetime = 0.03
@@ -449,7 +456,7 @@ material = SubResource( 1 )
 texture = ExtResource( 5 )
 vframes = 4
 hframes = 8
-frame = 1
+frame = 2
 region_enabled = true
 region_rect = Rect2( 0, 256, 128, 64 )
 script = ExtResource( 6 )
@@ -650,6 +657,32 @@ bus = "shot"
 stream = ExtResource( 34 )
 volume_db = -8.0
 bus = "shot"
+
+[node name="jump_recharge1" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 35 )
+bus = "Player"
+
+[node name="jump_recharge2" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 36 )
+bus = "Player"
+
+[node name="jump_recharge3" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 37 )
+bus = "Player"
+
+[node name="jump_recharge4" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 38 )
+bus = "Player"
+
+[node name="attack1" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 39 )
+pitch_scale = 1.6
+bus = "attack"
+
+[node name="attack2" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 40 )
+pitch_scale = 1.7
+bus = "attack"
 [connection signal="animation_changed" from="AnimationPlayer" to="PlayerStateMachine" method="_on_AnimationPlayer_animation_changed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="PlayerStateMachine" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="got_hit" from="TakeDamageStateMachine" to="character_sprites" method="_on_TakeDamageStateMachine_got_hit"]

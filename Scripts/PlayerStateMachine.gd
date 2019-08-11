@@ -87,6 +87,7 @@ func _enter_state(new_state, old_state):
 		STATE.ATTACK_AIR:
 			continue
 		STATE.ATTACK_GROUND,STATE.ATTACK_AIR:
+			audio_player.play_attack()
 			if player.facing_left:
 				attack_swish.scale.x = -1
 			else:
@@ -102,6 +103,7 @@ func _enter_state(new_state, old_state):
 			anim_state.travel("attack_ground")
 			attack_swish_player.play("attack_swish")
 		STATE.FALLING_CAN_AIR_JUMP:
+			audio_player.play_jump_recharge()
 			in_air_hit_air = true
 			player.turn_on_aesthetics_air_jump()
 		STATE.DEAD:
