@@ -1,4 +1,4 @@
-[gd_resource type="AudioBusLayout" load_steps=11 format=2]
+[gd_resource type="AudioBusLayout" load_steps=13 format=2]
 
 [sub_resource type="AudioEffectHighPassFilter" id=1]
 resource_name = "HighPassFilter"
@@ -52,6 +52,18 @@ resource_name = "LowPassFilter"
 
 [sub_resource type="AudioEffectPhaser" id=12]
 resource_name = "Phaser"
+
+[sub_resource type="AudioEffectDistortion" id=13]
+resource_name = "Distortion"
+mode = 2
+post_gain = 2.16
+
+[sub_resource type="AudioEffectEQ" id=14]
+resource_name = "EQ"
+band_db/32_hz = 5.3
+band_db/100_hz = 1.1
+band_db/3200_hz = 2.5
+band_db/10000_hz = 6.4
 
 [resource]
 bus/1/name = "Player"
@@ -110,3 +122,13 @@ bus/6/effect/0/effect = SubResource( 11 )
 bus/6/effect/0/enabled = false
 bus/6/effect/1/effect = SubResource( 12 )
 bus/6/effect/1/enabled = true
+bus/7/name = "enemy_die"
+bus/7/solo = false
+bus/7/mute = false
+bus/7/bypass_fx = false
+bus/7/volume_db = -2.0
+bus/7/send = "Master"
+bus/7/effect/0/effect = SubResource( 13 )
+bus/7/effect/0/enabled = true
+bus/7/effect/1/effect = SubResource( 14 )
+bus/7/effect/1/enabled = true

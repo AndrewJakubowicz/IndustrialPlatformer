@@ -1,9 +1,12 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Prefabs/Bullet.gd" type="Script" id=1]
 [ext_resource path="res://assets/pink_particleng.png" type="Texture" id=2]
 [ext_resource path="res://material/breatheShader.shader" type="Shader" id=3]
 [ext_resource path="res://Prefabs/JumpRegain.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Prefabs/SoundBullet.gd" type="Script" id=5]
+[ext_resource path="res://assets/sound/death/Hurt4.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/sound/death/Hurt5.wav" type="AudioStream" id=7]
 
 [sub_resource type="Gradient" id=5]
 colors = PoolColorArray( 1, 1, 1, 0.196078, 1, 1, 1, 0 )
@@ -34,6 +37,28 @@ radius = 4.3453
 
 [sub_resource type="CircleShape2D" id=4]
 radius = 5.20199
+
+[sub_resource type="Gradient" id=8]
+offsets = PoolRealArray( 0, 0.0170316, 0.931874 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 0.309804, 0.470588, 1, 1, 0.309804, 0.470588, 0 )
+
+[sub_resource type="GradientTexture" id=9]
+gradient = SubResource( 8 )
+
+[sub_resource type="Curve" id=10]
+_data = [ Vector2( 0, 0.8608 ), 0.0, 0.0, 0, 0, Vector2( 0.994873, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=11]
+curve = SubResource( 10 )
+
+[sub_resource type="ParticlesMaterial" id=12]
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 1.1
+scale_curve = SubResource( 11 )
+color_ramp = SubResource( 9 )
 
 [node name="Bullet" type="RigidBody2D"]
 position = Vector2( 16, -8 )
@@ -76,6 +101,28 @@ position = Vector2( 0, -9.53674e-007 )
 shape = SubResource( 4 )
 
 [node name="DestructionTimer" type="Timer" parent="."]
+
+[node name="death_particle" type="Particles2D" parent="."]
+emitting = false
+amount = 1
+lifetime = 0.4
+one_shot = true
+local_coords = false
+process_material = SubResource( 12 )
+texture = ExtResource( 2 )
+
+[node name="Sound" type="Node2D" parent="."]
+script = ExtResource( 5 )
+
+[node name="Hit1" type="AudioStreamPlayer2D" parent="Sound"]
+stream = ExtResource( 6 )
+max_distance = 200.0
+bus = "Player"
+
+[node name="Hit2" type="AudioStreamPlayer2D" parent="Sound"]
+stream = ExtResource( 7 )
+max_distance = 200.0
+bus = "Player"
 [connection signal="body_entered" from="Ground detector" to="." method="_on_Ground_detector_body_entered"]
 [connection signal="bounced_player" from="BounceHit" to="." method="_on_BounceHit_bounced_player"]
 

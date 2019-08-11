@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Prefabs/SlimeEnemy.gd" type="Script" id=1]
 [ext_resource path="res://assets/industrial.v2.png" type="Texture" id=2]
@@ -6,6 +6,13 @@
 [ext_resource path="res://Prefabs/TakeDamageStateMachine.gd" type="Script" id=4]
 [ext_resource path="res://Scripts/SlimeEnemyState.gd" type="Script" id=5]
 [ext_resource path="res://Prefabs/JumpRegain.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/light_01.png" type="Texture" id=7]
+[ext_resource path="res://Prefabs/SoundSlime.gd" type="Script" id=8]
+[ext_resource path="res://assets/sound/death/Hurt1.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/sound/death/Hurt2.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/sound/death/Hurt3.wav" type="AudioStream" id=11]
+[ext_resource path="res://assets/sound/death/Hurt4.wav" type="AudioStream" id=12]
+[ext_resource path="res://assets/sound/death/Hurt5.wav" type="AudioStream" id=13]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -70,6 +77,28 @@ tracks/0/keys = {
 [sub_resource type="CircleShape2D" id=6]
 radius = 5.39418
 
+[sub_resource type="Gradient" id=7]
+offsets = PoolRealArray( 0, 0.851582, 1 )
+colors = PoolColorArray( 0.128619, 0.0557556, 0.246094, 1, 0.203225, 0.20137, 0.207031, 0.138686, 0.137255, 0.0862745, 0.247059, 0 )
+
+[sub_resource type="GradientTexture" id=8]
+gradient = SubResource( 7 )
+
+[sub_resource type="ParticlesMaterial" id=9]
+emission_shape = 1
+emission_sphere_radius = 5.0
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 20.0
+initial_velocity_random = 0.3
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+damping = 8.45
+scale = 0.01
+color_ramp = SubResource( 8 )
+hue_variation = 0.08
+
 [node name="Enemy1" type="KinematicBody2D"]
 position = Vector2( 288, 464 )
 collision_layer = 16
@@ -123,6 +152,45 @@ shape = SubResource( 6 )
 
 [node name="DeathTimeout" type="Timer" parent="."]
 one_shot = true
+
+[node name="Death_particles" type="Particles2D" parent="."]
+position = Vector2( 8.00638, -5.53479 )
+emitting = false
+amount = 35
+one_shot = true
+speed_scale = 1.5
+explosiveness = 0.92
+local_coords = false
+process_material = SubResource( 9 )
+texture = ExtResource( 7 )
+
+[node name="Sound" type="Node2D" parent="."]
+script = ExtResource( 8 )
+
+[node name="Hurt1" type="AudioStreamPlayer2D" parent="Sound"]
+stream = ExtResource( 9 )
+max_distance = 200.0
+bus = "enemy_die"
+
+[node name="Hurt2" type="AudioStreamPlayer2D" parent="Sound"]
+stream = ExtResource( 10 )
+max_distance = 200.0
+bus = "enemy_die"
+
+[node name="Hurt3" type="AudioStreamPlayer2D" parent="Sound"]
+stream = ExtResource( 11 )
+max_distance = 200.0
+bus = "enemy_die"
+
+[node name="Hurt4" type="AudioStreamPlayer2D" parent="Sound"]
+stream = ExtResource( 12 )
+max_distance = 200.0
+bus = "enemy_die"
+
+[node name="Hurt5" type="AudioStreamPlayer2D" parent="Sound"]
+stream = ExtResource( 13 )
+max_distance = 200.0
+bus = "enemy_die"
 [connection signal="area_entered" from="Hit" to="." method="_on_Area2D_area_entered"]
 [connection signal="body_entered" from="Hit" to="." method="_on_Area2D_body_entered"]
 [connection signal="died" from="TakeDamageState" to="." method="_on_TakeDamageState_died"]

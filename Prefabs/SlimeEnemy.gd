@@ -9,6 +9,9 @@ onready var collider2 = weakref($SpikeArea2D/CollisionShape2D2)
 onready var collider3 = weakref($CollisionShape2D)
 onready var death_timer = $DeathTimeout
 
+onready var death_particles = $Death_particles
+onready var audio_player = $Sound
+
 export (float) var MAX_HEALTH = 2
 
 var speed = 50
@@ -44,6 +47,7 @@ func damage_bump(damage_source):
 	else:
 		velocity.x = max(velocity.x, 0)
 		velocity.x += 75
+	audio_player.play_hurt()
 
 func _physics_process(delta):
 	facing_left = velocity.x < 0
@@ -79,13 +83,15 @@ func _on_Area2D_area_entered(area):
 
 
 func _on_TakeDamageState_died():
+	audio_player.play_hurt()
+	death_particles.emitting = true
 	if collider1.get_ref():
 		collider1.get_ref().queue_free()
 	if collider2.get_ref():
 		collider2.get_ref().queue_free()
 	if collider3.get_ref():
 		collider3.get_ref().queue_free()
-	death_timer.start(1)
+	death_timer.start(3)
 	animation_sprite.visible = false
 	yield(death_timer, "timeout")
 	queue_free()
