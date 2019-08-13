@@ -39,3 +39,8 @@ func start():
 
 func _on_Area2D_area_entered(area):
 	start() # Replace with function body.
+
+
+
+func _on_RaceEndCollider_area_entered(area):
+	started = false
