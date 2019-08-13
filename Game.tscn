@@ -947,7 +947,7 @@ position = Vector2( -712, -720 )
 [node name="PlayerSpawner" parent="GameContent/Player" groups=[
 "player_spawner",
 ] instance=ExtResource( 14 )]
-position = Vector2( -344, -360 )
+position = Vector2( 32, -520 )
 
 [node name="SpeedTimer" type="Node2D" parent="GameContent/Player"]
 position = Vector2( 384, -144 )
@@ -1015,8 +1015,8 @@ tile_data = PoolIntArray( -4325401, 0, 0, -4325391, 0, 0, -4259878, 0, 0, -42598
 [connection signal="body_entered" from="GameContent/CameraZones/CameraDetector_1screen7" to="GameContent/CameraZones/CameraDetector_1screen7" method="_on_CameraDetector_body_entered"]
 [connection signal="area_entered" from="GameContent/CameraZones/CameraDetector_1screen8" to="GameContent/CameraZones/CameraDetector_1screen8" method="_on_CameraDetector_area_entered"]
 [connection signal="body_entered" from="GameContent/CameraZones/CameraDetector_1screen8" to="GameContent/CameraZones/CameraDetector_1screen8" method="_on_CameraDetector_body_entered"]
-[connection signal="timeout" from="GameContent/Level5/Prefabs/Timer" to="GameContent/Level5/Prefabs/Platform4" method="toggle"]
 [connection signal="timeout" from="GameContent/Level5/Prefabs/Timer" to="GameContent/Level5/Prefabs/Platform" method="toggle"]
+[connection signal="timeout" from="GameContent/Level5/Prefabs/Timer" to="GameContent/Level5/Prefabs/Platform4" method="toggle"]
 [connection signal="timeout" from="GameContent/Level5/Prefabs/Timer" to="GameContent/Level5/Prefabs/Platform3" method="toggle"]
 [connection signal="timeout" from="GameContent/Level5/Prefabs/Timer" to="GameContent/Level5/Prefabs/Platform2" method="toggle"]
 [connection signal="timeout" from="GameContent/Level6/Prefabs/Timer" to="GameContent/Level6/Prefabs/Platform" method="toggle"]
