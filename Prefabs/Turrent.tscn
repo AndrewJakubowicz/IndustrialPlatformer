@@ -11,8 +11,8 @@
 [ext_resource path="res://assets/sound/shots/Explosion6.wav" type="AudioStream" id=9]
 
 [node name="Turrent" type="Node2D" groups=[
-"unset_current_player",
 "set_current_player",
+"unset_current_player",
 ]]
 script = ExtResource( 1 )
 
@@ -35,8 +35,7 @@ region_rect = Rect2( 0, 354, 48, 7 )
 [node name="Tween" type="Tween" parent="."]
 
 [node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
-position = Vector2( -4.76837e-007, -8 )
-scale = Vector2( 0.8, 0.8 )
+scale = Vector2( 16.4, 16.4 )
 process_parent = true
 physics_process_parent = true
 

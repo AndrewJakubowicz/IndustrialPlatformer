@@ -1,4 +1,4 @@
-[gd_resource type="AudioBusLayout" load_steps=13 format=2]
+[gd_resource type="AudioBusLayout" load_steps=14 format=2]
 
 [sub_resource type="AudioEffectHighPassFilter" id=1]
 resource_name = "HighPassFilter"
@@ -64,6 +64,10 @@ band_db/32_hz = 5.3
 band_db/100_hz = 1.1
 band_db/3200_hz = 2.5
 band_db/10000_hz = 6.4
+
+[sub_resource type="AudioEffectCompressor" id=13]
+resource_name = "Compressor"
+sidechain = "shot"
 
 [resource]
 bus/1/name = "Player"
@@ -132,3 +136,11 @@ bus/7/effect/0/effect = SubResource( 11 )
 bus/7/effect/0/enabled = true
 bus/7/effect/1/effect = SubResource( 12 )
 bus/7/effect/1/enabled = true
+bus/8/name = "music"
+bus/8/solo = false
+bus/8/mute = false
+bus/8/bypass_fx = false
+bus/8/volume_db = -5.7
+bus/8/send = "Master"
+bus/8/effect/0/effect = SubResource( 13 )
+bus/8/effect/0/enabled = true

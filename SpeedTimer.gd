@@ -3,7 +3,8 @@ extends Node2D
 onready var timer = $SpeedrunTimer
 onready var label1 = $SpeedText
 onready var label2 = $SpeedText2
-
+onready var sound = $MusicLoop
+onready var endsound = $success
 
 var hours = 0
 var minutes = 0
@@ -36,11 +37,16 @@ func handle_second():
 func start():
 	print_debug("start timer")
 	started = true
+	if sound.playing:
+		return
+	sound.play()
 
 func _on_Area2D_area_entered(area):
 	start() # Replace with function body.
+	
 
 
 
 func _on_RaceEndCollider_area_entered(area):
 	started = false
+	endsound.play()
