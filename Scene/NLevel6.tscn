@@ -1,0 +1,188 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://IndustrialTileMap.tres" type="TileSet" id=1]
+[ext_resource path="res://Prefabs/spawners/PlayerSpawner.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Prefabs/Turrent.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Prefabs/Spike.tscn" type="PackedScene" id=4]
+
+[node name="Level" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+collision_layer = 72
+format = 1
+tile_data = PoolIntArray( -1900543, 0, 0, -1900542, 0, 0, -1900541, 0, 0, -1900540, 0, 0, -1900539, 0, 0, -1900538, 0, 0, -1900537, 0, 0, -1900536, 0, 0, -1900535, 0, 0, -1900534, 0, 0, -1900533, 0, 0, -1900532, 0, 0, -1900531, 0, 0, -1900530, 0, 0, -1900529, 0, 0, -1834993, 0, 0, -1769457, 0, 0, -1703921, 0, 0, -1638385, 0, 0, -1572863, 0, 0, -1572862, 0, 0, -1572849, 0, 0, -1507326, 0, 0, -1507313, 0, 0, -1441790, 0, 0, -1441777, 0, 0, -1376254, 0, 0, -1376241, 0, 0, -1310718, 0, 0, -1310705, 0, 0, -1245182, 0, 0, -1245169, 0, 0, -1179646, 0, 0, -1179633, 0, 0, -1114110, 0, 0, -1114097, 0, 0, -1048574, 0, 0, -1048561, 0, 0, -983038, 0, 0, -983025, 0, 0, -917502, 0, 0, -917489, 0, 0, -851966, 0, 0, -851953, 0, 0, -786430, 0, 0, -786417, 0, 0, -720894, 0, 0, -720881, 0, 0, -655358, 0, 0, -655345, 0, 0, -589822, 0, 0, -589809, 0, 0, -524286, 0, 0, -524273, 0, 0, -458750, 0, 0, -458737, 0, 0, -393214, 0, 0, -393201, 0, 0, -327665, 0, 0, -262129, 0, 0, -196593, 0, 0, -131057, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65521, 0, 0, -65520, 0, 0, -65519, 0, 0, -65518, 0, 0, -65517, 0, 0, -65516, 0, 0, -65515, 0, 0, -65514, 0, 0, -65513, 0, 0, -65512, 0, 0, -65511, 0, 0, -65510, 0, 0, -65509, 0, 0, -65508, 0, 0, -65507, 0, 0, -65506, 0, 0, 2, 0, 0, 15, 0, 0, 65538, 0, 0, 65551, 0, 0, 131074, 0, 0, 131087, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 196616, 0, 0, 196617, 0, 0, 196618, 0, 0, 196619, 0, 0, 196620, 0, 0, 196621, 0, 0, 196622, 0, 0, 196623, 0, 0 )
+
+[node name="Player" type="Node2D" parent="."]
+
+[node name="Checkpoints" type="Node2D" parent="Player"]
+
+[node name="PlayerSpawner" parent="Player" groups=[
+"player_spawner",
+] instance=ExtResource( 2 )]
+position = Vector2( 16, -32 )
+
+[node name="Turrent" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
+position = Vector2( 232, 32 )
+rotation = 3.14159
+fire_rate_sec = 5.0
+bullet_speed = 40.0
+override_target_path = NodePath("Position2D")
+
+[node name="Position2D" type="Position2D" parent="Turrent"]
+position = Vector2( -1.52588e-005, 48 )
+
+[node name="Turrent2" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
+position = Vector2( 216, 32 )
+rotation = 3.14159
+fire_rate_sec = 5.0
+bullet_speed = 40.0
+override_target_path = NodePath("Position2D")
+
+[node name="Position2D" type="Position2D" parent="Turrent2"]
+position = Vector2( -1.52588e-005, 48 )
+
+[node name="Turrent3" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
+position = Vector2( 200, 32 )
+rotation = 3.14159
+fire_rate_sec = 5.0
+bullet_speed = 40.0
+override_target_path = NodePath("Position2D")
+
+[node name="Position2D" type="Position2D" parent="Turrent3"]
+position = Vector2( -1.52588e-005, 48 )
+
+[node name="Turrent4" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
+position = Vector2( 184, 32 )
+rotation = 3.14159
+fire_rate_sec = 5.0
+bullet_speed = 40.0
+override_target_path = NodePath("Position2D")
+
+[node name="Position2D" type="Position2D" parent="Turrent4"]
+position = Vector2( -1.52588e-005, 48 )
+
+[node name="Turrent5" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
+position = Vector2( 168, 32 )
+rotation = 3.14159
+fire_rate_sec = 5.0
+bullet_speed = 40.0
+override_target_path = NodePath("Position2D")
+
+[node name="Position2D" type="Position2D" parent="Turrent5"]
+position = Vector2( -1.52588e-005, 48 )
+
+[node name="Turrent6" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
+position = Vector2( 152, 32 )
+rotation = 3.14159
+fire_rate_sec = 5.0
+bullet_speed = 40.0
+override_target_path = NodePath("Position2D")
+
+[node name="Position2D" type="Position2D" parent="Turrent6"]
+position = Vector2( -1.52588e-005, 48 )
+
+[node name="Turrent7" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
+position = Vector2( 136, 32 )
+rotation = 3.14159
+fire_rate_sec = 5.0
+bullet_speed = 40.0
+override_target_path = NodePath("Position2D")
+
+[node name="Position2D" type="Position2D" parent="Turrent7"]
+position = Vector2( -1.52588e-005, 48 )
+
+[node name="Turrent8" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
+position = Vector2( 120, 32 )
+rotation = 3.14159
+fire_rate_sec = 5.0
+bullet_speed = 40.0
+override_target_path = NodePath("Position2D")
+
+[node name="Position2D" type="Position2D" parent="Turrent8"]
+position = Vector2( -1.52588e-005, 48 )
+
+[node name="Turrent9" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
+position = Vector2( 104, 32 )
+rotation = 3.14159
+fire_rate_sec = 5.0
+bullet_speed = 40.0
+override_target_path = NodePath("Position2D")
+
+[node name="Position2D" type="Position2D" parent="Turrent9"]
+position = Vector2( -1.52588e-005, 48 )
+
+[node name="Turrent10" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
+position = Vector2( 88, 32 )
+rotation = 3.14159
+fire_rate_sec = 5.0
+bullet_speed = 40.0
+override_target_path = NodePath("Position2D")
+
+[node name="Position2D" type="Position2D" parent="Turrent10"]
+position = Vector2( -1.52588e-005, 48 )
+
+[node name="Turrent11" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
+position = Vector2( 72, 32 )
+rotation = 3.14159
+fire_rate_sec = 5.0
+bullet_speed = 40.0
+override_target_path = NodePath("Position2D")
+
+[node name="Position2D" type="Position2D" parent="Turrent11"]
+position = Vector2( -1.52588e-005, 48 )
+
+[node name="Turrent12" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
+position = Vector2( 56, 32 )
+rotation = 3.14159
+fire_rate_sec = 5.0
+bullet_speed = 40.0
+override_target_path = NodePath("Position2D")
+
+[node name="Position2D" type="Position2D" parent="Turrent12"]
+position = Vector2( -1.52588e-005, 48 )
+
+[node name="Spike17" parent="." instance=ExtResource( 4 )]
+position = Vector2( 144, -128 )
+rotation = -3.14159
+
+[node name="Spike11" parent="." instance=ExtResource( 4 )]
+position = Vector2( 88, -336 )
+rotation = -3.14159
+
+[node name="Spike14" parent="." instance=ExtResource( 4 )]
+position = Vector2( 144, -144 )
+rotation = -4.71239
+
+[node name="Spike10" parent="." instance=ExtResource( 4 )]
+position = Vector2( 88, -352 )
+rotation = -4.71239
+
+[node name="Spike16" parent="." instance=ExtResource( 4 )]
+position = Vector2( 128, -144 )
+rotation = -6.28319
+
+[node name="Spike13" parent="." instance=ExtResource( 4 )]
+position = Vector2( 72, -352 )
+rotation = -6.28319
+
+[node name="Spike15" parent="." instance=ExtResource( 4 )]
+position = Vector2( 128, -128 )
+rotation = -7.85398
+
+[node name="Spike12" parent="." instance=ExtResource( 4 )]
+position = Vector2( 72, -336 )
+rotation = -7.85398

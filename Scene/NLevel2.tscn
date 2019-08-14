@@ -66,7 +66,7 @@ scale = Vector2( -3.95158, 0.591577 )
 [node name="Spike3" parent="." instance=ExtResource( 5 )]
 position = Vector2( 288, -176 )
 scale = Vector2( 3.98752, 0.702255 )
-[connection signal="timeout" from="Timer" to="Platform4" method="toggle"]
 [connection signal="timeout" from="Timer" to="Platform" method="toggle"]
 [connection signal="timeout" from="Timer" to="Platform3" method="toggle"]
+[connection signal="timeout" from="Timer" to="Platform4" method="toggle"]
 [connection signal="timeout" from="Timer" to="Platform2" method="toggle"]
