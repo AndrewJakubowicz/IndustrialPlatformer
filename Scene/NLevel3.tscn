@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://IndustrialTileMap.tres" type="TileSet" id=1]
+[ext_resource path="res://Prefabs/spawners/PlayerSpawner.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Prefabs/RegainJumpNode.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Prefabs/TempPlatform.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Prefabs/Turrent.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Prefabs/Spike.tscn" type="PackedScene" id=6]
+
+[node name="Level" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+collision_layer = 72
+format = 1
+tile_data = PoolIntArray( -1179642, 0, 0, -1179641, 0, 0, -1179640, 0, 0, -1179639, 0, 0, -1179638, 0, 0, -1179637, 0, 0, -1179636, 0, 0, -1179635, 0, 0, -1179634, 0, 0, -1179633, 0, 0, -1179632, 0, 0, -1179631, 0, 0, -1179630, 0, 0, -1179629, 0, 0, -1114106, 0, 0, -1048570, 0, 0, -1048550, 0, 0, -983034, 0, 0, -983014, 0, 0, -917498, 0, 0, -917478, 0, 0, -851962, 0, 0, -851942, 0, 0, -786426, 0, 0, -786406, 0, 0, -720890, 0, 0, -720870, 0, 0, -655354, 0, 0, -655344, 0, 0, -655343, 0, 0, -655342, 0, 0, -655341, 0, 0, -655340, 0, 0, -655339, 0, 0, -655338, 0, 0, -655337, 0, 0, -655336, 0, 0, -655335, 0, 0, -655334, 0, 0, -589823, 0, 0, -589822, 0, 0, -589821, 0, 0, -589820, 0, 0, -589819, 0, 0, -589818, 0, 0, -589808, 0, 0, -524272, 0, 0, -458736, 0, 0, -393200, 0, 0, -327664, 0, 0, -262128, 0, 0, -196592, 0, 0, -131056, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0, -65528, 0, 0, -65527, 0, 0, -65526, 0, 0, -65525, 0, 0, -65524, 0, 0, -65523, 0, 0, -65522, 0, 0, -65521, 0, 0, -65520, 0, 0 )
+
+[node name="Player" type="Node2D" parent="."]
+
+[node name="Checkpoints" type="Node2D" parent="Player"]
+
+[node name="PlayerSpawner" parent="Player" groups=[
+"player_spawner",
+] instance=ExtResource( 2 )]
+position = Vector2( 16, -48 )
+
+[node name="RegainJumpNode" parent="." instance=ExtResource( 3 )]
+position = Vector2( 80, -64 )
+
+[node name="RegainJumpNode2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 368, -208 )
+
+[node name="TempPlatform" parent="." instance=ExtResource( 4 )]
+position = Vector2( 208, -80 )
+
+[node name="TempPlatform2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 208, -192 )
+
+[node name="Turrent" parent="." instance=ExtResource( 5 )]
+position = Vector2( 80, -16 )
+override_target_path = NodePath("Position2D")
+
+[node name="Position2D" type="Position2D" parent="Turrent"]
+position = Vector2( 176, -160 )
+
+[node name="Spike" parent="." instance=ExtResource( 6 )]
+position = Vector2( 96, -16 )
+scale = Vector2( 10.2, 1.84 )
+
+[node name="Spike2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 256, -160 )
+scale = Vector2( 10.2, 1.84 )

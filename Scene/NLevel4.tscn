@@ -1,0 +1,228 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://IndustrialTileMap.tres" type="TileSet" id=1]
+[ext_resource path="res://Prefabs/spawners/PlayerSpawner.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Prefabs/Turrent.tscn" type="PackedScene" id=3]
+[ext_resource path="res://PathFollow2D.gd" type="Script" id=4]
+[ext_resource path="res://Prefabs/Switch.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Prefabs/PlatformFall.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Prefabs/TempPlatform.tscn" type="PackedScene" id=7]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 63.9997, -64.0003, 0, 0, 0, 0, 63.9997, -64.0003, 0, 0, 0, 0, -0.000419617, -96, 0, 0, 0, 0, -64.0003, -63.9997, 0, 0, 0, 0, -0.000419617, -96, 0, 0, 0, 0, 63.9997, -64.0003 )
+}
+
+[node name="Level" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+collision_layer = 72
+format = 1
+tile_data = PoolIntArray( -720894, 0, 0, -720893, 0, 0, -720892, 0, 0, -720891, 0, 0, -720890, 0, 0, -720889, 0, 0, -720888, 0, 0, -720887, 0, 0, -720886, 0, 0, -720885, 0, 0, -720884, 0, 0, -720883, 0, 0, -720882, 0, 0, -720881, 0, 0, -720880, 0, 0, -720879, 0, 0, -720878, 0, 0, -720877, 0, 0, -720876, 0, 0, -720875, 0, 0, -720874, 0, 0, -720873, 0, 0, -720872, 0, 0, -720871, 0, 0, -720870, 0, 0, -720869, 0, 0, -720868, 0, 0, -720867, 0, 0, -720866, 0, 0, -720865, 0, 0, -720864, 0, 0, -720863, 0, 0, -720862, 0, 0, -720861, 0, 0, -720860, 0, 0, -720859, 0, 0, -655358, 0, 0, -655323, 0, 0, -589822, 0, 0, -589787, 0, 0, -524286, 0, 0, -524251, 0, 0, -458750, 0, 0, -458715, 0, 0, -393214, 0, 0, -393179, 0, 0, -327678, 0, 0, -327643, 0, 0, -262142, 0, 0, -262107, 0, 0, -196606, 0, 0, -196571, 0, 0, -131035, 0, 0, -8, 0, 0, -7, 0, 0, -6, 0, 0, -5, 0, 0, -4, 0, 0, -3, 0, 0, -2, 0, 0, -1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0, -65528, 0, 0, -65527, 0, 0, -65526, 0, 0, -65525, 0, 0, -65524, 0, 0, -65523, 0, 0, -65522, 0, 0, -65521, 0, 0, -65520, 0, 0, -65519, 0, 0, -65518, 0, 0, -65517, 0, 0, -65516, 0, 0, -65515, 0, 0, -65514, 0, 0, -65513, 0, 0, -65512, 0, 0, -65511, 0, 0, -65510, 0, 0, -65509, 0, 0, -65508, 0, 0, -65507, 0, 0, -65506, 0, 0, -65505, 0, 0, -65504, 0, 0, -65503, 0, 0, -65502, 0, 0, -65501, 0, 0, -65500, 0, 0, -65499, 0, 0, -65498, 0, 0, -65497, 0, 0, -65496, 0, 0, -65495, 0, 0, -65494, 0, 0, -65493, 0, 0, -65492, 0, 0, -65491, 0, 0, -65490, 0, 0, -65489, 0, 0, -65488, 0, 0, -65487, 0, 0, -65486, 0, 0, 2, 0, 0, 65538, 0, 0, 131074, 0, 0, 196610, 0, 0, 262146, 0, 0, 327682, 0, 0, 458744, 0, 0, 393218, 0, 0, 458754, 0, 0, 524290, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 0, 0, 589835, 0, 0, 589836, 0, 0, 589837, 0, 0, 589838, 0, 0, 589839, 0, 0, 589840, 0, 0, 589841, 0, 0, 589842, 0, 0, 589843, 0, 0, 589844, 0, 0, 589845, 0, 0, 589846, 0, 0, 589847, 0, 0, 589848, 0, 0, 589849, 0, 0, 589850, 0, 0, 589851, 0, 0, 589852, 0, 0, 589853, 0, 0, 589854, 0, 0, 589855, 0, 0, 589856, 0, 0, 589857, 0, 0, 589858, 0, 0, 589859, 0, 0, 589860, 0, 0, 589861, 0, 0, 786424, 0, 0, 851960, 0, 0, 917495, 0, 0, 983031, 0, 0, 1048567, 0, 0, 1114103, 0, 0, 1179638, 0, 0, 1179639, 0, 0, 1245174, 0, 0, 1310710, 0, 0, 1376246, 0, 0, 1441782, 0, 0, 1507318, 0, 0, 1572854, 0, 0, 1638390, 0, 0, 2031605, 0, 0, 2031606, 0, 0, 2097141, 0, 0, 2162677, 0, 0, 2228213, 0, 0, 2293748, 0, 0, 2359284, 0, 0, 2424820, 0, 0, 2818036, 0, 0, 2883572, 0, 0, 2949108, 0, 0, 3014644, 0, 0, 3538932, 0, 0, 3604468, 0, 0, 3670004, 0, 0, 3735540, 0, 0, 3801076, 0, 0, 3866612, 0, 0, 3932148, 0, 0, 3997685, 0, 0, 4063221, 0, 0, 4128757, 0, 0, 4194293, 0, 0, 4521974, 0, 0, 4587510, 0, 0, 4653046, 0, 0, 4718582, 0, 0, 4784119, 0, 0, 4849655, 0, 0, 5636088, 0, 0, 5701624, 0, 0, 5767160, 0, 0, 5832696, 0, 0, 5898232, 0, 0, 5963768, 0, 0, 6029304, 0, 0, 6881270, 0, 0, 6946806, 0, 0, 7012341, 0, 0, 7077877, 0, 0, 7143413, 0, 0, 7667700, 0, 0, 7733235, 0, 0, 7798771, 0, 0, 7864307, 0, 0, 7929843, 0, 0, 7995379, 0, 0, 8060915, 0, 0, 8126451, 0, 0, 8191987, 0, 0, 8257523, 0, 0, 8323059, 0, 0, 8912883, 0, 0, 8978419, 0, 0, 9043955, 0, 0, 9109491, 0, 0, 9175027, 0, 0, 9240563, 0, 0, 9306099, 0, 0, 9371635, 0, 0, 9437171, 0, 0, 9502707, 0, 0, 9568243, 0, 0, 9633780, 0, 0, 10289141, 0, 0, 10354677, 0, 0, 10420213, 0, 0, 10485750, 0, 0, 10551286, 0, 0, 10616822, 0, 0, 10682358, 0, 0, 10747894, 0, 0, 10813430, 0, 0, 10878966, 0, 0, 10944502, 0, 0, 11206647, 0, 0, 11272183, 0, 0, 11337719, 0, 0, 11403255, 0, 0, 11468791, 0, 0, 11534327, 0, 0, 11599863, 0, 0, 11665399, 0, 0, 12058615, 0, 0, 12124151, 0, 0, 12189687, 0, 0, 12255223, 0, 0, 12320758, 0, 0, 12386294, 0, 0, 12451830, 0, 0, 12517366, 0, 0, 12582902, 0, 0, 12648438, 0, 0, 12713974, 0, 0, 12779510, 0, 0, 12845046, 0, 0, 12910582, 0, 0, 13565943, 0, 0, 13631478, 0, 0, 13631479, 0, 0, 13697014, 0, 0, 13762550, 0, 0, 14745590, 0, 0, 14811125, 0, 0, 14876661, 0, 0, 14942197, 0, 0, 15007733, 0, 0, 15073269, 0, 0, 15138805, 0, 0, 15204341, 0, 0, 15269877, 0, 0, 15859701, 0, 0, 15925237, 0, 0, 15990773, 0, 0, 16056309, 0, 0, 16121845, 0, 0, 16187381, 0, 0, 16252917, 0, 0, 16318453, 0, 0, 16777204, 0, 0, 16842740, 0, 0, 16908276, 0, 0, 16973813, 0, 0, 17039349, 0, 0, 17104885, 0, 0, 17694710, 0, 0, 17694711, 0, 0, 17760246, 0, 0, 17825782, 0, 0, 17891318, 0, 0, 17956854, 0, 0, 18022389, 0, 0, 18087925, 0, 0, 18153461, 0, 0, 18218997, 0, 0, 18284533, 0, 0, 18350069, 0, 0, 18415605, 0, 0, 19529718, 0, 0, 19595254, 0, 0, 19660791, 0, 0, 19726327, 0, 0, 19791863, 0, 0, 19857399, 0, 0, 19922935, 0, 0, 19988471, 0, 0, 20054007, 0, 0, 20119543, 0, 0, 20185079, 0, 0, 20250615, 0, 0, 20316151, 0, 0, 20381687, 0, 0, 20447223, 0, 0, 20512759, 0, 0, 20578295, 0, 0 )
+
+[node name="Player" type="Node2D" parent="."]
+
+[node name="Checkpoints" type="Node2D" parent="Player"]
+
+[node name="PlayerSpawner" parent="Player" groups=[
+"player_spawner",
+] instance=ExtResource( 2 )]
+position = Vector2( 16, -32 )
+
+[node name="Turrent" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
+position = Vector2( 112, -160 )
+rotation = -3.14159
+fire_rate_sec = 0.5
+random_scatter_fire_rate = 0.5
+bullet_speed = 30.0
+mode = 1
+override_target_path = NodePath("Path2D/PathFollow2D")
+
+[node name="Path2D" type="Path2D" parent="Turrent"]
+position = Vector2( 6.86646e-005, 16 )
+curve = SubResource( 1 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Turrent/Path2D"]
+position = Vector2( 63.9997, -64.0003 )
+rotation = -2.67795
+script = ExtResource( 4 )
+
+[node name="Turrent6" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
+position = Vector2( 256, -160 )
+rotation = -3.14159
+fire_rate_sec = 0.5
+random_scatter_fire_rate = 0.5
+bullet_speed = 30.0
+mode = 1
+override_target_path = NodePath("Path2D/PathFollow2D")
+
+[node name="Path2D" type="Path2D" parent="Turrent6"]
+position = Vector2( 6.86646e-005, 16 )
+curve = SubResource( 1 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Turrent6/Path2D"]
+position = Vector2( 63.9997, -64.0003 )
+rotation = -2.67795
+script = ExtResource( 4 )
+
+[node name="Turrent8" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
+position = Vector2( 400, -160 )
+rotation = -3.14159
+fire_rate_sec = 0.5
+random_scatter_fire_rate = 0.5
+bullet_speed = 30.0
+mode = 1
+override_target_path = NodePath("Path2D/PathFollow2D")
+
+[node name="Path2D" type="Path2D" parent="Turrent8"]
+position = Vector2( 6.86646e-005, 16 )
+curve = SubResource( 1 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Turrent8/Path2D"]
+position = Vector2( 63.9997, -64.0003 )
+rotation = -2.67795
+script = ExtResource( 4 )
+
+[node name="Turrent2" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
+position = Vector2( 160, -160 )
+rotation = -3.14159
+fire_rate_sec = 0.5
+random_scatter_fire_rate = 0.5
+initial_delay = 0.5
+bullet_speed = 30.0
+mode = 1
+override_target_path = NodePath("Path2D/PathFollow2D")
+
+[node name="Path2D" type="Path2D" parent="Turrent2"]
+position = Vector2( 6.86646e-005, 16 )
+curve = SubResource( 1 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Turrent2/Path2D"]
+position = Vector2( 63.9997, -64.0003 )
+rotation = -2.67795
+script = ExtResource( 4 )
+
+[node name="Turrent4" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
+position = Vector2( 304, -160 )
+rotation = -3.14159
+fire_rate_sec = 0.5
+random_scatter_fire_rate = 0.5
+initial_delay = 0.5
+bullet_speed = 30.0
+mode = 1
+override_target_path = NodePath("Path2D/PathFollow2D")
+
+[node name="Path2D" type="Path2D" parent="Turrent4"]
+position = Vector2( 6.86646e-005, 16 )
+curve = SubResource( 1 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Turrent4/Path2D"]
+position = Vector2( 63.9997, -64.0003 )
+rotation = -2.67795
+script = ExtResource( 4 )
+
+[node name="Turrent9" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
+position = Vector2( 448, -160 )
+rotation = -3.14159
+fire_rate_sec = 0.5
+random_scatter_fire_rate = 0.5
+initial_delay = 0.5
+bullet_speed = 30.0
+mode = 1
+override_target_path = NodePath("Path2D/PathFollow2D")
+
+[node name="Path2D" type="Path2D" parent="Turrent9"]
+position = Vector2( 6.86646e-005, 16 )
+curve = SubResource( 1 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Turrent9/Path2D"]
+position = Vector2( 63.9997, -64.0003 )
+rotation = -2.67795
+script = ExtResource( 4 )
+
+[node name="Turrent3" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
+position = Vector2( 208, -160 )
+rotation = -3.14159
+fire_rate_sec = 0.5
+random_scatter_fire_rate = 0.5
+initial_delay = 1.0
+bullet_speed = 30.0
+mode = 1
+override_target_path = NodePath("Path2D/PathFollow2D")
+
+[node name="Path2D" type="Path2D" parent="Turrent3"]
+position = Vector2( 6.86646e-005, 16 )
+curve = SubResource( 1 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Turrent3/Path2D"]
+position = Vector2( 63.9997, -64.0003 )
+rotation = -2.67795
+script = ExtResource( 4 )
+
+[node name="Turrent5" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
+position = Vector2( 352, -160 )
+rotation = -3.14159
+fire_rate_sec = 0.5
+random_scatter_fire_rate = 0.5
+initial_delay = 1.0
+bullet_speed = 30.0
+mode = 1
+override_target_path = NodePath("Path2D/PathFollow2D")
+
+[node name="Path2D" type="Path2D" parent="Turrent5"]
+position = Vector2( 6.86646e-005, 16 )
+curve = SubResource( 1 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Turrent5/Path2D"]
+position = Vector2( 63.9997, -64.0003 )
+rotation = -2.67795
+script = ExtResource( 4 )
+
+[node name="Turrent7" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
+position = Vector2( 496, -160 )
+rotation = -3.14159
+fire_rate_sec = 0.5
+random_scatter_fire_rate = 0.5
+initial_delay = 1.0
+bullet_speed = 30.0
+mode = 1
+override_target_path = NodePath("Path2D/PathFollow2D")
+
+[node name="Path2D" type="Path2D" parent="Turrent7"]
+position = Vector2( 6.86646e-005, 16 )
+curve = SubResource( 1 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Turrent7/Path2D"]
+position = Vector2( 63.9997, -64.0003 )
+rotation = -2.67795
+script = ExtResource( 4 )
+
+[node name="Switch" parent="." instance=ExtResource( 5 )]
+position = Vector2( 576, -16 )
+one_switch = true
+
+[node name="Platform" parent="." instance=ExtResource( 6 )]
+position = Vector2( 48, -16 )
+
+[node name="Platform2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 112, 112 )
+
+[node name="Platform3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 208, 112 )
+
+[node name="Platform4" parent="." instance=ExtResource( 6 )]
+position = Vector2( 304, 112 )
+
+[node name="TempPlatform" parent="." instance=ExtResource( 7 )]
+position = Vector2( -32, -32 )

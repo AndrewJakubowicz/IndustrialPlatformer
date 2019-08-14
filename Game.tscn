@@ -22,35 +22,35 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 176, 136 )
 
-[sub_resource type="RectangleShape2D" id=10]
-extents = Vector2( 344, 96 )
-
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 176, 120 )
+extents = Vector2( 344, 96 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 176, 120 )
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 176, 240 )
+extents = Vector2( 176, 120 )
 
 [sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 176, 240 )
+
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 408, 176 )
 
-[sub_resource type="Curve2D" id=6]
+[sub_resource type="Curve2D" id=7]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 71.9997, -128, 0, 0, 0, 0, -72.0003, -128, 0, 0, 0, 0, 71.9997, -128 )
 }
 
-[sub_resource type="Curve2D" id=7]
+[sub_resource type="Curve2D" id=8]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 96.0002, -128, 0, 0, 0, 0, -112, -128, 0, 0, 0, 0, 96.0002, -128 )
 }
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 24, 96 )
 
-[sub_resource type="RectangleShape2D" id=9]
+[sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 72, 48 )
 
 [node name="Game" type="Node"]
@@ -108,7 +108,7 @@ collision_mask = 256
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameContent/CameraZones/CameraDetector_1screen10"]
-shape = SubResource( 10 )
+shape = SubResource( 2 )
 
 [node name="CameraDetector_1screen9" type="Area2D" parent="GameContent/CameraZones"]
 modulate = Color( 0.811765, 0.811765, 0.811765, 0.32549 )
@@ -119,7 +119,7 @@ collision_mask = 256
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameContent/CameraZones/CameraDetector_1screen9"]
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="CameraDetector_1screen3" type="Area2D" parent="GameContent/CameraZones"]
 modulate = Color( 0.811765, 0.811765, 0.811765, 0.32549 )
@@ -165,7 +165,7 @@ collision_mask = 256
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameContent/CameraZones/CameraDetector_1screen5"]
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="CameraDetector_1screen7" type="Area2D" parent="GameContent/CameraZones"]
 modulate = Color( 0.811765, 0.811765, 0.811765, 0.32549 )
@@ -176,7 +176,7 @@ collision_mask = 256
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameContent/CameraZones/CameraDetector_1screen7"]
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="CameraDetector_1screen8" type="Area2D" parent="GameContent/CameraZones"]
 modulate = Color( 0.811765, 0.811765, 0.811765, 0.32549 )
@@ -187,7 +187,7 @@ collision_mask = 256
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameContent/CameraZones/CameraDetector_1screen8"]
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="Level1" type="Node2D" parent="GameContent"]
 
@@ -927,7 +927,7 @@ override_target_path = NodePath("../Path2D2/PathFollow2D")
 [node name="Path2D2" type="Path2D" parent="GameContent/Level8/Prefabs"]
 position = Vector2( -488, -1008 )
 rotation = -3.14159
-curve = SubResource( 6 )
+curve = SubResource( 7 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="GameContent/Level8/Prefabs/Path2D2"]
 position = Vector2( 71.9997, -128 )
@@ -937,7 +937,7 @@ script = ExtResource( 12 )
 [node name="Path2D" type="Path2D" parent="GameContent/Level8/Prefabs"]
 position = Vector2( -496, -640 )
 rotation = -1.90735e-006
-curve = SubResource( 7 )
+curve = SubResource( 8 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="GameContent/Level8/Prefabs/Path2D"]
 position = Vector2( 96.0002, -128 )
@@ -1116,7 +1116,7 @@ collision_layer = 0
 collision_mask = 256
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameContent/Player/SpeedTimer/Area2D"]
-shape = SubResource( 8 )
+shape = SubResource( 9 )
 
 [node name="RaceEndCollider" type="Area2D" parent="GameContent/Player/SpeedTimer"]
 position = Vector2( -1112, -712 )
@@ -1124,7 +1124,7 @@ collision_layer = 0
 collision_mask = 256
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameContent/Player/SpeedTimer/RaceEndCollider"]
-shape = SubResource( 9 )
+shape = SubResource( 10 )
 
 [node name="MusicLoop" type="AudioStreamPlayer" parent="GameContent/Player/SpeedTimer"]
 stream = ExtResource( 16 )
@@ -1158,10 +1158,10 @@ tile_data = PoolIntArray( -4325401, 0, 0, -4325391, 0, 0, -4259878, 0, 0, -42598
 [connection signal="body_entered" from="GameContent/CameraZones/CameraDetector_1screen7" to="GameContent/CameraZones/CameraDetector_1screen7" method="_on_CameraDetector_body_entered"]
 [connection signal="area_entered" from="GameContent/CameraZones/CameraDetector_1screen8" to="GameContent/CameraZones/CameraDetector_1screen8" method="_on_CameraDetector_area_entered"]
 [connection signal="body_entered" from="GameContent/CameraZones/CameraDetector_1screen8" to="GameContent/CameraZones/CameraDetector_1screen8" method="_on_CameraDetector_body_entered"]
-[connection signal="timeout" from="GameContent/Level5/Prefabs/Timer" to="GameContent/Level5/Prefabs/Platform" method="toggle"]
-[connection signal="timeout" from="GameContent/Level5/Prefabs/Timer" to="GameContent/Level5/Prefabs/Platform2" method="toggle"]
-[connection signal="timeout" from="GameContent/Level5/Prefabs/Timer" to="GameContent/Level5/Prefabs/Platform3" method="toggle"]
 [connection signal="timeout" from="GameContent/Level5/Prefabs/Timer" to="GameContent/Level5/Prefabs/Platform4" method="toggle"]
+[connection signal="timeout" from="GameContent/Level5/Prefabs/Timer" to="GameContent/Level5/Prefabs/Platform" method="toggle"]
+[connection signal="timeout" from="GameContent/Level5/Prefabs/Timer" to="GameContent/Level5/Prefabs/Platform3" method="toggle"]
+[connection signal="timeout" from="GameContent/Level5/Prefabs/Timer" to="GameContent/Level5/Prefabs/Platform2" method="toggle"]
 [connection signal="timeout" from="GameContent/Level6/Prefabs/Timer" to="GameContent/Level6/Prefabs/Platform" method="toggle"]
 [connection signal="timeout" from="GameContent/Level6/Prefabs/Timer" to="GameContent/Level6/Prefabs/Platform2" method="toggle"]
 [connection signal="timeout" from="GameContent/Level8/Prefabs/Timer" to="GameContent/Level8/Prefabs/MonsterSpawner" method="spawn_monster"]

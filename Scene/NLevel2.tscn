@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://IndustrialTileMap.tres" type="TileSet" id=1]
+[ext_resource path="res://Prefabs/spawners/PlayerSpawner.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Prefabs/TempPlatform.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Prefabs/PlatformFall.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Prefabs/Spike.tscn" type="PackedScene" id=5]
+
+[node name="Level" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+collision_layer = 72
+format = 1
+tile_data = PoolIntArray( -1376234, 0, 0, -1310698, 0, 0, -1245162, 0, 0, -1179626, 0, 0, -1114098, 0, 0, -1114097, 0, 0, -1114096, 0, 0, -1114095, 0, 0, -1114094, 0, 0, -1114090, 0, 0, -1048562, 0, 0, -1048554, 0, 0, -983026, 0, 0, -983018, 0, 0, -917490, 0, 0, -917482, 0, 0, -851954, 0, 0, -851946, 0, 0, -786418, 0, 0, -786410, 0, 0, -720882, 0, 0, -720878, 0, 0, -720877, 0, 0, -720876, 0, 0, -720875, 0, 0, -720874, 0, 0, -655346, 0, 0, -589810, 0, 0, -524274, 0, 0, -458738, 0, 0, -393202, 0, 0, -393192, 0, 0, -393191, 0, 0, -393190, 0, 0, -327666, 0, 0, -262130, 0, 0, -196594, 0, 0, -131058, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0, -65528, 0, 0, -65527, 0, 0, -65526, 0, 0, -65525, 0, 0, -65524, 0, 0, -65523, 0, 0, -65522, 0, 0, -65521, 0, 0, -65520, 0, 0, -65519, 0, 0, -65518, 0, 0, -65517, 0, 0, -65516, 0, 0, -65515, 0, 0, -65514, 0, 0 )
+
+[node name="Player" type="Node2D" parent="."]
+
+[node name="Checkpoints" type="Node2D" parent="Player"]
+
+[node name="PlayerSpawner" parent="Player" groups=[
+"player_spawner",
+] instance=ExtResource( 2 )]
+position = Vector2( 9.52179, -49.6372 )
+
+[node name="TempPlatform" parent="." instance=ExtResource( 3 )]
+position = Vector2( 112, -160 )
+
+[node name="TempPlatform2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 32, -192 )
+
+[node name="Platform" parent="." instance=ExtResource( 4 )]
+position = Vector2( 112, -64 )
+
+[node name="Platform2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 192, -112 )
+
+[node name="Platform3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 112, -240 )
+
+[node name="Platform4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 192, -288 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.7
+autostart = true
+
+[node name="TempPlatform3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 288, -288 )
+
+[node name="TempPlatform4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 288, -192 )
+
+[node name="TempPlatform5" parent="." instance=ExtResource( 3 )]
+position = Vector2( 288, -96 )
+
+[node name="Spike" parent="." instance=ExtResource( 5 )]
+position = Vector2( 240, -16 )
+scale = Vector2( 8.11422, 4.25398 )
+
+[node name="Spike2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 288, -272 )
+scale = Vector2( -3.95158, 0.591577 )
+
+[node name="Spike3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 288, -176 )
+scale = Vector2( 3.98752, 0.702255 )
+[connection signal="timeout" from="Timer" to="Platform4" method="toggle"]
+[connection signal="timeout" from="Timer" to="Platform" method="toggle"]
+[connection signal="timeout" from="Timer" to="Platform2" method="toggle"]
+[connection signal="timeout" from="Timer" to="Platform3" method="toggle"]
