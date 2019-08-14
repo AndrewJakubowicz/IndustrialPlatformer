@@ -229,7 +229,7 @@ func _on_CrushDetector_body_entered(body):
 
 func _on_SpikeDetector_body_entered(body):
 	var isFloorSpike = body.rotation_degrees < 3 and body.rotation_degrees > -3
-	if (is_on_floor() or velocity.y <= 0) and isFloorSpike:
+	if velocity.y < 0 and isFloorSpike:
 		return
 	player_hit(MAX_HEALTH)
 #

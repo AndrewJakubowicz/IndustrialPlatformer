@@ -34,11 +34,6 @@ region_rect = Rect2( 0, 354, 48, 7 )
 
 [node name="Tween" type="Tween" parent="."]
 
-[node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
-scale = Vector2( 16.4, 16.4 )
-process_parent = true
-physics_process_parent = true
-
 [node name="Sound" type="Node2D" parent="."]
 script = ExtResource( 3 )
 

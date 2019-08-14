@@ -41,27 +41,27 @@
 [ext_resource path="res://assets/sound/RPG Sounds/trimmed/knife1.ogg" type="AudioStream" id=39]
 [ext_resource path="res://assets/sound/RPG Sounds/OGG/knifeSlice2.ogg" type="AudioStream" id=40]
 
-[sub_resource type="Gradient" id=35]
+[sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0.0113379, 0.229025, 0.852608, 0.993197 )
 colors = PoolColorArray( 1, 1, 1, 0, 0.364706, 0.368627, 0.384314, 0.196078, 0.180392, 0.180392, 0.180392, 0.313726, 0.180392, 0.180392, 0.180392, 0 )
 
-[sub_resource type="GradientTexture" id=36]
-gradient = SubResource( 35 )
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
 
-[sub_resource type="Curve" id=37]
+[sub_resource type="Curve" id=3]
 max_value = 100.0
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 10.62 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=38]
-curve = SubResource( 37 )
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
 
-[sub_resource type="Curve" id=39]
+[sub_resource type="Curve" id=5]
 _data = [ Vector2( 0, 0.247 ), 0.0, 0.0, 0, 0, Vector2( 0.997638, 0.4615 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=40]
-curve = SubResource( 39 )
+[sub_resource type="CurveTexture" id=6]
+curve = SubResource( 5 )
 
-[sub_resource type="ParticlesMaterial" id=41]
+[sub_resource type="ParticlesMaterial" id=7]
 flag_disable_z = true
 spread = 10.0
 gravity = Vector3( 0, -5, 0 )
@@ -72,46 +72,46 @@ orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 radial_accel = 0.9
 damping = 5.0
-damping_curve = SubResource( 38 )
+damping_curve = SubResource( 4 )
 scale = 0.02
-scale_curve = SubResource( 40 )
-color_ramp = SubResource( 36 )
+scale_curve = SubResource( 6 )
+color_ramp = SubResource( 2 )
 
-[sub_resource type="Gradient" id=50]
+[sub_resource type="Gradient" id=8]
 offsets = PoolRealArray( 0.00486618, 0.0121655, 1 )
 colors = PoolColorArray( 1, 1, 1, 0.0196078, 1, 1, 1, 0.137255, 1, 1, 1, 0 )
 
-[sub_resource type="GradientTexture" id=46]
-gradient = SubResource( 50 )
+[sub_resource type="GradientTexture" id=9]
+gradient = SubResource( 8 )
 
-[sub_resource type="Curve" id=47]
+[sub_resource type="Curve" id=10]
 _data = [ Vector2( 0, 0.9741 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=48]
-curve = SubResource( 47 )
+[sub_resource type="CurveTexture" id=11]
+curve = SubResource( 10 )
 
-[sub_resource type="ParticlesMaterial" id=42]
+[sub_resource type="ParticlesMaterial" id=12]
 emission_shape = 2
 emission_box_extents = Vector3( 0.5, 0.5, 1 )
 flag_disable_z = true
 gravity = Vector3( 0, 0, 0 )
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-scale_curve = SubResource( 48 )
-color_ramp = SubResource( 46 )
+scale_curve = SubResource( 11 )
+color_ramp = SubResource( 9 )
 hue_variation = 1.0
 hue_variation_random = 1.0
 
-[sub_resource type="ParticlesMaterial" id=49]
+[sub_resource type="ParticlesMaterial" id=13]
 flag_disable_z = true
 gravity = Vector3( 0, 0, 0 )
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-scale_curve = SubResource( 48 )
-color_ramp = SubResource( 46 )
+scale_curve = SubResource( 11 )
+color_ramp = SubResource( 9 )
 hue_variation = -1.0
 
-[sub_resource type="ShaderMaterial" id=1]
+[sub_resource type="ShaderMaterial" id=14]
 shader = ExtResource( 4 )
 shader_param/time_factor = 18.0
 shader_param/time_running = 0.0
@@ -119,11 +119,11 @@ shader_param/on = false
 shader_param/flash_color = Plane( 0.4, 0.1, 0.2, 0 )
 shader_param/scale_up = Vector2( 0.3, 0.1 )
 
-[sub_resource type="CapsuleShape2D" id=2]
+[sub_resource type="CapsuleShape2D" id=15]
 radius = 4.09283
 height = 2.12419
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=16]
 length = 0.8
 loop = true
 step = 0.05
@@ -157,7 +157,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=17]
 length = 0.3
 step = 0.06
 tracks/0/type = "value"
@@ -173,7 +173,7 @@ tracks/0/keys = {
 "values": [ 24, 25, 26, 27 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=18]
 tracks/0/type = "value"
 tracks/0/path = NodePath("character_sprites:frame")
 tracks/0/interp = 1
@@ -211,7 +211,7 @@ tracks/2/keys = {
 "values": [ 0.0, -90.0 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=19]
 length = 1.4
 loop = true
 tracks/0/type = "value"
@@ -251,7 +251,7 @@ tracks/2/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=20]
 length = 0.2
 loop = true
 tracks/0/type = "value"
@@ -267,7 +267,7 @@ tracks/0/keys = {
 "values": [ 9 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=21]
 length = 0.12
 step = 0.04
 tracks/0/type = "value"
@@ -283,81 +283,81 @@ tracks/0/keys = {
 "values": [ 4, 5, 6 ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=9]
+[sub_resource type="AnimationNodeAnimation" id=22]
 animation = "attack"
 
-[sub_resource type="AnimationNodeAnimation" id=10]
+[sub_resource type="AnimationNodeAnimation" id=23]
 animation = "attack"
 
-[sub_resource type="AnimationNodeAnimation" id=11]
+[sub_resource type="AnimationNodeAnimation" id=24]
 animation = "dead"
 
-[sub_resource type="AnimationNodeAnimation" id=12]
+[sub_resource type="AnimationNodeAnimation" id=25]
 animation = "idle"
 
-[sub_resource type="AnimationNodeAnimation" id=13]
+[sub_resource type="AnimationNodeAnimation" id=26]
 animation = "jump"
 
-[sub_resource type="AnimationNodeAnimation" id=14]
+[sub_resource type="AnimationNodeAnimation" id=27]
 animation = "land"
 
-[sub_resource type="AnimationNodeAnimation" id=15]
+[sub_resource type="AnimationNodeAnimation" id=28]
 animation = "Run"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+[sub_resource type="AnimationNodeStateMachineTransition" id=29]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+[sub_resource type="AnimationNodeStateMachineTransition" id=30]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+[sub_resource type="AnimationNodeStateMachineTransition" id=31]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+[sub_resource type="AnimationNodeStateMachineTransition" id=32]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+[sub_resource type="AnimationNodeStateMachineTransition" id=33]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+[sub_resource type="AnimationNodeStateMachineTransition" id=34]
 switch_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+[sub_resource type="AnimationNodeStateMachineTransition" id=35]
 switch_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+[sub_resource type="AnimationNodeStateMachineTransition" id=36]
 
-[sub_resource type="GDScript" id=24]
+[sub_resource type="GDScript" id=37]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+[sub_resource type="AnimationNodeStateMachineTransition" id=38]
 switch_mode = 2
-script = SubResource( 24 )
+script = SubResource( 37 )
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+[sub_resource type="AnimationNodeStateMachineTransition" id=39]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=27]
-switch_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=28]
+[sub_resource type="AnimationNodeStateMachineTransition" id=40]
 switch_mode = 2
 
-[sub_resource type="AnimationNodeStateMachine" id=29]
-states/attack/node = SubResource( 9 )
+[sub_resource type="AnimationNodeStateMachineTransition" id=41]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id=42]
+states/attack/node = SubResource( 22 )
 states/attack/position = Vector2( 616, -58 )
-states/attack_ground/node = SubResource( 10 )
+states/attack_ground/node = SubResource( 23 )
 states/attack_ground/position = Vector2( 415, 243 )
-states/dead/node = SubResource( 11 )
+states/dead/node = SubResource( 24 )
 states/dead/position = Vector2( 644, 83 )
-states/idle/node = SubResource( 12 )
+states/idle/node = SubResource( 25 )
 states/idle/position = Vector2( 180, 90 )
-states/jump/node = SubResource( 13 )
+states/jump/node = SubResource( 26 )
 states/jump/position = Vector2( 415, -58 )
-states/land/node = SubResource( 14 )
+states/land/node = SubResource( 27 )
 states/land/position = Vector2( 180, -58 )
-states/run/node = SubResource( 15 )
+states/run/node = SubResource( 28 )
 states/run/position = Vector2( 422, 96 )
-transitions = [ "idle", "run", SubResource( 16 ), "run", "idle", SubResource( 17 ), "idle", "jump", SubResource( 18 ), "run", "jump", SubResource( 19 ), "jump", "land", SubResource( 20 ), "land", "run", SubResource( 21 ), "land", "idle", SubResource( 22 ), "run", "attack_ground", SubResource( 23 ), "attack_ground", "run", SubResource( 25 ), "jump", "attack", SubResource( 26 ), "attack", "jump", SubResource( 27 ), "attack_ground", "idle", SubResource( 28 ) ]
+transitions = [ "idle", "run", SubResource( 29 ), "run", "idle", SubResource( 30 ), "idle", "jump", SubResource( 31 ), "run", "jump", SubResource( 32 ), "jump", "land", SubResource( 33 ), "land", "run", SubResource( 34 ), "land", "idle", SubResource( 35 ), "run", "attack_ground", SubResource( 36 ), "attack_ground", "run", SubResource( 38 ), "jump", "attack", SubResource( 39 ), "attack", "jump", SubResource( 40 ), "attack_ground", "idle", SubResource( 41 ) ]
 start_node = "idle"
 graph_offset = Vector2( 15, -54 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=30]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=43]
 
-[sub_resource type="Animation" id=31]
+[sub_resource type="Animation" id=44]
 length = 0.3
 step = 0.08
 tracks/0/type = "value"
@@ -397,14 +397,14 @@ tracks/2/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="RectangleShape2D" id=32]
+[sub_resource type="RectangleShape2D" id=45]
 extents = Vector2( 11.4104, 5.797 )
 
-[sub_resource type="CapsuleShape2D" id=33]
+[sub_resource type="CapsuleShape2D" id=46]
 radius = 3.85967
 height = 2.07057
 
-[sub_resource type="RectangleShape2D" id=34]
+[sub_resource type="RectangleShape2D" id=47]
 extents = Vector2( 0.678841, 3.86447 )
 
 [node name="Player" type="KinematicBody2D" groups=[
@@ -425,7 +425,7 @@ explosiveness = 0.13
 randomness = 1.0
 visibility_rect = Rect2( -50, -50, 100, 100 )
 local_coords = false
-process_material = SubResource( 41 )
+process_material = SubResource( 7 )
 texture = ExtResource( 2 )
 
 [node name="power_trail" type="Particles2D" parent="Particles"]
@@ -437,7 +437,7 @@ speed_scale = 0.1
 explosiveness = 0.38
 randomness = 1.0
 local_coords = false
-process_material = SubResource( 42 )
+process_material = SubResource( 12 )
 texture = ExtResource( 3 )
 
 [node name="speed_trail" type="Particles2D" parent="Particles"]
@@ -448,11 +448,11 @@ lifetime = 0.03
 speed_scale = 0.1
 randomness = 1.0
 local_coords = false
-process_material = SubResource( 49 )
+process_material = SubResource( 13 )
 texture = ExtResource( 3 )
 
 [node name="character_sprites" type="Sprite" parent="."]
-material = SubResource( 1 )
+material = SubResource( 14 )
 texture = ExtResource( 5 )
 vframes = 4
 hframes = 8
@@ -463,21 +463,21 @@ script = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 2.88067 )
-shape = SubResource( 2 )
+shape = SubResource( 15 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Run = SubResource( 3 )
-anims/attack = SubResource( 4 )
-anims/dead = SubResource( 5 )
-anims/idle = SubResource( 6 )
-anims/jump = SubResource( 7 )
-anims/land = SubResource( 8 )
+anims/Run = SubResource( 16 )
+anims/attack = SubResource( 17 )
+anims/dead = SubResource( 18 )
+anims/idle = SubResource( 19 )
+anims/jump = SubResource( 20 )
+anims/land = SubResource( 21 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 29 )
+tree_root = SubResource( 42 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 30 )
+parameters/playback = SubResource( 43 )
 
 [node name="PlayerStateMachine" type="Node" parent="."]
 script = ExtResource( 7 )
@@ -495,7 +495,7 @@ region_enabled = true
 region_rect = Rect2( 64, 288, 160, 16 )
 
 [node name="AttackAnimPlayer" type="AnimationPlayer" parent="AttackParticle"]
-anims/attack_swish = SubResource( 31 )
+anims/attack_swish = SubResource( 44 )
 
 [node name="AttackParticle" type="Area2D" parent="AttackParticle"]
 position = Vector2( 0, 7.15256e-006 )
@@ -506,7 +506,7 @@ collision_mask = 536
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackParticle/AttackParticle"]
 position = Vector2( 14.2666, 0.677803 )
-shape = SubResource( 32 )
+shape = SubResource( 45 )
 
 [node name="LightOccluder" parent="." instance=ExtResource( 9 )]
 position = Vector2( -0.237827, -7.62939e-006 )
@@ -517,7 +517,7 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CrushDetector"]
 position = Vector2( 0, 2.88067 )
-shape = SubResource( 33 )
+shape = SubResource( 46 )
 
 [node name="SpikeDetector" type="Area2D" parent="."]
 collision_layer = 0
@@ -525,7 +525,7 @@ collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeDetector"]
 position = Vector2( 0, 2.88067 )
-shape = SubResource( 33 )
+shape = SubResource( 46 )
 
 [node name="CameraCollider" type="Area2D" parent="."]
 position = Vector2( 0, 0.888543 )
@@ -534,7 +534,7 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraCollider"]
 position = Vector2( -1.68657, 1.20824 )
-shape = SubResource( 34 )
+shape = SubResource( 47 )
 
 [node name="Sounds" type="Node2D" parent="."]
 script = ExtResource( 10 )

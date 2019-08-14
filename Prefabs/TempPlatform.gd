@@ -1,6 +1,6 @@
 extends Node2D
 
-export (bool) var will_reset = true
+var will_reset = true
 export (int) var reset_time = 5
 export (float) var about_to_drop_time = 0.4
 
@@ -9,6 +9,7 @@ onready var timer = $Timer
 onready var area2d = $Area2D
 
 func reset():
+	return
 	if will_reset:
 		return
 	if platform.position_up:
