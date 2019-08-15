@@ -31,8 +31,8 @@ func _process(delta):
 		hours += 1
 
 func handle_second():
-	label1.text = "%2d:%2d:%2d:%3d" % [hours, minutes, seconds, milliseconds]
-	label2.text = "%2d:%2d:%2d:%3d" % [hours, minutes, seconds, milliseconds]
+	label1.text = "%02d:%02d:%02d:%03d" % [hours, minutes, seconds, milliseconds]
+	label2.text = "%02d:%02d:%02d:%03d" % [hours, minutes, seconds, milliseconds]
 
 func start():
 	print_debug("start timer")
