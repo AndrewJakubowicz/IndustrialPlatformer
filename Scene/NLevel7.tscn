@@ -1,0 +1,494 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://IndustrialTileMap.tres" type="TileSet" id=1]
+[ext_resource path="res://Prefabs/ScoreBall.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Prefabs/spawners/PlayerSpawner.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Prefabs/RegainJumpNode.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Prefabs/TempPlatform.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Prefabs/Spike.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Prefabs/Switch.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Prefabs/PlatformFall.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Prefabs/SlimeEnemy.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Prefabs/Turrent.tscn" type="PackedScene" id=10]
+[ext_resource path="res://PathFollow2D.gd" type="Script" id=11]
+
+[sub_resource type="Curve2D" id=11]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 0, 24, 0, 0, 0, 0, -32, -8, 0, 0, 0, 0, 0, 24 )
+}
+
+[sub_resource type="Curve2D" id=12]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 32, -7.99994, 0, 0, 0, 0, 0, 24.0001, 0, 0, 0, 0, 32, -7.99994 )
+}
+
+[sub_resource type="Curve2D" id=13]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 0, -40.0001, 0, 0, 0, 0, 32, -8.00006, 0, 0, 0, 0, 0, -40.0001 )
+}
+
+[sub_resource type="Curve2D" id=14]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -32, -10.0001, 0, 0, 0, 0, 0, -42.0001, 0, 0, 0, 0, -32, -10.0001 )
+}
+
+[node name="Level" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+collision_layer = 72
+format = 1
+tile_data = PoolIntArray( -327703, 0, 0, -327702, 0, 0, -327701, 0, 0, -327700, 0, 0, -327699, 0, 0, -327698, 0, 0, -327697, 0, 0, -327696, 0, 0, -327695, 0, 0, -327694, 0, 0, -327693, 0, 0, -327692, 0, 0, -327691, 0, 0, -327690, 0, 0, -327689, 0, 0, -327688, 0, 0, -327687, 0, 0, -327686, 0, 0, -327685, 0, 0, -327684, 0, 0, -327683, 0, 0, -327682, 0, 0, -327681, 0, 0, -262167, 0, 0, -196631, 0, 0, -131095, 0, 0, -65559, 0, 0, -23, 0, 0, 65513, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 131049, 0, 0, 131066, 0, 0, 131067, 0, 0, 131068, 0, 0, 131071, 0, 0, 196585, 0, 0, 196601, 0, 0, 196602, 0, 0, 196607, 0, 0, 262121, 0, 0, 262136, 0, 0, 262137, 0, 0, 262143, 0, 0, 327657, 0, 0, 327671, 0, 0, 327672, 0, 0, 327679, 0, 0, 393193, 0, 0, 393206, 0, 0, 393207, 0, 0, 393215, 0, 0, 458729, 0, 0, 458741, 0, 0, 458742, 0, 0, 458751, 0, 0, 524265, 0, 0, 524287, 0, 0, 589801, 0, 0, 589823, 0, 0, 655337, 0, 0, 655359, 0, 0, 720873, 0, 0, 720895, 0, 0, 786409, 0, 0, 786431, 0, 0, 851945, 0, 0, 851967, 0, 0, 917481, 0, 0, 917503, 0, 0, 983017, 0, 0, 983018, 0, 0, 983019, 0, 0, 983020, 0, 0, 983021, 0, 0, 983022, 0, 0, 983023, 0, 0, 983024, 0, 0, 983025, 0, 0, 983026, 0, 0, 983027, 0, 0, 983028, 0, 0, 983029, 0, 0, 983030, 0, 0, 983039, 0, 0, 1048553, 0, 0, 1048575, 0, 0, 1114089, 0, 0, 1114111, 0, 0, 1179625, 0, 0, 1179629, 0, 0, 1179630, 0, 0, 1179631, 0, 0, 1179632, 0, 0, 1179633, 0, 0, 1179634, 0, 0, 1179647, 0, 0, 1245161, 0, 0, 1245170, 0, 0, 1245183, 0, 0, 1310697, 0, 0, 1310706, 0, 0, 1310719, 0, 0, 1376233, 0, 0, 1376242, 0, 0, 1376243, 0, 0, 1376244, 0, 0, 1376245, 0, 0, 1376246, 0, 0, 1376247, 0, 0, 1376248, 0, 0, 1376249, 0, 0, 1376250, 0, 0, 1376251, 0, 0, 1376252, 0, 0, 1376253, 0, 0, 1376254, 0, 0, 1376255, 0, 0, 1441769, 0, 0, 1441780, 0, 0, 1441789, 0, 0, 1441790, 0, 0, 1441791, 0, 0, 1507305, 0, 0, 1507327, 0, 0, 1572841, 0, 0, 1572842, 0, 0, 1572843, 0, 0, 1572844, 0, 0, 1572845, 0, 0, 1572863, 0, 0, 1638377, 0, 0, 1638381, 0, 0, 1638382, 0, 0, 1638383, 0, 0, 1638384, 0, 0, 1638388, 0, 0, 1638389, 0, 0, 1638390, 0, 0, 1638391, 0, 0, 1638392, 0, 0, 1638393, 0, 0, 1638394, 0, 0, 1638395, 0, 0, 1638396, 0, 0, 1638397, 0, 0, 1638398, 0, 0, 1638399, 0, 0, 1703913, 0, 0, 1703935, 0, 0, 1769449, 0, 0, 1769471, 0, 0, 1834985, 0, 0, 1835005, 0, 0, 1835006, 0, 0, 1835007, 0, 0, 1900521, 0, 0, 1900543, 0, 0, 1966057, 0, 0, 1966059, 0, 0, 1966079, 0, 0, 2031593, 0, 0, 2031595, 0, 0, 2031596, 0, 0, 2031597, 0, 0, 2031598, 0, 0, 2031599, 0, 0, 2031600, 0, 0, 2031601, 0, 0, 2031602, 0, 0, 2031603, 0, 0, 2031604, 0, 0, 2031605, 0, 0, 2031606, 0, 0, 2031607, 0, 0, 2031608, 0, 0, 2031609, 0, 0, 2031610, 0, 0, 2031611, 0, 0, 2031612, 0, 0, 2031615, 0, 0, 2097129, 0, 0, 2097151, 0, 0, 2162665, 0, 0, 2162687, 0, 0, 2228201, 0, 0, 2228202, 0, 0, 2228203, 0, 0, 2228204, 0, 0, 2228205, 0, 0, 2228223, 0, 0, 2293737, 0, 0, 2293756, 0, 0, 2293757, 0, 0, 2293758, 0, 0, 2293759, 0, 0, 2359273, 0, 0, 2359290, 0, 0, 2359291, 0, 0, 2359292, 0, 0, 2424809, 0, 0, 2424812, 0, 0, 2424824, 0, 0, 2424825, 0, 0, 2424826, 0, 0, 2424828, 0, 0, 2490345, 0, 0, 2490348, 0, 0, 2490358, 0, 0, 2490359, 0, 0, 2490360, 0, 0, 2490364, 0, 0, 2555881, 0, 0, 2555884, 0, 0, 2555892, 0, 0, 2555893, 0, 0, 2555894, 0, 0, 2555900, 0, 0, 2621417, 0, 0, 2621420, 0, 0, 2621426, 0, 0, 2621427, 0, 0, 2621428, 0, 0, 2621436, 0, 0, 2686953, 0, 0, 2686956, 0, 0, 2686960, 0, 0, 2686961, 0, 0, 2686962, 0, 0, 2686972, 0, 0, 2752489, 0, 0, 2752492, 0, 0, 2752493, 0, 0, 2752494, 0, 0, 2752495, 0, 0, 2752496, 0, 0, 2752508, 0, 0, 2818025, 0, 0, 2818044, 0, 0, 2818045, 0, 0, 2818046, 0, 0, 2818047, 0, 0, 2883561, 0, 0, 2883583, 0, 0, 2949097, 0, 0, 2949119, 0, 0, 3014633, 0, 0, 3014655, 0, 0, 3080169, 0, 0, 3080170, 0, 0, 3080171, 0, 0, 3080172, 0, 0, 3080176, 0, 0, 3080185, 0, 0, 3080191, 0, 0, 3145705, 0, 0, 3145711, 0, 0, 3145712, 0, 0, 3145721, 0, 0, 3145722, 0, 0, 3145727, 0, 0, 3211241, 0, 0, 3211263, 0, 0, 3276777, 0, 0, 3276799, 0, 0, 3342313, 0, 0, 3342335, 0, 0, 3407849, 0, 0, 3407871, 0, 0, 3473385, 0, 0, 3473407, 0, 0, 3538921, 0, 0, 3538943, 0, 0, 3604457, 0, 0, 3604479, 0, 0, 3669993, 0, 0, 3670015, 0, 0, 3735529, 0, 0, 3735551, 0, 0, 3801065, 0, 0, 3801071, 0, 0, 3801072, 0, 0, 3801082, 0, 0, 3801083, 0, 0, 3801087, 0, 0, 3866601, 0, 0, 3866608, 0, 0, 3866618, 0, 0, 3866623, 0, 0, 3932137, 0, 0, 3932154, 0, 0, 3932159, 0, 0, 3997673, 0, 0, 3997690, 0, 0, 3997695, 0, 0, 4063209, 0, 0, 4063226, 0, 0, 4063231, 0, 0, 4128745, 0, 0, 4128762, 0, 0, 4128767, 0, 0, 4194281, 0, 0, 4194298, 0, 0, 4194300, 0, 0, 4194301, 0, 0, 4194302, 0, 0, 4194303, 0, 0, 4259817, 0, 0, 4259834, 0, 0, 4259839, 0, 0, 4325353, 0, 0, 4325370, 0, 0, 4325375, 0, 0, 4390889, 0, 0, 4390906, 0, 0, 4390907, 0, 0, 4456425, 0, 0, 4456442, 0, 0, 4521961, 0, 0, 4521976, 0, 0, 4521977, 0, 0, 4521978, 0, 0, 4587497, 0, 0, 4587512, 0, 0, 4587514, 0, 0, 4653033, 0, 0, 4653034, 0, 0, 4653035, 0, 0, 4653036, 0, 0, 4653037, 0, 0, 4653038, 0, 0, 4653039, 0, 0, 4653040, 0, 0, 4653041, 0, 0, 4653042, 0, 0, 4653043, 0, 0, 4653044, 0, 0, 4653045, 0, 0, 4653046, 0, 0, 4653047, 0, 0, 4653048, 0, 0, 4653050, 0, 0, 4653051, 0, 0, 4653052, 0, 0, 4653053, 0, 0, 4653054, 0, 0, 4653055, 0, 0, 4587520, 0, 0 )
+
+[node name="Player" type="Node2D" parent="."]
+
+[node name="Checkpoints" type="Node2D" parent="Player"]
+
+[node name="ScoreBall" parent="Player/Checkpoints" instance=ExtResource( 2 )]
+position = Vector2( -272, 256 )
+
+[node name="ScoreBall2" parent="Player/Checkpoints" instance=ExtResource( 2 )]
+position = Vector2( -336, 720 )
+
+[node name="PlayerSpawner" parent="Player" groups=[
+"player_spawner",
+] instance=ExtResource( 3 )]
+position = Vector2( -32, -8 )
+
+[node name="Stage1" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="RegainJumpNode" parent="Stage1" instance=ExtResource( 4 )]
+position = Vector2( -320, 32 )
+
+[node name="RegainJumpNode2" parent="Stage1" instance=ExtResource( 4 )]
+position = Vector2( -96, 160 )
+
+[node name="TempPlatform5" parent="Stage1" instance=ExtResource( 5 )]
+position = Vector2( -144, 224 )
+
+[node name="TempPlatform6" parent="Stage1" instance=ExtResource( 5 )]
+position = Vector2( -128, 224 )
+
+[node name="TempPlatform7" parent="Stage1" instance=ExtResource( 5 )]
+position = Vector2( -112, 224 )
+
+[node name="TempPlatform8" parent="Stage1" instance=ExtResource( 5 )]
+position = Vector2( -96, 224 )
+
+[node name="TempPlatform9" parent="Stage1" instance=ExtResource( 5 )]
+position = Vector2( -80, 224 )
+
+[node name="TempPlatform10" parent="Stage1" instance=ExtResource( 5 )]
+position = Vector2( -64, 224 )
+
+[node name="TempPlatform11" parent="Stage1" instance=ExtResource( 5 )]
+position = Vector2( -48, 224 )
+
+[node name="TempPlatform12" parent="Stage1" instance=ExtResource( 5 )]
+position = Vector2( -32, 224 )
+
+[node name="TempPlatform3" parent="Stage1" instance=ExtResource( 5 )]
+position = Vector2( -192, 80 )
+
+[node name="TempPlatform4" parent="Stage1" instance=ExtResource( 5 )]
+position = Vector2( -240, 32 )
+
+[node name="Spikes" type="Node2D" parent="Stage1"]
+editor/display_folded = true
+
+[node name="Spike" parent="Stage1/Spikes" instance=ExtResource( 6 )]
+position = Vector2( -64, 16 )
+
+[node name="Spike2" parent="Stage1/Spikes" instance=ExtResource( 6 )]
+position = Vector2( -80, 16 )
+
+[node name="Spike3" parent="Stage1/Spikes" instance=ExtResource( 6 )]
+position = Vector2( -96, 16 )
+
+[node name="Spike4" parent="Stage1/Spikes" instance=ExtResource( 6 )]
+position = Vector2( -112, 32 )
+
+[node name="Spike5" parent="Stage1/Spikes" instance=ExtResource( 6 )]
+position = Vector2( -128, 48 )
+
+[node name="Spike6" parent="Stage1/Spikes" instance=ExtResource( 6 )]
+position = Vector2( -144, 64 )
+
+[node name="Spike7" parent="Stage1/Spikes" instance=ExtResource( 6 )]
+position = Vector2( -160, 80 )
+
+[node name="Spike8" parent="Stage1/Spikes" instance=ExtResource( 6 )]
+position = Vector2( -176, 96 )
+
+[node name="Spike11" parent="Stage1/Spikes" instance=ExtResource( 6 )]
+position = Vector2( -352, 224 )
+
+[node name="Spike12" parent="Stage1/Spikes" instance=ExtResource( 6 )]
+position = Vector2( -336, 224 )
+
+[node name="Spike13" parent="Stage1/Spikes" instance=ExtResource( 6 )]
+position = Vector2( -320, 224 )
+
+[node name="Spike14" parent="Stage1/Spikes" instance=ExtResource( 6 )]
+position = Vector2( -304, 224 )
+
+[node name="Spike15" parent="Stage1/Spikes" instance=ExtResource( 6 )]
+position = Vector2( -288, 224 )
+
+[node name="Spike16" parent="Stage1/Spikes" instance=ExtResource( 6 )]
+position = Vector2( -272, 224 )
+
+[node name="Spike17" parent="Stage1/Spikes" instance=ExtResource( 6 )]
+position = Vector2( -256, 224 )
+
+[node name="Spike18" parent="Stage1/Spikes" instance=ExtResource( 6 )]
+position = Vector2( -240, 224 )
+
+[node name="Spike19" parent="Stage1/Spikes" instance=ExtResource( 6 )]
+position = Vector2( -224, 224 )
+
+[node name="Spike20" parent="Stage1/Spikes" instance=ExtResource( 6 )]
+position = Vector2( -208, 224 )
+
+[node name="Spike21" parent="Stage1/Spikes" instance=ExtResource( 6 )]
+position = Vector2( -192, 224 )
+
+[node name="Spike36" parent="Stage1/Spikes" instance=ExtResource( 6 )]
+position = Vector2( -176, 224 )
+
+[node name="Spike37" parent="Stage1/Spikes" instance=ExtResource( 6 )]
+position = Vector2( -160, 224 )
+
+[node name="Spike22" parent="Stage1/Spikes" instance=ExtResource( 6 )]
+position = Vector2( -32, 320 )
+
+[node name="Spike23" parent="Stage1/Spikes" instance=ExtResource( 6 )]
+position = Vector2( -48, 320 )
+
+[node name="Spike24" parent="Stage1/Spikes" instance=ExtResource( 6 )]
+position = Vector2( -64, 320 )
+
+[node name="Spike25" parent="Stage1/Spikes" instance=ExtResource( 6 )]
+position = Vector2( -80, 320 )
+
+[node name="Spike26" parent="Stage1/Spikes" instance=ExtResource( 6 )]
+position = Vector2( -96, 320 )
+
+[node name="Spike27" parent="Stage1/Spikes" instance=ExtResource( 6 )]
+position = Vector2( -112, 320 )
+
+[node name="Spike28" parent="Stage1/Spikes" instance=ExtResource( 6 )]
+position = Vector2( -128, 320 )
+
+[node name="Spike29" parent="Stage1/Spikes" instance=ExtResource( 6 )]
+position = Vector2( -144, 320 )
+
+[node name="Spike30" parent="Stage1/Spikes" instance=ExtResource( 6 )]
+position = Vector2( -160, 320 )
+
+[node name="Spike31" parent="Stage1/Spikes" instance=ExtResource( 6 )]
+position = Vector2( -176, 320 )
+
+[node name="Spike32" parent="Stage1/Spikes" instance=ExtResource( 6 )]
+position = Vector2( -192, 320 )
+
+[node name="Spike33" parent="Stage1/Spikes" instance=ExtResource( 6 )]
+position = Vector2( -208, 320 )
+
+[node name="Stage2" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="Spike38" parent="Stage2" instance=ExtResource( 6 )]
+position = Vector2( -352, 368 )
+
+[node name="Spike40" parent="Stage2" instance=ExtResource( 6 )]
+position = Vector2( -288, 384 )
+
+[node name="Spike39" parent="Stage2" instance=ExtResource( 6 )]
+position = Vector2( -320, 368 )
+
+[node name="Spike41" parent="Stage2" instance=ExtResource( 6 )]
+position = Vector2( -256, 384 )
+
+[node name="Slimeswitch" type="Node2D" parent="Stage2"]
+editor/display_folded = true
+
+[node name="Switch" parent="Stage2/Slimeswitch" instance=ExtResource( 7 )]
+position = Vector2( -32, 384 )
+one_switch = true
+
+[node name="Platform" parent="Stage2/Slimeswitch" instance=ExtResource( 8 )]
+position = Vector2( -160, 352 )
+
+[node name="Platform2" parent="Stage2/Slimeswitch" instance=ExtResource( 8 )]
+position = Vector2( -144, 352 )
+
+[node name="Platform3" parent="Stage2/Slimeswitch" instance=ExtResource( 8 )]
+position = Vector2( -128, 352 )
+
+[node name="Platform4" parent="Stage2/Slimeswitch" instance=ExtResource( 8 )]
+position = Vector2( -112, 352 )
+
+[node name="Platform5" parent="Stage2/Slimeswitch" instance=ExtResource( 8 )]
+position = Vector2( -96, 352 )
+
+[node name="Platform6" parent="Stage2/Slimeswitch" instance=ExtResource( 8 )]
+position = Vector2( -80, 352 )
+
+[node name="Platform7" parent="Stage2/Slimeswitch" instance=ExtResource( 8 )]
+position = Vector2( -176, 352 )
+
+[node name="Platform9" parent="Stage2/Slimeswitch" instance=ExtResource( 8 )]
+position = Vector2( -64, 352 )
+
+[node name="Platform10" parent="Stage2/Slimeswitch" instance=ExtResource( 8 )]
+position = Vector2( -208, 384 )
+
+[node name="Platform11" parent="Stage2/Slimeswitch" instance=ExtResource( 8 )]
+position = Vector2( -224, 384 )
+
+[node name="Platform12" parent="Stage2/Slimeswitch" instance=ExtResource( 8 )]
+position = Vector2( -240, 384 )
+
+[node name="Enemy2" parent="Stage2/Slimeswitch" instance=ExtResource( 9 )]
+position = Vector2( -176, 352 )
+
+[node name="Enemy3" parent="Stage2/Slimeswitch" instance=ExtResource( 9 )]
+position = Vector2( -160, 352 )
+
+[node name="Enemy4" parent="Stage2/Slimeswitch" instance=ExtResource( 9 )]
+position = Vector2( -144, 352 )
+
+[node name="Enemy5" parent="Stage2/Slimeswitch" instance=ExtResource( 9 )]
+position = Vector2( -128, 352 )
+
+[node name="Enemy6" parent="Stage2/Slimeswitch" instance=ExtResource( 9 )]
+position = Vector2( -112, 352 )
+
+[node name="Enemy7" parent="Stage2/Slimeswitch" instance=ExtResource( 9 )]
+position = Vector2( -96, 352 )
+
+[node name="Enemy8" parent="Stage2/Slimeswitch" instance=ExtResource( 9 )]
+position = Vector2( -80, 352 )
+
+[node name="Enemy9" parent="Stage2/Slimeswitch" instance=ExtResource( 9 )]
+position = Vector2( -64, 352 )
+
+[node name="Slimeswitch2" type="Node2D" parent="Stage2"]
+editor/display_folded = true
+position = Vector2( 0, 112 )
+
+[node name="Switch" parent="Stage2/Slimeswitch2" instance=ExtResource( 7 )]
+position = Vector2( -32, 320 )
+one_switch = true
+
+[node name="Platform" parent="Stage2/Slimeswitch2" instance=ExtResource( 8 )]
+position = Vector2( -208, 368 )
+rotation = -1.5708
+
+[node name="Platform2" parent="Stage2/Slimeswitch2" instance=ExtResource( 8 )]
+position = Vector2( -352, 352 )
+
+[node name="TempPlatform" parent="Stage2/Slimeswitch2" instance=ExtResource( 5 )]
+position = Vector2( -112, 320 )
+
+[node name="TempPlatform2" parent="Stage2/Slimeswitch2" instance=ExtResource( 5 )]
+position = Vector2( -256, 320 )
+
+[node name="Slimeswitch3" type="Node2D" parent="Stage2"]
+position = Vector2( 0, 160 )
+
+[node name="Switch" parent="Stage2/Slimeswitch3" instance=ExtResource( 7 )]
+position = Vector2( -80, 400 )
+one_switch = true
+
+[node name="Platform" parent="Stage2/Slimeswitch3" instance=ExtResource( 8 )]
+position = Vector2( -48, 320 )
+
+[node name="Platform2" parent="Stage2/Slimeswitch3" instance=ExtResource( 8 )]
+position = Vector2( -32, 320 )
+
+[node name="Stage3" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="Turrent5" parent="Stage3" instance=ExtResource( 10 )]
+position = Vector2( -176, 832 )
+rotation = -3.14159
+fire_rate_sec = 0.1
+bullet_speed = 300.0
+override_target_path = NodePath("Path2D/PathFollow2D")
+
+[node name="Path2D" type="Path2D" parent="Stage3/Turrent5"]
+curve = SubResource( 11 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Stage3/Turrent5/Path2D"]
+position = Vector2( 0, 24 )
+rotation = -2.35619
+script = ExtResource( 11 )
+speed = 20.0
+
+[node name="Turrent6" parent="Stage3" instance=ExtResource( 10 )]
+position = Vector2( -176, 832 )
+rotation = -3.14159
+fire_rate_sec = 0.1
+bullet_speed = 300.0
+override_target_path = NodePath("Path2D2/PathFollow2D")
+
+[node name="Path2D2" type="Path2D" parent="Stage3/Turrent6"]
+curve = SubResource( 12 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Stage3/Turrent6/Path2D2"]
+position = Vector2( 32, -7.99994 )
+rotation = 2.35619
+script = ExtResource( 11 )
+speed = 20.0
+
+[node name="Turrent7" parent="Stage3" instance=ExtResource( 10 )]
+position = Vector2( -176, 832 )
+rotation = -3.14159
+fire_rate_sec = 0.1
+bullet_speed = 300.0
+override_target_path = NodePath("Path2D2/PathFollow2D")
+
+[node name="Path2D2" type="Path2D" parent="Stage3/Turrent7"]
+curve = SubResource( 13 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Stage3/Turrent7/Path2D2"]
+position = Vector2( 0, -40.0001 )
+rotation = 0.785398
+script = ExtResource( 11 )
+speed = 20.0
+
+[node name="Turrent8" parent="Stage3" instance=ExtResource( 10 )]
+position = Vector2( -176, 832 )
+rotation = -3.14159
+fire_rate_sec = 0.1
+bullet_speed = 300.0
+override_target_path = NodePath("Path2D2/PathFollow2D")
+
+[node name="Path2D2" type="Path2D" parent="Stage3/Turrent8"]
+curve = SubResource( 14 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Stage3/Turrent8/Path2D2"]
+position = Vector2( -32, -10.0001 )
+rotation = -0.785398
+script = ExtResource( 11 )
+speed = 20.0
+
+[node name="Platform2" parent="Stage3" instance=ExtResource( 8 )]
+position = Vector2( -80, 1016 )
+
+[node name="Platform3" parent="Stage3" instance=ExtResource( 8 )]
+position = Vector2( -48, 888 )
+start_raised = false
+
+[node name="Platform4" parent="Stage3" instance=ExtResource( 8 )]
+position = Vector2( -64, 808 )
+start_raised = false
+
+[node name="Platform5" parent="Stage3" instance=ExtResource( 8 )]
+position = Vector2( -176, 744 )
+start_raised = false
+
+[node name="Switch" parent="Stage3" instance=ExtResource( 7 )]
+position = Vector2( -104, 1088 )
+one_switch = true
+
+[node name="TempPlatform4" parent="Stage3" instance=ExtResource( 5 )]
+position = Vector2( -320, 896 )
+
+[node name="TempPlatform8" parent="Stage3" instance=ExtResource( 5 )]
+position = Vector2( -352, 848 )
+
+[node name="TempPlatform9" parent="Stage3" instance=ExtResource( 5 )]
+position = Vector2( -304, 800 )
+
+[node name="Platform" parent="Stage3" instance=ExtResource( 8 )]
+position = Vector2( -304, 944 )
+
+[node name="Platform6" parent="Stage3" instance=ExtResource( 8 )]
+position = Vector2( -272, 992 )
+
+[node name="Platform8" parent="Stage3" instance=ExtResource( 8 )]
+position = Vector2( -224, 1024 )
+
+[node name="Platform9" parent="Stage3" instance=ExtResource( 8 )]
+position = Vector2( -160, 1056 )
+
+[node name="Spike" parent="Stage3" instance=ExtResource( 6 )]
+position = Vector2( -352, 1120 )
+scale = Vector2( 1, 2.04 )
+
+[node name="Spike2" parent="Stage3" instance=ExtResource( 6 )]
+position = Vector2( -336, 1120 )
+scale = Vector2( 1, 2.04 )
+
+[node name="Spike3" parent="Stage3" instance=ExtResource( 6 )]
+position = Vector2( -320, 1120 )
+scale = Vector2( 1, 2.04 )
+
+[node name="Spike4" parent="Stage3" instance=ExtResource( 6 )]
+position = Vector2( -304, 1120 )
+scale = Vector2( 1, 2.04 )
+
+[node name="Spike5" parent="Stage3" instance=ExtResource( 6 )]
+position = Vector2( -288, 1120 )
+scale = Vector2( 1, 2.04 )
+
+[node name="Spike6" parent="Stage3" instance=ExtResource( 6 )]
+position = Vector2( -272, 1120 )
+scale = Vector2( 1, 2.04 )
+
+[node name="Spike7" parent="Stage3" instance=ExtResource( 6 )]
+position = Vector2( -256, 1120 )
+scale = Vector2( 1, 2.04 )
+
+[node name="Spike8" parent="Stage3" instance=ExtResource( 6 )]
+position = Vector2( -240, 1120 )
+scale = Vector2( 1, 2.04 )
+
+[node name="Spike9" parent="Stage3" instance=ExtResource( 6 )]
+position = Vector2( -224, 1120 )
+scale = Vector2( 1, 2.04 )
+
+[node name="Spike10" parent="Stage3" instance=ExtResource( 6 )]
+position = Vector2( -208, 1120 )
+scale = Vector2( 1, 2.04 )
+
+[node name="Spike11" parent="Stage3" instance=ExtResource( 6 )]
+position = Vector2( -192, 1120 )
+scale = Vector2( 1, 2.04 )
+
+[node name="Spike12" parent="Stage3" instance=ExtResource( 6 )]
+position = Vector2( -176, 1120 )
+scale = Vector2( 1, 2.04 )
+
+[node name="Spike13" parent="Stage3" instance=ExtResource( 6 )]
+position = Vector2( -160, 1120 )
+scale = Vector2( 1, 2.04 )
+
+[node name="Spike14" parent="Stage3" instance=ExtResource( 6 )]
+position = Vector2( -144, 1120 )
+scale = Vector2( 1, 2.04 )
+[connection signal="toggled_switch" from="Stage2/Slimeswitch/Switch" to="Stage2/Slimeswitch/Platform6" method="toggle"]
+[connection signal="toggled_switch" from="Stage2/Slimeswitch/Switch" to="Stage2/Slimeswitch/Platform5" method="toggle"]
+[connection signal="toggled_switch" from="Stage2/Slimeswitch/Switch" to="Stage2/Slimeswitch/Platform2" method="toggle"]
+[connection signal="toggled_switch" from="Stage2/Slimeswitch/Switch" to="Stage2/Slimeswitch/Platform7" method="toggle"]
+[connection signal="toggled_switch" from="Stage2/Slimeswitch/Switch" to="Stage2/Slimeswitch/Platform" method="toggle"]
+[connection signal="toggled_switch" from="Stage2/Slimeswitch/Switch" to="Stage2/Slimeswitch/Platform3" method="toggle"]
+[connection signal="toggled_switch" from="Stage2/Slimeswitch/Switch" to="Stage2/Slimeswitch/Platform4" method="toggle"]
+[connection signal="toggled_switch" from="Stage2/Slimeswitch/Switch" to="Stage2/Slimeswitch/Platform12" method="toggle"]
+[connection signal="toggled_switch" from="Stage2/Slimeswitch/Switch" to="Stage2/Slimeswitch/Platform9" method="toggle"]
+[connection signal="toggled_switch" from="Stage2/Slimeswitch/Switch" to="Stage2/Slimeswitch/Platform10" method="toggle"]
+[connection signal="toggled_switch" from="Stage2/Slimeswitch/Switch" to="Stage2/Slimeswitch/Platform11" method="toggle"]
+[connection signal="toggled_switch" from="Stage2/Slimeswitch2/Switch" to="Stage2/Slimeswitch2/Platform2" method="toggle"]
+[connection signal="toggled_switch" from="Stage2/Slimeswitch2/Switch" to="Stage2/Slimeswitch2/Platform" method="toggle"]
+[connection signal="toggled_switch" from="Stage2/Slimeswitch3/Switch" to="Stage2/Slimeswitch3" method="toggle"]
+[connection signal="toggled_switch" from="Stage2/Slimeswitch3/Switch" to="Stage2/Slimeswitch3/Platform" method="toggle"]
+[connection signal="toggled_switch" from="Stage2/Slimeswitch3/Switch" to="Stage2/Slimeswitch3/Platform2" method="toggle"]
+[connection signal="toggled_switch" from="Stage3/Switch" to="Stage3/Platform5" method="toggle"]
+[connection signal="toggled_switch" from="Stage3/Switch" to="Stage3/Platform3" method="toggle"]
+[connection signal="toggled_switch" from="Stage3/Switch" to="Stage3/Platform4" method="toggle"]
+[connection signal="toggled_switch" from="Stage3/Switch" to="Stage3/Platform2" method="toggle"]
