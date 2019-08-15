@@ -1329,7 +1329,7 @@ position = Vector2( 2128, -392 )
 [node name="PlayerSpawner" parent="GameContent/Player" groups=[
 "player_spawner",
 ] instance=ExtResource( 15 )]
-position = Vector2( 1608, 328 )
+position = Vector2( 136, -24 )
 
 [node name="SpeedTimer" type="Node2D" parent="GameContent/Player"]
 position = Vector2( 384, -144 )

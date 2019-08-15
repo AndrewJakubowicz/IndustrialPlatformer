@@ -70,7 +70,7 @@ resource_name = "Compressor"
 sidechain = "shot"
 
 [resource]
-bus/0/volume_db = -29.0
+bus/0/volume_db = -8.5
 bus/1/name = "Player"
 bus/1/solo = false
 bus/1/mute = false
