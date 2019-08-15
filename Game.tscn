@@ -1,25 +1,26 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=43 format=2]
 
-[ext_resource path="res://CameraDetector.gd" type="Script" id=1]
-[ext_resource path="res://IndustrialTileMap.tres" type="TileSet" id=2]
-[ext_resource path="res://Prefabs/spawners/MonsterSpawner.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Timer-start-stop-monsters.gd" type="Script" id=4]
-[ext_resource path="res://Prefabs/RegainJumpNode.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Prefabs/Turrent.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Prefabs/Spike.tscn" type="PackedScene" id=7]
-[ext_resource path="res://assets/PixelFont.tres" type="DynamicFont" id=8]
-[ext_resource path="res://Prefabs/TempPlatform.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Prefabs/PlatformFall.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Prefabs/SlimeEnemy.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Prefabs/ShakyTurrent.tscn" type="PackedScene" id=12]
-[ext_resource path="res://PathFollow2D.gd" type="Script" id=13]
-[ext_resource path="res://Prefabs/LightOccluderTM.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Prefabs/Switch.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Prefabs/ScoreBall.tscn" type="PackedScene" id=16]
-[ext_resource path="res://Prefabs/spawners/PlayerSpawner.tscn" type="PackedScene" id=17]
-[ext_resource path="res://SpeedTimer.gd" type="Script" id=18]
-[ext_resource path="res://assets/sound/music/Evan King - 20XX - 16 In Motion.wav" type="AudioStream" id=19]
-[ext_resource path="res://assets/sound/music/Evan King - 20XX - 44 jingle_success_2.wav" type="AudioStream" id=20]
+[ext_resource path="res://GameStartup.gd" type="Script" id=1]
+[ext_resource path="res://CameraDetector.gd" type="Script" id=2]
+[ext_resource path="res://IndustrialTileMap.tres" type="TileSet" id=3]
+[ext_resource path="res://Prefabs/spawners/MonsterSpawner.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Timer-start-stop-monsters.gd" type="Script" id=5]
+[ext_resource path="res://Prefabs/RegainJumpNode.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Prefabs/Turrent.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Prefabs/Spike.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/PixelFont.tres" type="DynamicFont" id=9]
+[ext_resource path="res://Prefabs/TempPlatform.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Prefabs/PlatformFall.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Prefabs/SlimeEnemy.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Prefabs/ShakyTurrent.tscn" type="PackedScene" id=13]
+[ext_resource path="res://PathFollow2D.gd" type="Script" id=14]
+[ext_resource path="res://Prefabs/LightOccluderTM.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Prefabs/Switch.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Prefabs/ScoreBall.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Prefabs/spawners/PlayerSpawner.tscn" type="PackedScene" id=18]
+[ext_resource path="res://SpeedTimer.gd" type="Script" id=19]
+[ext_resource path="res://assets/sound/music/Evan King - 20XX - 16 In Motion.wav" type="AudioStream" id=20]
+[ext_resource path="res://assets/sound/music/Evan King - 20XX - 44 jingle_success_2.wav" type="AudioStream" id=21]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 176, 96 )
@@ -97,6 +98,7 @@ extents = Vector2( 24, 96 )
 extents = Vector2( 72, 48 )
 
 [node name="Game" type="Node"]
+script = ExtResource( 1 )
 
 [node name="GameContent" type="Node2D" parent="."]
 
@@ -110,7 +112,7 @@ self_modulate = Color( 1, 1, 1, 0.0470588 )
 position = Vector2( -552, -296 )
 collision_layer = 0
 collision_mask = 256
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameContent/CameraZones/CameraDetector_1screen"]
 shape = SubResource( 1 )
@@ -121,7 +123,7 @@ self_modulate = Color( 1, 1, 1, 0.0470588 )
 position = Vector2( -872, -416 )
 collision_layer = 0
 collision_mask = 256
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameContent/CameraZones/CameraDetector_1screen10"]
 shape = SubResource( 10 )
@@ -132,7 +134,7 @@ self_modulate = Color( 1, 1, 1, 0.0470588 )
 position = Vector2( -184, -152 )
 collision_layer = 0
 collision_mask = 256
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameContent/CameraZones/CameraDetector_1screen2"]
 shape = SubResource( 1 )
@@ -143,7 +145,7 @@ self_modulate = Color( 1, 1, 1, 0.0470588 )
 position = Vector2( -208, 112 )
 collision_layer = 0
 collision_mask = 256
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameContent/CameraZones/CameraDetector_1screen11"]
 shape = SubResource( 2 )
@@ -154,7 +156,7 @@ self_modulate = Color( 1, 1, 1, 0.0470588 )
 position = Vector2( 920, -160 )
 collision_layer = 0
 collision_mask = 256
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameContent/CameraZones/CameraDetector_1screen9"]
 shape = SubResource( 3 )
@@ -165,7 +167,7 @@ self_modulate = Color( 1, 1, 1, 0.0470588 )
 position = Vector2( 184, -312 )
 collision_layer = 0
 collision_mask = 256
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameContent/CameraZones/CameraDetector_1screen3"]
 shape = SubResource( 1 )
@@ -176,7 +178,7 @@ self_modulate = Color( 1, 1, 1, 0.0470588 )
 position = Vector2( -184, -456 )
 collision_layer = 0
 collision_mask = 256
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameContent/CameraZones/CameraDetector_1screen6"]
 shape = SubResource( 1 )
@@ -187,7 +189,7 @@ self_modulate = Color( 1, 1, 1, 0.0470588 )
 position = Vector2( 184, -104 )
 collision_layer = 0
 collision_mask = 256
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameContent/CameraZones/CameraDetector_1screen4"]
 shape = SubResource( 1 )
@@ -198,7 +200,7 @@ self_modulate = Color( 1, 1, 1, 0.0470588 )
 position = Vector2( 1896, -840 )
 collision_layer = 0
 collision_mask = 256
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameContent/CameraZones/CameraDetector_1screen18"]
 shape = SubResource( 1 )
@@ -209,7 +211,7 @@ self_modulate = Color( 1, 1, 1, 0.0470588 )
 position = Vector2( 2264, -576 )
 collision_layer = 0
 collision_mask = 256
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameContent/CameraZones/CameraDetector_1screen17"]
 shape = SubResource( 21 )
@@ -220,7 +222,7 @@ self_modulate = Color( 1, 1, 1, 0.0470588 )
 position = Vector2( 1856, -256 )
 collision_layer = 0
 collision_mask = 256
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameContent/CameraZones/CameraDetector_1screen16"]
 shape = SubResource( 20 )
@@ -231,7 +233,7 @@ self_modulate = Color( 1, 1, 1, 0.0470588 )
 position = Vector2( 1824, 136 )
 collision_layer = 0
 collision_mask = 256
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameContent/CameraZones/CameraDetector_1screen15"]
 shape = SubResource( 19 )
@@ -242,7 +244,7 @@ self_modulate = Color( 1, 1, 1, 0.0470588 )
 position = Vector2( 376, 320 )
 collision_layer = 0
 collision_mask = 256
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameContent/CameraZones/CameraDetector_1screen12"]
 shape = SubResource( 1 )
@@ -253,7 +255,7 @@ self_modulate = Color( 1, 1, 1, 0.0470588 )
 position = Vector2( 1312, 248 )
 collision_layer = 0
 collision_mask = 256
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameContent/CameraZones/CameraDetector_1screen14"]
 shape = SubResource( 18 )
@@ -264,7 +266,7 @@ self_modulate = Color( 1, 1, 1, 0.0470588 )
 position = Vector2( 776, 232 )
 collision_layer = 0
 collision_mask = 256
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameContent/CameraZones/CameraDetector_1screen13"]
 shape = SubResource( 16 )
@@ -276,7 +278,7 @@ self_modulate = Color( 1, 1, 1, 0.0470588 )
 position = Vector2( 552, -128 )
 collision_layer = 0
 collision_mask = 256
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameContent/CameraZones/CameraDetector_1screen5"]
 shape = SubResource( 4 )
@@ -287,7 +289,7 @@ self_modulate = Color( 1, 1, 1, 0.0470588 )
 position = Vector2( 184, -752 )
 collision_layer = 0
 collision_mask = 256
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameContent/CameraZones/CameraDetector_1screen7"]
 shape = SubResource( 5 )
@@ -298,7 +300,7 @@ self_modulate = Color( 1, 1, 1, 0.0470588 )
 position = Vector2( -344, -872 )
 collision_layer = 0
 collision_mask = 256
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameContent/CameraZones/CameraDetector_1screen8"]
 shape = SubResource( 6 )
@@ -308,18 +310,18 @@ editor/display_folded = true
 
 [node name="TileMap" type="TileMap" parent="GameContent/Level11 - run slimes"]
 position = Vector2( -736, 208 )
-tile_set = ExtResource( 2 )
+tile_set = ExtResource( 3 )
 cell_size = Vector2( 16, 16 )
 collision_layer = 72
 format = 1
 tile_data = PoolIntArray( -720850, 0, 0, -720849, 0, 0, -720848, 0, 0, -720847, 0, 0, -720846, 0, 0, -720845, 0, 0, -720844, 0, 0, -720843, 0, 0, -720842, 0, 0, -720841, 0, 0, -720840, 0, 0, -720839, 0, 0, -720838, 0, 0, -720837, 0, 0, -720836, 0, 0, -655314, 0, 0, -655300, 0, 0, -589822, 0, 0, -589821, 0, 0, -589820, 0, 0, -589819, 0, 0, -589818, 0, 0, -589817, 0, 0, -589816, 0, 0, -589815, 0, 0, -589814, 0, 0, -589813, 0, 0, -589812, 0, 0, -589811, 0, 0, -589810, 0, 0, -589809, 0, 0, -589808, 0, 0, -589807, 0, 0, -589806, 0, 0, -589805, 0, 0, -589804, 0, 0, -589803, 0, 0, -589802, 0, 0, -589801, 0, 0, -589800, 0, 0, -589799, 0, 0, -589798, 0, 0, -589797, 0, 0, -589796, 0, 0, -589795, 0, 0, -589794, 0, 0, -589793, 0, 0, -589792, 0, 0, -589791, 0, 0, -589790, 0, 0, -589789, 0, 0, -589788, 0, 0, -589787, 0, 0, -589786, 0, 0, -589785, 0, 0, -589784, 0, 0, -589783, 0, 0, -589782, 0, 0, -589781, 0, 0, -589780, 0, 0, -589779, 0, 0, -589778, 0, 0, -524242, 0, 0, -458706, 0, 0, -393170, 0, 0, -393158, 0, 0, -262146, 0, 0, -262145, 0, 0, -327680, 0, 0, -327677, 0, 0, -327676, 0, 0, -327634, 0, 0, -327622, 0, 0, -262142, 0, 0, -262098, 0, 0, -262086, 0, 0, -196606, 0, 0, -196550, 0, 0, -131070, 0, 0, -131014, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0, -65528, 0, 0, -65527, 0, 0, -65526, 0, 0, -65525, 0, 0, -65524, 0, 0, -65523, 0, 0, -65522, 0, 0, -65521, 0, 0, -65520, 0, 0, -65519, 0, 0, -65518, 0, 0, -65517, 0, 0, -65516, 0, 0, -65515, 0, 0, -65514, 0, 0, -65513, 0, 0, -65512, 0, 0, -65511, 0, 0, -65510, 0, 0, -65509, 0, 0, -65508, 0, 0, -65507, 0, 0, -65506, 0, 0, -65505, 0, 0, -65504, 0, 0, -65503, 0, 0, -65502, 0, 0, -65501, 0, 0, -65500, 0, 0, -65499, 0, 0, -65498, 0, 0, -65497, 0, 0, -65496, 0, 0, -65495, 0, 0, -65494, 0, 0, -65493, 0, 0, -65492, 0, 0, -65491, 0, 0, -65490, 0, 0, -65489, 0, 0, -65488, 0, 0, -65487, 0, 0, -65486, 0, 0, -65485, 0, 0, -65484, 0, 0, -65483, 0, 0, -65482, 0, 0, -65481, 0, 0, -65480, 0, 0, -65479, 0, 0, -65478, 0, 0, -65476, 0, 0, -65475, 0, 0, -65474, 0, 0, -65473, 0, 0, -65472, 0, 0 )
 
-[node name="MonsterSpawner" parent="GameContent/Level11 - run slimes" instance=ExtResource( 3 )]
+[node name="MonsterSpawner" parent="GameContent/Level11 - run slimes" instance=ExtResource( 4 )]
 position = Vector2( 184, 192 )
 
 [node name="Timer" type="Timer" parent="GameContent/Level11 - run slimes/MonsterSpawner"]
 wait_time = 0.2
-script = ExtResource( 4 )
+script = ExtResource( 5 )
 
 [node name="Area2D - Start timer" type="Area2D" parent="GameContent/Level11 - run slimes/MonsterSpawner"]
 position = Vector2( -920, -80 )
@@ -338,19 +340,19 @@ collision_mask = 256
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameContent/Level11 - run slimes/MonsterSpawner/Area2D - End timer"]
 shape = SubResource( 15 )
 
-[node name="RegainJumpNode" parent="GameContent/Level11 - run slimes" instance=ExtResource( 5 )]
+[node name="RegainJumpNode" parent="GameContent/Level11 - run slimes" instance=ExtResource( 6 )]
 position = Vector2( -472, 152 )
 
-[node name="RegainJumpNode2" parent="GameContent/Level11 - run slimes" instance=ExtResource( 5 )]
+[node name="RegainJumpNode2" parent="GameContent/Level11 - run slimes" instance=ExtResource( 6 )]
 position = Vector2( -208, 152 )
 
-[node name="RegainJumpNode3" parent="GameContent/Level11 - run slimes" instance=ExtResource( 5 )]
+[node name="RegainJumpNode3" parent="GameContent/Level11 - run slimes" instance=ExtResource( 6 )]
 position = Vector2( -24, 152 )
 
-[node name="RegainJumpNode4" parent="GameContent/Level11 - run slimes" instance=ExtResource( 5 )]
+[node name="RegainJumpNode4" parent="GameContent/Level11 - run slimes" instance=ExtResource( 6 )]
 position = Vector2( 64, 112 )
 
-[node name="Turrent" parent="GameContent/Level11 - run slimes" instance=ExtResource( 6 )]
+[node name="Turrent" parent="GameContent/Level11 - run slimes" instance=ExtResource( 7 )]
 position = Vector2( 184, 176 )
 rotation = -3.14159
 fire_rate_sec = 7.0
@@ -360,183 +362,183 @@ override_target_path = NodePath("../../Level11 - run slimes/Turrent/Position2D")
 [node name="Position2D" type="Position2D" parent="GameContent/Level11 - run slimes/Turrent"]
 position = Vector2( 896, -8.00398 )
 
-[node name="Spike2" parent="GameContent/Level11 - run slimes" instance=ExtResource( 7 )]
+[node name="Spike2" parent="GameContent/Level11 - run slimes" instance=ExtResource( 8 )]
 position = Vector2( -576, 80 )
 rotation = -3.14159
 
-[node name="Spike43" parent="GameContent/Level11 - run slimes" instance=ExtResource( 7 )]
+[node name="Spike43" parent="GameContent/Level11 - run slimes" instance=ExtResource( 8 )]
 position = Vector2( -592, 80 )
 rotation = -3.14159
 
-[node name="Spike44" parent="GameContent/Level11 - run slimes" instance=ExtResource( 7 )]
+[node name="Spike44" parent="GameContent/Level11 - run slimes" instance=ExtResource( 8 )]
 position = Vector2( -608, 80 )
 rotation = -3.14159
 
-[node name="Spike45" parent="GameContent/Level11 - run slimes" instance=ExtResource( 7 )]
+[node name="Spike45" parent="GameContent/Level11 - run slimes" instance=ExtResource( 8 )]
 position = Vector2( -624, 80 )
 rotation = -3.14159
 
-[node name="Spike46" parent="GameContent/Level11 - run slimes" instance=ExtResource( 7 )]
+[node name="Spike46" parent="GameContent/Level11 - run slimes" instance=ExtResource( 8 )]
 position = Vector2( -640, 80 )
 rotation = -3.14159
 
-[node name="Spike15" parent="GameContent/Level11 - run slimes" instance=ExtResource( 7 )]
+[node name="Spike15" parent="GameContent/Level11 - run slimes" instance=ExtResource( 8 )]
 position = Vector2( -384, 80 )
 rotation = -3.14159
 
-[node name="Spike36" parent="GameContent/Level11 - run slimes" instance=ExtResource( 7 )]
+[node name="Spike36" parent="GameContent/Level11 - run slimes" instance=ExtResource( 8 )]
 position = Vector2( -192, 80 )
 rotation = -3.14159
 
-[node name="Spike3" parent="GameContent/Level11 - run slimes" instance=ExtResource( 7 )]
+[node name="Spike3" parent="GameContent/Level11 - run slimes" instance=ExtResource( 8 )]
 position = Vector2( -560, 80 )
 rotation = -3.14159
 
-[node name="Spike17" parent="GameContent/Level11 - run slimes" instance=ExtResource( 7 )]
+[node name="Spike17" parent="GameContent/Level11 - run slimes" instance=ExtResource( 8 )]
 position = Vector2( -368, 80 )
 rotation = -3.14159
 
-[node name="Spike35" parent="GameContent/Level11 - run slimes" instance=ExtResource( 7 )]
+[node name="Spike35" parent="GameContent/Level11 - run slimes" instance=ExtResource( 8 )]
 position = Vector2( -176, 80 )
 rotation = -3.14159
 
-[node name="Spike4" parent="GameContent/Level11 - run slimes" instance=ExtResource( 7 )]
+[node name="Spike4" parent="GameContent/Level11 - run slimes" instance=ExtResource( 8 )]
 position = Vector2( -544, 80 )
 rotation = -3.14159
 
-[node name="Spike23" parent="GameContent/Level11 - run slimes" instance=ExtResource( 7 )]
+[node name="Spike23" parent="GameContent/Level11 - run slimes" instance=ExtResource( 8 )]
 position = Vector2( -352, 80 )
 rotation = -3.14159
 
-[node name="Spike37" parent="GameContent/Level11 - run slimes" instance=ExtResource( 7 )]
+[node name="Spike37" parent="GameContent/Level11 - run slimes" instance=ExtResource( 8 )]
 position = Vector2( -160, 80 )
 rotation = -3.14159
 
-[node name="Spike5" parent="GameContent/Level11 - run slimes" instance=ExtResource( 7 )]
+[node name="Spike5" parent="GameContent/Level11 - run slimes" instance=ExtResource( 8 )]
 position = Vector2( -528, 80 )
 rotation = -3.14159
 
-[node name="Spike18" parent="GameContent/Level11 - run slimes" instance=ExtResource( 7 )]
+[node name="Spike18" parent="GameContent/Level11 - run slimes" instance=ExtResource( 8 )]
 position = Vector2( -336, 80 )
 rotation = -3.14159
 
-[node name="Spike34" parent="GameContent/Level11 - run slimes" instance=ExtResource( 7 )]
+[node name="Spike34" parent="GameContent/Level11 - run slimes" instance=ExtResource( 8 )]
 position = Vector2( -144, 80 )
 rotation = -3.14159
 
-[node name="Spike6" parent="GameContent/Level11 - run slimes" instance=ExtResource( 7 )]
+[node name="Spike6" parent="GameContent/Level11 - run slimes" instance=ExtResource( 8 )]
 position = Vector2( -512, 80 )
 rotation = -3.14159
 
-[node name="Spike16" parent="GameContent/Level11 - run slimes" instance=ExtResource( 7 )]
+[node name="Spike16" parent="GameContent/Level11 - run slimes" instance=ExtResource( 8 )]
 position = Vector2( -320, 80 )
 rotation = -3.14159
 
-[node name="Spike28" parent="GameContent/Level11 - run slimes" instance=ExtResource( 7 )]
+[node name="Spike28" parent="GameContent/Level11 - run slimes" instance=ExtResource( 8 )]
 position = Vector2( -128, 80 )
 rotation = -3.14159
 
-[node name="Spike7" parent="GameContent/Level11 - run slimes" instance=ExtResource( 7 )]
+[node name="Spike7" parent="GameContent/Level11 - run slimes" instance=ExtResource( 8 )]
 position = Vector2( -496, 80 )
 rotation = -3.14159
 
-[node name="Spike20" parent="GameContent/Level11 - run slimes" instance=ExtResource( 7 )]
+[node name="Spike20" parent="GameContent/Level11 - run slimes" instance=ExtResource( 8 )]
 position = Vector2( -304, 80 )
 rotation = -3.14159
 
-[node name="Spike27" parent="GameContent/Level11 - run slimes" instance=ExtResource( 7 )]
+[node name="Spike27" parent="GameContent/Level11 - run slimes" instance=ExtResource( 8 )]
 position = Vector2( -112, 80 )
 rotation = -3.14159
 
-[node name="Spike8" parent="GameContent/Level11 - run slimes" instance=ExtResource( 7 )]
+[node name="Spike8" parent="GameContent/Level11 - run slimes" instance=ExtResource( 8 )]
 position = Vector2( -480, 80 )
 rotation = -3.14159
 
-[node name="Spike24" parent="GameContent/Level11 - run slimes" instance=ExtResource( 7 )]
+[node name="Spike24" parent="GameContent/Level11 - run slimes" instance=ExtResource( 8 )]
 position = Vector2( -288, 80 )
 rotation = -3.14159
 
-[node name="Spike33" parent="GameContent/Level11 - run slimes" instance=ExtResource( 7 )]
+[node name="Spike33" parent="GameContent/Level11 - run slimes" instance=ExtResource( 8 )]
 position = Vector2( -96, 80 )
 rotation = -3.14159
 
-[node name="Spike9" parent="GameContent/Level11 - run slimes" instance=ExtResource( 7 )]
+[node name="Spike9" parent="GameContent/Level11 - run slimes" instance=ExtResource( 8 )]
 position = Vector2( -464, 80 )
 rotation = -3.14159
 
-[node name="Spike25" parent="GameContent/Level11 - run slimes" instance=ExtResource( 7 )]
+[node name="Spike25" parent="GameContent/Level11 - run slimes" instance=ExtResource( 8 )]
 position = Vector2( -272, 80 )
 rotation = -3.14159
 
-[node name="Spike31" parent="GameContent/Level11 - run slimes" instance=ExtResource( 7 )]
+[node name="Spike31" parent="GameContent/Level11 - run slimes" instance=ExtResource( 8 )]
 position = Vector2( -80, 80 )
 rotation = -3.14159
 
-[node name="Spike10" parent="GameContent/Level11 - run slimes" instance=ExtResource( 7 )]
+[node name="Spike10" parent="GameContent/Level11 - run slimes" instance=ExtResource( 8 )]
 position = Vector2( -448, 80 )
 rotation = -3.14159
 
-[node name="Spike19" parent="GameContent/Level11 - run slimes" instance=ExtResource( 7 )]
+[node name="Spike19" parent="GameContent/Level11 - run slimes" instance=ExtResource( 8 )]
 position = Vector2( -256, 80 )
 rotation = -3.14159
 
-[node name="Spike30" parent="GameContent/Level11 - run slimes" instance=ExtResource( 7 )]
+[node name="Spike30" parent="GameContent/Level11 - run slimes" instance=ExtResource( 8 )]
 position = Vector2( -64, 80 )
 rotation = -3.14159
 
-[node name="Spike11" parent="GameContent/Level11 - run slimes" instance=ExtResource( 7 )]
+[node name="Spike11" parent="GameContent/Level11 - run slimes" instance=ExtResource( 8 )]
 position = Vector2( -432, 80 )
 rotation = -3.14159
 
-[node name="Spike14" parent="GameContent/Level11 - run slimes" instance=ExtResource( 7 )]
+[node name="Spike14" parent="GameContent/Level11 - run slimes" instance=ExtResource( 8 )]
 position = Vector2( -240, 80 )
 rotation = -3.14159
 
-[node name="Spike32" parent="GameContent/Level11 - run slimes" instance=ExtResource( 7 )]
+[node name="Spike32" parent="GameContent/Level11 - run slimes" instance=ExtResource( 8 )]
 position = Vector2( -48, 80 )
 rotation = -3.14159
 
-[node name="Spike12" parent="GameContent/Level11 - run slimes" instance=ExtResource( 7 )]
+[node name="Spike12" parent="GameContent/Level11 - run slimes" instance=ExtResource( 8 )]
 position = Vector2( -416, 80 )
 rotation = -3.14159
 
-[node name="Spike21" parent="GameContent/Level11 - run slimes" instance=ExtResource( 7 )]
+[node name="Spike21" parent="GameContent/Level11 - run slimes" instance=ExtResource( 8 )]
 position = Vector2( -224, 80 )
 rotation = -3.14159
 
-[node name="Spike26" parent="GameContent/Level11 - run slimes" instance=ExtResource( 7 )]
+[node name="Spike26" parent="GameContent/Level11 - run slimes" instance=ExtResource( 8 )]
 position = Vector2( -32, 80 )
 rotation = -3.14159
 
-[node name="Spike13" parent="GameContent/Level11 - run slimes" instance=ExtResource( 7 )]
+[node name="Spike13" parent="GameContent/Level11 - run slimes" instance=ExtResource( 8 )]
 position = Vector2( -400, 80 )
 rotation = -3.14159
 
-[node name="Spike22" parent="GameContent/Level11 - run slimes" instance=ExtResource( 7 )]
+[node name="Spike22" parent="GameContent/Level11 - run slimes" instance=ExtResource( 8 )]
 position = Vector2( -208, 80 )
 rotation = -3.14159
 
-[node name="Spike29" parent="GameContent/Level11 - run slimes" instance=ExtResource( 7 )]
+[node name="Spike29" parent="GameContent/Level11 - run slimes" instance=ExtResource( 8 )]
 position = Vector2( -16, 80 )
 rotation = -3.14159
 
-[node name="Spike38" parent="GameContent/Level11 - run slimes" instance=ExtResource( 7 )]
+[node name="Spike38" parent="GameContent/Level11 - run slimes" instance=ExtResource( 8 )]
 position = Vector2( 0, 80 )
 rotation = -3.14159
 
-[node name="Spike39" parent="GameContent/Level11 - run slimes" instance=ExtResource( 7 )]
+[node name="Spike39" parent="GameContent/Level11 - run slimes" instance=ExtResource( 8 )]
 position = Vector2( 32, 48 )
 rotation = -3.14159
 
-[node name="Spike40" parent="GameContent/Level11 - run slimes" instance=ExtResource( 7 )]
+[node name="Spike40" parent="GameContent/Level11 - run slimes" instance=ExtResource( 8 )]
 position = Vector2( 48, 48 )
 rotation = -3.14159
 
-[node name="Spike41" parent="GameContent/Level11 - run slimes" instance=ExtResource( 7 )]
+[node name="Spike41" parent="GameContent/Level11 - run slimes" instance=ExtResource( 8 )]
 position = Vector2( 64, 48 )
 rotation = -3.14159
 
-[node name="Spike42" parent="GameContent/Level11 - run slimes" instance=ExtResource( 7 )]
+[node name="Spike42" parent="GameContent/Level11 - run slimes" instance=ExtResource( 8 )]
 position = Vector2( 80, 48 )
 rotation = -3.14159
 
@@ -544,19 +546,19 @@ rotation = -3.14159
 
 [node name="Prefabs" type="Node2D" parent="GameContent/Level1"]
 
-[node name="Spike10" parent="GameContent/Level1/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike10" parent="GameContent/Level1/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 256, 0 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike11" parent="GameContent/Level1/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike11" parent="GameContent/Level1/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 272, 0 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike12" parent="GameContent/Level1/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike12" parent="GameContent/Level1/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 288, 0 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike13" parent="GameContent/Level1/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike13" parent="GameContent/Level1/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 144, 0 )
 scale = Vector2( 1, 1.5 )
 
@@ -568,7 +570,7 @@ margin_left = 24.0
 margin_top = -184.0
 margin_right = 240.0
 margin_bottom = -80.0
-custom_fonts/normal_font = ExtResource( 8 )
+custom_fonts/normal_font = ExtResource( 9 )
 text = "Controls: WASD or D-Pad
 Jump: J or \"A\" on controller
 Attack: K or \"X\" on controller
@@ -586,7 +588,7 @@ margin_left = 1720.0
 margin_top = -840.0
 margin_right = 1936.0
 margin_bottom = -736.0
-custom_fonts/normal_font = ExtResource( 8 )
+custom_fonts/normal_font = ExtResource( 9 )
 text = "Andrew Jakubowicz (Code, Design)
 Nic Alabaster (Design)
 
@@ -605,7 +607,7 @@ margin_top = -936.0
 margin_right = 1992.0
 margin_bottom = -805.0
 rect_scale = Vector2( 0.601686, 0.609498 )
-custom_fonts/normal_font = ExtResource( 8 )
+custom_fonts/normal_font = ExtResource( 9 )
 text = "Music: Evan King - Fetch Quest
 Music: Evan King - jingle_success_2
 https://www.youtube.com/user/EvanKingAudio
@@ -619,31 +621,31 @@ editor/display_folded = true
 
 [node name="Prefabs" type="Node2D" parent="GameContent/Level2"]
 
-[node name="Spike" parent="GameContent/Level2/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike" parent="GameContent/Level2/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 416, 1.52588e-005 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike2" parent="GameContent/Level2/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike2" parent="GameContent/Level2/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 432, 1.52588e-005 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike3" parent="GameContent/Level2/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike3" parent="GameContent/Level2/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 560, 1.52588e-005 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike4" parent="GameContent/Level2/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike4" parent="GameContent/Level2/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 576, 1.52588e-005 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike5" parent="GameContent/Level2/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike5" parent="GameContent/Level2/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 592, 1.52588e-005 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike6" parent="GameContent/Level2/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike6" parent="GameContent/Level2/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 608, 1.52588e-005 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Turrent" parent="GameContent/Level2/Prefabs" instance=ExtResource( 6 )]
+[node name="Turrent" parent="GameContent/Level2/Prefabs" instance=ExtResource( 7 )]
 position = Vector2( 488, -16 )
 fire_rate_sec = 1.6
 bullet_speed = 100.0
@@ -657,7 +659,7 @@ editor/display_folded = true
 
 [node name="Prefabs" type="Node2D" parent="GameContent/Level2_5"]
 
-[node name="Turrent" parent="GameContent/Level2_5/Prefabs" instance=ExtResource( 6 )]
+[node name="Turrent" parent="GameContent/Level2_5/Prefabs" instance=ExtResource( 7 )]
 position = Vector2( 1032, -80 )
 rotation = 3.14159
 fire_rate_sec = 2.0
@@ -667,67 +669,67 @@ override_target_path = NodePath("Position2D")
 [node name="Position2D" type="Position2D" parent="GameContent/Level2_5/Prefabs/Turrent"]
 position = Vector2( 272, -7.9988 )
 
-[node name="TempPlatform" parent="GameContent/Level2_5/Prefabs" instance=ExtResource( 9 )]
+[node name="TempPlatform" parent="GameContent/Level2_5/Prefabs" instance=ExtResource( 10 )]
 position = Vector2( 832, -200 )
 reset_time = 3
 
-[node name="Spike" parent="GameContent/Level2_5/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike" parent="GameContent/Level2_5/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 656, -144 )
 scale = Vector2( 1, 2 )
 
-[node name="Spike2" parent="GameContent/Level2_5/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike2" parent="GameContent/Level2_5/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 672, -144 )
 scale = Vector2( 1, 2 )
 
-[node name="Spike3" parent="GameContent/Level2_5/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike3" parent="GameContent/Level2_5/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 688, -144 )
 scale = Vector2( 1, 2 )
 
-[node name="Spike4" parent="GameContent/Level2_5/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike4" parent="GameContent/Level2_5/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 704, -144 )
 scale = Vector2( 1, 2 )
 
-[node name="Spike5" parent="GameContent/Level2_5/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike5" parent="GameContent/Level2_5/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 720, -144 )
 scale = Vector2( 1, 2 )
 
-[node name="Spike6" parent="GameContent/Level2_5/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike6" parent="GameContent/Level2_5/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 736, -144 )
 scale = Vector2( 1, 2 )
 
-[node name="Spike7" parent="GameContent/Level2_5/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike7" parent="GameContent/Level2_5/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 752, -144 )
 scale = Vector2( 1, 2 )
 
-[node name="Spike8" parent="GameContent/Level2_5/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike8" parent="GameContent/Level2_5/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 768, -144 )
 scale = Vector2( 1, 2 )
 
-[node name="Spike9" parent="GameContent/Level2_5/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike9" parent="GameContent/Level2_5/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 784, -144 )
 scale = Vector2( 1, 2 )
 
-[node name="Spike10" parent="GameContent/Level2_5/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike10" parent="GameContent/Level2_5/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 800, -144 )
 scale = Vector2( 1, 2 )
 
-[node name="Spike11" parent="GameContent/Level2_5/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike11" parent="GameContent/Level2_5/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 816, -144 )
 scale = Vector2( 1, 2 )
 
-[node name="Spike12" parent="GameContent/Level2_5/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike12" parent="GameContent/Level2_5/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 832, -144 )
 scale = Vector2( 1, 2 )
 
-[node name="Spike13" parent="GameContent/Level2_5/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike13" parent="GameContent/Level2_5/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 848, -144 )
 scale = Vector2( 1, 2 )
 
-[node name="Spike14" parent="GameContent/Level2_5/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike14" parent="GameContent/Level2_5/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 864, -144 )
 scale = Vector2( 1, 2 )
 
-[node name="Spike15" parent="GameContent/Level2_5/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike15" parent="GameContent/Level2_5/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 880, -144 )
 scale = Vector2( 1, 2 )
 
@@ -736,70 +738,70 @@ editor/display_folded = true
 
 [node name="Prefabs" type="Node2D" parent="GameContent/Level3"]
 
-[node name="Spike10" parent="GameContent/Level3/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike10" parent="GameContent/Level3/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 288, -288 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike24" parent="GameContent/Level3/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike24" parent="GameContent/Level3/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 224, -320 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike25" parent="GameContent/Level3/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike25" parent="GameContent/Level3/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 240, -320 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike20" parent="GameContent/Level3/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike20" parent="GameContent/Level3/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 304, -288 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike21" parent="GameContent/Level3/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike21" parent="GameContent/Level3/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 320, -288 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike22" parent="GameContent/Level3/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike22" parent="GameContent/Level3/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 336, -288 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike11" parent="GameContent/Level3/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike11" parent="GameContent/Level3/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 80, -208 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike12" parent="GameContent/Level3/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike12" parent="GameContent/Level3/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 208, -208 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike13" parent="GameContent/Level3/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike13" parent="GameContent/Level3/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 192, -208 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike14" parent="GameContent/Level3/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike14" parent="GameContent/Level3/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 176, -208 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike15" parent="GameContent/Level3/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike15" parent="GameContent/Level3/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 160, -208 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike16" parent="GameContent/Level3/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike16" parent="GameContent/Level3/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 144, -208 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike17" parent="GameContent/Level3/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike17" parent="GameContent/Level3/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 128, -208 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike18" parent="GameContent/Level3/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike18" parent="GameContent/Level3/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 112, -208 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike19" parent="GameContent/Level3/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike19" parent="GameContent/Level3/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 96, -208 )
 scale = Vector2( 1, 1.5 )
 
-[node name="RegainJumpNode" parent="GameContent/Level3/Prefabs" instance=ExtResource( 5 )]
+[node name="RegainJumpNode" parent="GameContent/Level3/Prefabs" instance=ExtResource( 6 )]
 position = Vector2( 320, -256 )
 
-[node name="RegainJumpNode2" parent="GameContent/Level3/Prefabs" instance=ExtResource( 5 )]
+[node name="RegainJumpNode2" parent="GameContent/Level3/Prefabs" instance=ExtResource( 6 )]
 position = Vector2( 232, -296 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="GameContent/Level3/Prefabs"]
@@ -810,7 +812,7 @@ margin_left = 24.0
 margin_top = -392.0
 margin_right = 336.0
 margin_bottom = -360.0
-custom_fonts/normal_font = ExtResource( 8 )
+custom_fonts/normal_font = ExtResource( 9 )
 text = "Jump orbs regain your jump in the air after you hit them!
 You can attack in 4 directions by holding a direction key..."
 scroll_active = false
@@ -820,102 +822,102 @@ editor/display_folded = true
 
 [node name="Prefabs" type="Node2D" parent="GameContent/Level4"]
 
-[node name="RegainJumpNode" parent="GameContent/Level4/Prefabs" instance=ExtResource( 5 )]
+[node name="RegainJumpNode" parent="GameContent/Level4/Prefabs" instance=ExtResource( 6 )]
 position = Vector2( -80, -192 )
 
-[node name="Spike" parent="GameContent/Level4/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike" parent="GameContent/Level4/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( -48, -48 )
 scale = Vector2( 1, 2.1 )
 
-[node name="Spike10" parent="GameContent/Level4/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike10" parent="GameContent/Level4/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( -160, -48 )
 scale = Vector2( 1, 2.1 )
 
-[node name="Spike16" parent="GameContent/Level4/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike16" parent="GameContent/Level4/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( -272, -48 )
 scale = Vector2( 1, 2.1 )
 
-[node name="Spike2" parent="GameContent/Level4/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike2" parent="GameContent/Level4/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( -64, -48 )
 scale = Vector2( 1, 2.1 )
 
-[node name="Spike11" parent="GameContent/Level4/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike11" parent="GameContent/Level4/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( -176, -48 )
 scale = Vector2( 1, 2.1 )
 
-[node name="Spike18" parent="GameContent/Level4/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike18" parent="GameContent/Level4/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( -288, -48 )
 scale = Vector2( 1, 2.1 )
 
-[node name="Spike3" parent="GameContent/Level4/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike3" parent="GameContent/Level4/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( -80, -48 )
 scale = Vector2( 1, 2.1 )
 
-[node name="Spike12" parent="GameContent/Level4/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike12" parent="GameContent/Level4/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( -192, -48 )
 scale = Vector2( 1, 2.1 )
 
-[node name="Spike21" parent="GameContent/Level4/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike21" parent="GameContent/Level4/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( -304, -48 )
 scale = Vector2( 1, 2.1 )
 
-[node name="Spike4" parent="GameContent/Level4/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike4" parent="GameContent/Level4/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( -96, -48 )
 scale = Vector2( 1, 2.1 )
 
-[node name="Spike13" parent="GameContent/Level4/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike13" parent="GameContent/Level4/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( -208, -48 )
 scale = Vector2( 1, 2.1 )
 
-[node name="Spike20" parent="GameContent/Level4/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike20" parent="GameContent/Level4/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( -320, -48 )
 scale = Vector2( 1, 2.1 )
 
-[node name="Spike23" parent="GameContent/Level4/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike23" parent="GameContent/Level4/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( -352, -48 )
 scale = Vector2( 1, 2.1 )
 
-[node name="Spike5" parent="GameContent/Level4/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike5" parent="GameContent/Level4/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( -112, -48 )
 scale = Vector2( 1, 2.1 )
 
-[node name="Spike14" parent="GameContent/Level4/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike14" parent="GameContent/Level4/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( -224, -48 )
 scale = Vector2( 1, 2.1 )
 
-[node name="Spike19" parent="GameContent/Level4/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike19" parent="GameContent/Level4/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( -336, -48 )
 scale = Vector2( 1, 2.1 )
 
-[node name="Spike22" parent="GameContent/Level4/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike22" parent="GameContent/Level4/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( -368, -48 )
 scale = Vector2( 1, 2.1 )
 
-[node name="Spike6" parent="GameContent/Level4/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike6" parent="GameContent/Level4/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( -32, -48 )
 scale = Vector2( 1, 2.1 )
 
-[node name="Spike8" parent="GameContent/Level4/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike8" parent="GameContent/Level4/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( -144, -48 )
 scale = Vector2( 1, 2.1 )
 
-[node name="Spike15" parent="GameContent/Level4/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike15" parent="GameContent/Level4/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( -256, -48 )
 scale = Vector2( 1, 2.1 )
 
-[node name="Spike7" parent="GameContent/Level4/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike7" parent="GameContent/Level4/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( -16, -48 )
 scale = Vector2( 1, 2.1 )
 
-[node name="Spike9" parent="GameContent/Level4/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike9" parent="GameContent/Level4/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( -128, -48 )
 scale = Vector2( 1, 2.1 )
 
-[node name="Spike17" parent="GameContent/Level4/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike17" parent="GameContent/Level4/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( -240, -48 )
 scale = Vector2( 1, 2.1 )
 
-[node name="Turrent2" parent="GameContent/Level4/Prefabs" instance=ExtResource( 6 )]
+[node name="Turrent2" parent="GameContent/Level4/Prefabs" instance=ExtResource( 7 )]
 position = Vector2( -232, -256 )
 rotation = -3.14159
 fire_rate_sec = 1.7
@@ -930,51 +932,51 @@ editor/display_folded = true
 wait_time = 1.5
 autostart = true
 
-[node name="Platform" parent="GameContent/Level5/Prefabs" instance=ExtResource( 10 )]
+[node name="Platform" parent="GameContent/Level5/Prefabs" instance=ExtResource( 11 )]
 position = Vector2( -592, -256 )
 start_raised = false
 
-[node name="Platform2" parent="GameContent/Level5/Prefabs" instance=ExtResource( 10 )]
+[node name="Platform2" parent="GameContent/Level5/Prefabs" instance=ExtResource( 11 )]
 position = Vector2( -680, -288 )
 
-[node name="Platform3" parent="GameContent/Level5/Prefabs" instance=ExtResource( 10 )]
+[node name="Platform3" parent="GameContent/Level5/Prefabs" instance=ExtResource( 11 )]
 position = Vector2( -616, -336 )
 start_raised = false
 
-[node name="Platform4" parent="GameContent/Level5/Prefabs" instance=ExtResource( 10 )]
+[node name="Platform4" parent="GameContent/Level5/Prefabs" instance=ExtResource( 11 )]
 position = Vector2( -512, -336 )
 
-[node name="Spike" parent="GameContent/Level5/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike" parent="GameContent/Level5/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( -560, -224 )
 
-[node name="Spike2" parent="GameContent/Level5/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike2" parent="GameContent/Level5/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( -576, -224 )
 
-[node name="Spike3" parent="GameContent/Level5/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike3" parent="GameContent/Level5/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( -592, -224 )
 
-[node name="Spike4" parent="GameContent/Level5/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike4" parent="GameContent/Level5/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( -608, -224 )
 
-[node name="Spike5" parent="GameContent/Level5/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike5" parent="GameContent/Level5/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( -624, -256 )
 
-[node name="Spike6" parent="GameContent/Level5/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike6" parent="GameContent/Level5/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( -640, -256 )
 
-[node name="Spike7" parent="GameContent/Level5/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike7" parent="GameContent/Level5/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( -656, -256 )
 
-[node name="Spike8" parent="GameContent/Level5/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike8" parent="GameContent/Level5/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( -672, -256 )
 
-[node name="Spike9" parent="GameContent/Level5/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike9" parent="GameContent/Level5/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( -688, -256 )
 
-[node name="Spike11" parent="GameContent/Level5/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike11" parent="GameContent/Level5/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( -544, -208 )
 
-[node name="Enemy1" parent="GameContent/Level5/Prefabs" instance=ExtResource( 11 )]
+[node name="Enemy1" parent="GameContent/Level5/Prefabs" instance=ExtResource( 12 )]
 position = Vector2( -488, -224 )
 
 [node name="Level6" type="Node2D" parent="GameContent"]
@@ -982,52 +984,52 @@ editor/display_folded = true
 
 [node name="Prefabs" type="Node2D" parent="GameContent/Level6"]
 
-[node name="Spike" parent="GameContent/Level6/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike" parent="GameContent/Level6/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( -352, -416 )
 rotation = 1.57079
 
-[node name="Spike2" parent="GameContent/Level6/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike2" parent="GameContent/Level6/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( -352, -432 )
 rotation = 1.57079
 
-[node name="Spike5" parent="GameContent/Level6/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike5" parent="GameContent/Level6/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( -352, -496 )
 rotation = 1.57079
 
-[node name="Spike6" parent="GameContent/Level6/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike6" parent="GameContent/Level6/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( -352, -512 )
 rotation = 1.57079
 
-[node name="Spike15" parent="GameContent/Level6/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike15" parent="GameContent/Level6/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( -328, -312 )
 scale = Vector2( 20.44, 2 )
 
-[node name="Spike9" parent="GameContent/Level6/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike9" parent="GameContent/Level6/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( -304, -432 )
 rotation = 4.71238
 
-[node name="Spike10" parent="GameContent/Level6/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike10" parent="GameContent/Level6/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( -304, -448 )
 rotation = 4.71238
 
-[node name="Spike11" parent="GameContent/Level6/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike11" parent="GameContent/Level6/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( -304, -464 )
 rotation = 4.71238
 
-[node name="Spike13" parent="GameContent/Level6/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike13" parent="GameContent/Level6/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( -304, -368 )
 rotation = 4.71238
 
-[node name="Spike14" parent="GameContent/Level6/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike14" parent="GameContent/Level6/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( -304, -352 )
 rotation = 4.71238
 
-[node name="Turrent" parent="GameContent/Level6/Prefabs" instance=ExtResource( 6 )]
+[node name="Turrent" parent="GameContent/Level6/Prefabs" instance=ExtResource( 7 )]
 position = Vector2( -328, -560 )
 rotation = 3.14159
 fire_rate_sec = 2.5
 
-[node name="Turrent2" parent="GameContent/Level6/Prefabs" instance=ExtResource( 6 )]
+[node name="Turrent2" parent="GameContent/Level6/Prefabs" instance=ExtResource( 7 )]
 position = Vector2( -280, -448 )
 bullet_speed = 75.0
 override_target_path = NodePath("Position2D")
@@ -1035,7 +1037,7 @@ override_target_path = NodePath("Position2D")
 [node name="Position2D" type="Position2D" parent="GameContent/Level6/Prefabs/Turrent2"]
 position = Vector2( 128, -8 )
 
-[node name="Turrent4" parent="GameContent/Level6/Prefabs" instance=ExtResource( 6 )]
+[node name="Turrent4" parent="GameContent/Level6/Prefabs" instance=ExtResource( 7 )]
 position = Vector2( -24, -368 )
 fire_rate_sec = 1.2
 random_scatter_fire_rate = 0.7
@@ -1046,10 +1048,10 @@ override_target_path = NodePath("Position2D")
 [node name="Position2D" type="Position2D" parent="GameContent/Level6/Prefabs/Turrent4"]
 position = Vector2( -96, -136 )
 
-[node name="Platform" parent="GameContent/Level6/Prefabs" instance=ExtResource( 10 )]
+[node name="Platform" parent="GameContent/Level6/Prefabs" instance=ExtResource( 11 )]
 position = Vector2( -56, -416 )
 
-[node name="Platform2" parent="GameContent/Level6/Prefabs" instance=ExtResource( 10 )]
+[node name="Platform2" parent="GameContent/Level6/Prefabs" instance=ExtResource( 11 )]
 position = Vector2( -80, -464 )
 start_raised = false
 
@@ -1062,10 +1064,10 @@ editor/display_folded = true
 
 [node name="Prefabs" type="Node2D" parent="GameContent/Level7"]
 
-[node name="RegainJumpNode3" parent="GameContent/Level7/Prefabs" instance=ExtResource( 5 )]
+[node name="RegainJumpNode3" parent="GameContent/Level7/Prefabs" instance=ExtResource( 6 )]
 position = Vector2( 248, -856 )
 
-[node name="Turrent" parent="GameContent/Level7/Prefabs" instance=ExtResource( 6 )]
+[node name="Turrent" parent="GameContent/Level7/Prefabs" instance=ExtResource( 7 )]
 position = Vector2( 120, -512 )
 fire_rate_sec = 1.4
 initial_delay = 0.7
@@ -1075,7 +1077,7 @@ override_target_path = NodePath("Position2D")
 [node name="Position2D" type="Position2D" parent="GameContent/Level7/Prefabs/Turrent"]
 position = Vector2( 0, -64 )
 
-[node name="Turrent2" parent="GameContent/Level7/Prefabs" instance=ExtResource( 6 )]
+[node name="Turrent2" parent="GameContent/Level7/Prefabs" instance=ExtResource( 7 )]
 position = Vector2( 248, -512 )
 fire_rate_sec = 1.4
 initial_delay = 0.7
@@ -1085,140 +1087,140 @@ override_target_path = NodePath("Position2D")
 [node name="Position2D" type="Position2D" parent="GameContent/Level7/Prefabs/Turrent2"]
 position = Vector2( 0, -64 )
 
-[node name="TempPlatform2" parent="GameContent/Level7/Prefabs" instance=ExtResource( 9 )]
+[node name="TempPlatform2" parent="GameContent/Level7/Prefabs" instance=ExtResource( 10 )]
 modulate = Color( 0.870588, 0.47451, 1, 1 )
 position = Vector2( 144, -584 )
 
-[node name="TempPlatform7" parent="GameContent/Level7/Prefabs" instance=ExtResource( 9 )]
+[node name="TempPlatform7" parent="GameContent/Level7/Prefabs" instance=ExtResource( 10 )]
 modulate = Color( 0.870588, 0.47451, 1, 1 )
 position = Vector2( 72, -552 )
 
-[node name="TempPlatform11" parent="GameContent/Level7/Prefabs" instance=ExtResource( 9 )]
+[node name="TempPlatform11" parent="GameContent/Level7/Prefabs" instance=ExtResource( 10 )]
 modulate = Color( 0.870588, 0.47451, 1, 1 )
 position = Vector2( 24, -888 )
 
-[node name="TempPlatform13" parent="GameContent/Level7/Prefabs" instance=ExtResource( 9 )]
+[node name="TempPlatform13" parent="GameContent/Level7/Prefabs" instance=ExtResource( 10 )]
 modulate = Color( 0.870588, 0.47451, 1, 1 )
 position = Vector2( -8, -888 )
 
-[node name="TempPlatform12" parent="GameContent/Level7/Prefabs" instance=ExtResource( 9 )]
+[node name="TempPlatform12" parent="GameContent/Level7/Prefabs" instance=ExtResource( 10 )]
 modulate = Color( 0.870588, 0.47451, 1, 1 )
 position = Vector2( 8, -888 )
 
-[node name="TempPlatform6" parent="GameContent/Level7/Prefabs" instance=ExtResource( 9 )]
+[node name="TempPlatform6" parent="GameContent/Level7/Prefabs" instance=ExtResource( 10 )]
 modulate = Color( 0.870588, 0.47451, 1, 1 )
 position = Vector2( 208, -600 )
 
-[node name="TempPlatform8" parent="GameContent/Level7/Prefabs" instance=ExtResource( 9 )]
+[node name="TempPlatform8" parent="GameContent/Level7/Prefabs" instance=ExtResource( 10 )]
 modulate = Color( 0.870588, 0.47451, 1, 1 )
 position = Vector2( 208, -688 )
 
-[node name="TempPlatform9" parent="GameContent/Level7/Prefabs" instance=ExtResource( 9 )]
+[node name="TempPlatform9" parent="GameContent/Level7/Prefabs" instance=ExtResource( 10 )]
 modulate = Color( 0.870588, 0.47451, 1, 1 )
 position = Vector2( 144, -720 )
 
-[node name="TempPlatform10" parent="GameContent/Level7/Prefabs" instance=ExtResource( 9 )]
+[node name="TempPlatform10" parent="GameContent/Level7/Prefabs" instance=ExtResource( 10 )]
 modulate = Color( 0.870588, 0.47451, 1, 1 )
 position = Vector2( 144, -840 )
 
-[node name="Spike" parent="GameContent/Level7/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike" parent="GameContent/Level7/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 48, -496 )
 scale = Vector2( 1, 3 )
 
-[node name="Spike2" parent="GameContent/Level7/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike2" parent="GameContent/Level7/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 64, -496 )
 scale = Vector2( 1, 3 )
 
-[node name="Spike3" parent="GameContent/Level7/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike3" parent="GameContent/Level7/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 80, -496 )
 scale = Vector2( 1, 3 )
 
-[node name="Spike4" parent="GameContent/Level7/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike4" parent="GameContent/Level7/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 96, -496 )
 scale = Vector2( 1, 3 )
 
-[node name="Spike5" parent="GameContent/Level7/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike5" parent="GameContent/Level7/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 128, -496 )
 scale = Vector2( 1, 3 )
 
-[node name="Spike6" parent="GameContent/Level7/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike6" parent="GameContent/Level7/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 144, -496 )
 scale = Vector2( 1, 3 )
 
-[node name="Spike7" parent="GameContent/Level7/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike7" parent="GameContent/Level7/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 160, -496 )
 scale = Vector2( 1, 3 )
 
-[node name="Spike8" parent="GameContent/Level7/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike8" parent="GameContent/Level7/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 176, -496 )
 scale = Vector2( 1, 3 )
 
-[node name="Spike9" parent="GameContent/Level7/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike9" parent="GameContent/Level7/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 192, -496 )
 scale = Vector2( 1, 3 )
 
-[node name="Spike10" parent="GameContent/Level7/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike10" parent="GameContent/Level7/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 208, -496 )
 scale = Vector2( 1, 3 )
 
-[node name="Spike11" parent="GameContent/Level7/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike11" parent="GameContent/Level7/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 224, -496 )
 scale = Vector2( 1, 3 )
 
-[node name="Spike12" parent="GameContent/Level7/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike12" parent="GameContent/Level7/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 256, -496 )
 scale = Vector2( 1, 3 )
 
-[node name="Spike13" parent="GameContent/Level7/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike13" parent="GameContent/Level7/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 272, -496 )
 scale = Vector2( 1, 3 )
 
-[node name="Spike14" parent="GameContent/Level7/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike14" parent="GameContent/Level7/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 288, -496 )
 scale = Vector2( 1, 3 )
 
-[node name="Spike15" parent="GameContent/Level7/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike15" parent="GameContent/Level7/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 304, -496 )
 scale = Vector2( 1, 3 )
 
-[node name="Spike16" parent="GameContent/Level7/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike16" parent="GameContent/Level7/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 320, -496 )
 scale = Vector2( 1, 3 )
 
-[node name="Spike17" parent="GameContent/Level7/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike17" parent="GameContent/Level7/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 336, -496 )
 scale = Vector2( 1, 3 )
 
-[node name="Spike18" parent="GameContent/Level7/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike18" parent="GameContent/Level7/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 352, -496 )
 scale = Vector2( 1, 3 )
 
-[node name="Spike20" parent="GameContent/Level7/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike20" parent="GameContent/Level7/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 224, -768 )
 rotation = -1.5708
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike21" parent="GameContent/Level7/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike21" parent="GameContent/Level7/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 272, -784 )
 rotation = 1.5708
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike22" parent="GameContent/Level7/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike22" parent="GameContent/Level7/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 272, -768 )
 rotation = 3.14159
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike23" parent="GameContent/Level7/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike23" parent="GameContent/Level7/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 256, -768 )
 rotation = 3.14159
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike24" parent="GameContent/Level7/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike24" parent="GameContent/Level7/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 240, -768 )
 rotation = 3.14159
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike19" parent="GameContent/Level7/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike19" parent="GameContent/Level7/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 368, -496 )
 scale = Vector2( 1, 3 )
 
@@ -1227,65 +1229,65 @@ editor/display_folded = true
 
 [node name="Prefabs" type="Node2D" parent="GameContent/Level8"]
 
-[node name="TempPlatform14" parent="GameContent/Level8/Prefabs" instance=ExtResource( 9 )]
+[node name="TempPlatform14" parent="GameContent/Level8/Prefabs" instance=ExtResource( 10 )]
 modulate = Color( 0.870588, 0.47451, 1, 1 )
 position = Vector2( -48, -736 )
 
-[node name="Spike" parent="GameContent/Level8/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike" parent="GameContent/Level8/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 0, -848 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike5" parent="GameContent/Level8/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike5" parent="GameContent/Level8/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 0, -832 )
 rotation = -1.57079
 scale = Vector2( 1, 0.9 )
 
-[node name="Spike6" parent="GameContent/Level8/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike6" parent="GameContent/Level8/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 0, -816 )
 rotation = -1.57079
 scale = Vector2( 1, 0.9 )
 
-[node name="Spike7" parent="GameContent/Level8/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike7" parent="GameContent/Level8/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 0, -800 )
 rotation = -1.57079
 scale = Vector2( 1, 0.9 )
 
-[node name="Spike8" parent="GameContent/Level8/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike8" parent="GameContent/Level8/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( -1.16415e-010, -784 )
 rotation = -1.57079
 scale = Vector2( 1, 0.9 )
 
-[node name="Spike9" parent="GameContent/Level8/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike9" parent="GameContent/Level8/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 1.16415e-010, -768 )
 rotation = -1.57079
 scale = Vector2( 1, 0.9 )
 
-[node name="Spike10" parent="GameContent/Level8/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike10" parent="GameContent/Level8/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( 1.16415e-010, -768 )
 rotation = -1.57079
 scale = Vector2( 1, 0.9 )
 
-[node name="MonsterSpawner" parent="GameContent/Level8/Prefabs" instance=ExtResource( 3 )]
+[node name="MonsterSpawner" parent="GameContent/Level8/Prefabs" instance=ExtResource( 4 )]
 position = Vector2( -240, -1056 )
 
 [node name="Timer" type="Timer" parent="GameContent/Level8/Prefabs"]
 wait_time = 1.4
 autostart = true
 
-[node name="Spike2" parent="GameContent/Level8/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike2" parent="GameContent/Level8/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( -32, -688 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike4" parent="GameContent/Level8/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike4" parent="GameContent/Level8/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( -96, -752 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike3" parent="GameContent/Level8/Prefabs" instance=ExtResource( 7 )]
+[node name="Spike3" parent="GameContent/Level8/Prefabs" instance=ExtResource( 8 )]
 position = Vector2( -608, -688 )
 
-[node name="ShakyTurrent" parent="GameContent/Level8/Prefabs" instance=ExtResource( 12 )]
+[node name="ShakyTurrent" parent="GameContent/Level8/Prefabs" instance=ExtResource( 13 )]
 
-[node name="Turrent2" parent="GameContent/Level8/Prefabs" instance=ExtResource( 6 )]
+[node name="Turrent2" parent="GameContent/Level8/Prefabs" instance=ExtResource( 7 )]
 position = Vector2( -488, -1032 )
 rotation = -3.14159
 fire_rate_sec = 0.6
@@ -1301,9 +1303,9 @@ curve = SubResource( 7 )
 [node name="PathFollow2D" type="PathFollow2D" parent="GameContent/Level8/Prefabs/Path2D2"]
 position = Vector2( 71.9997, -128 )
 rotation = 3.14159
-script = ExtResource( 13 )
+script = ExtResource( 14 )
 
-[node name="LightOccluder" parent="GameContent" instance=ExtResource( 14 )]
+[node name="LightOccluder" parent="GameContent" instance=ExtResource( 15 )]
 tile_data = PoolIntArray( -4325401, 0, 0, -4325391, 0, 0, -4259878, 0, 0, -4259865, 0, 0, -4259855, 0, 0, -4259845, 0, 0, -4194342, 0, 0, -4194329, 0, 0, -4194319, 0, 0, -4194309, 0, 0, -4128806, 0, 0, -4128793, 0, 0, -4128783, 0, 0, -4128773, 0, 0, -4063270, 0, 0, -4063257, 0, 0, -4063247, 0, 0, -4063237, 0, 0, -3997734, 0, 0, -3997721, 0, 0, -3997711, 0, 0, -3997701, 0, 0, -3932198, 0, 0, -3932185, 0, 0, -3932175, 0, 0, -3932165, 0, 0, -3866649, 0, 0, -3866639, 0, 0, -3866629, 0, 0, -3801113, 0, 0, -3801103, 0, 0, -3801093, 0, 0, -3735577, 0, 0, -3735567, 0, 0, -3735557, 0, 0, -3670059, 0, 0, -3670058, 0, 0, -3670057, 0, 0, -3670056, 0, 0, -3670055, 0, 0, -3670054, 0, 0, -3670053, 0, 0, -3670041, 0, 0, -3670031, 0, 0, -3670021, 0, 0, -3604522, 0, 0, -3604520, 0, 0, -3604519, 0, 0, -3604518, 0, 0, -3604517, 0, 0, -3604505, 0, 0, -3604495, 0, 0, -3604485, 0, 0, -3538986, 0, 0, -3538984, 0, 0, -3538983, 0, 0, -3538982, 0, 0, -3538981, 0, 0, -3538969, 0, 0, -3538959, 0, 0, -3538949, 0, 0, -3473450, 0, 0, -3473448, 0, 0, -3473447, 0, 0, -3473446, 0, 0, -3473445, 0, 0, -3473433, 0, 0, -3473423, 0, 0, -3473413, 0, 0, -3407914, 0, 0, -3407912, 0, 0, -3407911, 0, 0, -3407910, 0, 0, -3407909, 0, 0, -3407897, 0, 0, -3407887, 0, 0, -3407877, 0, 0, -3342378, 0, 0, -3342376, 0, 0, -3342375, 0, 0, -3342374, 0, 0, -3342373, 0, 0, -3342361, 0, 0, -3342351, 0, 0, -3342341, 0, 0, -3276842, 0, 0, -3276840, 0, 0, -3276839, 0, 0, -3276838, 0, 0, -3276837, 0, 0, -3276825, 0, 0, -3276815, 0, 0, -3276805, 0, 0, -3211306, 0, 0, -3211304, 0, 0, -3211303, 0, 0, -3211302, 0, 0, -3211301, 0, 0, -3211289, 0, 0, -3211279, 0, 0, -3211269, 0, 0, -3145770, 0, 0, -3145768, 0, 0, -3145767, 0, 0, -3145766, 0, 0, -3145765, 0, 0, -3145753, 0, 0, -3145743, 0, 0, -3145733, 0, 0, -3080234, 0, 0, -3080232, 0, 0, -3080231, 0, 0, -3080230, 0, 0, -3080229, 0, 0, -3080217, 0, 0, -3080207, 0, 0, -3080197, 0, 0, -3014698, 0, 0, -3014696, 0, 0, -3014695, 0, 0, -3014694, 0, 0, -3014693, 0, 0, -3014681, 0, 0, -3014671, 0, 0, -2949162, 0, 0, -2949160, 0, 0, -2883626, 0, 0, -2883624, 0, 0, -2818090, 0, 0, -2818088, 0, 0, -2752554, 0, 0, -2687019, 0, 0, -2687018, 0, 0, -2621483, 0, 0, -524246, 0, 0, -524245, 0, 0, -524244, 0, 0, -524243, 0, 0, -524242, 0, 0, -524241, 0, 0, -524240, 0, 0, -524239, 0, 0, -524238, 0, 0, -524237, 0, 0, -524236, 0, 0, -524235, 0, 0, -524234, 0, 0, -524233, 0, 0, -458710, 0, 0, -458709, 0, 0, -458708, 0, 0, -458707, 0, 0, -458706, 0, 0, -458705, 0, 0, -458704, 0, 0, -458703, 0, 0, -458702, 0, 0, -458701, 0, 0, -458700, 0, 0, -458699, 0, 0, -458698, 0, 0, -458697, 0, 0 )
 
 [node name="Level" type="Node2D" parent="GameContent"]
@@ -1311,252 +1313,252 @@ editor/display_folded = true
 
 [node name="TileMap" type="TileMap" parent="GameContent/Level"]
 position = Vector2( -688, -928 )
-tile_set = ExtResource( 2 )
+tile_set = ExtResource( 3 )
 cell_size = Vector2( 16, 16 )
 collision_layer = 72
 format = 1
 tile_data = PoolIntArray( -393217, 0, 0, -327703, 0, 0, -327702, 0, 0, -327701, 0, 0, -327700, 0, 0, -327699, 0, 0, -327698, 0, 0, -327697, 0, 0, -327696, 0, 0, -327695, 0, 0, -327694, 0, 0, -327693, 0, 0, -327692, 0, 0, -327691, 0, 0, -327690, 0, 0, -327689, 0, 0, -327688, 0, 0, -327687, 0, 0, -327686, 0, 0, -327685, 0, 0, -327684, 0, 0, -327683, 0, 0, -327682, 0, 0, -327681, 0, 0, -262167, 0, 0, -196631, 0, 0, -131095, 0, 0, -65559, 0, 0, -23, 0, 0, 65513, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 131049, 0, 0, 131066, 0, 0, 131067, 0, 0, 131068, 0, 0, 131069, 0, 0, 131071, 0, 0, 196585, 0, 0, 196601, 0, 0, 196602, 0, 0, 196607, 0, 0, 262121, 0, 0, 262136, 0, 0, 262137, 0, 0, 262143, 0, 0, 327657, 0, 0, 327671, 0, 0, 327672, 0, 0, 327679, 0, 0, 393193, 0, 0, 393206, 0, 0, 393207, 0, 0, 393215, 0, 0, 458729, 0, 0, 458741, 0, 0, 458742, 0, 0, 458751, 0, 0, 524265, 0, 0, 524287, 0, 0, 589801, 0, 0, 589823, 0, 0, 655337, 0, 0, 655359, 0, 0, 720873, 0, 0, 720895, 0, 0, 786409, 0, 0, 786431, 0, 0, 851945, 0, 0, 851967, 0, 0, 917481, 0, 0, 917503, 0, 0, 983017, 0, 0, 983018, 0, 0, 983019, 0, 0, 983020, 0, 0, 983021, 0, 0, 983022, 0, 0, 983023, 0, 0, 983024, 0, 0, 983025, 0, 0, 983026, 0, 0, 983027, 0, 0, 983028, 0, 0, 983029, 0, 0, 983030, 0, 0, 983039, 0, 0, 1048553, 0, 0, 1048575, 0, 0, 1114089, 0, 0, 1114111, 0, 0, 1179625, 0, 0, 1179629, 0, 0, 1179630, 0, 0, 1179631, 0, 0, 1179632, 0, 0, 1179633, 0, 0, 1179634, 0, 0, 1179647, 0, 0, 1245161, 0, 0, 1245170, 0, 0, 1245183, 0, 0, 1310697, 0, 0, 1310706, 0, 0, 1310719, 0, 0, 1376233, 0, 0, 1376242, 0, 0, 1376243, 0, 0, 1376244, 0, 0, 1376245, 0, 0, 1376246, 0, 0, 1376247, 0, 0, 1376248, 0, 0, 1376249, 0, 0, 1376250, 0, 0, 1376251, 0, 0, 1376252, 0, 0, 1376253, 0, 0, 1376254, 0, 0, 1376255, 0, 0, 1441769, 0, 0, 1441780, 0, 0, 1441789, 0, 0, 1441790, 0, 0, 1441791, 0, 0, 1507305, 0, 0, 1507327, 0, 0, 1572841, 0, 0, 1572842, 0, 0, 1572843, 0, 0, 1572844, 0, 0, 1572845, 0, 0, 1572863, 0, 0, 1638377, 0, 0, 1638381, 0, 0, 1638382, 0, 0, 1638383, 0, 0, 1638384, 0, 0, 1638388, 0, 0, 1638389, 0, 0, 1638390, 0, 0, 1638391, 0, 0, 1638392, 0, 0, 1638393, 0, 0, 1638394, 0, 0, 1638395, 0, 0, 1638396, 0, 0, 1638397, 0, 0, 1638398, 0, 0, 1638399, 0, 0, 1703913, 0, 0, 1703935, 0, 0, 1769449, 0, 0, 1769471, 0, 0, 1834985, 0, 0, 1835005, 0, 0, 1835006, 0, 0, 1835007, 0, 0, 1900521, 0, 0, 1900543, 0, 0, 1966057, 0, 0, 1966059, 0, 0, 1966079, 0, 0, 2031593, 0, 0, 2031595, 0, 0, 2031596, 0, 0, 2031597, 0, 0, 2031598, 0, 0, 2031599, 0, 0, 2031600, 0, 0, 2031601, 0, 0, 2031602, 0, 0, 2031603, 0, 0, 2031604, 0, 0, 2031605, 0, 0, 2031606, 0, 0, 2031607, 0, 0, 2031608, 0, 0, 2031609, 0, 0, 2031610, 0, 0, 2031611, 0, 0, 2031612, 0, 0, 2031615, 0, 0, 2097129, 0, 0, 2097151, 0, 0, 2162665, 0, 0, 2162687, 0, 0, 2228201, 0, 0, 2228202, 0, 0, 2228203, 0, 0, 2228204, 0, 0, 2228205, 0, 0, 2228220, 0, 0, 2228223, 0, 0, 2293737, 0, 0, 2293756, 0, 0, 2293759, 0, 0, 2359273, 0, 0, 2359290, 0, 0, 2359291, 0, 0, 2359292, 0, 0, 2424809, 0, 0, 2424812, 0, 0, 2424824, 0, 0, 2424825, 0, 0, 2424826, 0, 0, 2424828, 0, 0, 2490345, 0, 0, 2490348, 0, 0, 2490358, 0, 0, 2490359, 0, 0, 2490360, 0, 0, 2490364, 0, 0, 2555881, 0, 0, 2555884, 0, 0, 2555892, 0, 0, 2555893, 0, 0, 2555894, 0, 0, 2555900, 0, 0, 2621417, 0, 0, 2621420, 0, 0, 2621426, 0, 0, 2621427, 0, 0, 2621428, 0, 0, 2621436, 0, 0, 2686953, 0, 0, 2686956, 0, 0, 2686960, 0, 0, 2686961, 0, 0, 2686962, 0, 0, 2686972, 0, 0, 2752489, 0, 0, 2752492, 0, 0, 2752493, 0, 0, 2752494, 0, 0, 2752495, 0, 0, 2752496, 0, 0, 2752508, 0, 0, 2818025, 0, 0, 2818044, 0, 0, 2818045, 0, 0, 2883561, 0, 0, 2949097, 0, 0, 3014633, 0, 0, 3014655, 0, 0, 3080169, 0, 0, 3080170, 0, 0, 3080171, 0, 0, 3080172, 0, 0, 3080176, 0, 0, 3080185, 0, 0, 3080191, 0, 0, 3145705, 0, 0, 3145711, 0, 0, 3145712, 0, 0, 3145721, 0, 0, 3145722, 0, 0, 3145727, 0, 0, 3211241, 0, 0, 3211263, 0, 0, 3276777, 0, 0, 3276799, 0, 0, 3342313, 0, 0, 3342335, 0, 0, 3407849, 0, 0, 3407871, 0, 0, 3473385, 0, 0, 3473407, 0, 0, 3538921, 0, 0, 3538943, 0, 0, 3604457, 0, 0, 3604479, 0, 0, 3669993, 0, 0, 3670015, 0, 0, 3735529, 0, 0, 3735551, 0, 0, 3801065, 0, 0, 3801071, 0, 0, 3801072, 0, 0, 3801082, 0, 0, 3801083, 0, 0, 3801087, 0, 0, 3866601, 0, 0, 3866608, 0, 0, 3866618, 0, 0, 3866623, 0, 0, 3932137, 0, 0, 3932154, 0, 0, 3932159, 0, 0, 3997673, 0, 0, 3997690, 0, 0, 3997695, 0, 0, 4063209, 0, 0, 4063226, 0, 0, 4063231, 0, 0, 4128745, 0, 0, 4128762, 0, 0, 4128767, 0, 0, 4194281, 0, 0, 4194298, 0, 0, 4194300, 0, 0, 4194301, 0, 0, 4194302, 0, 0, 4194303, 0, 0, 4259817, 0, 0, 4259834, 0, 0, 4325353, 0, 0, 4325370, 0, 0, 4390889, 0, 0, 4390906, 0, 0, 4390907, 0, 0, 4456425, 0, 0, 4456442, 0, 0, 4521961, 0, 0, 4521976, 0, 0, 4521977, 0, 0, 4521978, 0, 0, 4587497, 0, 0, 4587512, 0, 0, 4653033, 0, 0, 4653034, 0, 0, 4653035, 0, 0, 4653036, 0, 0, 4653037, 0, 0, 4653038, 0, 0, 4653039, 0, 0, 4653040, 0, 0, 4653041, 0, 0, 4653042, 0, 0, 4653043, 0, 0, 4653044, 0, 0, 4653045, 0, 0, 4653046, 0, 0, 4653047, 0, 0, 4653048, 0, 0, 4653055, 0, 0, 4587520, 0, 0 )
 
-[node name="RegainJumpNode" parent="GameContent/Level" instance=ExtResource( 5 )]
+[node name="RegainJumpNode" parent="GameContent/Level" instance=ExtResource( 6 )]
 position = Vector2( -1008, -896 )
 
-[node name="RegainJumpNode2" parent="GameContent/Level" instance=ExtResource( 5 )]
+[node name="RegainJumpNode2" parent="GameContent/Level" instance=ExtResource( 6 )]
 position = Vector2( -784, -768 )
 
-[node name="TempPlatform5" parent="GameContent/Level" instance=ExtResource( 9 )]
+[node name="TempPlatform5" parent="GameContent/Level" instance=ExtResource( 10 )]
 position = Vector2( -832, -704 )
 
-[node name="TempPlatform6" parent="GameContent/Level" instance=ExtResource( 9 )]
+[node name="TempPlatform6" parent="GameContent/Level" instance=ExtResource( 10 )]
 position = Vector2( -816, -704 )
 
-[node name="TempPlatform7" parent="GameContent/Level" instance=ExtResource( 9 )]
+[node name="TempPlatform7" parent="GameContent/Level" instance=ExtResource( 10 )]
 position = Vector2( -800, -704 )
 
-[node name="TempPlatform8" parent="GameContent/Level" instance=ExtResource( 9 )]
+[node name="TempPlatform8" parent="GameContent/Level" instance=ExtResource( 10 )]
 position = Vector2( -784, -704 )
 
-[node name="TempPlatform9" parent="GameContent/Level" instance=ExtResource( 9 )]
+[node name="TempPlatform9" parent="GameContent/Level" instance=ExtResource( 10 )]
 position = Vector2( -768, -704 )
 
-[node name="TempPlatform10" parent="GameContent/Level" instance=ExtResource( 9 )]
+[node name="TempPlatform10" parent="GameContent/Level" instance=ExtResource( 10 )]
 position = Vector2( -752, -704 )
 
-[node name="TempPlatform11" parent="GameContent/Level" instance=ExtResource( 9 )]
+[node name="TempPlatform11" parent="GameContent/Level" instance=ExtResource( 10 )]
 position = Vector2( -736, -704 )
 
-[node name="TempPlatform12" parent="GameContent/Level" instance=ExtResource( 9 )]
+[node name="TempPlatform12" parent="GameContent/Level" instance=ExtResource( 10 )]
 position = Vector2( -720, -704 )
 
-[node name="TempPlatform3" parent="GameContent/Level" instance=ExtResource( 9 )]
+[node name="TempPlatform3" parent="GameContent/Level" instance=ExtResource( 10 )]
 position = Vector2( -880, -848 )
 
-[node name="TempPlatform4" parent="GameContent/Level" instance=ExtResource( 9 )]
+[node name="TempPlatform4" parent="GameContent/Level" instance=ExtResource( 10 )]
 position = Vector2( -928, -896 )
 
 [node name="Spikes" type="Node2D" parent="GameContent/Level"]
 position = Vector2( -688, -928 )
 
-[node name="Spike" parent="GameContent/Level/Spikes" instance=ExtResource( 7 )]
+[node name="Spike" parent="GameContent/Level/Spikes" instance=ExtResource( 8 )]
 position = Vector2( -64, 16 )
 
-[node name="Spike2" parent="GameContent/Level/Spikes" instance=ExtResource( 7 )]
+[node name="Spike2" parent="GameContent/Level/Spikes" instance=ExtResource( 8 )]
 position = Vector2( -80, 16 )
 
-[node name="Spike3" parent="GameContent/Level/Spikes" instance=ExtResource( 7 )]
+[node name="Spike3" parent="GameContent/Level/Spikes" instance=ExtResource( 8 )]
 position = Vector2( -96, 16 )
 
-[node name="Spike4" parent="GameContent/Level/Spikes" instance=ExtResource( 7 )]
+[node name="Spike4" parent="GameContent/Level/Spikes" instance=ExtResource( 8 )]
 position = Vector2( -112, 32 )
 
-[node name="Spike5" parent="GameContent/Level/Spikes" instance=ExtResource( 7 )]
+[node name="Spike5" parent="GameContent/Level/Spikes" instance=ExtResource( 8 )]
 position = Vector2( -128, 48 )
 
-[node name="Spike6" parent="GameContent/Level/Spikes" instance=ExtResource( 7 )]
+[node name="Spike6" parent="GameContent/Level/Spikes" instance=ExtResource( 8 )]
 position = Vector2( -144, 64 )
 
-[node name="Spike7" parent="GameContent/Level/Spikes" instance=ExtResource( 7 )]
+[node name="Spike7" parent="GameContent/Level/Spikes" instance=ExtResource( 8 )]
 position = Vector2( -160, 80 )
 
-[node name="Spike8" parent="GameContent/Level/Spikes" instance=ExtResource( 7 )]
+[node name="Spike8" parent="GameContent/Level/Spikes" instance=ExtResource( 8 )]
 position = Vector2( -176, 96 )
 
-[node name="Spike11" parent="GameContent/Level/Spikes" instance=ExtResource( 7 )]
+[node name="Spike11" parent="GameContent/Level/Spikes" instance=ExtResource( 8 )]
 position = Vector2( -352, 224 )
 
-[node name="Spike12" parent="GameContent/Level/Spikes" instance=ExtResource( 7 )]
+[node name="Spike12" parent="GameContent/Level/Spikes" instance=ExtResource( 8 )]
 position = Vector2( -336, 224 )
 
-[node name="Spike13" parent="GameContent/Level/Spikes" instance=ExtResource( 7 )]
+[node name="Spike13" parent="GameContent/Level/Spikes" instance=ExtResource( 8 )]
 position = Vector2( -320, 224 )
 
-[node name="Spike14" parent="GameContent/Level/Spikes" instance=ExtResource( 7 )]
+[node name="Spike14" parent="GameContent/Level/Spikes" instance=ExtResource( 8 )]
 position = Vector2( -304, 224 )
 
-[node name="Spike15" parent="GameContent/Level/Spikes" instance=ExtResource( 7 )]
+[node name="Spike15" parent="GameContent/Level/Spikes" instance=ExtResource( 8 )]
 position = Vector2( -288, 224 )
 
-[node name="Spike16" parent="GameContent/Level/Spikes" instance=ExtResource( 7 )]
+[node name="Spike16" parent="GameContent/Level/Spikes" instance=ExtResource( 8 )]
 position = Vector2( -272, 224 )
 
-[node name="Spike17" parent="GameContent/Level/Spikes" instance=ExtResource( 7 )]
+[node name="Spike17" parent="GameContent/Level/Spikes" instance=ExtResource( 8 )]
 position = Vector2( -256, 224 )
 
-[node name="Spike18" parent="GameContent/Level/Spikes" instance=ExtResource( 7 )]
+[node name="Spike18" parent="GameContent/Level/Spikes" instance=ExtResource( 8 )]
 position = Vector2( -240, 224 )
 
-[node name="Spike19" parent="GameContent/Level/Spikes" instance=ExtResource( 7 )]
+[node name="Spike19" parent="GameContent/Level/Spikes" instance=ExtResource( 8 )]
 position = Vector2( -224, 224 )
 
-[node name="Spike20" parent="GameContent/Level/Spikes" instance=ExtResource( 7 )]
+[node name="Spike20" parent="GameContent/Level/Spikes" instance=ExtResource( 8 )]
 position = Vector2( -208, 224 )
 
-[node name="Spike21" parent="GameContent/Level/Spikes" instance=ExtResource( 7 )]
+[node name="Spike21" parent="GameContent/Level/Spikes" instance=ExtResource( 8 )]
 position = Vector2( -192, 224 )
 
-[node name="Spike36" parent="GameContent/Level/Spikes" instance=ExtResource( 7 )]
+[node name="Spike36" parent="GameContent/Level/Spikes" instance=ExtResource( 8 )]
 position = Vector2( -176, 224 )
 
-[node name="Spike37" parent="GameContent/Level/Spikes" instance=ExtResource( 7 )]
+[node name="Spike37" parent="GameContent/Level/Spikes" instance=ExtResource( 8 )]
 position = Vector2( -160, 224 )
 
-[node name="Spike22" parent="GameContent/Level/Spikes" instance=ExtResource( 7 )]
+[node name="Spike22" parent="GameContent/Level/Spikes" instance=ExtResource( 8 )]
 position = Vector2( -32, 320 )
 
-[node name="Spike23" parent="GameContent/Level/Spikes" instance=ExtResource( 7 )]
+[node name="Spike23" parent="GameContent/Level/Spikes" instance=ExtResource( 8 )]
 position = Vector2( -48, 320 )
 
-[node name="Spike24" parent="GameContent/Level/Spikes" instance=ExtResource( 7 )]
+[node name="Spike24" parent="GameContent/Level/Spikes" instance=ExtResource( 8 )]
 position = Vector2( -64, 320 )
 
-[node name="Spike25" parent="GameContent/Level/Spikes" instance=ExtResource( 7 )]
+[node name="Spike25" parent="GameContent/Level/Spikes" instance=ExtResource( 8 )]
 position = Vector2( -80, 320 )
 
-[node name="Spike26" parent="GameContent/Level/Spikes" instance=ExtResource( 7 )]
+[node name="Spike26" parent="GameContent/Level/Spikes" instance=ExtResource( 8 )]
 position = Vector2( -96, 320 )
 
-[node name="Spike27" parent="GameContent/Level/Spikes" instance=ExtResource( 7 )]
+[node name="Spike27" parent="GameContent/Level/Spikes" instance=ExtResource( 8 )]
 position = Vector2( -112, 320 )
 
-[node name="Spike28" parent="GameContent/Level/Spikes" instance=ExtResource( 7 )]
+[node name="Spike28" parent="GameContent/Level/Spikes" instance=ExtResource( 8 )]
 position = Vector2( -128, 320 )
 
-[node name="Spike29" parent="GameContent/Level/Spikes" instance=ExtResource( 7 )]
+[node name="Spike29" parent="GameContent/Level/Spikes" instance=ExtResource( 8 )]
 position = Vector2( -144, 320 )
 
-[node name="Spike30" parent="GameContent/Level/Spikes" instance=ExtResource( 7 )]
+[node name="Spike30" parent="GameContent/Level/Spikes" instance=ExtResource( 8 )]
 position = Vector2( -160, 320 )
 
-[node name="Spike31" parent="GameContent/Level/Spikes" instance=ExtResource( 7 )]
+[node name="Spike31" parent="GameContent/Level/Spikes" instance=ExtResource( 8 )]
 position = Vector2( -176, 320 )
 
-[node name="Spike32" parent="GameContent/Level/Spikes" instance=ExtResource( 7 )]
+[node name="Spike32" parent="GameContent/Level/Spikes" instance=ExtResource( 8 )]
 position = Vector2( -192, 320 )
 
-[node name="Spike33" parent="GameContent/Level/Spikes" instance=ExtResource( 7 )]
+[node name="Spike33" parent="GameContent/Level/Spikes" instance=ExtResource( 8 )]
 position = Vector2( -208, 320 )
 
-[node name="Spike38" parent="GameContent/Level" instance=ExtResource( 7 )]
+[node name="Spike38" parent="GameContent/Level" instance=ExtResource( 8 )]
 position = Vector2( -1040, -560 )
 
-[node name="Spike40" parent="GameContent/Level" instance=ExtResource( 7 )]
+[node name="Spike40" parent="GameContent/Level" instance=ExtResource( 8 )]
 position = Vector2( -976, -544 )
 
-[node name="Spike39" parent="GameContent/Level" instance=ExtResource( 7 )]
+[node name="Spike39" parent="GameContent/Level" instance=ExtResource( 8 )]
 position = Vector2( -1008, -560 )
 
-[node name="Spike42" parent="GameContent/Level" instance=ExtResource( 7 )]
+[node name="Spike42" parent="GameContent/Level" instance=ExtResource( 8 )]
 position = Vector2( -992, -560 )
 
-[node name="Spike41" parent="GameContent/Level" instance=ExtResource( 7 )]
+[node name="Spike41" parent="GameContent/Level" instance=ExtResource( 8 )]
 position = Vector2( -944, -544 )
 
 [node name="Slimeswitch" type="Node2D" parent="GameContent/Level"]
 position = Vector2( -688, -928 )
 
-[node name="Switch" parent="GameContent/Level" instance=ExtResource( 15 )]
+[node name="Switch" parent="GameContent/Level" instance=ExtResource( 16 )]
 position = Vector2( -720, -544 )
 one_switch = true
 
-[node name="Platform" parent="GameContent/Level" instance=ExtResource( 10 )]
+[node name="Platform" parent="GameContent/Level" instance=ExtResource( 11 )]
 position = Vector2( -848, -576 )
 
-[node name="Platform2" parent="GameContent/Level" instance=ExtResource( 10 )]
+[node name="Platform2" parent="GameContent/Level" instance=ExtResource( 11 )]
 position = Vector2( -832, -576 )
 
-[node name="Platform3" parent="GameContent/Level" instance=ExtResource( 10 )]
+[node name="Platform3" parent="GameContent/Level" instance=ExtResource( 11 )]
 position = Vector2( -816, -576 )
 
-[node name="Platform4" parent="GameContent/Level" instance=ExtResource( 10 )]
+[node name="Platform4" parent="GameContent/Level" instance=ExtResource( 11 )]
 position = Vector2( -800, -576 )
 
-[node name="Platform5" parent="GameContent/Level" instance=ExtResource( 10 )]
+[node name="Platform5" parent="GameContent/Level" instance=ExtResource( 11 )]
 position = Vector2( -784, -576 )
 
-[node name="Platform6" parent="GameContent/Level" instance=ExtResource( 10 )]
+[node name="Platform6" parent="GameContent/Level" instance=ExtResource( 11 )]
 position = Vector2( -768, -576 )
 
-[node name="Platform7" parent="GameContent/Level" instance=ExtResource( 10 )]
+[node name="Platform7" parent="GameContent/Level" instance=ExtResource( 11 )]
 position = Vector2( -864, -576 )
 
-[node name="Platform9" parent="GameContent/Level" instance=ExtResource( 10 )]
+[node name="Platform9" parent="GameContent/Level" instance=ExtResource( 11 )]
 position = Vector2( -752, -576 )
 
-[node name="Platform10" parent="GameContent/Level" instance=ExtResource( 10 )]
+[node name="Platform10" parent="GameContent/Level" instance=ExtResource( 11 )]
 position = Vector2( -896, -544 )
 
-[node name="Platform11" parent="GameContent/Level" instance=ExtResource( 10 )]
+[node name="Platform11" parent="GameContent/Level" instance=ExtResource( 11 )]
 position = Vector2( -912, -544 )
 
-[node name="Platform12" parent="GameContent/Level" instance=ExtResource( 10 )]
+[node name="Platform12" parent="GameContent/Level" instance=ExtResource( 11 )]
 position = Vector2( -928, -544 )
 
-[node name="Enemy2" parent="GameContent/Level" instance=ExtResource( 11 )]
+[node name="Enemy2" parent="GameContent/Level" instance=ExtResource( 12 )]
 position = Vector2( -864, -576 )
 
-[node name="Enemy3" parent="GameContent/Level" instance=ExtResource( 11 )]
+[node name="Enemy3" parent="GameContent/Level" instance=ExtResource( 12 )]
 position = Vector2( -848, -576 )
 
-[node name="Enemy4" parent="GameContent/Level" instance=ExtResource( 11 )]
+[node name="Enemy4" parent="GameContent/Level" instance=ExtResource( 12 )]
 position = Vector2( -832, -576 )
 
-[node name="Enemy6" parent="GameContent/Level" instance=ExtResource( 11 )]
+[node name="Enemy6" parent="GameContent/Level" instance=ExtResource( 12 )]
 position = Vector2( -800, -576 )
 
-[node name="Enemy8" parent="GameContent/Level" instance=ExtResource( 11 )]
+[node name="Enemy8" parent="GameContent/Level" instance=ExtResource( 12 )]
 position = Vector2( -768, -576 )
 
-[node name="Enemy9" parent="GameContent/Level" instance=ExtResource( 11 )]
+[node name="Enemy9" parent="GameContent/Level" instance=ExtResource( 12 )]
 position = Vector2( -752, -576 )
 
 [node name="Slimeswitch2" type="Node2D" parent="GameContent/Level"]
 editor/display_folded = true
 position = Vector2( -688, -816 )
 
-[node name="Switch" parent="GameContent/Level/Slimeswitch2" instance=ExtResource( 15 )]
+[node name="Switch" parent="GameContent/Level/Slimeswitch2" instance=ExtResource( 16 )]
 position = Vector2( -32, 320 )
 one_switch = true
 
-[node name="Platform" parent="GameContent/Level/Slimeswitch2" instance=ExtResource( 10 )]
+[node name="Platform" parent="GameContent/Level/Slimeswitch2" instance=ExtResource( 11 )]
 position = Vector2( -208, 368 )
 rotation = -1.5708
 
-[node name="Platform2" parent="GameContent/Level/Slimeswitch2" instance=ExtResource( 10 )]
+[node name="Platform2" parent="GameContent/Level/Slimeswitch2" instance=ExtResource( 11 )]
 position = Vector2( -352, 352 )
 
 [node name="Slimeswitch3" type="Node2D" parent="GameContent/Level"]
 position = Vector2( -688, -768 )
 
-[node name="Switch2" parent="GameContent/Level" instance=ExtResource( 15 )]
+[node name="Switch2" parent="GameContent/Level" instance=ExtResource( 16 )]
 position = Vector2( -768, -368 )
 one_switch = true
 
-[node name="Platform8" parent="GameContent/Level" instance=ExtResource( 10 )]
+[node name="Platform8" parent="GameContent/Level" instance=ExtResource( 11 )]
 position = Vector2( -736, -448 )
 
-[node name="Platform13" parent="GameContent/Level" instance=ExtResource( 10 )]
+[node name="Platform13" parent="GameContent/Level" instance=ExtResource( 11 )]
 position = Vector2( -720, -448 )
 
-[node name="Turrent5" parent="GameContent/Level" instance=ExtResource( 6 )]
+[node name="Turrent5" parent="GameContent/Level" instance=ExtResource( 7 )]
 position = Vector2( -864, -96 )
 rotation = -3.14159
 fire_rate_sec = 0.1
@@ -1572,10 +1574,10 @@ curve = SubResource( 11 )
 position = Vector2( 0, 24 )
 rotation = -2.35619
 scale = Vector2( 1, 1 )
-script = ExtResource( 13 )
+script = ExtResource( 14 )
 speed = 20.0
 
-[node name="Turrent6" parent="GameContent/Level" instance=ExtResource( 6 )]
+[node name="Turrent6" parent="GameContent/Level" instance=ExtResource( 7 )]
 position = Vector2( -864, -96 )
 rotation = -3.14159
 fire_rate_sec = 0.1
@@ -1590,10 +1592,10 @@ curve = SubResource( 12 )
 [node name="PathFollow2D2" type="PathFollow2D" parent="GameContent/Level/Path2D2"]
 position = Vector2( 32, -7.99994 )
 rotation = 2.35619
-script = ExtResource( 13 )
+script = ExtResource( 14 )
 speed = 20.0
 
-[node name="Turrent7" parent="GameContent/Level" instance=ExtResource( 6 )]
+[node name="Turrent7" parent="GameContent/Level" instance=ExtResource( 7 )]
 position = Vector2( -864, -96 )
 rotation = -3.14159
 fire_rate_sec = 0.1
@@ -1608,10 +1610,10 @@ curve = SubResource( 13 )
 [node name="PathFollow2D3" type="PathFollow2D" parent="GameContent/Level/Path2D3"]
 position = Vector2( 0, -40.0001 )
 rotation = 0.785398
-script = ExtResource( 13 )
+script = ExtResource( 14 )
 speed = 20.0
 
-[node name="Turrent8" parent="GameContent/Level" instance=ExtResource( 6 )]
+[node name="Turrent8" parent="GameContent/Level" instance=ExtResource( 7 )]
 position = Vector2( -864, -96 )
 rotation = -3.14159
 fire_rate_sec = 0.1
@@ -1627,102 +1629,102 @@ curve = SubResource( 14 )
 position = Vector2( -32, -10.0001 )
 rotation = -0.785398
 scale = Vector2( 1, 1 )
-script = ExtResource( 13 )
+script = ExtResource( 14 )
 speed = 20.0
 
-[node name="Platform14" parent="GameContent/Level" instance=ExtResource( 10 )]
+[node name="Platform14" parent="GameContent/Level" instance=ExtResource( 11 )]
 position = Vector2( -768, 88 )
 
-[node name="Platform15" parent="GameContent/Level" instance=ExtResource( 10 )]
+[node name="Platform15" parent="GameContent/Level" instance=ExtResource( 11 )]
 position = Vector2( -736, -40 )
 start_raised = false
 
-[node name="Platform16" parent="GameContent/Level" instance=ExtResource( 10 )]
+[node name="Platform16" parent="GameContent/Level" instance=ExtResource( 11 )]
 position = Vector2( -752, -120 )
 start_raised = false
 
-[node name="Platform17" parent="GameContent/Level" instance=ExtResource( 10 )]
+[node name="Platform17" parent="GameContent/Level" instance=ExtResource( 11 )]
 position = Vector2( -864, -184 )
 start_raised = false
 
-[node name="Switch3" parent="GameContent/Level" instance=ExtResource( 15 )]
+[node name="Switch3" parent="GameContent/Level" instance=ExtResource( 16 )]
 position = Vector2( -792, 160 )
 one_switch = true
 
-[node name="TempPlatform13" parent="GameContent/Level" instance=ExtResource( 9 )]
+[node name="TempPlatform13" parent="GameContent/Level" instance=ExtResource( 10 )]
 position = Vector2( -1008, -32 )
 
-[node name="TempPlatform14" parent="GameContent/Level" instance=ExtResource( 9 )]
+[node name="TempPlatform14" parent="GameContent/Level" instance=ExtResource( 10 )]
 position = Vector2( -1040, -80 )
 
-[node name="TempPlatform15" parent="GameContent/Level" instance=ExtResource( 9 )]
+[node name="TempPlatform15" parent="GameContent/Level" instance=ExtResource( 10 )]
 position = Vector2( -992, -128 )
 
-[node name="Platform18" parent="GameContent/Level" instance=ExtResource( 10 )]
+[node name="Platform18" parent="GameContent/Level" instance=ExtResource( 11 )]
 position = Vector2( -992, 16 )
 
-[node name="Platform19" parent="GameContent/Level" instance=ExtResource( 10 )]
+[node name="Platform19" parent="GameContent/Level" instance=ExtResource( 11 )]
 position = Vector2( -960, 64 )
 
-[node name="Platform20" parent="GameContent/Level" instance=ExtResource( 10 )]
+[node name="Platform20" parent="GameContent/Level" instance=ExtResource( 11 )]
 position = Vector2( -912, 96 )
 
-[node name="Platform21" parent="GameContent/Level" instance=ExtResource( 10 )]
+[node name="Platform21" parent="GameContent/Level" instance=ExtResource( 11 )]
 position = Vector2( -848, 128 )
 
-[node name="Spike" parent="GameContent/Level" instance=ExtResource( 7 )]
+[node name="Spike" parent="GameContent/Level" instance=ExtResource( 8 )]
 position = Vector2( -1040, 192 )
 scale = Vector2( 1, 2.04 )
 
-[node name="Spike2" parent="GameContent/Level" instance=ExtResource( 7 )]
+[node name="Spike2" parent="GameContent/Level" instance=ExtResource( 8 )]
 position = Vector2( -1024, 192 )
 scale = Vector2( 1, 2.04 )
 
-[node name="Spike3" parent="GameContent/Level" instance=ExtResource( 7 )]
+[node name="Spike3" parent="GameContent/Level" instance=ExtResource( 8 )]
 position = Vector2( -1008, 192 )
 scale = Vector2( 1, 2.04 )
 
-[node name="Spike4" parent="GameContent/Level" instance=ExtResource( 7 )]
+[node name="Spike4" parent="GameContent/Level" instance=ExtResource( 8 )]
 position = Vector2( -992, 192 )
 scale = Vector2( 1, 2.04 )
 
-[node name="Spike5" parent="GameContent/Level" instance=ExtResource( 7 )]
+[node name="Spike5" parent="GameContent/Level" instance=ExtResource( 8 )]
 position = Vector2( -976, 192 )
 scale = Vector2( 1, 2.04 )
 
-[node name="Spike6" parent="GameContent/Level" instance=ExtResource( 7 )]
+[node name="Spike6" parent="GameContent/Level" instance=ExtResource( 8 )]
 position = Vector2( -960, 192 )
 scale = Vector2( 1, 2.04 )
 
-[node name="Spike7" parent="GameContent/Level" instance=ExtResource( 7 )]
+[node name="Spike7" parent="GameContent/Level" instance=ExtResource( 8 )]
 position = Vector2( -944, 192 )
 scale = Vector2( 1, 2.04 )
 
-[node name="Spike8" parent="GameContent/Level" instance=ExtResource( 7 )]
+[node name="Spike8" parent="GameContent/Level" instance=ExtResource( 8 )]
 position = Vector2( -928, 192 )
 scale = Vector2( 1, 2.04 )
 
-[node name="Spike9" parent="GameContent/Level" instance=ExtResource( 7 )]
+[node name="Spike9" parent="GameContent/Level" instance=ExtResource( 8 )]
 position = Vector2( -912, 192 )
 scale = Vector2( 1, 2.04 )
 
-[node name="Spike10" parent="GameContent/Level" instance=ExtResource( 7 )]
+[node name="Spike10" parent="GameContent/Level" instance=ExtResource( 8 )]
 position = Vector2( -896, 192 )
 scale = Vector2( 1, 2.04 )
 
-[node name="Spike11" parent="GameContent/Level" instance=ExtResource( 7 )]
+[node name="Spike11" parent="GameContent/Level" instance=ExtResource( 8 )]
 position = Vector2( -880, 192 )
 scale = Vector2( 1, 2.04 )
 
-[node name="Spike12" parent="GameContent/Level" instance=ExtResource( 7 )]
+[node name="Spike12" parent="GameContent/Level" instance=ExtResource( 8 )]
 position = Vector2( -864, 192 )
 scale = Vector2( 1, 2.04 )
 
-[node name="Spike13" parent="GameContent/Level" instance=ExtResource( 7 )]
+[node name="Spike13" parent="GameContent/Level" instance=ExtResource( 8 )]
 position = Vector2( -848, 192 )
 scale = Vector2( 1, 2.04 )
 
-[node name="Spike14" parent="GameContent/Level" instance=ExtResource( 7 )]
+[node name="Spike14" parent="GameContent/Level" instance=ExtResource( 8 )]
 position = Vector2( -832, 192 )
 scale = Vector2( 1, 2.04 )
 
@@ -1730,284 +1732,284 @@ scale = Vector2( 1, 2.04 )
 
 [node name="TileMap" type="TileMap" parent="GameContent/Level9"]
 position = Vector2( 576, 432 )
-tile_set = ExtResource( 2 )
+tile_set = ExtResource( 3 )
 cell_size = Vector2( 16, 16 )
 collision_layer = 72
 format = 1
 tile_data = PoolIntArray( -1376234, 0, 0, -1310698, 0, 0, -1245162, 0, 0, -1179626, 0, 0, -1114098, 0, 0, -1114097, 0, 0, -1114096, 0, 0, -1114095, 0, 0, -1114094, 0, 0, -1114090, 0, 0, -1048562, 0, 0, -1048554, 0, 0, -983026, 0, 0, -983018, 0, 0, -917490, 0, 0, -917482, 0, 0, -851954, 0, 0, -851946, 0, 0, -786418, 0, 0, -786410, 0, 0, -720882, 0, 0, -720878, 0, 0, -720877, 0, 0, -720876, 0, 0, -720875, 0, 0, -720874, 0, 0, -655346, 0, 0, -589810, 0, 0, -524274, 0, 0, -458738, 0, 0, -393202, 0, 0, -393192, 0, 0, -393191, 0, 0, -393190, 0, 0, -327666, 0, 0, -262130, 0, 0, -196594, 0, 0, -131058, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0, -65528, 0, 0, -65527, 0, 0, -65526, 0, 0, -65525, 0, 0, -65524, 0, 0, -65523, 0, 0, -65522, 0, 0, -65521, 0, 0, -65520, 0, 0, -65519, 0, 0, -65518, 0, 0, -65517, 0, 0, -65516, 0, 0, -65515, 0, 0, -65514, 0, 0 )
 
-[node name="TempPlatform" parent="GameContent/Level9" instance=ExtResource( 9 )]
+[node name="TempPlatform" parent="GameContent/Level9" instance=ExtResource( 10 )]
 position = Vector2( 688, 272 )
 
-[node name="TempPlatform2" parent="GameContent/Level9" instance=ExtResource( 9 )]
+[node name="TempPlatform2" parent="GameContent/Level9" instance=ExtResource( 10 )]
 position = Vector2( 608, 240 )
 
-[node name="Platform" parent="GameContent/Level9" instance=ExtResource( 10 )]
+[node name="Platform" parent="GameContent/Level9" instance=ExtResource( 11 )]
 position = Vector2( 688, 368 )
 
-[node name="Platform2" parent="GameContent/Level9" instance=ExtResource( 10 )]
+[node name="Platform2" parent="GameContent/Level9" instance=ExtResource( 11 )]
 position = Vector2( 768, 320 )
 
-[node name="Platform3" parent="GameContent/Level9" instance=ExtResource( 10 )]
+[node name="Platform3" parent="GameContent/Level9" instance=ExtResource( 11 )]
 position = Vector2( 688, 192 )
 
-[node name="Platform4" parent="GameContent/Level9" instance=ExtResource( 10 )]
+[node name="Platform4" parent="GameContent/Level9" instance=ExtResource( 11 )]
 position = Vector2( 768, 144 )
 
 [node name="Timer" type="Timer" parent="GameContent/Level9"]
 wait_time = 1.7
 autostart = true
 
-[node name="TempPlatform3" parent="GameContent/Level9" instance=ExtResource( 9 )]
+[node name="TempPlatform3" parent="GameContent/Level9" instance=ExtResource( 10 )]
 position = Vector2( 864, 144 )
 
-[node name="TempPlatform4" parent="GameContent/Level9" instance=ExtResource( 9 )]
+[node name="TempPlatform4" parent="GameContent/Level9" instance=ExtResource( 10 )]
 position = Vector2( 864, 240 )
 
-[node name="TempPlatform5" parent="GameContent/Level9" instance=ExtResource( 9 )]
+[node name="TempPlatform5" parent="GameContent/Level9" instance=ExtResource( 10 )]
 position = Vector2( 864, 336 )
 
-[node name="Spike" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 816, 416 )
 scale = Vector2( 1, 3 )
 
-[node name="Spike4" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike4" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 832, 416 )
 scale = Vector2( 1, 3 )
 
-[node name="Spike5" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike5" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 848, 416 )
 scale = Vector2( 1, 3 )
 
-[node name="Spike6" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike6" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 864, 416 )
 scale = Vector2( 1, 3 )
 
-[node name="Spike7" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike7" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 880, 416 )
 scale = Vector2( 1, 3 )
 
-[node name="Spike8" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike8" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 896, 416 )
 scale = Vector2( 1, 3 )
 
-[node name="Spike9" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike9" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 912, 416 )
 scale = Vector2( 1, 3 )
 
-[node name="Spike10" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike10" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 928, 416 )
 scale = Vector2( 1, 3 )
 
-[node name="Spike11" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike11" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 944, 416 )
 scale = Vector2( 1, 3 )
 
-[node name="Spike20" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike20" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 1712, 352 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike21" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike21" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 1728, 352 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike22" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike22" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 1744, 352 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike23" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike23" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 1760, 352 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike24" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike24" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 1776, 352 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike25" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike25" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 1792, 352 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike26" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike26" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 1808, 352 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike27" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike27" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 1824, 352 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike28" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike28" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 1840, 352 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike29" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike29" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 1856, 352 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike30" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike30" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 1872, 352 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike31" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike31" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 1888, 352 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike32" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike32" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 1744, -96 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike33" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike33" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 1760, -96 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike34" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike34" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 1776, -96 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike35" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike35" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 1792, -96 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike36" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike36" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 1808, -96 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike37" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike37" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 1824, -96 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike38" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike38" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 1840, -96 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike39" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike39" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 1856, -96 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike40" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike40" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 1872, -96 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike41" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike41" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 1888, -96 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike42" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike42" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 1904, -240 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike43" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike43" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 1920, -240 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike44" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike44" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 1936, -240 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike45" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike45" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 1952, -240 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike46" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike46" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 1968, -240 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike47" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike47" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 1984, -240 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike48" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike48" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 2000, -240 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike49" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike49" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 2016, -240 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike50" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike50" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 2032, -240 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike51" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike51" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 2176, -320 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike52" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike52" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 2192, -320 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike53" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike53" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 2208, -320 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike54" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike54" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 2224, -320 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike55" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike55" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 2240, -320 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike56" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike56" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 2256, -320 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike57" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike57" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 2272, -320 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike58" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike58" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 2288, -320 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike59" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike59" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 2304, -320 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike60" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike60" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 2320, -320 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike61" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike61" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 2336, -320 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike62" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike62" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 2352, -320 )
 scale = Vector2( 1, 1.5 )
 
-[node name="Spike3" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike3" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 864, 256 )
 scale = Vector2( 1, 0.6 )
 
-[node name="Spike12" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike12" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 880, 256 )
 scale = Vector2( 1, 0.6 )
 
-[node name="Spike13" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike13" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 896, 256 )
 scale = Vector2( 1, 0.6 )
 
-[node name="Spike14" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike14" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 912, 256 )
 scale = Vector2( 1, 0.6 )
 
-[node name="Spike15" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike15" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 800, 160 )
 scale = Vector2( 1, 0.6 )
 
-[node name="Spike16" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike16" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 816, 160 )
 scale = Vector2( 1, 0.6 )
 
-[node name="Spike17" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike17" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 832, 160 )
 scale = Vector2( 1, 0.6 )
 
-[node name="Spike18" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike18" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 848, 160 )
 scale = Vector2( 1, 0.6 )
 
-[node name="Spike19" parent="GameContent/Level9" instance=ExtResource( 7 )]
+[node name="Spike19" parent="GameContent/Level9" instance=ExtResource( 8 )]
 position = Vector2( 864, 160 )
 scale = Vector2( 1, 0.6 )
 
@@ -2016,13 +2018,13 @@ editor/display_folded = true
 
 [node name="TileMap" type="TileMap" parent="GameContent/Level10"]
 position = Vector2( 992, 352 )
-tile_set = ExtResource( 2 )
+tile_set = ExtResource( 3 )
 cell_size = Vector2( 16, 16 )
 collision_layer = 72
 format = 1
 tile_data = PoolIntArray( -720894, 0, 0, -720893, 0, 0, -720892, 0, 0, -720891, 0, 0, -720890, 0, 0, -720889, 0, 0, -720888, 0, 0, -720887, 0, 0, -720886, 0, 0, -720885, 0, 0, -720884, 0, 0, -720883, 0, 0, -720882, 0, 0, -720881, 0, 0, -720880, 0, 0, -720879, 0, 0, -720878, 0, 0, -720877, 0, 0, -720876, 0, 0, -720875, 0, 0, -720874, 0, 0, -720873, 0, 0, -720872, 0, 0, -720871, 0, 0, -720870, 0, 0, -720869, 0, 0, -720868, 0, 0, -720867, 0, 0, -720866, 0, 0, -720865, 0, 0, -720864, 0, 0, -720863, 0, 0, -720862, 0, 0, -720861, 0, 0, -720860, 0, 0, -720859, 0, 0, -655358, 0, 0, -655323, 0, 0, -589822, 0, 0, -589787, 0, 0, -524286, 0, 0, -524251, 0, 0, -458750, 0, 0, -458715, 0, 0, -393214, 0, 0, -393179, 0, 0, -327678, 0, 0, -327643, 0, 0, -262142, 0, 0, -262107, 0, 0, -196606, 0, 0, -196571, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0, -65528, 0, 0, -65527, 0, 0, -65526, 0, 0, -65525, 0, 0, -65524, 0, 0, -65523, 0, 0, -65522, 0, 0, -65521, 0, 0, -65520, 0, 0, -65519, 0, 0, -65518, 0, 0, -65517, 0, 0, -65516, 0, 0, -65515, 0, 0, -65514, 0, 0, -65513, 0, 0, -65512, 0, 0, -65511, 0, 0, -65510, 0, 0, -65509, 0, 0, -65508, 0, 0, -65507, 0, 0, -65506, 0, 0, -65505, 0, 0, -65504, 0, 0, -65503, 0, 0, -65502, 0, 0, -65501, 0, 0, -65500, 0, 0, -65499, 0, 0 )
 
-[node name="Turrent" parent="GameContent/Level10" instance=ExtResource( 6 )]
+[node name="Turrent" parent="GameContent/Level10" instance=ExtResource( 7 )]
 editor/display_folded = true
 position = Vector2( 1104, 192 )
 rotation = -3.14159
@@ -2039,9 +2041,9 @@ curve = SubResource( 17 )
 [node name="PathFollow2D" type="PathFollow2D" parent="GameContent/Level10/Turrent/Path2D"]
 position = Vector2( 63.9997, -64.0003 )
 rotation = -2.67795
-script = ExtResource( 13 )
+script = ExtResource( 14 )
 
-[node name="Turrent6" parent="GameContent/Level10" instance=ExtResource( 6 )]
+[node name="Turrent6" parent="GameContent/Level10" instance=ExtResource( 7 )]
 editor/display_folded = true
 position = Vector2( 1248, 192 )
 rotation = -3.14159
@@ -2059,9 +2061,9 @@ curve = SubResource( 17 )
 [node name="PathFollow2D" type="PathFollow2D" parent="GameContent/Level10/Turrent6/Path2D"]
 position = Vector2( 63.9997, -64.0003 )
 rotation = -2.67795
-script = ExtResource( 13 )
+script = ExtResource( 14 )
 
-[node name="Turrent8" parent="GameContent/Level10" instance=ExtResource( 6 )]
+[node name="Turrent8" parent="GameContent/Level10" instance=ExtResource( 7 )]
 editor/display_folded = true
 position = Vector2( 1392, 192 )
 rotation = -3.14159
@@ -2078,9 +2080,9 @@ curve = SubResource( 17 )
 [node name="PathFollow2D" type="PathFollow2D" parent="GameContent/Level10/Turrent8/Path2D"]
 position = Vector2( 63.9997, -64.0003 )
 rotation = -2.67795
-script = ExtResource( 13 )
+script = ExtResource( 14 )
 
-[node name="Turrent2" parent="GameContent/Level10" instance=ExtResource( 6 )]
+[node name="Turrent2" parent="GameContent/Level10" instance=ExtResource( 7 )]
 editor/display_folded = true
 position = Vector2( 1152, 192 )
 rotation = -3.14159
@@ -2098,9 +2100,9 @@ curve = SubResource( 17 )
 [node name="PathFollow2D" type="PathFollow2D" parent="GameContent/Level10/Turrent2/Path2D"]
 position = Vector2( 63.9997, -64.0003 )
 rotation = -2.67795
-script = ExtResource( 13 )
+script = ExtResource( 14 )
 
-[node name="Turrent4" parent="GameContent/Level10" instance=ExtResource( 6 )]
+[node name="Turrent4" parent="GameContent/Level10" instance=ExtResource( 7 )]
 editor/display_folded = true
 position = Vector2( 1296, 192 )
 rotation = -3.14159
@@ -2118,9 +2120,9 @@ curve = SubResource( 17 )
 [node name="PathFollow2D" type="PathFollow2D" parent="GameContent/Level10/Turrent4/Path2D"]
 position = Vector2( 63.9997, -64.0003 )
 rotation = -2.67795
-script = ExtResource( 13 )
+script = ExtResource( 14 )
 
-[node name="Turrent9" parent="GameContent/Level10" instance=ExtResource( 6 )]
+[node name="Turrent9" parent="GameContent/Level10" instance=ExtResource( 7 )]
 editor/display_folded = true
 position = Vector2( 1440, 192 )
 rotation = -3.14159
@@ -2138,9 +2140,9 @@ curve = SubResource( 17 )
 [node name="PathFollow2D" type="PathFollow2D" parent="GameContent/Level10/Turrent9/Path2D"]
 position = Vector2( 63.9997, -64.0003 )
 rotation = -2.67795
-script = ExtResource( 13 )
+script = ExtResource( 14 )
 
-[node name="Turrent3" parent="GameContent/Level10" instance=ExtResource( 6 )]
+[node name="Turrent3" parent="GameContent/Level10" instance=ExtResource( 7 )]
 editor/display_folded = true
 position = Vector2( 1200, 192 )
 rotation = -3.14159
@@ -2158,9 +2160,9 @@ curve = SubResource( 17 )
 [node name="PathFollow2D" type="PathFollow2D" parent="GameContent/Level10/Turrent3/Path2D"]
 position = Vector2( 63.9997, -64.0003 )
 rotation = -2.67795
-script = ExtResource( 13 )
+script = ExtResource( 14 )
 
-[node name="Turrent5" parent="GameContent/Level10" instance=ExtResource( 6 )]
+[node name="Turrent5" parent="GameContent/Level10" instance=ExtResource( 7 )]
 editor/display_folded = true
 position = Vector2( 1344, 192 )
 rotation = -3.14159
@@ -2178,9 +2180,9 @@ curve = SubResource( 17 )
 [node name="PathFollow2D" type="PathFollow2D" parent="GameContent/Level10/Turrent5/Path2D"]
 position = Vector2( 63.9997, -64.0003 )
 rotation = -2.67795
-script = ExtResource( 13 )
+script = ExtResource( 14 )
 
-[node name="Turrent7" parent="GameContent/Level10" instance=ExtResource( 6 )]
+[node name="Turrent7" parent="GameContent/Level10" instance=ExtResource( 7 )]
 editor/display_folded = true
 position = Vector2( 1488, 192 )
 rotation = -3.14159
@@ -2198,20 +2200,20 @@ curve = SubResource( 17 )
 [node name="PathFollow2D" type="PathFollow2D" parent="GameContent/Level10/Turrent7/Path2D"]
 position = Vector2( 63.9997, -64.0003 )
 rotation = -2.67795
-script = ExtResource( 13 )
+script = ExtResource( 14 )
 
 [node name="Level11" type="Node2D" parent="GameContent"]
 editor/display_folded = true
 
 [node name="TileMap" type="TileMap" parent="GameContent/Level11"]
 position = Vector2( 1664, 368 )
-tile_set = ExtResource( 2 )
+tile_set = ExtResource( 3 )
 cell_size = Vector2( 16, 16 )
 collision_layer = 72
 format = 1
 tile_data = PoolIntArray( -1900541, 0, 0, -1900540, 0, 0, -1900539, 0, 0, -1900538, 0, 0, -1900537, 0, 0, -1900536, 0, 0, -1900535, 0, 0, -1900534, 0, 0, -1900533, 0, 0, -1900532, 0, 0, -1900531, 0, 0, -1900530, 0, 0, -1900529, 0, 0, -1834993, 0, 0, -1769457, 0, 0, -1703921, 0, 0, -1638385, 0, 0, -1572862, 0, 0, -1572849, 0, 0, -1507326, 0, 0, -1507313, 0, 0, -1441790, 0, 0, -1441777, 0, 0, -1376254, 0, 0, -1376241, 0, 0, -1310718, 0, 0, -1310705, 0, 0, -1245182, 0, 0, -1245169, 0, 0, -1179646, 0, 0, -1179633, 0, 0, -1114110, 0, 0, -1114097, 0, 0, -1048574, 0, 0, -1048561, 0, 0, -983038, 0, 0, -983025, 0, 0, -917502, 0, 0, -917489, 0, 0, -851966, 0, 0, -851953, 0, 0, -786430, 0, 0, -786417, 0, 0, -720894, 0, 0, -720881, 0, 0, -655358, 0, 0, -655345, 0, 0, -589822, 0, 0, -589809, 0, 0, -524286, 0, 0, -524273, 0, 0, -458750, 0, 0, -458737, 0, 0, -393214, 0, 0, -393201, 0, 0, -327665, 0, 0, -262129, 0, 0, -196593, 0, 0, -131057, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0, -65528, 0, 0, -65527, 0, 0, -65526, 0, 0, -65525, 0, 0, -65524, 0, 0, -65523, 0, 0, -65522, 0, 0, -65521, 0, 0 )
 
-[node name="Turrent" parent="GameContent/Level11" instance=ExtResource( 6 )]
+[node name="Turrent" parent="GameContent/Level11" instance=ExtResource( 7 )]
 position = Vector2( 1888, 336 )
 rotation = 3.14159
 fire_rate_sec = 5.0
@@ -2221,7 +2223,7 @@ override_target_path = NodePath("Position2D")
 [node name="Position2D" type="Position2D" parent="GameContent/Level11/Turrent"]
 position = Vector2( -1.52588e-005, 48 )
 
-[node name="Turrent2" parent="GameContent/Level11" instance=ExtResource( 6 )]
+[node name="Turrent2" parent="GameContent/Level11" instance=ExtResource( 7 )]
 position = Vector2( 1872, 336 )
 rotation = 3.14159
 fire_rate_sec = 5.0
@@ -2231,7 +2233,7 @@ override_target_path = NodePath("Position2D")
 [node name="Position2D" type="Position2D" parent="GameContent/Level11/Turrent2"]
 position = Vector2( -1.52588e-005, 48 )
 
-[node name="Turrent3" parent="GameContent/Level11" instance=ExtResource( 6 )]
+[node name="Turrent3" parent="GameContent/Level11" instance=ExtResource( 7 )]
 position = Vector2( 1856, 336 )
 rotation = 3.14159
 fire_rate_sec = 5.0
@@ -2241,7 +2243,7 @@ override_target_path = NodePath("Position2D")
 [node name="Position2D" type="Position2D" parent="GameContent/Level11/Turrent3"]
 position = Vector2( -1.52588e-005, 48 )
 
-[node name="Turrent4" parent="GameContent/Level11" instance=ExtResource( 6 )]
+[node name="Turrent4" parent="GameContent/Level11" instance=ExtResource( 7 )]
 position = Vector2( 1840, 336 )
 rotation = 3.14159
 fire_rate_sec = 5.0
@@ -2251,7 +2253,7 @@ override_target_path = NodePath("Position2D")
 [node name="Position2D" type="Position2D" parent="GameContent/Level11/Turrent4"]
 position = Vector2( -1.52588e-005, 48 )
 
-[node name="Turrent5" parent="GameContent/Level11" instance=ExtResource( 6 )]
+[node name="Turrent5" parent="GameContent/Level11" instance=ExtResource( 7 )]
 position = Vector2( 1824, 336 )
 rotation = 3.14159
 fire_rate_sec = 5.0
@@ -2261,7 +2263,7 @@ override_target_path = NodePath("Position2D")
 [node name="Position2D" type="Position2D" parent="GameContent/Level11/Turrent5"]
 position = Vector2( -1.52588e-005, 48 )
 
-[node name="Turrent6" parent="GameContent/Level11" instance=ExtResource( 6 )]
+[node name="Turrent6" parent="GameContent/Level11" instance=ExtResource( 7 )]
 position = Vector2( 1808, 336 )
 rotation = 3.14159
 fire_rate_sec = 5.0
@@ -2271,7 +2273,7 @@ override_target_path = NodePath("Position2D")
 [node name="Position2D" type="Position2D" parent="GameContent/Level11/Turrent6"]
 position = Vector2( -1.52588e-005, 48 )
 
-[node name="Turrent7" parent="GameContent/Level11" instance=ExtResource( 6 )]
+[node name="Turrent7" parent="GameContent/Level11" instance=ExtResource( 7 )]
 position = Vector2( 1792, 336 )
 rotation = 3.14159
 fire_rate_sec = 5.0
@@ -2281,7 +2283,7 @@ override_target_path = NodePath("Position2D")
 [node name="Position2D" type="Position2D" parent="GameContent/Level11/Turrent7"]
 position = Vector2( -1.52588e-005, 48 )
 
-[node name="Turrent8" parent="GameContent/Level11" instance=ExtResource( 6 )]
+[node name="Turrent8" parent="GameContent/Level11" instance=ExtResource( 7 )]
 position = Vector2( 1776, 336 )
 rotation = 3.14159
 fire_rate_sec = 5.0
@@ -2291,7 +2293,7 @@ override_target_path = NodePath("Position2D")
 [node name="Position2D" type="Position2D" parent="GameContent/Level11/Turrent8"]
 position = Vector2( -1.52588e-005, 48 )
 
-[node name="Turrent9" parent="GameContent/Level11" instance=ExtResource( 6 )]
+[node name="Turrent9" parent="GameContent/Level11" instance=ExtResource( 7 )]
 position = Vector2( 1760, 336 )
 rotation = 3.14159
 fire_rate_sec = 5.0
@@ -2301,7 +2303,7 @@ override_target_path = NodePath("Position2D")
 [node name="Position2D" type="Position2D" parent="GameContent/Level11/Turrent9"]
 position = Vector2( -1.52588e-005, 48 )
 
-[node name="Turrent10" parent="GameContent/Level11" instance=ExtResource( 6 )]
+[node name="Turrent10" parent="GameContent/Level11" instance=ExtResource( 7 )]
 position = Vector2( 1744, 336 )
 rotation = 3.14159
 fire_rate_sec = 5.0
@@ -2311,7 +2313,7 @@ override_target_path = NodePath("Position2D")
 [node name="Position2D" type="Position2D" parent="GameContent/Level11/Turrent10"]
 position = Vector2( -1.52588e-005, 48 )
 
-[node name="Turrent11" parent="GameContent/Level11" instance=ExtResource( 6 )]
+[node name="Turrent11" parent="GameContent/Level11" instance=ExtResource( 7 )]
 editor/display_folded = true
 position = Vector2( 1728, 336 )
 rotation = 3.14159
@@ -2322,80 +2324,80 @@ override_target_path = NodePath("Position2D")
 [node name="Position2D" type="Position2D" parent="GameContent/Level11/Turrent11"]
 position = Vector2( -1.52588e-005, 48 )
 
-[node name="Platform2" parent="GameContent/Level11" instance=ExtResource( 10 )]
+[node name="Platform2" parent="GameContent/Level11" instance=ExtResource( 11 )]
 position = Vector2( 1792, 304 )
 
-[node name="Platform3" parent="GameContent/Level11" instance=ExtResource( 10 )]
+[node name="Platform3" parent="GameContent/Level11" instance=ExtResource( 11 )]
 position = Vector2( 1856, 256 )
 
-[node name="Platform4" parent="GameContent/Level11" instance=ExtResource( 10 )]
+[node name="Platform4" parent="GameContent/Level11" instance=ExtResource( 11 )]
 position = Vector2( 1808, 208 )
 
-[node name="Platform5" parent="GameContent/Level11" instance=ExtResource( 10 )]
+[node name="Platform5" parent="GameContent/Level11" instance=ExtResource( 11 )]
 position = Vector2( 1856, 112 )
 
-[node name="Platform6" parent="GameContent/Level11" instance=ExtResource( 10 )]
+[node name="Platform6" parent="GameContent/Level11" instance=ExtResource( 11 )]
 position = Vector2( 1808, 64 )
 
-[node name="Platform7" parent="GameContent/Level11" instance=ExtResource( 10 )]
+[node name="Platform7" parent="GameContent/Level11" instance=ExtResource( 11 )]
 position = Vector2( 1776, 0 )
 
-[node name="Platform8" parent="GameContent/Level11" instance=ExtResource( 10 )]
+[node name="Platform8" parent="GameContent/Level11" instance=ExtResource( 11 )]
 position = Vector2( 1648, -56 )
 
-[node name="Platform13" parent="GameContent/Level11" instance=ExtResource( 10 )]
+[node name="Platform13" parent="GameContent/Level11" instance=ExtResource( 11 )]
 position = Vector2( 1664, -56 )
 
-[node name="Platform12" parent="GameContent/Level11" instance=ExtResource( 10 )]
+[node name="Platform12" parent="GameContent/Level11" instance=ExtResource( 11 )]
 position = Vector2( 1648, -96 )
 
-[node name="Platform11" parent="GameContent/Level11" instance=ExtResource( 10 )]
+[node name="Platform11" parent="GameContent/Level11" instance=ExtResource( 11 )]
 position = Vector2( 1664, -96 )
 
-[node name="Spike2" parent="GameContent/Level11" instance=ExtResource( 7 )]
+[node name="Spike2" parent="GameContent/Level11" instance=ExtResource( 8 )]
 position = Vector2( 1856, -16 )
 rotation = -3.14159
 
-[node name="Spike3" parent="GameContent/Level11" instance=ExtResource( 7 )]
+[node name="Spike3" parent="GameContent/Level11" instance=ExtResource( 8 )]
 position = Vector2( 1840, -16 )
 rotation = -3.14159
 
-[node name="Spike4" parent="GameContent/Level11" instance=ExtResource( 7 )]
+[node name="Spike4" parent="GameContent/Level11" instance=ExtResource( 8 )]
 position = Vector2( 1840, -16 )
 rotation = -6.28319
 
-[node name="Spike5" parent="GameContent/Level11" instance=ExtResource( 7 )]
+[node name="Spike5" parent="GameContent/Level11" instance=ExtResource( 8 )]
 position = Vector2( 1824, -16 )
 
-[node name="RegainJumpNode" parent="GameContent/Level11" instance=ExtResource( 5 )]
+[node name="RegainJumpNode" parent="GameContent/Level11" instance=ExtResource( 6 )]
 position = Vector2( 1728, 144 )
 
-[node name="RegainJumpNode2" parent="GameContent/Level11" instance=ExtResource( 5 )]
+[node name="RegainJumpNode2" parent="GameContent/Level11" instance=ExtResource( 6 )]
 position = Vector2( 1872, 16 )
 
 [node name="Level12" type="Node2D" parent="GameContent"]
 
 [node name="TileMap" type="TileMap" parent="GameContent/Level12"]
 position = Vector2( 1648, -80 )
-tile_set = ExtResource( 2 )
+tile_set = ExtResource( 3 )
 cell_size = Vector2( 16, 16 )
 collision_layer = 72
 format = 1
 tile_data = PoolIntArray( -1179642, 0, 0, -1179641, 0, 0, -1179640, 0, 0, -1179639, 0, 0, -1179638, 0, 0, -1179637, 0, 0, -1179636, 0, 0, -1179635, 0, 0, -1179634, 0, 0, -1179633, 0, 0, -1179632, 0, 0, -1179631, 0, 0, -1179630, 0, 0, -1179629, 0, 0, -1114106, 0, 0, -1048570, 0, 0, -983034, 0, 0, -917498, 0, 0, -851962, 0, 0, -786426, 0, 0, -720890, 0, 0, -655354, 0, 0, -655344, 0, 0, -655343, 0, 0, -655342, 0, 0, -655341, 0, 0, -655340, 0, 0, -655339, 0, 0, -655338, 0, 0, -655337, 0, 0, -655336, 0, 0, -655335, 0, 0, -524289, 0, 0, -589824, 0, 0, -589823, 0, 0, -589822, 0, 0, -589821, 0, 0, -589820, 0, 0, -589819, 0, 0, -589818, 0, 0, -589808, 0, 0, -458753, 0, 0, -524272, 0, 0, -393217, 0, 0, -458736, 0, 0, -327681, 0, 0, -393200, 0, 0, -262145, 0, 0, -327664, 0, 0, -196609, 0, 0, -262128, 0, 0, -131073, 0, 0, -196592, 0, 0, -65537, 0, 0, -131056, 0, 0 )
 
-[node name="RegainJumpNode" parent="GameContent/Level12" instance=ExtResource( 5 )]
+[node name="RegainJumpNode" parent="GameContent/Level12" instance=ExtResource( 6 )]
 position = Vector2( 1728, -144 )
 
-[node name="RegainJumpNode2" parent="GameContent/Level12" instance=ExtResource( 5 )]
+[node name="RegainJumpNode2" parent="GameContent/Level12" instance=ExtResource( 6 )]
 position = Vector2( 2016, -288 )
 
-[node name="TempPlatform" parent="GameContent/Level12" instance=ExtResource( 9 )]
+[node name="TempPlatform" parent="GameContent/Level12" instance=ExtResource( 10 )]
 position = Vector2( 1856, -160 )
 
-[node name="TempPlatform2" parent="GameContent/Level12" instance=ExtResource( 9 )]
+[node name="TempPlatform2" parent="GameContent/Level12" instance=ExtResource( 10 )]
 position = Vector2( 1856, -272 )
 
-[node name="Turrent" parent="GameContent/Level12" instance=ExtResource( 6 )]
+[node name="Turrent" parent="GameContent/Level12" instance=ExtResource( 7 )]
 position = Vector2( 1728, -96 )
 override_target_path = NodePath("Position2D")
 
@@ -2407,13 +2409,13 @@ editor/display_folded = true
 
 [node name="TileMap" type="TileMap" parent="GameContent/Level13"]
 position = Vector2( 2128, -368 )
-tile_set = ExtResource( 2 )
+tile_set = ExtResource( 3 )
 cell_size = Vector2( 16, 16 )
 collision_layer = 72
 format = 1
 tile_data = PoolIntArray( -1900543, 0, 0, -1900542, 0, 0, -1900541, 0, 0, -1900540, 0, 0, -1900539, 0, 0, -1900538, 0, 0, -1900537, 0, 0, -1900536, 0, 0, -1900535, 0, 0, -1900534, 0, 0, -1900533, 0, 0, -1900532, 0, 0, -1900531, 0, 0, -1900530, 0, 0, -1900529, 0, 0, -1834993, 0, 0, -1769457, 0, 0, -1703921, 0, 0, -1638385, 0, 0, -1572863, 0, 0, -1572862, 0, 0, -1572849, 0, 0, -1507326, 0, 0, -1507313, 0, 0, -1441790, 0, 0, -1441777, 0, 0, -1376254, 0, 0, -1376241, 0, 0, -1310718, 0, 0, -1310705, 0, 0, -1245182, 0, 0, -1245169, 0, 0, -1179646, 0, 0, -1179633, 0, 0, -1114110, 0, 0, -1114097, 0, 0, -1048574, 0, 0, -1048561, 0, 0, -983038, 0, 0, -983025, 0, 0, -917502, 0, 0, -917489, 0, 0, -851966, 0, 0, -851953, 0, 0, -786430, 0, 0, -786417, 0, 0, -720894, 0, 0, -720881, 0, 0, -655358, 0, 0, -655345, 0, 0, -589822, 0, 0, -589809, 0, 0, -524286, 0, 0, -524273, 0, 0, -458750, 0, 0, -458737, 0, 0, -393214, 0, 0, -393201, 0, 0, -327665, 0, 0, -262129, 0, 0, -196593, 0, 0, -131057, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65521, 0, 0, 2, 0, 0, 15, 0, 0, 65538, 0, 0, 65551, 0, 0, 131074, 0, 0, 131087, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 196616, 0, 0, 196617, 0, 0, 196618, 0, 0, 196619, 0, 0, 196620, 0, 0, 196621, 0, 0, 196622, 0, 0, 196623, 0, 0 )
 
-[node name="Turrent" parent="GameContent/Level13" instance=ExtResource( 6 )]
+[node name="Turrent" parent="GameContent/Level13" instance=ExtResource( 7 )]
 editor/display_folded = true
 position = Vector2( 2360, -336 )
 rotation = 3.14159
@@ -2424,7 +2426,7 @@ override_target_path = NodePath("Position2D")
 [node name="Position2D" type="Position2D" parent="GameContent/Level13/Turrent"]
 position = Vector2( -1.52588e-005, 48 )
 
-[node name="Turrent2" parent="GameContent/Level13" instance=ExtResource( 6 )]
+[node name="Turrent2" parent="GameContent/Level13" instance=ExtResource( 7 )]
 editor/display_folded = true
 position = Vector2( 2344, -336 )
 rotation = 3.14159
@@ -2435,7 +2437,7 @@ override_target_path = NodePath("Position2D")
 [node name="Position2D" type="Position2D" parent="GameContent/Level13/Turrent2"]
 position = Vector2( -1.52588e-005, 48 )
 
-[node name="Turrent3" parent="GameContent/Level13" instance=ExtResource( 6 )]
+[node name="Turrent3" parent="GameContent/Level13" instance=ExtResource( 7 )]
 editor/display_folded = true
 position = Vector2( 2328, -336 )
 rotation = 3.14159
@@ -2446,7 +2448,7 @@ override_target_path = NodePath("Position2D")
 [node name="Position2D" type="Position2D" parent="GameContent/Level13/Turrent3"]
 position = Vector2( -1.52588e-005, 48 )
 
-[node name="Turrent4" parent="GameContent/Level13" instance=ExtResource( 6 )]
+[node name="Turrent4" parent="GameContent/Level13" instance=ExtResource( 7 )]
 editor/display_folded = true
 position = Vector2( 2312, -336 )
 rotation = 3.14159
@@ -2457,7 +2459,7 @@ override_target_path = NodePath("Position2D")
 [node name="Position2D" type="Position2D" parent="GameContent/Level13/Turrent4"]
 position = Vector2( -1.52588e-005, 48 )
 
-[node name="Turrent5" parent="GameContent/Level13" instance=ExtResource( 6 )]
+[node name="Turrent5" parent="GameContent/Level13" instance=ExtResource( 7 )]
 editor/display_folded = true
 position = Vector2( 2296, -336 )
 rotation = 3.14159
@@ -2468,7 +2470,7 @@ override_target_path = NodePath("Position2D")
 [node name="Position2D" type="Position2D" parent="GameContent/Level13/Turrent5"]
 position = Vector2( -1.52588e-005, 48 )
 
-[node name="Turrent6" parent="GameContent/Level13" instance=ExtResource( 6 )]
+[node name="Turrent6" parent="GameContent/Level13" instance=ExtResource( 7 )]
 editor/display_folded = true
 position = Vector2( 2280, -336 )
 rotation = 3.14159
@@ -2479,7 +2481,7 @@ override_target_path = NodePath("Position2D")
 [node name="Position2D" type="Position2D" parent="GameContent/Level13/Turrent6"]
 position = Vector2( -1.52588e-005, 48 )
 
-[node name="Turrent7" parent="GameContent/Level13" instance=ExtResource( 6 )]
+[node name="Turrent7" parent="GameContent/Level13" instance=ExtResource( 7 )]
 editor/display_folded = true
 position = Vector2( 2264, -336 )
 rotation = 3.14159
@@ -2490,7 +2492,7 @@ override_target_path = NodePath("Position2D")
 [node name="Position2D" type="Position2D" parent="GameContent/Level13/Turrent7"]
 position = Vector2( -1.52588e-005, 48 )
 
-[node name="Turrent8" parent="GameContent/Level13" instance=ExtResource( 6 )]
+[node name="Turrent8" parent="GameContent/Level13" instance=ExtResource( 7 )]
 editor/display_folded = true
 position = Vector2( 2248, -336 )
 rotation = 3.14159
@@ -2501,7 +2503,7 @@ override_target_path = NodePath("Position2D")
 [node name="Position2D" type="Position2D" parent="GameContent/Level13/Turrent8"]
 position = Vector2( -1.52588e-005, 48 )
 
-[node name="Turrent9" parent="GameContent/Level13" instance=ExtResource( 6 )]
+[node name="Turrent9" parent="GameContent/Level13" instance=ExtResource( 7 )]
 editor/display_folded = true
 position = Vector2( 2232, -336 )
 rotation = 3.14159
@@ -2512,7 +2514,7 @@ override_target_path = NodePath("Position2D")
 [node name="Position2D" type="Position2D" parent="GameContent/Level13/Turrent9"]
 position = Vector2( -1.52588e-005, 48 )
 
-[node name="Turrent10" parent="GameContent/Level13" instance=ExtResource( 6 )]
+[node name="Turrent10" parent="GameContent/Level13" instance=ExtResource( 7 )]
 editor/display_folded = true
 position = Vector2( 2216, -336 )
 rotation = 3.14159
@@ -2523,7 +2525,7 @@ override_target_path = NodePath("Position2D")
 [node name="Position2D" type="Position2D" parent="GameContent/Level13/Turrent10"]
 position = Vector2( -1.52588e-005, 48 )
 
-[node name="Turrent11" parent="GameContent/Level13" instance=ExtResource( 6 )]
+[node name="Turrent11" parent="GameContent/Level13" instance=ExtResource( 7 )]
 editor/display_folded = true
 position = Vector2( 2200, -336 )
 rotation = 3.14159
@@ -2534,7 +2536,7 @@ override_target_path = NodePath("Position2D")
 [node name="Position2D" type="Position2D" parent="GameContent/Level13/Turrent11"]
 position = Vector2( -1.52588e-005, 48 )
 
-[node name="Turrent12" parent="GameContent/Level13" instance=ExtResource( 6 )]
+[node name="Turrent12" parent="GameContent/Level13" instance=ExtResource( 7 )]
 editor/display_folded = true
 position = Vector2( 2184, -336 )
 rotation = 3.14159
@@ -2545,51 +2547,51 @@ override_target_path = NodePath("Position2D")
 [node name="Position2D" type="Position2D" parent="GameContent/Level13/Turrent12"]
 position = Vector2( -1.52588e-005, 48 )
 
-[node name="Spike17" parent="GameContent/Level13" instance=ExtResource( 7 )]
+[node name="Spike17" parent="GameContent/Level13" instance=ExtResource( 8 )]
 position = Vector2( 2272, -496 )
 rotation = -3.14159
 
-[node name="Spike20" parent="GameContent/Level13" instance=ExtResource( 7 )]
+[node name="Spike20" parent="GameContent/Level13" instance=ExtResource( 8 )]
 position = Vector2( 2336, -624 )
 rotation = -3.14159
 
-[node name="Spike11" parent="GameContent/Level13" instance=ExtResource( 7 )]
+[node name="Spike11" parent="GameContent/Level13" instance=ExtResource( 8 )]
 position = Vector2( 2216, -704 )
 rotation = -3.14159
 
-[node name="Spike14" parent="GameContent/Level13" instance=ExtResource( 7 )]
+[node name="Spike14" parent="GameContent/Level13" instance=ExtResource( 8 )]
 position = Vector2( 2272, -512 )
 rotation = -4.71239
 
-[node name="Spike18" parent="GameContent/Level13" instance=ExtResource( 7 )]
+[node name="Spike18" parent="GameContent/Level13" instance=ExtResource( 8 )]
 position = Vector2( 2336, -640 )
 rotation = -4.71239
 
-[node name="Spike10" parent="GameContent/Level13" instance=ExtResource( 7 )]
+[node name="Spike10" parent="GameContent/Level13" instance=ExtResource( 8 )]
 position = Vector2( 2216, -720 )
 rotation = -4.71239
 
-[node name="Spike16" parent="GameContent/Level13" instance=ExtResource( 7 )]
+[node name="Spike16" parent="GameContent/Level13" instance=ExtResource( 8 )]
 position = Vector2( 2256, -512 )
 rotation = -6.28319
 
-[node name="Spike19" parent="GameContent/Level13" instance=ExtResource( 7 )]
+[node name="Spike19" parent="GameContent/Level13" instance=ExtResource( 8 )]
 position = Vector2( 2320, -640 )
 rotation = -6.28319
 
-[node name="Spike13" parent="GameContent/Level13" instance=ExtResource( 7 )]
+[node name="Spike13" parent="GameContent/Level13" instance=ExtResource( 8 )]
 position = Vector2( 2200, -720 )
 rotation = -6.28319
 
-[node name="Spike15" parent="GameContent/Level13" instance=ExtResource( 7 )]
+[node name="Spike15" parent="GameContent/Level13" instance=ExtResource( 8 )]
 position = Vector2( 2256, -496 )
 rotation = -7.85398
 
-[node name="Spike21" parent="GameContent/Level13" instance=ExtResource( 7 )]
+[node name="Spike21" parent="GameContent/Level13" instance=ExtResource( 8 )]
 position = Vector2( 2320, -624 )
 rotation = -7.85398
 
-[node name="Spike12" parent="GameContent/Level13" instance=ExtResource( 7 )]
+[node name="Spike12" parent="GameContent/Level13" instance=ExtResource( 8 )]
 position = Vector2( 2200, -704 )
 rotation = -7.85398
 
@@ -2597,24 +2599,24 @@ rotation = -7.85398
 
 [node name="TileMap" type="TileMap" parent="GameContent/Level14"]
 position = Vector2( 192, 416 )
-tile_set = ExtResource( 2 )
+tile_set = ExtResource( 3 )
 cell_size = Vector2( 16, 16 )
 collision_layer = 72
 format = 1
 tile_data = PoolIntArray( -1048576, 0, 0, -1048574, 0, 0, -983040, 0, 0, -983038, 0, 0, -851969, 0, 0, -917504, 0, 0, -917502, 0, 0, -917501, 0, 0, -917500, 0, 0, -917499, 0, 0, -917498, 0, 0, -917497, 0, 0, -786433, 0, 0, -851961, 0, 0, -851960, 0, 0, -851959, 0, 0, -851958, 0, 0, -851957, 0, 0, -851956, 0, 0, -851955, 0, 0, -851954, 0, 0, -851953, 0, 0, -851952, 0, 0, -851951, 0, 0, -851950, 0, 0, -851949, 0, 0, -851948, 0, 0, -851947, 0, 0, -851946, 0, 0, -851945, 0, 0, -720897, 0, 0, -786422, 0, 0, -786419, 0, 0, -786409, 0, 0, -655361, 0, 0, -720873, 0, 0, -589825, 0, 0, -655352, 0, 0, -655344, 0, 0, -655337, 0, 0, -524289, 0, 0, -589816, 0, 0, -589808, 0, 0, -589805, 0, 0, -589801, 0, 0, -458753, 0, 0, -524280, 0, 0, -524272, 0, 0, -524265, 0, 0, -393217, 0, 0, -458744, 0, 0, -458736, 0, 0, -458733, 0, 0, -458729, 0, 0, -327681, 0, 0, -393208, 0, 0, -393200, 0, 0, -393197, 0, 0, -393193, 0, 0, -262145, 0, 0, -327672, 0, 0, -327664, 0, 0, -327661, 0, 0, -327657, 0, 0, -196609, 0, 0, -262136, 0, 0, -262128, 0, 0, -262125, 0, 0, -262121, 0, 0, -131073, 0, 0, -196600, 0, 0, -196592, 0, 0, -196585, 0, 0, -65537, 0, 0, -131064, 0, 0, -131056, 0, 0, -131053, 0, 0, -131049, 0, 0, -1, 0, 0, -65528, 0, 0, -65520, 0, 0, -65517, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 16, 0, 0, 17, 0, 0, 18, 0, 0, 19, 0, 0, 20, 0, 0, 21, 0, 0, 22, 0, 0, 23, 0, 0 )
 
-[node name="Turrent" parent="GameContent/Level14" instance=ExtResource( 6 )]
+[node name="Turrent" parent="GameContent/Level14" instance=ExtResource( 7 )]
 position = Vector2( 248, 224 )
 rotation = -3.14159
 fire_rate_sec = 1.3
 
-[node name="Turrent2" parent="GameContent/Level14" instance=ExtResource( 6 )]
+[node name="Turrent2" parent="GameContent/Level14" instance=ExtResource( 7 )]
 position = Vector2( 384, 224 )
 rotation = -3.14159
 fire_rate_sec = 1.3
 initial_delay = 0.6
 
-[node name="Turrent3" parent="GameContent/Level14" instance=ExtResource( 6 )]
+[node name="Turrent3" parent="GameContent/Level14" instance=ExtResource( 7 )]
 position = Vector2( 472, 224 )
 rotation = -3.14159
 fire_rate_sec = 3.0
@@ -2623,7 +2625,7 @@ override_target_path = NodePath("Position2D")
 [node name="Position2D" type="Position2D" parent="GameContent/Level14/Turrent3"]
 position = Vector2( -0.000152588, -32 )
 
-[node name="Turrent5" parent="GameContent/Level14" instance=ExtResource( 6 )]
+[node name="Turrent5" parent="GameContent/Level14" instance=ExtResource( 7 )]
 position = Vector2( 488, 224 )
 rotation = -3.14159
 fire_rate_sec = 3.0
@@ -2632,7 +2634,7 @@ override_target_path = NodePath("Position2D")
 [node name="Position2D" type="Position2D" parent="GameContent/Level14/Turrent5"]
 position = Vector2( -0.000152588, -32 )
 
-[node name="Turrent6" parent="GameContent/Level14" instance=ExtResource( 6 )]
+[node name="Turrent6" parent="GameContent/Level14" instance=ExtResource( 7 )]
 position = Vector2( 504, 224 )
 rotation = -3.14159
 fire_rate_sec = 3.0
@@ -2641,7 +2643,7 @@ override_target_path = NodePath("Position2D")
 [node name="Position2D" type="Position2D" parent="GameContent/Level14/Turrent6"]
 position = Vector2( -0.000152588, -32 )
 
-[node name="Turrent7" parent="GameContent/Level14" instance=ExtResource( 6 )]
+[node name="Turrent7" parent="GameContent/Level14" instance=ExtResource( 7 )]
 position = Vector2( 520, 224 )
 rotation = -3.14159
 fire_rate_sec = 3.0
@@ -2650,7 +2652,7 @@ override_target_path = NodePath("Position2D")
 [node name="Position2D" type="Position2D" parent="GameContent/Level14/Turrent7"]
 position = Vector2( -0.000152588, -32 )
 
-[node name="Turrent8" parent="GameContent/Level14" instance=ExtResource( 6 )]
+[node name="Turrent8" parent="GameContent/Level14" instance=ExtResource( 7 )]
 position = Vector2( 536, 224 )
 rotation = -3.14159
 fire_rate_sec = 3.0
@@ -2659,7 +2661,7 @@ override_target_path = NodePath("Position2D")
 [node name="Position2D" type="Position2D" parent="GameContent/Level14/Turrent8"]
 position = Vector2( -0.000152588, -32 )
 
-[node name="Turrent9" parent="GameContent/Level14" instance=ExtResource( 6 )]
+[node name="Turrent9" parent="GameContent/Level14" instance=ExtResource( 7 )]
 position = Vector2( 552, 224 )
 rotation = -3.14159
 fire_rate_sec = 3.0
@@ -2668,32 +2670,32 @@ override_target_path = NodePath("Position2D")
 [node name="Position2D" type="Position2D" parent="GameContent/Level14/Turrent9"]
 position = Vector2( -0.000152588, -32 )
 
-[node name="Platform" parent="GameContent/Level14" instance=ExtResource( 10 )]
+[node name="Platform" parent="GameContent/Level14" instance=ExtResource( 11 )]
 position = Vector2( 464, 272 )
 
-[node name="Platform2" parent="GameContent/Level14" instance=ExtResource( 10 )]
+[node name="Platform2" parent="GameContent/Level14" instance=ExtResource( 11 )]
 position = Vector2( 480, 272 )
 
-[node name="Platform4" parent="GameContent/Level14" instance=ExtResource( 10 )]
+[node name="Platform4" parent="GameContent/Level14" instance=ExtResource( 11 )]
 position = Vector2( 512, 272 )
 
-[node name="Platform5" parent="GameContent/Level14" instance=ExtResource( 10 )]
+[node name="Platform5" parent="GameContent/Level14" instance=ExtResource( 11 )]
 position = Vector2( 528, 272 )
 
-[node name="Platform6" parent="GameContent/Level14" instance=ExtResource( 10 )]
+[node name="Platform6" parent="GameContent/Level14" instance=ExtResource( 11 )]
 position = Vector2( 544, 336 )
 
-[node name="Platform7" parent="GameContent/Level14" instance=ExtResource( 10 )]
+[node name="Platform7" parent="GameContent/Level14" instance=ExtResource( 11 )]
 position = Vector2( 528, 336 )
 
-[node name="Platform8" parent="GameContent/Level14" instance=ExtResource( 10 )]
+[node name="Platform8" parent="GameContent/Level14" instance=ExtResource( 11 )]
 position = Vector2( 512, 336 )
 
-[node name="Platform10" parent="GameContent/Level14" instance=ExtResource( 10 )]
+[node name="Platform10" parent="GameContent/Level14" instance=ExtResource( 11 )]
 position = Vector2( 480, 336 )
 
 [node name="TileMap" type="TileMap" parent="GameContent"]
-tile_set = ExtResource( 2 )
+tile_set = ExtResource( 3 )
 cell_size = Vector2( 16, 16 )
 collision_layer = 72
 format = 1
@@ -2703,60 +2705,60 @@ tile_data = PoolIntArray( -4390949, 0, 0, -4390948, 0, 0, -4390947, 0, 0, -43909
 
 [node name="Checkpoints" type="Node2D" parent="GameContent/Player"]
 
-[node name="ScoreBall" parent="GameContent/Player/Checkpoints" instance=ExtResource( 16 )]
+[node name="ScoreBall" parent="GameContent/Player/Checkpoints" instance=ExtResource( 17 )]
 position = Vector2( -32, -216 )
 
-[node name="ScoreBall4" parent="GameContent/Player/Checkpoints" instance=ExtResource( 16 )]
+[node name="ScoreBall4" parent="GameContent/Player/Checkpoints" instance=ExtResource( 17 )]
 position = Vector2( 544, -168 )
 
-[node name="ScoreBall2" parent="GameContent/Player/Checkpoints" instance=ExtResource( 16 )]
+[node name="ScoreBall2" parent="GameContent/Player/Checkpoints" instance=ExtResource( 17 )]
 position = Vector2( -344, -360 )
 
-[node name="ScoreBall3" parent="GameContent/Player/Checkpoints" instance=ExtResource( 16 )]
+[node name="ScoreBall3" parent="GameContent/Player/Checkpoints" instance=ExtResource( 17 )]
 position = Vector2( 32, -520 )
 
-[node name="ScoreBall6" parent="GameContent/Player/Checkpoints" instance=ExtResource( 16 )]
+[node name="ScoreBall6" parent="GameContent/Player/Checkpoints" instance=ExtResource( 17 )]
 position = Vector2( -24, -744 )
 
-[node name="ScoreBall5" parent="GameContent/Player/Checkpoints" instance=ExtResource( 16 )]
+[node name="ScoreBall5" parent="GameContent/Player/Checkpoints" instance=ExtResource( 17 )]
 position = Vector2( -672, 120 )
 
-[node name="ScoreBall7" parent="GameContent/Player/Checkpoints" instance=ExtResource( 16 )]
+[node name="ScoreBall7" parent="GameContent/Player/Checkpoints" instance=ExtResource( 17 )]
 position = Vector2( -968, -664 )
 
-[node name="ScoreBall9" parent="GameContent/Player/Checkpoints" instance=ExtResource( 16 )]
+[node name="ScoreBall9" parent="GameContent/Player/Checkpoints" instance=ExtResource( 17 )]
 position = Vector2( -720, -936 )
 
-[node name="ScoreBall8" parent="GameContent/Player/Checkpoints" instance=ExtResource( 16 )]
+[node name="ScoreBall8" parent="GameContent/Player/Checkpoints" instance=ExtResource( 17 )]
 position = Vector2( -1024, -200 )
 
-[node name="ScoreBall10" parent="GameContent/Player/Checkpoints" instance=ExtResource( 16 )]
+[node name="ScoreBall10" parent="GameContent/Player/Checkpoints" instance=ExtResource( 17 )]
 position = Vector2( 184, 104 )
 
-[node name="ScoreBall11" parent="GameContent/Player/Checkpoints" instance=ExtResource( 16 )]
+[node name="ScoreBall11" parent="GameContent/Player/Checkpoints" instance=ExtResource( 17 )]
 position = Vector2( 608, 408 )
 
-[node name="ScoreBall12" parent="GameContent/Player/Checkpoints" instance=ExtResource( 16 )]
+[node name="ScoreBall12" parent="GameContent/Player/Checkpoints" instance=ExtResource( 17 )]
 position = Vector2( 1008, 328 )
 
-[node name="ScoreBall13" parent="GameContent/Player/Checkpoints" instance=ExtResource( 16 )]
+[node name="ScoreBall13" parent="GameContent/Player/Checkpoints" instance=ExtResource( 17 )]
 position = Vector2( 1672, 328 )
 
-[node name="ScoreBall14" parent="GameContent/Player/Checkpoints" instance=ExtResource( 16 )]
+[node name="ScoreBall14" parent="GameContent/Player/Checkpoints" instance=ExtResource( 17 )]
 position = Vector2( 1696, -104 )
 
-[node name="ScoreBall15" parent="GameContent/Player/Checkpoints" instance=ExtResource( 16 )]
+[node name="ScoreBall15" parent="GameContent/Player/Checkpoints" instance=ExtResource( 17 )]
 position = Vector2( 2128, -392 )
 
 [node name="PlayerSpawner" parent="GameContent/Player" groups=[
 "player_spawner",
-] instance=ExtResource( 17 )]
+] instance=ExtResource( 18 )]
 position = Vector2( 56, -24 )
 
 [node name="SpeedTimer" type="Node2D" parent="GameContent/Player"]
 editor/display_folded = true
 position = Vector2( 384, -144 )
-script = ExtResource( 18 )
+script = ExtResource( 19 )
 
 [node name="SpeedrunTimer" type="Timer" parent="GameContent/Player/SpeedTimer"]
 wait_time = 0.01
@@ -2767,7 +2769,7 @@ margin_left = 280.0
 margin_top = 64.0
 margin_right = 384.0
 margin_bottom = 104.0
-custom_fonts/normal_font = ExtResource( 8 )
+custom_fonts/normal_font = ExtResource( 9 )
 text = "00:00:00"
 
 [node name="SpeedText2" type="RichTextLabel" parent="GameContent/Player/SpeedTimer"]
@@ -2776,7 +2778,7 @@ margin_top = -736.0
 margin_right = 1576.0
 margin_bottom = -696.0
 rect_scale = Vector2( 2.12, 1.64 )
-custom_fonts/normal_font = ExtResource( 8 )
+custom_fonts/normal_font = ExtResource( 9 )
 text = "00:00:00"
 
 [node name="Area2D" type="Area2D" parent="GameContent/Player/SpeedTimer"]
@@ -2796,12 +2798,16 @@ collision_mask = 256
 shape = SubResource( 9 )
 
 [node name="MusicLoop" type="AudioStreamPlayer" parent="GameContent/Player/SpeedTimer"]
-stream = ExtResource( 19 )
+stream = ExtResource( 20 )
 bus = "music"
 
 [node name="success" type="AudioStreamPlayer" parent="GameContent/Player/SpeedTimer"]
-stream = ExtResource( 20 )
+stream = ExtResource( 21 )
 bus = "music"
+
+[node name="start_music_timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
 [connection signal="area_entered" from="GameContent/CameraZones/CameraDetector_1screen" to="GameContent/CameraZones/CameraDetector_1screen" method="_on_CameraDetector_area_entered"]
 [connection signal="body_entered" from="GameContent/CameraZones/CameraDetector_1screen" to="GameContent/CameraZones/CameraDetector_1screen" method="_on_CameraDetector_body_entered"]
 [connection signal="area_entered" from="GameContent/CameraZones/CameraDetector_1screen10" to="GameContent/CameraZones/CameraDetector_1screen10" method="_on_CameraDetector_area_entered"]
@@ -2874,3 +2880,4 @@ bus = "music"
 [connection signal="timeout" from="GameContent/Level9/Timer" to="GameContent/Level9/Platform2" method="toggle"]
 [connection signal="area_entered" from="GameContent/Player/SpeedTimer/Area2D" to="GameContent/Player/SpeedTimer" method="_on_Area2D_area_entered"]
 [connection signal="area_entered" from="GameContent/Player/SpeedTimer/RaceEndCollider" to="GameContent/Player/SpeedTimer" method="_on_RaceEndCollider_area_entered"]
+[connection signal="timeout" from="start_music_timer" to="." method="_on_start_music_timer_timeout"]
