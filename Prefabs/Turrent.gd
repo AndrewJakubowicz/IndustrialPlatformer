@@ -14,6 +14,8 @@ enum FireMode {
 	GUESS_SHOT
 }
 
+var _off = true
+
 export (float) var fire_rate_sec = 1.5
 export (float) var random_scatter_fire_rate = 0
 export (float) var initial_delay = 0
@@ -67,6 +69,8 @@ func unset_current_player():
 
 
 func _on_Timer_timeout():
+	if _off:
+		return
 	var b = Bullet.instance()
 	var direction = Vector2(cos(gun_top.rotation), sin(gun_top.rotation))
 	var gun_end_offset = -5 if _rotated_state else 5
@@ -75,3 +79,13 @@ func _on_Timer_timeout():
 	b.apply_impulse(Vector2(), direction.normalized() * bullet_speed * (-1 if _rotated_state else 1))
 	sound.play_shot()
 	start_shot_timer()
+
+
+func _on_Area2D_area_entered(area):
+	set_physics_process(true)
+	_off = false
+
+
+func _on_Area2D_area_exited(area):
+	set_physics_process(false)
+	_off = true

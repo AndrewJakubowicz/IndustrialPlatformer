@@ -47,8 +47,10 @@ func _state_logic(delta):
 # Automatically is checked for whether we can transition into another state.
 #  @returns {STATE | null}
 func _get_transition(delta):
-	var pressing = Input.is_action_pressed("left") or Input.is_action_pressed("right")
-	if [STATE.IDLE].has(state) and pressing:
+	var pressing = Input.is_action_pressed("left") or Input.is_action_pressed("right") or Input.is_action_pressed("jump")
+	if [STATE.RUN, STATE.IDLE].has(state) and Input.is_action_just_pressed("attack") and not attack_swish_player.is_playing():
+		return STATE.ATTACK_GROUND
+	elif [STATE.IDLE].has(state) and pressing:
 		return STATE.RUN
 	elif [STATE.RUN].has(state) and not pressing:
 		return STATE.IDLE
@@ -60,8 +62,6 @@ func _get_transition(delta):
 		return STATE.IDLE
 	elif [STATE.RUN, STATE.IDLE].has(state) and not player.is_on_floor():
 		return STATE.FALLING
-	elif [STATE.RUN, STATE.IDLE].has(state) and Input.is_action_just_pressed("attack") and not attack_swish_player.is_playing():
-		return STATE.ATTACK_GROUND
 	elif [STATE.JUMP, STATE.FALLING, STATE.FALLING_CAN_AIR_JUMP].has(state) and Input.is_action_just_pressed("attack") and not attack_swish_player.is_playing():
 		return STATE.ATTACK_AIR
 	elif [STATE.ATTACK_AIR].has(state) and not attack_swish_player.is_playing():
@@ -103,6 +103,8 @@ func _enter_state(new_state, old_state):
 			anim_state.travel("attack_ground")
 			attack_swish_player.play("attack_swish")
 		STATE.FALLING_CAN_AIR_JUMP:
+			if player.velocity.y > 0:
+				player.velocity.y = 0
 			audio_player.play_jump_recharge()
 			in_air_hit_air = true
 			player.turn_on_aesthetics_air_jump()

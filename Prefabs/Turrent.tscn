@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Prefabs/Turrent.gd" type="Script" id=1]
 [ext_resource path="res://assets/industrial.v2.png" type="Texture" id=2]
@@ -10,9 +10,12 @@
 [ext_resource path="res://assets/sound/shots/Explosion5.wav" type="AudioStream" id=8]
 [ext_resource path="res://assets/sound/shots/Explosion6.wav" type="AudioStream" id=9]
 
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 888, 352 )
+
 [node name="Turrent" type="Node2D" groups=[
-"set_current_player",
 "unset_current_player",
+"set_current_player",
 ]]
 script = ExtResource( 1 )
 
@@ -78,4 +81,13 @@ autoplay = true
 max_distance = 200.0
 attenuation = 0.5
 bus = "shot"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 1 )
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_Area2D_area_exited"]
