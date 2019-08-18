@@ -1962,7 +1962,6 @@ scale = Vector2( 1, 2.04 )
 [node name="Level9" type="Node2D" parent="GameContent"]
 
 [node name="TileMap" type="TileMap" parent="GameContent/Level9"]
-visible = false
 modulate = Color( 1, 0, 0, 1 )
 position = Vector2( 576, 432 )
 tile_set = ExtResource( 3 )
